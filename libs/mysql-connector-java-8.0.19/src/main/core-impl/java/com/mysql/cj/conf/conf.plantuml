@@ -1,0 +1,301 @@
+@startuml
+
+title __CONF's Class Diagram__\n
+
+  namespace com.mysql.cj {
+    namespace conf {
+      abstract class com.mysql.cj.conf.AbstractPropertyDefinition {
+          - category : String
+          - ccAlias : String
+          - description : String
+          - isRuntimeModifiable : boolean
+          - key : PropertyKey
+          - lowerBound : int
+          - name : String
+          - order : int
+          {static} - serialVersionUID : long
+          - sinceVersion : String
+          - upperBound : int
+          + AbstractPropertyDefinition()
+          + AbstractPropertyDefinition()
+          + AbstractPropertyDefinition()
+          + getAllowableValues()
+          + getCategory()
+          + getCcAlias()
+          + getDefaultValue()
+          + getDescription()
+          + getLowerBound()
+          + getName()
+          + getOrder()
+          + getPropertyKey()
+          + getSinceVersion()
+          + getUpperBound()
+          + hasCcAlias()
+          + hasValueConstraints()
+          + isRangeBased()
+          + isRuntimeModifiable()
+          {abstract} + parseObject()
+          + setCategory()
+          + setDefaultValue()
+          + setDescription()
+          + setLowerBound()
+          + setOrder()
+          + setRuntimeModifiable()
+          + setSinceVersion()
+          + setUpperBound()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace conf {
+      abstract class com.mysql.cj.conf.AbstractRuntimeProperty {
+          # wasExplicitlySet : boolean
+          - listeners : List<WeakReference<RuntimePropertyListener>>
+          - propertyDefinition : PropertyDefinition<T>
+          {static} - serialVersionUID : long
+          + AbstractRuntimeProperty()
+          + addListener()
+          + getInitialValue()
+          + getPropertyDefinition()
+          + getStringValue()
+          + getValue()
+          + initializeFrom()
+          + initializeFrom()
+          + isExplicitlySet()
+          + removeListener()
+          + resetValue()
+          + setValue()
+          + setValue()
+          + setValueInternal()
+          + setValueInternal()
+          # AbstractRuntimeProperty()
+          # checkRange()
+          # invokeListeners()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace conf {
+      class com.mysql.cj.conf.BooleanProperty {
+          {static} - serialVersionUID : long
+          # BooleanProperty()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace conf {
+      class com.mysql.cj.conf.BooleanPropertyDefinition {
+          {static} - serialVersionUID : long
+          + BooleanPropertyDefinition()
+          {static} + booleanFrom()
+          + createRuntimeProperty()
+          + getAllowableValues()
+          {static} + getBooleanAllowableValues()
+          + parseObject()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace conf {
+      enum AllowableValues {
+        FALSE
+        NO
+        TRUE
+        YES
+        asBoolean
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace conf {
+      class com.mysql.cj.conf.DefaultPropertySet {
+          - PROPERTY_KEY_TO_RUNTIME_PROPERTY : Map<PropertyKey, RuntimeProperty<?>>
+          - PROPERTY_NAME_TO_RUNTIME_PROPERTY : Map<String, RuntimeProperty<?>>
+          {static} - serialVersionUID : long
+          + DefaultPropertySet()
+          + addProperty()
+          + exposeAsProperties()
+          + getBooleanProperty()
+          + getBooleanProperty()
+          + getEnumProperty()
+          + getEnumProperty()
+          + getIntegerProperty()
+          + getIntegerProperty()
+          + getLongProperty()
+          + getLongProperty()
+          + getMemorySizeProperty()
+          + getMemorySizeProperty()
+          + getProperty()
+          + getProperty()
+          + getStringProperty()
+          + getStringProperty()
+          + initializeProperties()
+          + postInitialization()
+          + removeProperty()
+          + removeProperty()
+          + reset()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace conf {
+      class com.mysql.cj.conf.EnumProperty {
+          {static} - serialVersionUID : long
+          # EnumProperty()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace conf {
+      class com.mysql.cj.conf.EnumPropertyDefinition {
+          - enumType : Class<T>
+          {static} - serialVersionUID : long
+          + EnumPropertyDefinition()
+          + createRuntimeProperty()
+          + getAllowableValues()
+          + parseObject()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace conf {
+      class com.mysql.cj.conf.IntegerProperty {
+          {static} - serialVersionUID : long
+          + IntegerProperty()
+          # checkRange()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace conf {
+      class com.mysql.cj.conf.IntegerPropertyDefinition {
+          # multiplier : int
+          {static} - serialVersionUID : long
+          + IntegerPropertyDefinition()
+          + IntegerPropertyDefinition()
+          + createRuntimeProperty()
+          {static} + integerFrom()
+          + isRangeBased()
+          + parseObject()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace conf {
+      class com.mysql.cj.conf.LongProperty {
+          {static} - serialVersionUID : long
+          # LongProperty()
+          # checkRange()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace conf {
+      class com.mysql.cj.conf.LongPropertyDefinition {
+          {static} - serialVersionUID : long
+          + LongPropertyDefinition()
+          + LongPropertyDefinition()
+          + createRuntimeProperty()
+          + isRangeBased()
+          + parseObject()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace conf {
+      class com.mysql.cj.conf.MemorySizeProperty {
+          # valueAsString : String
+          - initialValueAsString : String
+          {static} - serialVersionUID : long
+          + getStringValue()
+          + initializeFrom()
+          + initializeFrom()
+          + resetValue()
+          + setValueInternal()
+          # MemorySizeProperty()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace conf {
+      class com.mysql.cj.conf.MemorySizePropertyDefinition {
+          {static} - serialVersionUID : long
+          + MemorySizePropertyDefinition()
+          + MemorySizePropertyDefinition()
+          + createRuntimeProperty()
+          + parseObject()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace conf {
+      class com.mysql.cj.conf.StringProperty {
+          {static} - serialVersionUID : long
+          + getStringValue()
+          # StringProperty()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace conf {
+      class com.mysql.cj.conf.StringPropertyDefinition {
+          {static} - serialVersionUID : long
+          + StringPropertyDefinition()
+          + StringPropertyDefinition()
+          + createRuntimeProperty()
+          + parseObject()
+      }
+    }
+  }
+  
+
+  com.mysql.cj.conf.AbstractPropertyDefinition .up.|> PropertyDefinition
+  com.mysql.cj.conf.AbstractPropertyDefinition .up.|> Serializable
+  com.mysql.cj.conf.AbstractPropertyDefinition o-- T : defaultValue
+  com.mysql.cj.conf.AbstractRuntimeProperty .up.|> RuntimeProperty
+  com.mysql.cj.conf.AbstractRuntimeProperty .up.|> Serializable
+  com.mysql.cj.conf.AbstractRuntimeProperty o-- T : initialValue
+  com.mysql.cj.conf.AbstractRuntimeProperty o-- T : value
+  com.mysql.cj.conf.BooleanPropertyDefinition +-down- com.mysql.cj.conf.BooleanPropertyDefinition.AllowableValues
+  com.mysql.cj.conf.DefaultPropertySet .up.|> PropertySet
+  com.mysql.cj.conf.DefaultPropertySet .up.|> Serializable
+
+
+right footer
+
+
+PlantUML diagram generated by SketchIt! (https://bitbucket.org/pmesmeur/sketch.it)
+For more information about this tool, please contact philippe.mesmeur@gmail.com
+endfooter
+
+@enduml

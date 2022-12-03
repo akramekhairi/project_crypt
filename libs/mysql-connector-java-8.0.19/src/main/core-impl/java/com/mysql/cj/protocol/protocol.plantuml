@@ -1,0 +1,418 @@
+@startuml
+
+title __PROTOCOL's Class Diagram__\n
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      abstract class com.mysql.cj.protocol.AbstractProtocol {
+          # authProvider : AuthenticationProvider<M>
+          # exceptionInterceptor : ExceptionInterceptor
+          # log : Log
+          # messageBuilder : MessageBuilder<M>
+          # packetDebugRingBuffer : LinkedList<StringBuilder>
+          # propertySet : PropertySet
+          # queryTimingUnits : String
+          # session : Session
+          # socketConnection : SocketConnection
+          # transactionManager : TransactionEventHandler
+          # useNanosForElapsedTime : boolean
+          - packetReceivedTimeHolder : PacketReceivedTimeHolder
+          - packetSentTimeHolder : PacketSentTimeHolder
+          + getAuthenticationProvider()
+          + getExceptionInterceptor()
+          + getMessageBuilder()
+          + getPacketReceivedTimeHolder()
+          + getPacketSentTimeHolder()
+          + getPropertySet()
+          + getQueryTimingUnits()
+          + getSocketConnection()
+          + init()
+          + reset()
+          + setPacketReceivedTimeHolder()
+          + setPacketSentTimeHolder()
+          + setPropertySet()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      abstract class com.mysql.cj.protocol.AbstractSocketConnection {
+          # exceptionInterceptor : ExceptionInterceptor
+          # host : String
+          # mysqlInput : FullReadInputStream
+          # mysqlOutput : BufferedOutputStream
+          # mysqlSocket : Socket
+          # port : int
+          # propertySet : PropertySet
+          # socketFactory : SocketFactory
+          + forceClose()
+          + getExceptionInterceptor()
+          + getHost()
+          + getMysqlInput()
+          + getMysqlOutput()
+          + getMysqlSocket()
+          + getNetworkResources()
+          + getPort()
+          + getPropertySet()
+          + getSocketFactory()
+          + isSSLEstablished()
+          + setMysqlInput()
+          + setSocketFactory()
+          # createSocketFactory()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      class com.mysql.cj.protocol.AsyncSocketFactory {
+          ~ channel : AsynchronousSocketChannel
+          + connect()
+          + performTlsHandshake()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      class com.mysql.cj.protocol.ExportControlled {
+          {static} - ALLOWED_CIPHERS : List<String>
+          {static} - RESTRICTED_CIPHER_SUBSTR : List<String>
+          {static} - TLS_PROTOCOLS : String[]
+          {static} - TLS_SETTINGS_RESOURCE : String
+          {static} - TLSv1 : String
+          {static} - TLSv1_1 : String
+          {static} - TLSv1_2 : String
+          {static} - TLSv1_3 : String
+          {static} + checkValidProtocols()
+          {static} + decodeRSAPublicKey()
+          {static} + enabled()
+          {static} + encryptWithRSAPublicKey()
+          {static} + encryptWithRSAPublicKey()
+          {static} + getSSLContext()
+          {static} + isSSLEstablished()
+          {static} + performTlsHandshake()
+          {static} + startTlsOnAsynchronousChannel()
+          - ExportControlled()
+          {static} - getAllowedCiphers()
+          {static} - getAllowedProtocols()
+          {static} - getKeyStoreConf()
+          {static} - getTrustStoreConf()
+          {static} - performTlsHandshake()
+          {static} - read()
+          {static} - write()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      class com.mysql.cj.protocol.ExportControlled.KeyStoreConf {
+          + keyStorePassword : String
+          + keyStoreType : String
+          + keyStoreUrl : String
+          + KeyStoreConf()
+          + KeyStoreConf()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      class com.mysql.cj.protocol.ExportControlled.X509TrustManagerWrapper {
+          - certFactory : CertificateFactory
+          - hostName : String
+          - origTm : X509TrustManager
+          - validator : CertPathValidator
+          - validatorParams : PKIXParameters
+          - verifyServerCert : boolean
+          + X509TrustManagerWrapper()
+          + X509TrustManagerWrapper()
+          + checkClientTrusted()
+          + checkServerTrusted()
+          + getAcceptedIssuers()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      class com.mysql.cj.protocol.NamedPipeSocketFactory {
+          - namedPipeSocket : Socket
+          + NamedPipeSocketFactory()
+          + connect()
+          + isLocallyConnected()
+          + performTlsHandshake()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      class com.mysql.cj.protocol.NamedPipeSocketFactory.NamedPipeSocket {
+          - isClosed : boolean
+          - namedPipeFile : RandomAccessFile
+          + close()
+          + getInputStream()
+          + getOutputStream()
+          + isClosed()
+          + shutdownInput()
+          ~ NamedPipeSocket()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      class com.mysql.cj.protocol.NamedPipeSocketFactory.RandomAccessFileInputStream {
+          ~ raFile : RandomAccessFile
+          + available()
+          + close()
+          + read()
+          + read()
+          + read()
+          ~ RandomAccessFileInputStream()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      class com.mysql.cj.protocol.NamedPipeSocketFactory.RandomAccessFileOutputStream {
+          ~ raFile : RandomAccessFile
+          + close()
+          + write()
+          + write()
+          + write()
+          ~ RandomAccessFileOutputStream()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      class com.mysql.cj.protocol.ReadAheadInputStream {
+          # currentPosition : int
+          # doDebug : boolean
+          # endOfCurrentData : int
+          # log : Log
+          {static} - DEFAULT_BUFFER_SIZE : int
+          - buf : byte[]
+          - underlyingStream : InputStream
+          + ReadAheadInputStream()
+          + ReadAheadInputStream()
+          + available()
+          + close()
+          + markSupported()
+          + read()
+          + read()
+          + skip()
+          - checkClosed()
+          - fill()
+          - readFromUnderlyingStreamIfNecessary()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      class com.mysql.cj.protocol.Security {
+          {static} - CACHING_SHA2_DIGEST_LENGTH : int
+          {static} + scramble411()
+          {static} + scramble411()
+          {static} + scrambleCachingSha2()
+          {static} + xorString()
+          - Security()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      class com.mysql.cj.protocol.SerializingBufferWriter {
+          # channel : AsynchronousSocketChannel
+          {static} - WRITES_AT_ONCE : int
+          - pendingWrites : Queue<ByteBufferWrapper>
+          + SerializingBufferWriter()
+          + completed()
+          + failed()
+          + queueBuffer()
+          + setChannel()
+          - initiateWrite()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      class com.mysql.cj.protocol.SerializingBufferWriter.ByteBufferWrapper {
+          - buffer : ByteBuffer
+          - handler : CompletionHandler<Long, Void>
+          + getBuffer()
+          + getHandler()
+          ~ ByteBufferWrapper()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      class com.mysql.cj.protocol.SocksProxySocketFactory {
+          # createSocket()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      class com.mysql.cj.protocol.StandardSocketFactory {
+          # host : String
+          # loginTimeoutCheckTimestamp : long
+          # loginTimeoutCountdown : int
+          # port : int
+          # rawSocket : Socket
+          # socketTimeoutBackup : int
+          # sslSocket : Socket
+          + afterHandshake()
+          + beforeHandshake()
+          + connect()
+          + performTlsHandshake()
+          # createSocket()
+          # getRealTimeout()
+          # resetLoginTimeCountdown()
+          - configureSocket()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      class com.mysql.cj.protocol.TlsAsynchronousSocketChannel {
+          - bufferWriter : SerializingBufferWriter
+          - channel : AsynchronousSocketChannel
+          - cipherTextBuffer : ByteBuffer
+          - cipherTextBuffers : LinkedBlockingQueue<ByteBuffer>
+          - clearTextBuffer : ByteBuffer
+          - dst : ByteBuffer
+          {static} - emptyBuffer : ByteBuffer
+          - handler : CompletionHandler<Integer, ?>
+          - sslEngine : SSLEngine
+          + TlsAsynchronousSocketChannel()
+          + bind()
+          + close()
+          + completed()
+          + connect()
+          + connect()
+          + failed()
+          + getLocalAddress()
+          + getOption()
+          + getRemoteAddress()
+          + isOpen()
+          + read()
+          + read()
+          + read()
+          + setOption()
+          + shutdownInput()
+          + shutdownOutput()
+          + supportedOptions()
+          + write()
+          + write()
+          + write()
+          - decryptAndDispatch()
+          - dispatchData()
+          - getCipherTextBuffer()
+          - isDrained()
+          - putCipherTextBuffer()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      class com.mysql.cj.protocol.TlsAsynchronousSocketChannel.ErrorPropagatingCompletionHandler {
+          - success : Runnable
+          - target : CompletionHandler<Long, ?>
+          + ErrorPropagatingCompletionHandler()
+          + completed()
+          + failed()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      class com.mysql.cj.protocol.WatchableOutputStream {
+          - watcher : OutputStreamWatcher
+          + close()
+          + setWatcher()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      class com.mysql.cj.protocol.WatchableWriter {
+          - watcher : WriterWatcher
+          + close()
+          + setWatcher()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      interface com.mysql.cj.protocol.WriterWatcher {
+          {abstract} + writerClosed()
+      }
+    }
+  }
+  
+
+  com.mysql.cj.protocol.AbstractProtocol .up.|> Protocol
+  com.mysql.cj.protocol.AbstractSocketConnection .up.|> SocketConnection
+  com.mysql.cj.protocol.AsyncSocketFactory .up.|> SocketFactory
+  com.mysql.cj.protocol.ExportControlled +-down- com.mysql.cj.protocol.ExportControlled.KeyStoreConf
+  com.mysql.cj.protocol.ExportControlled +-down- com.mysql.cj.protocol.ExportControlled.X509TrustManagerWrapper
+  com.mysql.cj.protocol.ExportControlled.X509TrustManagerWrapper .up.|> X509TrustManager
+  com.mysql.cj.protocol.NamedPipeSocketFactory .up.|> SocketFactory
+  com.mysql.cj.protocol.NamedPipeSocketFactory +-down- com.mysql.cj.protocol.NamedPipeSocketFactory.NamedPipeSocket
+  com.mysql.cj.protocol.NamedPipeSocketFactory +-down- com.mysql.cj.protocol.NamedPipeSocketFactory.RandomAccessFileInputStream
+  com.mysql.cj.protocol.NamedPipeSocketFactory +-down- com.mysql.cj.protocol.NamedPipeSocketFactory.RandomAccessFileOutputStream
+  com.mysql.cj.protocol.SerializingBufferWriter .up.|> CompletionHandler
+  com.mysql.cj.protocol.SerializingBufferWriter +-down- com.mysql.cj.protocol.SerializingBufferWriter.ByteBufferWrapper
+  com.mysql.cj.protocol.StandardSocketFactory .up.|> SocketFactory
+  com.mysql.cj.protocol.TlsAsynchronousSocketChannel .up.|> CompletionHandler
+  com.mysql.cj.protocol.TlsAsynchronousSocketChannel +-down- com.mysql.cj.protocol.TlsAsynchronousSocketChannel.ErrorPropagatingCompletionHandler
+  com.mysql.cj.protocol.TlsAsynchronousSocketChannel.ErrorPropagatingCompletionHandler .up.|> CompletionHandler
+  com.mysql.cj.protocol.WatchableOutputStream .up.|> WatchableStream
+
+
+right footer
+
+
+PlantUML diagram generated by SketchIt! (https://bitbucket.org/pmesmeur/sketch.it)
+For more information about this tool, please contact philippe.mesmeur@gmail.com
+endfooter
+
+@enduml

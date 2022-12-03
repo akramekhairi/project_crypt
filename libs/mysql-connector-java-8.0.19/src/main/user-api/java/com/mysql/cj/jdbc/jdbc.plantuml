@@ -1,0 +1,182 @@
+@startuml
+
+title __JDBC's Class Diagram__\n
+
+  namespace com.mysql.cj {
+    namespace jdbc {
+      interface com.mysql.cj.jdbc.ClientInfoProvider {
+          {abstract} + destroy()
+          {abstract} + getClientInfo()
+          {abstract} + getClientInfo()
+          {abstract} + initialize()
+          {abstract} + setClientInfo()
+          {abstract} + setClientInfo()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace jdbc {
+      interface com.mysql.cj.jdbc.JdbcConnection {
+          {abstract} + abortInternal()
+          {abstract} + changeUser()
+          {abstract} + clearHasTriedMaster()
+          {abstract} + clientPrepareStatement()
+          {abstract} + clientPrepareStatement()
+          {abstract} + clientPrepareStatement()
+          {abstract} + clientPrepareStatement()
+          {abstract} + clientPrepareStatement()
+          {abstract} + clientPrepareStatement()
+          {abstract} + decachePreparedStatement()
+          {abstract} + getActiveMySQLConnection()
+          {abstract} + getActiveStatementCount()
+          {abstract} + getAutoIncrementIncrement()
+          {abstract} + getCachedMetaData()
+          {abstract} + getCharacterSetMetadata()
+          {abstract} + getClientInfoProviderImpl()
+          {abstract} + getDatabase()
+          {abstract} + getHost()
+          {abstract} + getHostPortPair()
+          {abstract} + getIdleFor()
+          {abstract} + getMetadataSafeStatement()
+          {abstract} + getMultiHostParentProxy()
+          {abstract} + getMultiHostSafeProxy()
+          {abstract} + getPropertySet()
+          {abstract} + getQueryInterceptorsInstances()
+          {abstract} + getServerVersion()
+          {abstract} + getSessionMaxRows()
+          {abstract} + getStatementComment()
+          {abstract} + hasSameProperties()
+          {abstract} + hasTriedMaster()
+          {abstract} + initializeResultsMetadataFromCache()
+          {abstract} + initializeSafeQueryInterceptors()
+          {abstract} + isInGlobalTx()
+          {abstract} + isMasterConnection()
+          {abstract} + isProxySet()
+          {abstract} + isReadOnly()
+          {abstract} + isSameResource()
+          {abstract} + isServerLocal()
+          {abstract} + lowerCaseTableNames()
+          {abstract} + ping()
+          {abstract} + pingInternal()
+          {abstract} + realClose()
+          {abstract} + recachePreparedStatement()
+          {abstract} + registerStatement()
+          {abstract} + resetServerState()
+          {abstract} + serverPrepareStatement()
+          {abstract} + serverPrepareStatement()
+          {abstract} + serverPrepareStatement()
+          {abstract} + serverPrepareStatement()
+          {abstract} + serverPrepareStatement()
+          {abstract} + serverPrepareStatement()
+          {abstract} + setDatabase()
+          {abstract} + setFailedOver()
+          {abstract} + setInGlobalTx()
+          {abstract} + setProxy()
+          {abstract} + setReadOnlyInternal()
+          {abstract} + setSessionMaxRows()
+          {abstract} + setStatementComment()
+          {abstract} + shutdownServer()
+          {abstract} + storesLowerCaseTableName()
+          {abstract} + throwConnectionClosedException()
+          {abstract} + unSafeQueryInterceptors()
+          {abstract} + unregisterStatement()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace jdbc {
+      interface com.mysql.cj.jdbc.JdbcPreparedStatement {
+          {abstract} + getBytesRepresentation()
+          {abstract} + getOrigBytes()
+          {abstract} + getParameterBindings()
+          {abstract} + getParseInfo()
+          {abstract} + getPreparedSql()
+          {abstract} + getQueryBindings()
+          {abstract} + isNull()
+          {abstract} + realClose()
+          {abstract} + setBigInteger()
+          {abstract} + setBytes()
+          {abstract} + setBytesNoEscape()
+          {abstract} + setBytesNoEscapeNoQuotes()
+          {abstract} + setNull()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace jdbc {
+      interface com.mysql.cj.jdbc.JdbcPropertySet {
+          {abstract} + exposeAsDriverPropertyInfo()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace jdbc {
+      interface com.mysql.cj.jdbc.JdbcStatement {
+          {static} + MAX_ROWS : int
+          {abstract} + disableStreamingResults()
+          {abstract} + enableStreamingResults()
+          {abstract} + getExceptionInterceptor()
+          {abstract} + getLocalInfileInputStream()
+          {abstract} + getOpenResultSetCount()
+          {abstract} + getQuery()
+          {abstract} + removeOpenResultSet()
+          {abstract} + setHoldResultsOpenOverClose()
+          {abstract} + setLocalInfileInputStream()
+          {abstract} + setPingTarget()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace jdbc {
+      interface com.mysql.cj.jdbc.ParameterBindings {
+          {abstract} + getArray()
+          {abstract} + getAsciiStream()
+          {abstract} + getBigDecimal()
+          {abstract} + getBigInteger()
+          {abstract} + getBinaryStream()
+          {abstract} + getBlob()
+          {abstract} + getBoolean()
+          {abstract} + getByte()
+          {abstract} + getBytes()
+          {abstract} + getCharacterStream()
+          {abstract} + getClob()
+          {abstract} + getDate()
+          {abstract} + getDouble()
+          {abstract} + getFloat()
+          {abstract} + getInt()
+          {abstract} + getLong()
+          {abstract} + getNCharacterStream()
+          {abstract} + getNClob()
+          {abstract} + getObject()
+          {abstract} + getRef()
+          {abstract} + getShort()
+          {abstract} + getString()
+          {abstract} + getTime()
+          {abstract} + getTimestamp()
+          {abstract} + getURL()
+          {abstract} + isNull()
+      }
+    }
+  }
+  
+
+
+
+right footer
+
+
+PlantUML diagram generated by SketchIt! (https://bitbucket.org/pmesmeur/sketch.it)
+For more information about this tool, please contact philippe.mesmeur@gmail.com
+endfooter
+
+@enduml

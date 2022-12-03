@@ -1,0 +1,557 @@
+@startuml
+
+title __RESULT's Class Diagram__\n
+
+  namespace com.mysql.cj {
+    namespace jdbc {
+      namespace result {
+        class com.mysql.cj.jdbc.result.CachedResultSetMetaDataImpl {
+            ~ metadata : ResultSetMetaData
+            + getMetadata()
+            + setMetadata()
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace jdbc {
+      namespace result {
+        class com.mysql.cj.jdbc.result.ResultSetFactory {
+            - concurrency : Concurrency
+            - conn : JdbcConnection
+            - stmt : StatementImpl
+            - type : Type
+            + ResultSetFactory()
+            + createFromProtocolEntity()
+            + createFromResultsetRows()
+            + getFetchSize()
+            + getResultSetConcurrency()
+            + getResultSetType()
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace jdbc {
+      namespace result {
+        class com.mysql.cj.jdbc.result.ResultSetImpl {
+            # columnUsed : boolean[]
+            # connection : JdbcConnection
+            # currentRow : int
+            # db : String
+            # emulateLocators : RuntimeProperty<Boolean>
+            # eventSink : ProfilerEventHandler
+            # fetchDirection : int
+            # fetchSize : int
+            # firstCharOfQuery : char
+            # gatherPerfMetrics : boolean
+            # isClosed : boolean
+            # resultSetConcurrency : int
+            # resultSetType : int
+            # session : NativeSession
+            # useUsageAdvisor : boolean
+            # warningChain : SQLWarning
+            # wrapperStatement : Statement
+            # yearIsDateType : boolean
+            ~ fastClientCal : Calendar
+            ~ fastDefaultCal : Calendar
+            {static} ~ resultCounter : int
+            ~ statementUsedForFetchingRows : JdbcPreparedStatement
+            - bigDecimalValueFactory : ValueFactory<BigDecimal>
+            - binaryStreamValueFactory : ValueFactory<InputStream>
+            - booleanValueFactory : ValueFactory<Boolean>
+            - byteValueFactory : ValueFactory<Byte>
+            - customTsVf : ValueFactory<Timestamp>
+            - defaultDateValueFactory : ValueFactory<Date>
+            - defaultLocalDateTimeValueFactory : ValueFactory<LocalDateTime>
+            - defaultLocalDateValueFactory : ValueFactory<LocalDate>
+            - defaultLocalTimeValueFactory : ValueFactory<LocalTime>
+            - defaultTimeValueFactory : ValueFactory<Time>
+            - defaultTimestampValueFactory : ValueFactory<Timestamp>
+            - doubleValueFactory : ValueFactory<Double>
+            - exceptionInterceptor : ExceptionInterceptor
+            - floatValueFactory : ValueFactory<Float>
+            - integerValueFactory : ValueFactory<Integer>
+            - invalidRowReason : String
+            - lastTsCustomTz : TimeZone
+            - longValueFactory : ValueFactory<Long>
+            - onValidRow : boolean
+            - owningStatement : StatementImpl
+            - padCharsWithSpace : boolean
+            - pointOfOrigin : String
+            - shortValueFactory : ValueFactory<Short>
+            - useColumnNamesInFindColumn : boolean
+            + ResultSetImpl()
+            + ResultSetImpl()
+            + absolute()
+            + afterLast()
+            + beforeFirst()
+            + cancelRowUpdates()
+            + clearWarnings()
+            + close()
+            + closeOwner()
+            + deleteRow()
+            + findColumn()
+            + first()
+            + getArray()
+            + getArray()
+            + getAsciiStream()
+            + getAsciiStream()
+            + getBigDecimal()
+            + getBigDecimal()
+            + getBigDecimal()
+            + getBigDecimal()
+            + getBigInteger()
+            + getBinaryStream()
+            + getBinaryStream()
+            + getBlob()
+            + getBlob()
+            + getBoolean()
+            + getBoolean()
+            + getByte()
+            + getByte()
+            + getBytes()
+            + getBytes()
+            + getCharacterStream()
+            + getCharacterStream()
+            + getClob()
+            + getClob()
+            + getConcurrency()
+            + getConnection()
+            + getCursorName()
+            + getDate()
+            + getDate()
+            + getDate()
+            + getDate()
+            + getDouble()
+            + getDouble()
+            + getFetchDirection()
+            + getFetchSize()
+            + getFirstCharOfQuery()
+            + getFloat()
+            + getFloat()
+            + getHoldability()
+            + getInt()
+            + getInt()
+            + getLocalDate()
+            + getLocalDateTime()
+            + getLocalTime()
+            + getLong()
+            + getLong()
+            + getMetaData()
+            + getMetadata()
+            + getNCharacterStream()
+            + getNCharacterStream()
+            + getNClob()
+            + getNClob()
+            + getNString()
+            + getNString()
+            + getObject()
+            + getObject()
+            + getObject()
+            + getObject()
+            + getObject()
+            + getObject()
+            + getObjectStoredProc()
+            + getObjectStoredProc()
+            + getObjectStoredProc()
+            + getObjectStoredProc()
+            + getOwnerFetchSize()
+            + getOwningQuery()
+            + getOwningStatement()
+            + getOwningStatementFetchSize()
+            + getOwningStatementMaxRows()
+            + getOwningStatementServerId()
+            + getPointOfOrigin()
+            + getRef()
+            + getRef()
+            + getRow()
+            + getRowId()
+            + getRowId()
+            + getSQLXML()
+            + getSQLXML()
+            + getSession()
+            + getShort()
+            + getShort()
+            + getStatement()
+            + getString()
+            + getString()
+            + getSyncMutex()
+            + getTime()
+            + getTime()
+            + getTime()
+            + getTime()
+            + getTimestamp()
+            + getTimestamp()
+            + getTimestamp()
+            + getTimestamp()
+            + getType()
+            + getURL()
+            + getURL()
+            + getUnicodeStream()
+            + getUnicodeStream()
+            + getWarnings()
+            + initializeWithMetadata()
+            + insertRow()
+            + isAfterLast()
+            + isBeforeFirst()
+            + isClosed()
+            + isFirst()
+            + isLast()
+            + isWrapperFor()
+            + last()
+            + moveToCurrentRow()
+            + moveToInsertRow()
+            + next()
+            + populateCachedMetaData()
+            + prev()
+            + previous()
+            + realClose()
+            + refreshRow()
+            + relative()
+            + rowDeleted()
+            + rowInserted()
+            + rowUpdated()
+            + setFetchDirection()
+            + setFetchSize()
+            + setFirstCharOfQuery()
+            + setOwningStatement()
+            + setResultSetConcurrency()
+            + setResultSetType()
+            + setServerInfo()
+            + setStatementUsedForFetchingRows()
+            + setWrapperStatement()
+            + toString()
+            + unwrap()
+            + updateArray()
+            + updateArray()
+            + updateAsciiStream()
+            + updateAsciiStream()
+            + updateAsciiStream()
+            + updateAsciiStream()
+            + updateAsciiStream()
+            + updateAsciiStream()
+            + updateBigDecimal()
+            + updateBigDecimal()
+            + updateBinaryStream()
+            + updateBinaryStream()
+            + updateBinaryStream()
+            + updateBinaryStream()
+            + updateBinaryStream()
+            + updateBinaryStream()
+            + updateBlob()
+            + updateBlob()
+            + updateBlob()
+            + updateBlob()
+            + updateBlob()
+            + updateBlob()
+            + updateBoolean()
+            + updateBoolean()
+            + updateByte()
+            + updateByte()
+            + updateBytes()
+            + updateBytes()
+            + updateCharacterStream()
+            + updateCharacterStream()
+            + updateCharacterStream()
+            + updateCharacterStream()
+            + updateCharacterStream()
+            + updateCharacterStream()
+            + updateClob()
+            + updateClob()
+            + updateClob()
+            + updateClob()
+            + updateClob()
+            + updateClob()
+            + updateDate()
+            + updateDate()
+            + updateDouble()
+            + updateDouble()
+            + updateFloat()
+            + updateFloat()
+            + updateInt()
+            + updateInt()
+            + updateLong()
+            + updateLong()
+            + updateNCharacterStream()
+            + updateNCharacterStream()
+            + updateNCharacterStream()
+            + updateNCharacterStream()
+            + updateNClob()
+            + updateNClob()
+            + updateNClob()
+            + updateNClob()
+            + updateNClob()
+            + updateNClob()
+            + updateNString()
+            + updateNString()
+            + updateNull()
+            + updateNull()
+            + updateObject()
+            + updateObject()
+            + updateObject()
+            + updateObject()
+            + updateObject()
+            + updateObject()
+            + updateObject()
+            + updateObject()
+            + updateRef()
+            + updateRef()
+            + updateRow()
+            + updateRowId()
+            + updateRowId()
+            + updateSQLXML()
+            + updateSQLXML()
+            + updateShort()
+            + updateShort()
+            + updateString()
+            + updateString()
+            + updateTime()
+            + updateTime()
+            + updateTimestamp()
+            + updateTimestamp()
+            + warningEncountered()
+            + wasNull()
+            # checkClosed()
+            # checkColumnBounds()
+            # checkRowPos()
+            # getExceptionInterceptor()
+            - getStringForClob()
+            - getStringForNClob()
+            - setRowPositionValidity()
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace jdbc {
+      namespace result {
+        class com.mysql.cj.jdbc.result.ResultSetMetaData {
+            ~ treatYearAsDate : boolean
+            ~ useOldAliasBehavior : boolean
+            - exceptionInterceptor : ExceptionInterceptor
+            - fields : Field[]
+            - session : Session
+            + ResultSetMetaData()
+            + getCatalogName()
+            + getColumnCharacterEncoding()
+            + getColumnCharacterSet()
+            + getColumnClassName()
+            + getColumnCount()
+            + getColumnDisplaySize()
+            + getColumnLabel()
+            + getColumnName()
+            + getColumnType()
+            + getColumnTypeName()
+            + getFields()
+            + getPrecision()
+            + getScale()
+            + getSchemaName()
+            + getTableName()
+            + isAutoIncrement()
+            + isCaseSensitive()
+            + isCurrency()
+            + isDefinitelyWritable()
+            + isNullable()
+            + isReadOnly()
+            + isSearchable()
+            + isSigned()
+            + isWrapperFor()
+            + isWritable()
+            + toString()
+            + unwrap()
+            # getField()
+            {static} - clampedGetLength()
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace jdbc {
+      namespace result {
+        class com.mysql.cj.jdbc.result.UpdatableResultSet {
+            # doingUpdates : boolean
+            # inserter : ClientPreparedStatement
+            # updater : ClientPreparedStatement
+            {static} ~ STREAM_DATA_MARKER : byte[]
+            - charEncoding : String
+            - databasesUsedToTablesUsed : Map<String, Map<String, Map<String, Integer>>>
+            - defaultColumnValue : byte[][]
+            - deleteSQL : String
+            - deleter : ClientPreparedStatement
+            - hasLongColumnInfo : boolean
+            - insertSQL : String
+            - isUpdatable : boolean
+            - notUpdatableReason : String
+            - onInsertRow : boolean
+            - pedantic : boolean
+            - populateInserterWithDefaultValues : boolean
+            - primaryKeyIndicies : List<Integer>
+            - qualifiedAndQuotedTableName : String
+            - quotedIdChar : String
+            - refreshSQL : String
+            - refresher : ClientPreparedStatement
+            - savedCurrentRow : Row
+            - updateSQL : String
+            + UpdatableResultSet()
+            + absolute()
+            + afterLast()
+            + beforeFirst()
+            + cancelRowUpdates()
+            + checkUpdatability()
+            + deleteRow()
+            + first()
+            + getConcurrency()
+            + getHoldability()
+            + getNCharacterStream()
+            + getNCharacterStream()
+            + getNClob()
+            + getNClob()
+            + getNString()
+            + getNString()
+            + getSQLXML()
+            + getSQLXML()
+            + insertRow()
+            + isAfterLast()
+            + isBeforeFirst()
+            + isClosed()
+            + isFirst()
+            + isLast()
+            + isWrapperFor()
+            + last()
+            + moveToCurrentRow()
+            + moveToInsertRow()
+            + next()
+            + prev()
+            + previous()
+            + realClose()
+            + refreshRow()
+            + relative()
+            + rowDeleted()
+            + rowInserted()
+            + rowUpdated()
+            + setResultSetConcurrency()
+            + unwrap()
+            + updateAsciiStream()
+            + updateAsciiStream()
+            + updateAsciiStream()
+            + updateAsciiStream()
+            + updateAsciiStream()
+            + updateAsciiStream()
+            + updateBigDecimal()
+            + updateBigDecimal()
+            + updateBinaryStream()
+            + updateBinaryStream()
+            + updateBinaryStream()
+            + updateBinaryStream()
+            + updateBinaryStream()
+            + updateBinaryStream()
+            + updateBlob()
+            + updateBlob()
+            + updateBlob()
+            + updateBlob()
+            + updateBlob()
+            + updateBlob()
+            + updateBoolean()
+            + updateBoolean()
+            + updateByte()
+            + updateByte()
+            + updateBytes()
+            + updateBytes()
+            + updateCharacterStream()
+            + updateCharacterStream()
+            + updateCharacterStream()
+            + updateCharacterStream()
+            + updateCharacterStream()
+            + updateCharacterStream()
+            + updateClob()
+            + updateClob()
+            + updateClob()
+            + updateClob()
+            + updateClob()
+            + updateClob()
+            + updateDate()
+            + updateDate()
+            + updateDouble()
+            + updateDouble()
+            + updateFloat()
+            + updateFloat()
+            + updateInt()
+            + updateInt()
+            + updateLong()
+            + updateLong()
+            + updateNCharacterStream()
+            + updateNCharacterStream()
+            + updateNCharacterStream()
+            + updateNCharacterStream()
+            + updateNClob()
+            + updateNClob()
+            + updateNClob()
+            + updateNClob()
+            + updateNClob()
+            + updateNClob()
+            + updateNString()
+            + updateNString()
+            + updateNull()
+            + updateNull()
+            + updateObject()
+            + updateObject()
+            + updateObject()
+            + updateObject()
+            + updateObject()
+            + updateObject()
+            + updateObject()
+            + updateObject()
+            + updateRow()
+            + updateSQLXML()
+            + updateSQLXML()
+            + updateShort()
+            + updateShort()
+            + updateString()
+            + updateString()
+            + updateTime()
+            + updateTime()
+            + updateTimestamp()
+            + updateTimestamp()
+            # checkRowPos()
+            # generateStatements()
+            # syncUpdate()
+            # updateObjectInternal()
+            # updateObjectInternal()
+            ~ isUpdatable()
+            - extractDefaultValues()
+            - getColumnsToIndexMapForTableAndDB()
+            - getQuotedIdChar()
+            - getStringForNClob()
+            - refreshRow()
+            - resetInserter()
+            - setParamValue()
+        }
+      }
+    }
+  }
+  
+
+  com.mysql.cj.jdbc.result.CachedResultSetMetaDataImpl .up.|> CachedResultSetMetaData
+  com.mysql.cj.jdbc.result.ResultSetFactory .up.|> ProtocolEntityFactory
+  com.mysql.cj.jdbc.result.ResultSetImpl .up.|> ResultSetInternalMethods
+  com.mysql.cj.jdbc.result.ResultSetImpl .up.|> WarningListener
+  com.mysql.cj.jdbc.result.ResultSetMetaData .up.|> java.sql.ResultSetMetaData
+
+
+right footer
+
+
+PlantUML diagram generated by SketchIt! (https://bitbucket.org/pmesmeur/sketch.it)
+For more information about this tool, please contact philippe.mesmeur@gmail.com
+endfooter
+
+@enduml

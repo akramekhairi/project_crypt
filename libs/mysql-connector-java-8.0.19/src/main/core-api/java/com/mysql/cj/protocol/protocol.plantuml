@@ -1,0 +1,631 @@
+@startuml
+
+title __PROTOCOL's Class Diagram__\n
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      interface com.mysql.cj.protocol.AuthenticationPlugin {
+          + destroy()
+          {abstract} + getProtocolPluginName()
+          + init()
+          {abstract} + isReusable()
+          {abstract} + nextAuthenticationStep()
+          {abstract} + requiresConfidentiality()
+          + reset()
+          {abstract} + setAuthenticationParameters()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      interface com.mysql.cj.protocol.AuthenticationProvider {
+          {abstract} + changeUser()
+          {abstract} + connect()
+          {static} + getCharsetForHandshake()
+          {abstract} + getEncodingForHandshake()
+          {abstract} + init()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      interface com.mysql.cj.protocol.ColumnDefinition {
+          {abstract} + buildIndexMapping()
+          {abstract} + exportTo()
+          {abstract} + findColumn()
+          {abstract} + getColumnLabelToIndex()
+          {abstract} + getColumnNameToIndex()
+          {abstract} + getColumnToIndexCache()
+          {abstract} + getFields()
+          {abstract} + getFullColumnNameToIndex()
+          {abstract} + hasBuiltIndexMapping()
+          {abstract} + hasLargeFields()
+          {abstract} + initializeFrom()
+          {abstract} + setColumnLabelToIndex()
+          {abstract} + setColumnNameToIndex()
+          {abstract} + setColumnToIndexCache()
+          {abstract} + setFields()
+          {abstract} + setFullColumnNameToIndex()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      class com.mysql.cj.protocol.FullReadInputStream {
+          + FullReadInputStream()
+          + getUnderlyingStream()
+          + readFully()
+          + readFully()
+          + skipFully()
+          + skipLengthEncodedInteger()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      class com.mysql.cj.protocol.InternalDate {
+          # day : int
+          # month : int
+          # year : int
+          + InternalDate()
+          + InternalDate()
+          + getDay()
+          + getMonth()
+          + getYear()
+          + isZero()
+          + setDay()
+          + setMonth()
+          + setYear()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      class com.mysql.cj.protocol.InternalTime {
+          - hours : int
+          - minutes : int
+          - nanos : int
+          - scale : int
+          - seconds : int
+          + InternalTime()
+          + InternalTime()
+          + getHours()
+          + getMinutes()
+          + getNanos()
+          + getScale()
+          + getSeconds()
+          + isZero()
+          + setHours()
+          + setMinutes()
+          + setNanos()
+          + setScale()
+          + setSeconds()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      class com.mysql.cj.protocol.InternalTimestamp {
+          - hours : int
+          - minutes : int
+          - nanos : int
+          - scale : int
+          - seconds : int
+          + InternalTimestamp()
+          + InternalTimestamp()
+          + getHours()
+          + getMinutes()
+          + getNanos()
+          + getScale()
+          + getSeconds()
+          + isZero()
+          + setHours()
+          + setMinutes()
+          + setNanos()
+          + setScale()
+          + setSeconds()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      interface com.mysql.cj.protocol.Message {
+          {abstract} + getByteBuffer()
+          {abstract} + getPosition()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      interface com.mysql.cj.protocol.MessageHeader {
+          {abstract} + getBuffer()
+          {abstract} + getMessageSequence()
+          {abstract} + getMessageSize()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      interface com.mysql.cj.protocol.MessageListener {
+          {abstract} + error()
+          + processMessage()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      interface com.mysql.cj.protocol.MessageReader {
+          + getMessageSequence()
+          + pushMessageListener()
+          {abstract} + readHeader()
+          {abstract} + readMessage()
+          + readMessage()
+          + resetMessageSequence()
+          + start()
+          + stopAfterNextMessage()
+          + undecorate()
+          + undecorateAll()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      interface com.mysql.cj.protocol.MessageSender {
+          + send()
+          + send()
+          + send()
+          + setMaxAllowedPacket()
+          + undecorate()
+          + undecorateAll()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      class com.mysql.cj.protocol.NetworkResources {
+          - mysqlConnection : Socket
+          - mysqlInput : InputStream
+          - mysqlOutput : OutputStream
+          + NetworkResources()
+          + forceClose()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      interface com.mysql.cj.protocol.OutputStreamWatcher {
+          {abstract} + streamClosed()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      interface com.mysql.cj.protocol.PacketReceivedTimeHolder {
+          + getLastPacketReceivedTime()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      interface com.mysql.cj.protocol.PacketSentTimeHolder {
+          + getLastPacketSentTime()
+          + getPreviousPacketSentTime()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      interface com.mysql.cj.protocol.Protocol {
+          {abstract} + afterHandshake()
+          {abstract} + beforeHandshake()
+          {abstract} + changeDatabase()
+          {abstract} + changeUser()
+          {abstract} + checkErrorMessage()
+          {abstract} + close()
+          {abstract} + configureTimezone()
+          {abstract} + connect()
+          {abstract} + getAuthenticationProvider()
+          {abstract} + getExceptionInterceptor()
+          {abstract} + getLocalInfileInputStream()
+          {abstract} + getMessageBuilder()
+          {abstract} + getPacketReceivedTimeHolder()
+          {abstract} + getPacketSentTimeHolder()
+          {abstract} + getPasswordCharacterEncoding()
+          {abstract} + getPropertySet()
+          {abstract} + getQueryComment()
+          {abstract} + getQueryTimingUnits()
+          {abstract} + getServerSession()
+          {abstract} + getSocketConnection()
+          {abstract} + init()
+          {abstract} + initServerSession()
+          {abstract} + negotiateSSLConnection()
+          {abstract} + read()
+          {abstract} + read()
+          {abstract} + readMessage()
+          {abstract} + readMetadata()
+          {abstract} + readQueryResult()
+          {abstract} + readServerCapabilities()
+          {abstract} + reset()
+          {abstract} + send()
+          {abstract} + sendCommand()
+          {abstract} + setLocalInfileInputStream()
+          {abstract} + setPacketReceivedTimeHolder()
+          {abstract} + setPacketSentTimeHolder()
+          {abstract} + setPropertySet()
+          {abstract} + setQueryComment()
+          {abstract} + versionMeetsMinimum()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      interface com.mysql.cj.protocol.ProtocolEntity {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      interface com.mysql.cj.protocol.ProtocolEntityFactory {
+          + createFromMessage()
+          + createFromProtocolEntity()
+          + getFetchSize()
+          + getResultSetConcurrency()
+          + getResultSetType()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      interface com.mysql.cj.protocol.ProtocolEntityReader {
+          + read()
+          + read()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      interface com.mysql.cj.protocol.ResultBuilder {
+          {abstract} + addProtocolEntity()
+          {abstract} + build()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      interface com.mysql.cj.protocol.ResultStreamer {
+          {abstract} + finishStreaming()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      interface com.mysql.cj.protocol.Resultset {
+          {abstract} + clearNextResultset()
+          {abstract} + getColumnDefinition()
+          {abstract} + getNextResultset()
+          {abstract} + getResultId()
+          {abstract} + getRows()
+          {abstract} + getServerInfo()
+          {abstract} + getUpdateCount()
+          {abstract} + getUpdateID()
+          {abstract} + hasRows()
+          {abstract} + initRowsWithMetadata()
+          {abstract} + setColumnDefinition()
+          {abstract} + setNextResultset()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      enum Concurrency {
+        READ_ONLY
+        UPDATABLE
+        value
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      enum Type {
+        FORWARD_ONLY
+        SCROLL_INSENSITIVE
+        SCROLL_SENSITIVE
+        value
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      interface com.mysql.cj.protocol.ResultsetRow {
+          + isBinaryEncoded()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      interface com.mysql.cj.protocol.ResultsetRows {
+          + addRow()
+          + afterLast()
+          + beforeFirst()
+          + beforeLast()
+          + close()
+          {abstract} + getMetadata()
+          {abstract} + getOwner()
+          {abstract} + isAfterLast()
+          {abstract} + isBeforeFirst()
+          + isDynamic()
+          + isEmpty()
+          + isFirst()
+          + isLast()
+          + moveRowRelative()
+          + setCurrentRow()
+          {abstract} + setMetadata()
+          {abstract} + setOwner()
+          {abstract} + wasEmpty()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      interface com.mysql.cj.protocol.ResultsetRowsOwner {
+          {abstract} + closeOwner()
+          {abstract} + getConnection()
+          {abstract} + getOwnerFetchSize()
+          {abstract} + getOwningQuery()
+          {abstract} + getOwningStatementFetchSize()
+          {abstract} + getOwningStatementMaxRows()
+          {abstract} + getOwningStatementServerId()
+          {abstract} + getPointOfOrigin()
+          {abstract} + getSession()
+          {abstract} + getSyncMutex()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      interface com.mysql.cj.protocol.ServerCapabilities {
+          {abstract} + getCapabilityFlags()
+          {abstract} + getServerVersion()
+          {abstract} + serverSupportsFracSecs()
+          {abstract} + setCapabilityFlags()
+          {abstract} + setServerVersion()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      interface com.mysql.cj.protocol.ServerSession {
+          {static} + LOCAL_CHARACTER_SET_RESULTS : String
+          {static} + TRANSACTION_COMPLETED : int
+          {static} + TRANSACTION_IN_PROGRESS : int
+          {static} + TRANSACTION_NOT_STARTED : int
+          {static} + TRANSACTION_STARTED : int
+          {abstract} + characterSetNamesMatches()
+          {abstract} + configureCharacterSets()
+          {abstract} + cursorExists()
+          {abstract} + getCapabilities()
+          {abstract} + getCharacterSetMetadata()
+          {abstract} + getCharacterSetResultsOnServer()
+          {abstract} + getClientParam()
+          {abstract} + getDefaultTimeZone()
+          {abstract} + getEncodingForIndex()
+          {abstract} + getErrorMessageEncoding()
+          {abstract} + getMaxBytesPerChar()
+          {abstract} + getMaxBytesPerChar()
+          {abstract} + getMetadataCollationIndex()
+          {abstract} + getOldStatusFlags()
+          {abstract} + getServerDefaultCharset()
+          {abstract} + getServerDefaultCollationIndex()
+          {abstract} + getServerTimeZone()
+          {abstract} + getServerVariable()
+          {abstract} + getServerVariable()
+          {abstract} + getServerVariables()
+          {abstract} + getServerVersion()
+          {abstract} + getStatusFlags()
+          {abstract} + getThreadId()
+          {abstract} + getTransactionState()
+          {abstract} + hasLongColumnInfo()
+          {abstract} + hasMoreResults()
+          {abstract} + inTransactionOnServer()
+          {abstract} + isAutoCommit()
+          {abstract} + isAutocommit()
+          {abstract} + isEOFDeprecated()
+          {abstract} + isLastRowSent()
+          {abstract} + isLowerCaseTableNames()
+          {abstract} + isNoBackslashEscapesSet()
+          {abstract} + isQueryCacheEnabled()
+          {abstract} + isServerTruncatesFracSecs()
+          {abstract} + isVersion()
+          {abstract} + noGoodIndexUsed()
+          {abstract} + noIndexUsed()
+          {abstract} + queryWasSlow()
+          {abstract} + setAutoCommit()
+          {abstract} + setCapabilities()
+          {abstract} + setCharacterSetMetadata()
+          {abstract} + setCharacterSetResultsOnServer()
+          {abstract} + setClientParam()
+          {abstract} + setDefaultTimeZone()
+          {abstract} + setErrorMessageEncoding()
+          {abstract} + setHasLongColumnInfo()
+          {abstract} + setMetadataCollationIndex()
+          {abstract} + setOldStatusFlags()
+          {abstract} + setServerDefaultCollationIndex()
+          {abstract} + setServerTimeZone()
+          {abstract} + setServerVariables()
+          {abstract} + setStatusFlags()
+          {abstract} + setStatusFlags()
+          {abstract} + setThreadId()
+          {abstract} + storesLowerCaseTableNames()
+          {abstract} + useAnsiQuotedIdentifiers()
+          {abstract} + useMultiResults()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      interface com.mysql.cj.protocol.SocketConnection {
+          {abstract} + connect()
+          {abstract} + forceClose()
+          {abstract} + getAsynchronousSocketChannel()
+          {abstract} + getExceptionInterceptor()
+          {abstract} + getHost()
+          {abstract} + getMysqlInput()
+          {abstract} + getMysqlOutput()
+          {abstract} + getMysqlSocket()
+          {abstract} + getNetworkResources()
+          {abstract} + getPort()
+          {abstract} + getPropertySet()
+          {abstract} + getSocketFactory()
+          {abstract} + isSSLEstablished()
+          + isSynchronous()
+          {abstract} + performTlsHandshake()
+          {abstract} + setMysqlInput()
+          {abstract} + setSocketFactory()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      interface com.mysql.cj.protocol.SocketFactory {
+          + afterHandshake()
+          + beforeHandshake()
+          {abstract} + connect()
+          {abstract} + performTlsHandshake()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      interface com.mysql.cj.protocol.SocketMetadata {
+          + isLocallyConnected()
+          + isLocallyConnected()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      interface com.mysql.cj.protocol.ValueDecoder {
+          {abstract} + decodeBit()
+          {abstract} + decodeByteArray()
+          {abstract} + decodeDate()
+          {abstract} + decodeDecimal()
+          {abstract} + decodeDouble()
+          {abstract} + decodeFloat()
+          {abstract} + decodeInt1()
+          {abstract} + decodeInt2()
+          {abstract} + decodeInt4()
+          {abstract} + decodeInt8()
+          {abstract} + decodeSet()
+          {abstract} + decodeTime()
+          {abstract} + decodeTimestamp()
+          {abstract} + decodeUInt1()
+          {abstract} + decodeUInt2()
+          {abstract} + decodeUInt4()
+          {abstract} + decodeUInt8()
+          {abstract} + decodeYear()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      interface com.mysql.cj.protocol.Warning {
+          {abstract} + getCode()
+          {abstract} + getLevel()
+          {abstract} + getMessage()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      interface com.mysql.cj.protocol.WatchableStream {
+          {abstract} + setWatcher()
+          {abstract} + size()
+          {abstract} + toByteArray()
+          {abstract} + write()
+      }
+    }
+  }
+  
+
+  com.mysql.cj.protocol.Resultset +-down- com.mysql.cj.protocol.Resultset.Concurrency
+  com.mysql.cj.protocol.Resultset +-down- com.mysql.cj.protocol.Resultset.Type
+
+
+right footer
+
+
+PlantUML diagram generated by SketchIt! (https://bitbucket.org/pmesmeur/sketch.it)
+For more information about this tool, please contact philippe.mesmeur@gmail.com
+endfooter
+
+@enduml

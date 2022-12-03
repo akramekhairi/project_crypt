@@ -1,0 +1,681 @@
+@startuml
+
+title __HA's Class Diagram__\n
+
+  namespace com.mysql.cj {
+    namespace jdbc {
+      namespace ha {
+        class com.mysql.cj.jdbc.ha.BestResponseTimeBalanceStrategy {
+            + BestResponseTimeBalanceStrategy()
+            + pickConnection()
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace jdbc {
+      namespace ha {
+        class com.mysql.cj.jdbc.ha.FailoverConnectionProxy {
+            {static} - DEFAULT_PRIMARY_HOST_INDEX : int
+            {static} - METHOD_COMMIT : String
+            {static} - METHOD_ROLLBACK : String
+            {static} - METHOD_SET_AUTO_COMMIT : String
+            {static} - METHOD_SET_READ_ONLY : String
+            {static} - NO_CONNECTION_INDEX : int
+            - currentHostIndex : int
+            - enableFallBackToPrimaryHost : boolean
+            - explicitlyAutoCommit : boolean
+            - explicitlyReadOnly : Boolean
+            - failoverReadOnly : boolean
+            - primaryHostFailTimeMillis : long
+            - primaryHostIndex : int
+            - queriesBeforeRetryPrimaryHost : long
+            - queriesIssuedSinceFailover : long
+            - retriesAllDown : int
+            - secondsBeforeRetryPrimaryHost : int
+            {static} + createProxyInstance()
+            + invokeMore()
+            ~ connectedToPrimaryHost()
+            ~ connectedToSecondaryHost()
+            ~ createConnectionForHostIndex()
+            ~ doAbort()
+            ~ doAbortInternal()
+            ~ doClose()
+            ~ fallBackToPrimaryIfAvailable()
+            ~ getNewJdbcInterfaceProxy()
+            ~ incrementQueriesIssuedSinceFailover()
+            ~ isConnected()
+            ~ isMasterConnection()
+            ~ isPrimaryHostIndex()
+            ~ pickNewConnection()
+            ~ readyToFallBackToPrimaryHost()
+            ~ shouldExceptionTriggerConnectionSwitch()
+            - FailoverConnectionProxy()
+            - connectTo()
+            - failOver()
+            - failOver()
+            - nextHost()
+            - queriesBeforeRetryPrimaryHostIsMet()
+            - resetAutoFallBackCounters()
+            - secondsBeforeRetryPrimaryHostIsMet()
+            - switchCurrentConnectionTo()
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace jdbc {
+      namespace ha {
+        class com.mysql.cj.jdbc.ha.FailoverConnectionProxy.FailoverJdbcInterfaceProxy {
+            + invoke()
+            ~ FailoverJdbcInterfaceProxy()
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace jdbc {
+      namespace ha {
+        class com.mysql.cj.jdbc.ha.LoadBalancedAutoCommitInterceptor {
+            - conn : JdbcConnection
+            - countStatements : boolean
+            - matchingAfterStatementCount : int
+            - matchingAfterStatementRegex : String
+            - matchingAfterStatementThreshold : int
+            - proxy : LoadBalancedConnectionProxy
+            + destroy()
+            + executeTopLevelOnly()
+            + init()
+            + postProcess()
+            + preProcess()
+            ~ pauseCounters()
+            ~ resumeCounters()
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace jdbc {
+      namespace ha {
+        class com.mysql.cj.jdbc.ha.LoadBalancedConnectionProxy {
+            # liveConnections : Map<String, ConnectionImpl>
+            {static} - INTERFACES_TO_PROXY : Class<?>[]
+            - balancer : BalanceStrategy
+            - connectionGroup : ConnectionGroup
+            - connectionGroupProxyID : long
+            - connectionsToHostsMap : Map<ConnectionImpl, String>
+            - exceptionChecker : LoadBalanceExceptionChecker
+            {static} - globalBlacklist : Map<String, Long>
+            - globalBlacklistTimeout : int
+            - hostRemovalGracePeriod : int
+            - hostsToListIndexMap : Map<String, Integer>
+            - hostsToRemove : Set<String>
+            - inTransaction : boolean
+            {static} - nullLBConnectionInstance : LoadBalancedConnection
+            - responseTimes : long[]
+            - retriesAllDown : int
+            - totalPhysicalConnections : long
+            - transactionCount : long
+            - transactionStartTime : long
+            + LoadBalancedConnectionProxy()
+            + addHost()
+            + addToGlobalBlacklist()
+            + addToGlobalBlacklist()
+            + createConnectionForHost()
+            + createConnectionForHost()
+            {static} + createProxyInstance()
+            + doPing()
+            + getActivePhysicalConnectionCount()
+            + getConnectionGroupProxyID()
+            + getCurrentActiveHost()
+            + getCurrentTransactionDuration()
+            + getGlobalBlacklist()
+            + getTotalPhysicalConnectionCount()
+            + getTransactionCount()
+            + inTransaction()
+            + invokeMore()
+            + isGlobalBlacklistEnabled()
+            + pickNewConnection()
+            + removeHost()
+            + removeHostWhenNotInUse()
+            + shouldExceptionTriggerFailover()
+            # propagateProxyDown()
+            ~ doAbort()
+            ~ doAbortInternal()
+            ~ doClose()
+            ~ getNewWrapperForThisAsConnection()
+            {static} ~ getNullLoadBalancedConnectionInstance()
+            ~ invalidateConnection()
+            ~ isMasterConnection()
+            ~ shouldExceptionTriggerConnectionSwitch()
+            ~ syncSessionState()
+            - closeAllConnections()
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace jdbc {
+      namespace ha {
+        class com.mysql.cj.jdbc.ha.LoadBalancedConnectionProxy.NullLoadBalancedConnectionProxy {
+            + NullLoadBalancedConnectionProxy()
+            + invoke()
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace jdbc {
+      namespace ha {
+        class com.mysql.cj.jdbc.ha.LoadBalancedMySQLConnection {
+            + LoadBalancedMySQLConnection()
+            + addHost()
+            + close()
+            + getThisAsProxy()
+            + isWrapperFor()
+            + ping()
+            + ping()
+            + removeHost()
+            + removeHostWhenNotInUse()
+            + unwrap()
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace jdbc {
+      namespace ha {
+        abstract class com.mysql.cj.jdbc.ha.MultiHostConnectionProxy {
+            # connectionUrl : ConnectionUrl
+            # lastExceptionDealtWith : Throwable
+            ~ autoReconnect : boolean
+            ~ closedExplicitly : boolean
+            ~ closedReason : String
+            ~ currentConnection : JdbcConnection
+            ~ hostsList : List<HostInfo>
+            ~ isClosed : boolean
+            ~ parentProxyConnection : JdbcConnection
+            ~ thisAsConnection : JdbcConnection
+            ~ topProxyConnection : JdbcConnection
+            {static} - METHOD_ABORT : String
+            {static} - METHOD_ABORT_INTERNAL : String
+            {static} - METHOD_CLOSE : String
+            {static} - METHOD_EQUALS : String
+            {static} - METHOD_GET_AUTO_COMMIT : String
+            {static} - METHOD_GET_CATALOG : String
+            {static} - METHOD_GET_DATABASE : String
+            {static} - METHOD_GET_MULTI_HOST_SAFE_PROXY : String
+            {static} - METHOD_GET_SCHEMA : String
+            {static} - METHOD_GET_SESSION_MAX_ROWS : String
+            {static} - METHOD_GET_TRANSACTION_ISOLATION : String
+            {static} - METHOD_HASH_CODE : String
+            {static} - METHOD_IS_CLOSED : String
+            + invoke()
+            # allowedOnClosedConnection()
+            # getParentProxy()
+            # getProxy()
+            # propagateProxyDown()
+            # setProxy()
+            ~ MultiHostConnectionProxy()
+            ~ MultiHostConnectionProxy()
+            ~ createConnectionForHost()
+            ~ dealWithInvocationException()
+            {abstract} ~ doAbort()
+            {abstract} ~ doAbortInternal()
+            {abstract} ~ doClose()
+            ~ getNewJdbcInterfaceProxy()
+            ~ getNewWrapperForThisAsConnection()
+            ~ initializeHostsSpecs()
+            ~ invalidateConnection()
+            ~ invalidateCurrentConnection()
+            {abstract} ~ invokeMore()
+            {abstract} ~ isMasterConnection()
+            {abstract} ~ pickNewConnection()
+            ~ proxyIfReturnTypeIsJdbcInterface()
+            {abstract} ~ shouldExceptionTriggerConnectionSwitch()
+            ~ syncSessionState()
+            ~ syncSessionState()
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace jdbc {
+      namespace ha {
+        class com.mysql.cj.jdbc.ha.MultiHostConnectionProxy.JdbcInterfaceProxy {
+            ~ invokeOn : Object
+            + invoke()
+            ~ JdbcInterfaceProxy()
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace jdbc {
+      namespace ha {
+        class com.mysql.cj.jdbc.ha.MultiHostMySQLConnection {
+            # thisAsProxy : MultiHostConnectionProxy
+            + MultiHostMySQLConnection()
+            + abort()
+            + abortInternal()
+            + changeUser()
+            + checkClosed()
+            + cleanup()
+            + clearHasTriedMaster()
+            + clearWarnings()
+            + clientPrepareStatement()
+            + clientPrepareStatement()
+            + clientPrepareStatement()
+            + clientPrepareStatement()
+            + clientPrepareStatement()
+            + clientPrepareStatement()
+            + close()
+            + commit()
+            + createArrayOf()
+            + createBlob()
+            + createClob()
+            + createNClob()
+            + createNewIO()
+            + createSQLXML()
+            + createStatement()
+            + createStatement()
+            + createStatement()
+            + createStruct()
+            + decachePreparedStatement()
+            + getActiveMySQLConnection()
+            + getActiveStatementCount()
+            + getAutoCommit()
+            + getAutoIncrementIncrement()
+            + getCachedMetaData()
+            + getCatalog()
+            + getCharacterSetMetadata()
+            + getClientInfo()
+            + getClientInfo()
+            + getClientInfoProviderImpl()
+            + getConnectionMutex()
+            + getDatabase()
+            + getExceptionInterceptor()
+            + getHoldability()
+            + getHost()
+            + getHostPortPair()
+            + getId()
+            + getIdleFor()
+            + getMetaData()
+            + getMetadataSafeStatement()
+            + getMultiHostParentProxy()
+            + getMultiHostSafeProxy()
+            + getNetworkTimeout()
+            + getProperties()
+            + getPropertySet()
+            + getQueryInterceptorsInstances()
+            + getSchema()
+            + getServerVersion()
+            + getSession()
+            + getSessionMaxRows()
+            + getStatementComment()
+            + getThisAsProxy()
+            + getTransactionIsolation()
+            + getTypeMap()
+            + getURL()
+            + getUser()
+            + getWarnings()
+            + hasSameProperties()
+            + hasTriedMaster()
+            + initializeResultsMetadataFromCache()
+            + initializeSafeQueryInterceptors()
+            + isClosed()
+            + isInGlobalTx()
+            + isMasterConnection()
+            + isProxySet()
+            + isReadOnly()
+            + isReadOnly()
+            + isSameResource()
+            + isServerLocal()
+            + isValid()
+            + isWrapperFor()
+            + lowerCaseTableNames()
+            + nativeSQL()
+            + normalClose()
+            + ping()
+            + pingInternal()
+            + prepareCall()
+            + prepareCall()
+            + prepareCall()
+            + prepareStatement()
+            + prepareStatement()
+            + prepareStatement()
+            + prepareStatement()
+            + prepareStatement()
+            + prepareStatement()
+            + realClose()
+            + recachePreparedStatement()
+            + registerStatement()
+            + releaseSavepoint()
+            + resetServerState()
+            + rollback()
+            + rollback()
+            + serverPrepareStatement()
+            + serverPrepareStatement()
+            + serverPrepareStatement()
+            + serverPrepareStatement()
+            + serverPrepareStatement()
+            + serverPrepareStatement()
+            + setAutoCommit()
+            + setCatalog()
+            + setClientInfo()
+            + setClientInfo()
+            + setDatabase()
+            + setFailedOver()
+            + setHoldability()
+            + setInGlobalTx()
+            + setNetworkTimeout()
+            + setProxy()
+            + setReadOnly()
+            + setReadOnlyInternal()
+            + setSavepoint()
+            + setSavepoint()
+            + setSchema()
+            + setSessionMaxRows()
+            + setStatementComment()
+            + setTransactionIsolation()
+            + setTypeMap()
+            + shutdownServer()
+            + storesLowerCaseTableName()
+            + throwConnectionClosedException()
+            + transactionBegun()
+            + transactionCompleted()
+            + unSafeQueryInterceptors()
+            + unregisterStatement()
+            + unwrap()
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace jdbc {
+      namespace ha {
+        class com.mysql.cj.jdbc.ha.NdbLoadBalanceExceptionChecker {
+            + shouldExceptionTriggerFailover()
+            - checkNdbException()
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace jdbc {
+      namespace ha {
+        class com.mysql.cj.jdbc.ha.RandomBalanceStrategy {
+            + RandomBalanceStrategy()
+            + pickConnection()
+            - getArrayIndexMap()
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace jdbc {
+      namespace ha {
+        class com.mysql.cj.jdbc.ha.ReplicationConnectionGroup {
+            - activeConnections : long
+            - connections : long
+            - groupName : String
+            - isInitialized : boolean
+            - masterHostList : Set<String>
+            - replicationConnections : HashMap<Long, ReplicationConnection>
+            - slaveHostList : Set<String>
+            - slavesAdded : long
+            - slavesPromoted : long
+            - slavesRemoved : long
+            + addSlaveHost()
+            + getActiveConnectionCount()
+            + getConnectionCount()
+            + getConnectionCountWithHostAsMaster()
+            + getConnectionCountWithHostAsSlave()
+            + getGroupName()
+            + getMasterHosts()
+            + getNumberOfSlavePromotions()
+            + getNumberOfSlavesAdded()
+            + getNumberOfSlavesRemoved()
+            + getSlaveHosts()
+            + getTotalConnectionCount()
+            + handleCloseConnection()
+            + promoteSlaveToMaster()
+            + registerReplicationConnection()
+            + removeMasterHost()
+            + removeMasterHost()
+            + removeSlaveHost()
+            + toString()
+            ~ ReplicationConnectionGroup()
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace jdbc {
+      namespace ha {
+        class com.mysql.cj.jdbc.ha.ReplicationConnectionGroupManager {
+            {static} - GROUP_MAP : HashMap<String, ReplicationConnectionGroup>
+            {static} - hasRegisteredJmx : boolean
+            {static} - mbean : ReplicationGroupManager
+            {static} + addSlaveHost()
+            {static} + getActiveConnectionCount()
+            {static} + getConnectionCountWithHostAsMaster()
+            {static} + getConnectionCountWithHostAsSlave()
+            {static} + getConnectionGroup()
+            {static} + getConnectionGroupInstance()
+            {static} + getGroupsMatching()
+            {static} + getMasterHosts()
+            {static} + getNumberOfMasterPromotion()
+            {static} + getRegisteredReplicationConnectionGroups()
+            {static} + getSlaveHosts()
+            {static} + getSlavePromotionCount()
+            {static} + getTotalConnectionCount()
+            {static} + promoteSlaveToMaster()
+            {static} + registerJmx()
+            {static} + removeMasterHost()
+            {static} + removeMasterHost()
+            {static} + removeSlaveHost()
+            {static} + removeSlaveHost()
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace jdbc {
+      namespace ha {
+        class com.mysql.cj.jdbc.ha.ReplicationConnectionProxy {
+            # allowMasterDownConnections : boolean
+            # allowSlaveDownConnections : boolean
+            # enableJMX : boolean
+            # masterConnection : LoadBalancedConnection
+            # readFromMasterWhenNoSlaves : boolean
+            # readFromMasterWhenNoSlavesOriginal : boolean
+            # readOnly : boolean
+            # slavesConnection : LoadBalancedConnection
+            ~ connectionGroup : ReplicationConnectionGroup
+            - connectionGroupID : long
+            - masterHosts : List<HostInfo>
+            - slaveHosts : List<HostInfo>
+            - thisAsReplicationConnection : ReplicationConnection
+            + addSlaveHost()
+            {static} + createProxyInstance()
+            + doPing()
+            + getConnectionGroupId()
+            + getCurrentConnection()
+            + getMasterConnection()
+            + getSlavesConnection()
+            + isHostMaster()
+            + isHostSlave()
+            + isMasterConnection()
+            + isReadOnly()
+            + isSlavesConnection()
+            + promoteSlaveToMaster()
+            + removeMasterHost()
+            + removeMasterHost()
+            + removeMasterHost()
+            + removeSlave()
+            + removeSlave()
+            + setReadOnly()
+            # propagateProxyDown()
+            ~ doAbort()
+            ~ doAbortInternal()
+            ~ doClose()
+            ~ getNewWrapperForThisAsConnection()
+            ~ invokeMore()
+            ~ pickNewConnection()
+            ~ shouldExceptionTriggerConnectionSwitch()
+            ~ syncSessionState()
+            - ReplicationConnectionProxy()
+            - checkConnectionCapabilityForMethod()
+            - getConnectionUrl()
+            - getMasterHost()
+            - getSlaveHost()
+            - initializeMasterConnection()
+            - initializeSlavesConnection()
+            - resetReadFromMasterWhenNoSlaves()
+            - switchToMasterConnection()
+            - switchToSlavesConnection()
+            - switchToSlavesConnectionIfNecessary()
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace jdbc {
+      namespace ha {
+        class com.mysql.cj.jdbc.ha.ReplicationMySQLConnection {
+            + ReplicationMySQLConnection()
+            + abort()
+            + abortInternal()
+            + addSlaveHost()
+            + changeUser()
+            + clearHasTriedMaster()
+            + getActiveMySQLConnection()
+            + getConnectionGroupId()
+            + getCurrentConnection()
+            + getMasterConnection()
+            + getProperties()
+            + getSlavesConnection()
+            + getThisAsProxy()
+            + hasSameProperties()
+            + isHostMaster()
+            + isHostSlave()
+            + isReadOnly()
+            + isWrapperFor()
+            + ping()
+            + promoteSlaveToMaster()
+            + removeMasterHost()
+            + removeMasterHost()
+            + removeSlave()
+            + removeSlave()
+            + setProxy()
+            + setReadOnly()
+            + setStatementComment()
+            + unwrap()
+            - getValidatedMasterConnection()
+            - getValidatedSlavesConnection()
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace jdbc {
+      namespace ha {
+        class com.mysql.cj.jdbc.ha.SequentialBalanceStrategy {
+            - currentHostIndex : int
+            + SequentialBalanceStrategy()
+            + pickConnection()
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace jdbc {
+      namespace ha {
+        class com.mysql.cj.jdbc.ha.ServerAffinityStrategy {
+            + affinityOrderedServers : String[]
+            + ServerAffinityStrategy()
+            + pickConnection()
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace jdbc {
+      namespace ha {
+        class com.mysql.cj.jdbc.ha.StandardLoadBalanceExceptionChecker {
+            - sqlExClassList : List<Class<?>>
+            - sqlStateList : List<String>
+            + destroy()
+            + init()
+            + shouldExceptionTriggerFailover()
+            - configureSQLExceptionSubclassList()
+            - configureSQLStateList()
+        }
+      }
+    }
+  }
+  
+
+  com.mysql.cj.jdbc.ha.BestResponseTimeBalanceStrategy .up.|> BalanceStrategy
+  com.mysql.cj.jdbc.ha.FailoverConnectionProxy +-down- com.mysql.cj.jdbc.ha.FailoverConnectionProxy.FailoverJdbcInterfaceProxy
+  com.mysql.cj.jdbc.ha.LoadBalancedAutoCommitInterceptor .up.|> QueryInterceptor
+  com.mysql.cj.jdbc.ha.LoadBalancedConnectionProxy .up.|> PingTarget
+  com.mysql.cj.jdbc.ha.LoadBalancedConnectionProxy +-down- com.mysql.cj.jdbc.ha.LoadBalancedConnectionProxy.NullLoadBalancedConnectionProxy
+  com.mysql.cj.jdbc.ha.LoadBalancedConnectionProxy.NullLoadBalancedConnectionProxy .up.|> InvocationHandler
+  com.mysql.cj.jdbc.ha.LoadBalancedMySQLConnection .up.|> LoadBalancedConnection
+  com.mysql.cj.jdbc.ha.MultiHostConnectionProxy .up.|> InvocationHandler
+  com.mysql.cj.jdbc.ha.MultiHostConnectionProxy +-down- com.mysql.cj.jdbc.ha.MultiHostConnectionProxy.JdbcInterfaceProxy
+  com.mysql.cj.jdbc.ha.MultiHostConnectionProxy.JdbcInterfaceProxy .up.|> InvocationHandler
+  com.mysql.cj.jdbc.ha.MultiHostMySQLConnection .up.|> JdbcConnection
+  com.mysql.cj.jdbc.ha.RandomBalanceStrategy .up.|> BalanceStrategy
+  com.mysql.cj.jdbc.ha.ReplicationConnectionProxy .up.|> PingTarget
+  com.mysql.cj.jdbc.ha.ReplicationMySQLConnection .up.|> ReplicationConnection
+  com.mysql.cj.jdbc.ha.SequentialBalanceStrategy .up.|> BalanceStrategy
+  com.mysql.cj.jdbc.ha.StandardLoadBalanceExceptionChecker .up.|> LoadBalanceExceptionChecker
+
+
+right footer
+
+
+PlantUML diagram generated by SketchIt! (https://bitbucket.org/pmesmeur/sketch.it)
+For more information about this tool, please contact philippe.mesmeur@gmail.com
+endfooter
+
+@enduml

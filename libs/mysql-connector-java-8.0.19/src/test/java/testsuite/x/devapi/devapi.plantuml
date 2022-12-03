@@ -1,0 +1,523 @@
+@startuml
+
+title __DEVAPI's Class Diagram__\n
+
+  namespace testsuite {
+    namespace x {
+      namespace devapi {
+        class testsuite.x.devapi.AsyncQueryTest {
+            + basicAsyncQuery()
+            + insertDocs()
+            + manyFutures()
+            + manyModifications()
+            + overlappedAsyncQueries()
+            + sqlError()
+            + sqlQuery()
+            + sqlUpdate()
+            + syntaxErrorEntireResult()
+        }
+      }
+    }
+  }
+  
+
+  namespace testsuite {
+    namespace x {
+      namespace devapi {
+        class testsuite.x.devapi.BaseCollectionTestCase {
+            # collection : Collection
+            # collectionName : String
+            + setupCollectionTest()
+            + teardownCollectionTest()
+        }
+      }
+    }
+  }
+  
+
+  namespace testsuite {
+    namespace x {
+      namespace devapi {
+        class testsuite.x.devapi.BaseTableTestCase {
+            + setupTableTest()
+            + teardownTableTest()
+        }
+      }
+    }
+  }
+  
+
+  namespace testsuite {
+    namespace x {
+      namespace devapi {
+        class testsuite.x.devapi.BindTest {
+            + bindArgsOrder()
+            + bug21798850()
+            + properExceptionUnboundParams()
+            + removeWithBind()
+            + removeWithNamedBinds()
+        }
+      }
+    }
+  }
+  
+
+  namespace testsuite {
+    namespace x {
+      namespace devapi {
+        class testsuite.x.devapi.CollectionAddTest {
+            + setupCollectionTest()
+            + teardownCollectionTest()
+            + testAddLargeDocument()
+            + testAddNoDocs()
+            + testAddOrReplaceOne()
+            + testAddWithAssignedId()
+            + testBasicAddDoc()
+            + testBasicAddDocArray()
+            + testBasicAddMap()
+            + testBasicAddString()
+            + testBasicAddStringArray()
+            + testBug21914769()
+            + testBug92264()
+            + testBug92819()
+            + testChainedAdd()
+        }
+      }
+    }
+  }
+  
+
+  namespace testsuite {
+    namespace x {
+      namespace devapi {
+        class testsuite.x.devapi.CollectionFindTest {
+            + basicCollectionAsTable()
+            + cast()
+            + getOne()
+            + outOfRange()
+            + teardownCollectionTest()
+            + testBitwiseExpressions()
+            + testBug21921956()
+            + testCollectionRowLockOptions()
+            + testCollectionRowLocks()
+            + testDeprecateWhere()
+            + testDocumentProjection()
+            + testGroupingQuery()
+            + testIlriExpressions()
+            + testIntervalExpressions()
+            + testIterable()
+            + testLimitOffset()
+            + testNumericExpressions()
+            + testOrderBy()
+            + testOverlaps()
+            + testPreparedStatements()
+            + testProjection()
+            - assertTestPreparedStatementsResult()
+        }
+      }
+    }
+  }
+  
+
+  namespace testsuite {
+    namespace x {
+      namespace devapi {
+        class testsuite.x.devapi.CollectionModifyTest {
+            + testArrayAppend()
+            + testArrayInsert()
+            + testArrayModify()
+            + testBug24471057()
+            + testBug27185332()
+            + testBug27226293()
+            + testDeprecateWhere()
+            + testJsonModify()
+            + testMergePatch()
+            + testPreparedStatements()
+            + testReplace()
+            + testReplaceOne()
+            + testSet()
+            + testUnset()
+            - assertTestPreparedStatementsResult()
+            - testPreparedStatementsResetData()
+        }
+      }
+    }
+  }
+  
+
+  namespace testsuite {
+    namespace x {
+      namespace devapi {
+        class testsuite.x.devapi.CollectionRemoveTest {
+            + deleteAll()
+            + deleteSome()
+            + removeOne()
+            + testDeprecateWhere()
+            + testPreparedStatements()
+            - assertTestPreparedStatementsResult()
+            - testPreparedStatementsResetData()
+        }
+      }
+    }
+  }
+  
+
+  namespace testsuite {
+    namespace x {
+      namespace devapi {
+        class testsuite.x.devapi.CollectionTest {
+            + createArrayIndex()
+            + createIndex()
+            + getExistentCollectionWithRequireExistsShouldNotThrow()
+            + getNonExistentCollectionWithRequireExistsShouldThrow()
+            + getNonExistentCollectionWithoutRequireExistsShouldNotThrow()
+            + testCount()
+            + testExists()
+            + testGetSchema()
+            + testGetSession()
+            - validateIndex()
+            - validateIndex()
+        }
+      }
+    }
+  }
+  
+
+  namespace testsuite {
+    namespace x {
+      namespace devapi {
+        class testsuite.x.devapi.DevApiBaseTestCase {
+            ~ dbCharset : String
+            ~ dbCollation : String
+            ~ schema : Schema
+            ~ session : Session
+            + destroyTestSession()
+            + setupTestSession()
+            # assertPreparedStatementsCount()
+            # assertPreparedStatementsCountsAndId()
+            # assertPreparedStatementsStatusCounts()
+            # dropCollection()
+            # getThreadId()
+            # isServerRunningOnWindows()
+            # makeParam()
+            # makeParam()
+            # makeParam()
+            # sqlUpdate()
+            ~ getPrepDeallocateCount()
+            ~ getPrepExecuteCount()
+            ~ getPrepPrepareCount()
+            ~ getPreparedStatementExecutionsCount()
+            ~ getPreparedStatementId()
+            ~ getPreparedStatementsCount()
+            ~ getPreparedStatementsCount()
+            ~ getPreparedStatementsCount()
+        }
+      }
+    }
+  }
+  
+
+  namespace testsuite {
+    namespace x {
+      namespace devapi {
+        class testsuite.x.devapi.Ipv6SupportTest {
+            ~ ipv6Addrs : List<String>
+            ~ testUser : String
+            + setupIpv6SupportTest()
+            + teardownIpv6SupportTest()
+            + testIpv6SupportInSession()
+        }
+      }
+    }
+  }
+  
+
+  namespace testsuite {
+    namespace x {
+      namespace devapi {
+        class testsuite.x.devapi.MetadataTest {
+            + derivedCol()
+            + docAsTableIsJSON()
+            + example_metadata()
+            + exhaustTypes()
+            + renameCol()
+            + setupTableTest()
+        }
+      }
+    }
+  }
+  
+
+  namespace testsuite {
+    namespace x {
+      namespace devapi {
+        class testsuite.x.devapi.ResultTest {
+            + exceptionForNonExistingColumns()
+            + setupTableTest()
+            + teardownTableTest()
+            + testDateTimeTypes()
+            + testForceBuffering()
+            + testMars()
+        }
+      }
+    }
+  }
+  
+
+  namespace testsuite {
+    namespace x {
+      namespace devapi {
+        class testsuite.x.devapi.SchemaTest {
+            + setupCollectionTest()
+            + teardownCollectionTest()
+            + testCreateCollection()
+            + testDropCollection()
+            + testEquals()
+            + testExists()
+            + testListCollections()
+            + testListTables()
+            + testToString()
+        }
+      }
+    }
+  }
+  
+
+  namespace testsuite {
+    namespace x {
+      namespace devapi {
+        class testsuite.x.devapi.SecureSessionTest {
+            ~ clientKeyStorePassword : String
+            ~ clientKeyStorePath : String
+            ~ clientKeyStoreUrl : String
+            ~ opensslTlsFreeBaseUrl : String
+            ~ sslFreeBaseUrl : String
+            ~ sslFreeTestProperties : Properties
+            ~ sslFreeTestPropertiesOpenSSL : Properties
+            ~ trustStorePassword : String
+            ~ trustStorePath : String
+            ~ trustStoreUrl : String
+            + setupSecureSessionTest()
+            + teardownSecureSessionTest()
+            + testAuthMechanisms()
+            + testBug23597281()
+            + testBug25494338()
+            + testBug26227653()
+            + testBug27629553()
+            + testNonSecureSession()
+            + testSecureSessionDefaultAndRequired()
+            + testSecureSessionDefaultAndRequiredWithSystemPropsPresent()
+            + testSecureSessionIncompatibleSettings()
+            + testSecureSessionMissingTrustStore()
+            + testSecureSessionVerifyServerCertificate()
+            + testSecureSessionVerifyServerCertificateIdentity()
+            + testSecureSessionVerifyServerCertificateIdentityFailure()
+            + testSecureSessionVerifyServerCertificateUsingSystemProps()
+            + testTLSv1_2()
+            + testXdevapiTlsVersionsAndCiphersuites()
+            - allowsRsa()
+            - assertNonSecureSession()
+            - assertSecureSession()
+            - assertTlsVersion()
+            - assertUser()
+            - getHighestCommonTlsVersion()
+        }
+      }
+    }
+  }
+  
+
+  namespace testsuite {
+    namespace x {
+      namespace devapi {
+        class testsuite.x.devapi.SessionFailoverTest {
+            - testsHost : String
+            + setupFailoverTest()
+            + testConnectionTimeout()
+            + testGetSessionForMultipleHostsWithFailover()
+            + testGetSessionForSingleHost()
+            - buildConnectionString()
+            - buildConnectionStringNoUser()
+            - testConnectionTimeout_assertFailureTimeout()
+            - testConnectionTimeout_assertFailureTimeout()
+            - testConnectionTimeout_assertSuccessTimeout()
+        }
+      }
+    }
+  }
+  
+
+  namespace testsuite {
+    namespace x {
+      namespace devapi {
+        class testsuite.x.devapi.SessionFailoverTest.ConnectionsCounterFakeServer {
+            ~ connectionsCounter : int
+            ~ executor : ExecutorService
+            ~ serverSocket : ServerSocket
+            + call()
+            ~ ConnectionsCounterFakeServer()
+            ~ getAndResetConnectionsCounter()
+            ~ getHostPortPair()
+            ~ shutdownSilently()
+        }
+      }
+    }
+  }
+  
+
+  namespace testsuite {
+    namespace x {
+      namespace devapi {
+        class testsuite.x.devapi.SessionTest {
+            - createdTestSchemas : List<String>
+            + basicMultipleResults()
+            + basicSessionFailoverByPriorities()
+            + basicSessionFailoverRandomSort()
+            + basicSql()
+            + createAndReuseExistingSchema()
+            + createDropSchema()
+            + createExistingSchemaError()
+            + errorOnPacketTooBig()
+            + invalidDefaultSchema()
+            + listSchemas()
+            + pooledSessionFailoverByPrioritiesAndNoPooling()
+            + pooledSessionFailoverByPrioritiesAndPooling()
+            + pooledSessionFailoverRandomSortAndNoPooling()
+            + pooledSessionFailoverRandomSortAndPooling()
+            + setupSessionTest()
+            + smartBufferMultipleResults()
+            + sqlArguments()
+            + sqlInsertAutoIncrementValue()
+            + sqlUpdate()
+            + teardownSessionTest()
+            + testBug21690043()
+            + testBug23045604()
+            + testBug23721537()
+            + testBug27652379()
+            + testBug28606708()
+            + testBug28616573()
+            + testPooledSessions()
+            + testPreparedStatementsCleanup()
+            + testPreparedStatementsPooledConnections()
+            + testSessionAttributes()
+            + urlWithDefaultSchema()
+            + urlWithoutDefaultSchema()
+            - getRandomTestSchemaName()
+            - testPooledSessions_assertFailureTimeout()
+            - testPooledSessions_checkClientProperties()
+            - testSessionAttributes_checkClient()
+            - testSessionAttributes_checkSession()
+            - testSessionAttributes_checkSession()
+        }
+      }
+    }
+  }
+  
+
+  namespace testsuite {
+    namespace x {
+      namespace devapi {
+        class testsuite.x.devapi.TableDeleteTest {
+            + testDelete()
+            + testPreparedStatements()
+            - assertTestPreparedStatementsResult()
+            - testPreparedStatementsResetData()
+        }
+      }
+    }
+  }
+  
+
+  namespace testsuite {
+    namespace x {
+      namespace devapi {
+        class testsuite.x.devapi.TableInsertTest {
+            + basicInsert()
+            + jsonInsert()
+            + lastInsertId()
+        }
+      }
+    }
+  }
+  
+
+  namespace testsuite {
+    namespace x {
+      namespace devapi {
+        class testsuite.x.devapi.TableSelectTest {
+            + allColumns()
+            + basicQuery()
+            + basicViewQuery()
+            + countAllColumns()
+            + testBug22038729()
+            + testBug22931277()
+            + testBug22931433()
+            + testBug22988922()
+            + testComplexQuery()
+            + testOrderBy()
+            + testPreparedStatements()
+            + testTableRowLockOptions()
+            + testTableRowLocks()
+            - assertTestPreparedStatementsResult()
+        }
+      }
+    }
+  }
+  
+
+  namespace testsuite {
+    namespace x {
+      namespace devapi {
+        class testsuite.x.devapi.TableTest {
+            + tableBasics()
+            + testBug25650912()
+            + testCount()
+            + viewBasics()
+        }
+      }
+    }
+  }
+  
+
+  namespace testsuite {
+    namespace x {
+      namespace devapi {
+        class testsuite.x.devapi.TableUpdateTest {
+            + testPreparedStatements()
+            + testUpdates()
+            - assertTestPreparedStatementsResult()
+            - testPreparedStatementsResetData()
+        }
+      }
+    }
+  }
+  
+
+  namespace testsuite {
+    namespace x {
+      namespace devapi {
+        class testsuite.x.devapi.TransactionTest {
+            # collection : Collection
+            + basicCommit()
+            + basicRollback()
+            + basicSavepoint()
+            + setupCollectionTest()
+            + teardownCollectionTest()
+        }
+      }
+    }
+  }
+  
+
+  testsuite.x.devapi.SessionFailoverTest +-down- testsuite.x.devapi.SessionFailoverTest.ConnectionsCounterFakeServer
+  testsuite.x.devapi.SessionFailoverTest.ConnectionsCounterFakeServer .up.|> Callable
+
+
+right footer
+
+
+PlantUML diagram generated by SketchIt! (https://bitbucket.org/pmesmeur/sketch.it)
+For more information about this tool, please contact philippe.mesmeur@gmail.com
+endfooter
+
+@enduml

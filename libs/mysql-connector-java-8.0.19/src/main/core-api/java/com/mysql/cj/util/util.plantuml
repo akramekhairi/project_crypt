@@ -1,0 +1,353 @@
+@startuml
+
+title __UTIL's Class Diagram__\n
+
+  namespace com.mysql.cj {
+    namespace util {
+      class com.mysql.cj.util.Base64Decoder {
+          {static} - decoderMap : byte[]
+          {static} + decode()
+          {static} - getNextValidByte()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace util {
+      class com.mysql.cj.util.Base64Decoder.IntWrapper {
+          + value : int
+          + IntWrapper()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace util {
+      class com.mysql.cj.util.DataTypeUtil {
+          {static} + bitToLong()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace util {
+      class com.mysql.cj.util.DnsSrv {
+          {static} + lookupSrvRecords()
+          {static} + sortSrvRecords()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace util {
+      class com.mysql.cj.util.DnsSrv.SrvRecord {
+          - port : int
+          - priority : int
+          - target : String
+          - weight : int
+          + SrvRecord()
+          {static} + buildFrom()
+          + compareTo()
+          + getPort()
+          + getPriority()
+          + getTarget()
+          + getWeight()
+          + toString()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace util {
+      class com.mysql.cj.util.EscapeTokenizer {
+          {static} - CHR_BEGIN_TOKEN : char
+          {static} - CHR_COMMENT : char
+          {static} - CHR_CR : char
+          {static} - CHR_DBL_QUOTE : char
+          {static} - CHR_END_TOKEN : char
+          {static} - CHR_ESCAPE : char
+          {static} - CHR_LF : char
+          {static} - CHR_SGL_QUOTE : char
+          {static} - CHR_VARIABLE : char
+          - bracesLevel : int
+          - emittingEscapeCode : boolean
+          - inQuotes : boolean
+          - pos : int
+          - quoteChar : char
+          - sawVariableUse : boolean
+          - source : String
+          - sourceLength : int
+          + EscapeTokenizer()
+          + hasMoreTokens()
+          + nextToken()
+          + sawVariableUse()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace util {
+      class com.mysql.cj.util.LRUCache {
+          # maxElements : int
+          {static} - serialVersionUID : long
+          + LRUCache()
+          # removeEldestEntry()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace util {
+      class com.mysql.cj.util.LazyString {
+          - buffer : byte[]
+          - encoding : String
+          - length : int
+          - offset : int
+          - string : String
+          + LazyString()
+          + LazyString()
+          + LazyString()
+          + get()
+          + length()
+          + toString()
+          - createAndCacheString()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace util {
+      class com.mysql.cj.util.LogUtils {
+          {static} + CALLER_INFORMATION_NOT_AVAILABLE : String
+          {static} - LINE_SEPARATOR : String
+          {static} - LINE_SEPARATOR_LENGTH : int
+          {static} + findCallingClassAndMethod()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace util {
+      class com.mysql.cj.util.PerVmServerConfigCacheFactory {
+          {static} ~ serverConfigByUrl : ConcurrentHashMap<String, Map<String, String>>
+          {static} - serverConfigCache : CacheAdapter<String, Map<String, String>>
+          + getInstance()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace util {
+      class com.mysql.cj.util.SequentialIdLease {
+          - sequentialIdsLease : Set<Integer>
+          + allocateSequentialId()
+          + releaseSequentialId()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace util {
+      class com.mysql.cj.util.StringUtils {
+          {static} + SEARCH_MODE__ALL : Set<SearchMode>
+          {static} + SEARCH_MODE__BSESC_COM_WS : Set<SearchMode>
+          {static} + SEARCH_MODE__BSESC_MRK_WS : Set<SearchMode>
+          {static} + SEARCH_MODE__COM_WS : Set<SearchMode>
+          {static} + SEARCH_MODE__MRK_COM_WS : Set<SearchMode>
+          {static} + SEARCH_MODE__MRK_WS : Set<SearchMode>
+          {static} + SEARCH_MODE__NONE : Set<SearchMode>
+          {static} ~ EMPTY_SPACE : char[]
+          {static} ~ WILDCARD_ESCAPE : char
+          {static} ~ WILDCARD_MANY : char
+          {static} ~ WILDCARD_ONE : char
+          {static} - HEX_DIGITS : char[]
+          {static} - NON_COMMENTS_MYSQL_VERSION_REF_LENGTH : int
+          {static} - VALID_ID_CHARS : String
+          {static} - WILD_COMPARE_CONTINUE_WITH_WILD : int
+          {static} - WILD_COMPARE_MATCH : int
+          {static} - WILD_COMPARE_NO_MATCH : int
+          {static} + appendAsHex()
+          {static} + appendAsHex()
+          {static} + canHandleAsServerPreparedStatementNoCache()
+          {static} + dumpAsHex()
+          {static} + escapeQuote()
+          {static} + firstAlphaCharUc()
+          {static} + firstNonWsCharUc()
+          {static} + firstNonWsCharUc()
+          {static} + fixDecimalExponent()
+          {static} + getBytes()
+          {static} + getBytes()
+          {static} + getBytes()
+          {static} + getBytes()
+          {static} + getBytes()
+          {static} + getBytes()
+          {static} + getBytes()
+          {static} + getBytes()
+          {static} + getBytesNullTerminated()
+          {static} + getBytesWrapped()
+          {static} + getFullyQualifiedName()
+          {static} + getUniqueSavepointId()
+          {static} + hasWildcards()
+          {static} + indexOf()
+          {static} + indexOfIgnoreCase()
+          {static} + indexOfIgnoreCase()
+          {static} + indexOfIgnoreCase()
+          {static} + indexOfIgnoreCase()
+          {static} + indexOfIgnoreCase()
+          {static} + indexOfQuoteDoubleAware()
+          {static} + isEmptyOrWhitespaceOnly()
+          {static} + isNullOrEmpty()
+          {static} + isStrictlyNumeric()
+          {static} + isValidIdChar()
+          {static} + joinWithSerialComma()
+          {static} + lastIndexOf()
+          {static} + padString()
+          {static} + quoteBytes()
+          {static} + quoteIdentifier()
+          {static} + quoteIdentifier()
+          {static} + safeIntParse()
+          {static} + safeTrim()
+          {static} + sanitizeProcOrFuncName()
+          {static} + split()
+          {static} + split()
+          {static} + split()
+          {static} + split()
+          {static} + split()
+          {static} + splitDBdotName()
+          {static} + startsWithIgnoreCase()
+          {static} + startsWithIgnoreCase()
+          {static} + startsWithIgnoreCaseAndNonAlphaNumeric()
+          {static} + startsWithIgnoreCaseAndWs()
+          {static} + startsWithIgnoreCaseAndWs()
+          {static} + startsWithIgnoreCaseAndWs()
+          {static} + stringArrayToString()
+          {static} + stripComments()
+          {static} + stripEnclosure()
+          {static} + toAsciiString()
+          {static} + toAsciiString()
+          {static} + toHexString()
+          {static} + toString()
+          {static} + toString()
+          {static} + toString()
+          {static} + toString()
+          {static} + unQuoteIdentifier()
+          {static} + unquoteBytes()
+          {static} + wildCompareIgnoreCase()
+          {static} - endsWith()
+          {static} - indexOfNextChar()
+          {static} - isCharAtPosNotEqualIgnoreCase()
+          {static} - isCharEqualIgnoreCase()
+          {static} - startsWith()
+          {static} - wildCompareInternal()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace util {
+      enum SearchMode {
+        ALLOW_BACKSLASH_ESCAPE
+        SKIP_BETWEEN_MARKERS
+        SKIP_BLOCK_COMMENTS
+        SKIP_LINE_COMMENTS
+        SKIP_WHITE_SPACE
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace util {
+      class com.mysql.cj.util.TestUtils {
+          {static} + dumpTestcaseQuery()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace util {
+      class com.mysql.cj.util.TimeUtil {
+          {static} # systemNanoTimeMethod : Method
+          {static} ~ GMT_TIMEZONE : TimeZone
+          {static} - TIME_ZONE_MAPPINGS_RESOURCE : String
+          {static} - timeZoneMappings : Properties
+          {static} + adjustTimestampNanosPrecision()
+          {static} + formatNanos()
+          {static} + formatNanos()
+          {static} + getCanonicalTimezone()
+          {static} + getCurrentTimeNanosOrMillis()
+          {static} + getDateTimePattern()
+          {static} + getSimpleDateFormat()
+          {static} + nanoTimeAvailable()
+          {static} + truncateFractionalSeconds()
+          {static} - getSuccessor()
+          {static} - loadTimeZoneMappings()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace util {
+      class com.mysql.cj.util.Util {
+          {static} - implementedInterfacesCache : ConcurrentMap<Class<?>, Class<?>[]>
+          {static} - isJdbcInterfaceCache : ConcurrentMap<Class<?>, Boolean>
+          {static} - jvmUpdateNumber : int
+          {static} - jvmVersion : int
+          {static} + calculateDifferences()
+          {static} + getImplementedInterfaces()
+          {static} + getInstance()
+          {static} + getInstance()
+          {static} + getJVMUpdateNumber()
+          {static} + getJVMVersion()
+          {static} + getPackageName()
+          {static} + handleNewInstance()
+          {static} + interfaceExists()
+          {static} + isCommunityEdition()
+          {static} + isEnterpriseEdition()
+          {static} + isJdbcInterface()
+          {static} + isJdbcPackage()
+          {static} + isRunningOnWindows()
+          {static} + jvmMeetsMinimum()
+          {static} + loadClasses()
+          {static} + readBlock()
+          {static} + readBlock()
+          {static} + readFully()
+          {static} + secondsSinceMillis()
+          {static} + stackTraceToString()
+          {static} + truncateAndConvertToInt()
+          {static} + truncateAndConvertToInt()
+      }
+    }
+  }
+  
+
+  com.mysql.cj.util.Base64Decoder +-down- com.mysql.cj.util.Base64Decoder.IntWrapper
+  com.mysql.cj.util.DnsSrv +-down- com.mysql.cj.util.DnsSrv.SrvRecord
+  com.mysql.cj.util.DnsSrv.SrvRecord .up.|> Comparable
+  com.mysql.cj.util.LazyString .up.|> Supplier
+  com.mysql.cj.util.PerVmServerConfigCacheFactory .up.|> CacheAdapterFactory
+  com.mysql.cj.util.StringUtils +-down- com.mysql.cj.util.StringUtils.SearchMode
+
+
+right footer
+
+
+PlantUML diagram generated by SketchIt! (https://bitbucket.org/pmesmeur/sketch.it)
+For more information about this tool, please contact philippe.mesmeur@gmail.com
+endfooter
+
+@enduml

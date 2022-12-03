@@ -1,0 +1,672 @@
+@startuml
+
+title __CJ's Class Diagram__\n
+
+  namespace com.mysql.cj {
+    class com.mysql.cj.AppendingBatchVisitor {
+        ~ statementComponents : LinkedList<byte[]>
+        + append()
+        + decrement()
+        + getStaticSqlStrings()
+        + increment()
+        + merge()
+        + mergeWithLast()
+        + toString()
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    interface com.mysql.cj.BatchVisitor {
+        {abstract} + append()
+        {abstract} + decrement()
+        {abstract} + increment()
+        {abstract} + merge()
+        {abstract} + mergeWithLast()
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    interface com.mysql.cj.BindValue {
+        {abstract} + clone()
+        {abstract} + getByteValue()
+        {abstract} + getMysqlType()
+        {abstract} + getOrigByteValue()
+        {abstract} + getStreamLength()
+        {abstract} + getStreamValue()
+        {abstract} + isNull()
+        {abstract} + isSet()
+        {abstract} + isStream()
+        {abstract} + reset()
+        {abstract} + setByteValue()
+        {abstract} + setIsStream()
+        {abstract} + setMysqlType()
+        {abstract} + setNull()
+        {abstract} + setOrigByteValue()
+        {abstract} + setStreamValue()
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    interface com.mysql.cj.CacheAdapter {
+        {abstract} + get()
+        {abstract} + invalidate()
+        {abstract} + invalidateAll()
+        {abstract} + invalidateAll()
+        {abstract} + put()
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    interface com.mysql.cj.CacheAdapterFactory {
+        {abstract} + getInstance()
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    interface com.mysql.cj.CancelQueryTask {
+        {abstract} + cancel()
+        {abstract} + getCaughtWhileCancelling()
+        {abstract} + getQueryToCancel()
+        {abstract} + setCaughtWhileCancelling()
+        {abstract} + setQueryToCancel()
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    class com.mysql.cj.CharsetMapping {
+        {static} + CHARSET_NAME_TO_CHARSET : Map<String, MysqlCharset>
+        {static} + CHARSET_NAME_TO_COLLATION_INDEX : Map<String, Integer>
+        {static} + COLLATION_INDEX_TO_CHARSET : MysqlCharset[]
+        {static} + COLLATION_INDEX_TO_COLLATION_NAME : String[]
+        {static} + COLLATION_NOT_DEFINED : String
+        {static} + MAP_SIZE : int
+        {static} + MYSQL_COLLATION_INDEX_binary : int
+        {static} + MYSQL_COLLATION_INDEX_utf8 : int
+        {static} + NOT_USED : String
+        {static} + UTF8MB4_INDEXES : Set<Integer>
+        {static} - JAVA_ENCODING_UC_TO_MYSQL_CHARSET : Map<String, List<MysqlCharset>>
+        {static} - MULTIBYTE_ENCODINGS : Set<String>
+        {static} - MYSQL_CHARSET_NAME_armscii8 : String
+        {static} - MYSQL_CHARSET_NAME_ascii : String
+        {static} - MYSQL_CHARSET_NAME_big5 : String
+        {static} - MYSQL_CHARSET_NAME_binary : String
+        {static} - MYSQL_CHARSET_NAME_cp1250 : String
+        {static} - MYSQL_CHARSET_NAME_cp1251 : String
+        {static} - MYSQL_CHARSET_NAME_cp1256 : String
+        {static} - MYSQL_CHARSET_NAME_cp1257 : String
+        {static} - MYSQL_CHARSET_NAME_cp850 : String
+        {static} - MYSQL_CHARSET_NAME_cp852 : String
+        {static} - MYSQL_CHARSET_NAME_cp866 : String
+        {static} - MYSQL_CHARSET_NAME_cp932 : String
+        {static} - MYSQL_CHARSET_NAME_dec8 : String
+        {static} - MYSQL_CHARSET_NAME_eucjpms : String
+        {static} - MYSQL_CHARSET_NAME_euckr : String
+        {static} - MYSQL_CHARSET_NAME_gb18030 : String
+        {static} - MYSQL_CHARSET_NAME_gb2312 : String
+        {static} - MYSQL_CHARSET_NAME_gbk : String
+        {static} - MYSQL_CHARSET_NAME_geostd8 : String
+        {static} - MYSQL_CHARSET_NAME_greek : String
+        {static} - MYSQL_CHARSET_NAME_hebrew : String
+        {static} - MYSQL_CHARSET_NAME_hp8 : String
+        {static} - MYSQL_CHARSET_NAME_keybcs2 : String
+        {static} - MYSQL_CHARSET_NAME_koi8r : String
+        {static} - MYSQL_CHARSET_NAME_koi8u : String
+        {static} - MYSQL_CHARSET_NAME_latin1 : String
+        {static} - MYSQL_CHARSET_NAME_latin2 : String
+        {static} - MYSQL_CHARSET_NAME_latin5 : String
+        {static} - MYSQL_CHARSET_NAME_latin7 : String
+        {static} - MYSQL_CHARSET_NAME_macce : String
+        {static} - MYSQL_CHARSET_NAME_macroman : String
+        {static} - MYSQL_CHARSET_NAME_sjis : String
+        {static} - MYSQL_CHARSET_NAME_swe7 : String
+        {static} - MYSQL_CHARSET_NAME_tis620 : String
+        {static} - MYSQL_CHARSET_NAME_ucs2 : String
+        {static} - MYSQL_CHARSET_NAME_ujis : String
+        {static} - MYSQL_CHARSET_NAME_utf16 : String
+        {static} - MYSQL_CHARSET_NAME_utf16le : String
+        {static} - MYSQL_CHARSET_NAME_utf32 : String
+        {static} - MYSQL_CHARSET_NAME_utf8 : String
+        {static} - MYSQL_CHARSET_NAME_utf8mb4 : String
+        {static} - numberOfEncodingsConfigured : int
+        {static} + getCollationIndexForJavaEncoding()
+        {static} + getJavaEncodingForCollationIndex()
+        {static} + getJavaEncodingForCollationIndex()
+        {static} + getJavaEncodingForMysqlCharset()
+        {static} + getJavaEncodingForMysqlCharset()
+        {static} + getMblen()
+        {static} + getMysqlCharsetForJavaEncoding()
+        {static} + getMysqlCharsetNameForCollationIndex()
+        {static} + getNumberOfCharsetsConfigured()
+        {static} + isMultibyteCharset()
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    class com.mysql.cj.Collation {
+        + collationName : String
+        + index : int
+        + priority : int
+        + Collation()
+        + toString()
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    class com.mysql.cj.Constants {
+        {static} + BIG_DECIMAL_MAX_BYTE_VALUE : BigDecimal
+        {static} + BIG_DECIMAL_MAX_DOUBLE_VALUE : BigDecimal
+        {static} + BIG_DECIMAL_MAX_FLOAT_VALUE : BigDecimal
+        {static} + BIG_DECIMAL_MAX_INTEGER_VALUE : BigDecimal
+        {static} + BIG_DECIMAL_MAX_LONG_VALUE : BigDecimal
+        {static} + BIG_DECIMAL_MAX_NEGATIVE_DOUBLE_VALUE : BigDecimal
+        {static} + BIG_DECIMAL_MAX_NEGATIVE_FLOAT_VALUE : BigDecimal
+        {static} + BIG_DECIMAL_MAX_SHORT_VALUE : BigDecimal
+        {static} + BIG_DECIMAL_MIN_BYTE_VALUE : BigDecimal
+        {static} + BIG_DECIMAL_MIN_INTEGER_VALUE : BigDecimal
+        {static} + BIG_DECIMAL_MIN_LONG_VALUE : BigDecimal
+        {static} + BIG_DECIMAL_MIN_SHORT_VALUE : BigDecimal
+        {static} + BIG_DECIMAL_NEGATIVE_ONE : BigDecimal
+        {static} + BIG_DECIMAL_ONE : BigDecimal
+        {static} + BIG_DECIMAL_ZERO : BigDecimal
+        {static} + BIG_INTEGER_MAX_BYTE_VALUE : BigInteger
+        {static} + BIG_INTEGER_MAX_INTEGER_VALUE : BigInteger
+        {static} + BIG_INTEGER_MAX_LONG_VALUE : BigInteger
+        {static} + BIG_INTEGER_MAX_SHORT_VALUE : BigInteger
+        {static} + BIG_INTEGER_MIN_BYTE_VALUE : BigInteger
+        {static} + BIG_INTEGER_MIN_INTEGER_VALUE : BigInteger
+        {static} + BIG_INTEGER_MIN_LONG_VALUE : BigInteger
+        {static} + BIG_INTEGER_MIN_SHORT_VALUE : BigInteger
+        {static} + BIG_INTEGER_NEGATIVE_ONE : BigInteger
+        {static} + BIG_INTEGER_ONE : BigInteger
+        {static} + BIG_INTEGER_ZERO : BigInteger
+        {static} + CJ_FULL_NAME : String
+        {static} + CJ_LICENSE : String
+        {static} + CJ_MAJOR_VERSION : String
+        {static} + CJ_MINOR_VERSION : String
+        {static} + CJ_NAME : String
+        {static} + CJ_REVISION : String
+        {static} + CJ_VERSION : String
+        {static} + EMPTY_BYTE_ARRAY : byte[]
+        {static} + JVM_VENDOR : String
+        {static} + JVM_VERSION : String
+        {static} + MILLIS_I18N : String
+        {static} + OS_ARCH : String
+        {static} + OS_NAME : String
+        {static} + OS_VERSION : String
+        {static} + PLATFORM_ENCODING : String
+        {static} + SLASH_STAR_SPACE_AS_BYTES : byte[]
+        {static} + SPACE_STAR_SLASH_SPACE_AS_BYTES : byte[]
+        - Constants()
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    interface com.mysql.cj.DataStoreMetadata {
+        {abstract} + getTableRowCount()
+        {abstract} + schemaExists()
+        {abstract} + tableExists()
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    interface com.mysql.cj.MessageBuilder {
+        {abstract} + buildClose()
+        {abstract} + buildSqlStatement()
+        {abstract} + buildSqlStatement()
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    class com.mysql.cj.Messages {
+        {static} - BUNDLE_NAME : String
+        {static} - RESOURCE_BUNDLE : ResourceBundle
+        {static} - emptyObjectArray : Object[]
+        {static} + getString()
+        {static} + getString()
+        - Messages()
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    class com.mysql.cj.MysqlCharset {
+        + charsetName : String
+        + javaEncodingsUc : List<String>
+        + mblen : int
+        + minimumVersion : ServerVersion
+        + priority : int
+        + MysqlCharset()
+        + MysqlCharset()
+        + toString()
+        ~ getMatchingJavaEncoding()
+        ~ isOkayForVersion()
+        - addEncodingMapping()
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    interface com.mysql.cj.MysqlConnection {
+        {abstract} + checkClosed()
+        {abstract} + cleanup()
+        {abstract} + createNewIO()
+        {abstract} + getConnectionMutex()
+        {abstract} + getExceptionInterceptor()
+        {abstract} + getId()
+        {abstract} + getProperties()
+        {abstract} + getPropertySet()
+        {abstract} + getSession()
+        {abstract} + getURL()
+        {abstract} + getUser()
+        {abstract} + normalClose()
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    enum MysqlType {
+      BIGINT
+      BIGINT_UNSIGNED
+      BINARY
+      BIT
+      BLOB
+      BOOLEAN
+      CHAR
+      DATE
+      DATETIME
+      DECIMAL
+      DECIMAL_UNSIGNED
+      DOUBLE
+      DOUBLE_UNSIGNED
+      ENUM
+      FIELD_FLAG_AUTO_INCREMENT
+      FIELD_FLAG_BINARY
+      FIELD_FLAG_BLOB
+      FIELD_FLAG_MULTIPLE_KEY
+      FIELD_FLAG_NOT_NULL
+      FIELD_FLAG_PRIMARY_KEY
+      FIELD_FLAG_UNIQUE_KEY
+      FIELD_FLAG_UNSIGNED
+      FIELD_FLAG_ZEROFILL
+      FIELD_TYPE_BIT
+      FIELD_TYPE_BLOB
+      FIELD_TYPE_DATE
+      FIELD_TYPE_DATETIME
+      FIELD_TYPE_DECIMAL
+      FIELD_TYPE_DOUBLE
+      FIELD_TYPE_ENUM
+      FIELD_TYPE_FLOAT
+      FIELD_TYPE_GEOMETRY
+      FIELD_TYPE_INT24
+      FIELD_TYPE_JSON
+      FIELD_TYPE_LONG
+      FIELD_TYPE_LONGLONG
+      FIELD_TYPE_LONG_BLOB
+      FIELD_TYPE_MEDIUM_BLOB
+      FIELD_TYPE_NEWDECIMAL
+      FIELD_TYPE_NULL
+      FIELD_TYPE_SET
+      FIELD_TYPE_SHORT
+      FIELD_TYPE_STRING
+      FIELD_TYPE_TIME
+      FIELD_TYPE_TIMESTAMP
+      FIELD_TYPE_TINY
+      FIELD_TYPE_TINY_BLOB
+      FIELD_TYPE_VARCHAR
+      FIELD_TYPE_VAR_STRING
+      FIELD_TYPE_YEAR
+      FLOAT
+      FLOAT_UNSIGNED
+      GEOMETRY
+      INT
+      INT_UNSIGNED
+      JSON
+      LONGBLOB
+      LONGTEXT
+      MEDIUMBLOB
+      MEDIUMINT
+      MEDIUMINT_UNSIGNED
+      MEDIUMTEXT
+      NULL
+      SET
+      SMALLINT
+      SMALLINT_UNSIGNED
+      TEXT
+      TIME
+      TIMESTAMP
+      TINYBLOB
+      TINYINT
+      TINYINT_UNSIGNED
+      TINYTEXT
+      UNKNOWN
+      VARBINARY
+      VARCHAR
+      YEAR
+      javaClass
+      jdbcType
+      IS_DECIMAL
+      IS_NOT_DECIMAL
+      createParams
+      flagsMask
+      isDecimal
+      name
+      precision
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    class com.mysql.cj.ParseInfo {
+        + numberOfQueries : int
+        {static} # ON_DUPLICATE_KEY_UPDATE_CLAUSE : String[]
+        ~ canRewriteAsMultiValueInsert : boolean
+        ~ charEncoding : String
+        ~ hasPlaceholders : boolean
+        ~ isOnDuplicateKeyUpdate : boolean
+        ~ lastUsed : long
+        ~ locationOfOnDuplicateKeyUpdate : int
+        ~ parametersInDuplicateKeyClause : boolean
+        ~ statementLength : int
+        ~ statementStartPos : int
+        ~ staticSql : byte[][]
+        ~ valuesClause : String
+        - firstStmtChar : char
+        - foundLoadData : boolean
+        + ParseInfo()
+        + ParseInfo()
+        + canRewriteAsMultiValueInsertAtSqlLevel()
+        + containsOnDuplicateKeyUpdateInSQL()
+        + getFirstStmtChar()
+        + getLocationOfOnDuplicateKeyUpdate()
+        {static} + getOnDuplicateKeyLocation()
+        + getParseInfoForBatch()
+        + getSqlForBatch()
+        + getSqlForBatch()
+        + getStaticSql()
+        + getValuesClause()
+        + isFoundLoadData()
+        {static} # canRewrite()
+        {static} # findStartOfStatement()
+        - ParseInfo()
+        - buildInfoForBatch()
+        - buildRewriteBatchedParams()
+        - extractValuesClause()
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    class com.mysql.cj.PerConnectionLRUFactory {
+        + getInstance()
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    class com.mysql.cj.PerConnectionLRUFactory.PerConnectionLRU {
+        - cache : LRUCache<String, ParseInfo>
+        - cacheSqlLimit : int
+        - syncMutex : Object
+        + get()
+        + invalidate()
+        + invalidateAll()
+        + invalidateAll()
+        + put()
+        # PerConnectionLRU()
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    interface com.mysql.cj.PingTarget {
+        {abstract} + doPing()
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    interface com.mysql.cj.PreparedQuery {
+        {abstract} + asSql()
+        {abstract} + asSql()
+        {abstract} + checkNullOrEmptyQuery()
+        {abstract} + computeBatchSize()
+        {abstract} + fillSendPacket()
+        {abstract} + fillSendPacket()
+        {abstract} + getBatchCommandIndex()
+        {abstract} + getOriginalSql()
+        {abstract} + getParameterCount()
+        {abstract} + getParseInfo()
+        {abstract} + getQueryBindings()
+        {abstract} + setBatchCommandIndex()
+        {abstract} + setOriginalSql()
+        {abstract} + setParameterCount()
+        {abstract} + setParseInfo()
+        {abstract} + setQueryBindings()
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    interface com.mysql.cj.Query {
+        {abstract} + addBatch()
+        {abstract} + checkCancelTimeout()
+        {abstract} + clearBatchedArgs()
+        {abstract} + closeQuery()
+        {abstract} + getBatchedArgs()
+        {abstract} + getCancelTimeoutMutex()
+        {abstract} + getCurrentDatabase()
+        {abstract} + getId()
+        {abstract} + getResultFetchSize()
+        {abstract} + getResultSetFactory()
+        {abstract} + getResultType()
+        {abstract} + getSession()
+        {abstract} + getStatementExecuting()
+        {abstract} + getTimeoutInMillis()
+        {abstract} + isClearWarningsCalled()
+        {abstract} + resetCancelledState()
+        {abstract} + setCancelStatus()
+        {abstract} + setClearWarningsCalled()
+        {abstract} + setCurrentDatabase()
+        {abstract} + setResultFetchSize()
+        {abstract} + setResultType()
+        {abstract} + setTimeoutInMillis()
+        {abstract} + startQueryTimer()
+        {abstract} + statementBegins()
+        {abstract} + stopQueryTimer()
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    enum CancelStatus {
+      CANCELED_BY_TIMEOUT
+      CANCELED_BY_USER
+      NOT_CANCELED
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    interface com.mysql.cj.QueryBindings {
+        {abstract} + checkAllParametersSet()
+        {abstract} + checkParameterSet()
+        {abstract} + clearBindValues()
+        {abstract} + clone()
+        {abstract} + getBindValues()
+        {abstract} + getBytesRepresentation()
+        {abstract} + getNumberOfExecutions()
+        {abstract} + getOrigBytes()
+        {abstract} + isLoadDataQuery()
+        {abstract} + isNull()
+        {abstract} + setAsciiStream()
+        {abstract} + setAsciiStream()
+        {abstract} + setAsciiStream()
+        {abstract} + setBigDecimal()
+        {abstract} + setBigInteger()
+        {abstract} + setBinaryStream()
+        {abstract} + setBinaryStream()
+        {abstract} + setBinaryStream()
+        {abstract} + setBindValues()
+        {abstract} + setBlob()
+        {abstract} + setBlob()
+        {abstract} + setBlob()
+        {abstract} + setBoolean()
+        {abstract} + setByte()
+        {abstract} + setBytes()
+        {abstract} + setBytes()
+        {abstract} + setBytesNoEscape()
+        {abstract} + setBytesNoEscapeNoQuotes()
+        {abstract} + setCharacterStream()
+        {abstract} + setCharacterStream()
+        {abstract} + setCharacterStream()
+        {abstract} + setClob()
+        {abstract} + setClob()
+        {abstract} + setClob()
+        {abstract} + setColumnDefinition()
+        {abstract} + setDate()
+        {abstract} + setDate()
+        {abstract} + setDouble()
+        {abstract} + setFloat()
+        {abstract} + setInt()
+        {abstract} + setLoadDataQuery()
+        {abstract} + setLong()
+        {abstract} + setNCharacterStream()
+        {abstract} + setNCharacterStream()
+        {abstract} + setNClob()
+        {abstract} + setNClob()
+        {abstract} + setNClob()
+        {abstract} + setNString()
+        {abstract} + setNull()
+        {abstract} + setNumberOfExecutions()
+        {abstract} + setObject()
+        {abstract} + setObject()
+        {abstract} + setObject()
+        {abstract} + setShort()
+        {abstract} + setString()
+        {abstract} + setTime()
+        {abstract} + setTime()
+        {abstract} + setTimestamp()
+        {abstract} + setTimestamp()
+        {abstract} + setTimestamp()
+        {abstract} + setValue()
+        {abstract} + setValue()
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    interface com.mysql.cj.QueryResult {
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    class com.mysql.cj.ServerVersion {
+        - completeVersion : String
+        - major : Integer
+        - minor : Integer
+        - subminor : Integer
+        + ServerVersion()
+        + ServerVersion()
+        + compareTo()
+        + equals()
+        + getMajor()
+        + getMinor()
+        + getSubminor()
+        + hashCode()
+        + meetsMinimum()
+        {static} + parseVersion()
+        + toString()
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    interface com.mysql.cj.Session {
+        {abstract} + addListener()
+        {abstract} + changeUser()
+        {abstract} + forceClose()
+        {abstract} + getDataStoreMetadata()
+        {abstract} + getExceptionInterceptor()
+        {abstract} + getHostInfo()
+        {abstract} + getIdentifierQuoteString()
+        {abstract} + getLog()
+        {abstract} + getMessageBuilder()
+        {abstract} + getProcessHost()
+        {abstract} + getProfilerEventHandler()
+        {abstract} + getPropertySet()
+        {abstract} + getQueryTimingUnits()
+        {abstract} + getRemoteSocketAddress()
+        {abstract} + getServerSession()
+        {abstract} + getThreadId()
+        {abstract} + isClosed()
+        {abstract} + isSSLEstablished()
+        {abstract} + isSetNeededForAutoCommitMode()
+        + query()
+        + query()
+        + queryAsync()
+        {abstract} + quit()
+        {abstract} + removeListener()
+        {abstract} + setExceptionInterceptor()
+        {abstract} + versionMeetsMinimum()
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    interface com.mysql.cj.Session.SessionEventListener {
+        {abstract} + handleCleanup()
+        {abstract} + handleNormalClose()
+        {abstract} + handleReconnect()
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    interface com.mysql.cj.TransactionEventHandler {
+        {abstract} + transactionBegun()
+        {abstract} + transactionCompleted()
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    interface com.mysql.cj.WarningListener {
+        {abstract} + warningEncountered()
+    }
+  }
+  
+
+  com.mysql.cj.AppendingBatchVisitor .up.|> BatchVisitor
+  com.mysql.cj.Collation o-- com.mysql.cj.MysqlCharset : mysqlCharset
+  com.mysql.cj.MysqlType .up.|> SQLType
+  com.mysql.cj.ParseInfo o-- com.mysql.cj.ParseInfo : batchHead
+  com.mysql.cj.ParseInfo o-- com.mysql.cj.ParseInfo : batchODKUClause
+  com.mysql.cj.ParseInfo o-- com.mysql.cj.ParseInfo : batchValues
+  com.mysql.cj.PerConnectionLRUFactory .up.|> CacheAdapterFactory
+  com.mysql.cj.PerConnectionLRUFactory +-down- com.mysql.cj.PerConnectionLRUFactory.PerConnectionLRU
+  com.mysql.cj.PerConnectionLRUFactory.PerConnectionLRU .up.|> CacheAdapter
+  com.mysql.cj.Query +-down- com.mysql.cj.Query.CancelStatus
+  com.mysql.cj.ServerVersion .up.|> Comparable
+  com.mysql.cj.Session +-down- com.mysql.cj.Session.SessionEventListener
+
+
+right footer
+
+
+PlantUML diagram generated by SketchIt! (https://bitbucket.org/pmesmeur/sketch.it)
+For more information about this tool, please contact philippe.mesmeur@gmail.com
+endfooter
+
+@enduml

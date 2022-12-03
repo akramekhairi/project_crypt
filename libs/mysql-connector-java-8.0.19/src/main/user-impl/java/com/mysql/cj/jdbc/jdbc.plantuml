@@ -1,0 +1,2497 @@
+@startuml
+
+title __JDBC's Class Diagram__\n
+
+  namespace com.mysql.cj {
+    namespace jdbc {
+      class com.mysql.cj.jdbc.AbandonedConnectionCleanupThread {
+          {static} - cleanupThreadExcecutorService : ExecutorService
+          {static} - connectionFinalizerPhantomRefs : Set<ConnectionFinalizerPhantomReference>
+          {static} - referenceQueue : ReferenceQueue<MysqlConnection>
+          {static} - threadRef : Thread
+          {static} - threadRefLock : Lock
+          {static} + checkedShutdown()
+          {static} + isAlive()
+          + run()
+          {static} + uncheckedShutdown()
+          {static} # trackConnection()
+          - AbandonedConnectionCleanupThread()
+          - checkThreadContextClassLoader()
+          {static} - consistentClassLoaders()
+          {static} - finalizeResource()
+          {static} - shutdown()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace jdbc {
+      class com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.ConnectionFinalizerPhantomReference {
+          - networkResources : NetworkResources
+          ~ ConnectionFinalizerPhantomReference()
+          ~ finalizeResources()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace jdbc {
+      class com.mysql.cj.jdbc.Blob {
+          - binaryData : byte[]
+          - exceptionInterceptor : ExceptionInterceptor
+          - isClosed : boolean
+          + Blob()
+          + free()
+          + getBinaryStream()
+          + getBinaryStream()
+          + getBytes()
+          + length()
+          + position()
+          + position()
+          + setBinaryStream()
+          + setBytes()
+          + setBytes()
+          + streamClosed()
+          + streamClosed()
+          + truncate()
+          ~ Blob()
+          ~ Blob()
+          - checkClosed()
+          - getBinaryData()
+          - setBinaryData()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace jdbc {
+      class com.mysql.cj.jdbc.BlobFromLocator {
+          - blobColumnName : String
+          - creatorResultSet : ResultSetImpl
+          - exceptionInterceptor : ExceptionInterceptor
+          - numColsInResultSet : int
+          - numPrimaryKeys : int
+          - primaryKeyColumns : List<String>
+          - primaryKeyValues : List<String>
+          - quotedId : String
+          - tableName : String
+          + BlobFromLocator()
+          + free()
+          + getBinaryStream()
+          + getBinaryStream()
+          + getBytes()
+          + length()
+          + position()
+          + position()
+          + setBinaryStream()
+          + setBytes()
+          + setBytes()
+          + truncate()
+          ~ createGetBytesStatement()
+          ~ getBytesInternal()
+          - notEnoughInformationInQuery()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace jdbc {
+      class com.mysql.cj.jdbc.BlobFromLocator.LocatorInputStream {
+          ~ currentPositionInBlob : long
+          ~ length : long
+          ~ pStmt : PreparedStatement
+          + close()
+          + read()
+          + read()
+          + read()
+          ~ LocatorInputStream()
+          ~ LocatorInputStream()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace jdbc {
+      class com.mysql.cj.jdbc.CallableStatement {
+          # outputParamWasNull : boolean
+          {static} - NOT_OUTPUT_PARAMETER_INDICATOR : int
+          {static} - PARAMETER_NAMESPACE_PREFIX : String
+          - callingStoredFunction : boolean
+          - functionReturnValueResults : ResultSetInternalMethods
+          - hasOutputParams : boolean
+          - noAccessToProcedureBodies : boolean
+          - outputParameterResults : ResultSetInternalMethods
+          - parameterIndexToRsIndex : int[]
+          - placeholderToParameterIndexMap : int[]
+          + CallableStatement()
+          + CallableStatement()
+          + addBatch()
+          + clearParameters()
+          + execute()
+          + executeBatch()
+          + executeLargeBatch()
+          + executeLargeUpdate()
+          + executeQuery()
+          + executeUpdate()
+          + getArray()
+          + getArray()
+          + getBigDecimal()
+          + getBigDecimal()
+          + getBigDecimal()
+          + getBlob()
+          + getBlob()
+          + getBoolean()
+          + getBoolean()
+          + getByte()
+          + getByte()
+          + getBytes()
+          + getBytes()
+          + getCharacterStream()
+          + getCharacterStream()
+          + getClob()
+          + getClob()
+          + getDate()
+          + getDate()
+          + getDate()
+          + getDate()
+          + getDouble()
+          + getDouble()
+          + getFloat()
+          + getFloat()
+          + getInt()
+          + getInt()
+          + getLong()
+          + getLong()
+          + getNCharacterStream()
+          + getNCharacterStream()
+          + getNClob()
+          + getNClob()
+          + getNString()
+          + getNString()
+          + getObject()
+          + getObject()
+          + getObject()
+          + getObject()
+          + getObject()
+          + getObject()
+          + getParameterMetaData()
+          + getRef()
+          + getRef()
+          + getRowId()
+          + getRowId()
+          + getSQLXML()
+          + getSQLXML()
+          + getShort()
+          + getShort()
+          + getString()
+          + getString()
+          + getTime()
+          + getTime()
+          + getTime()
+          + getTime()
+          + getTimestamp()
+          + getTimestamp()
+          + getTimestamp()
+          + getTimestamp()
+          + getURL()
+          + getURL()
+          + registerOutParameter()
+          + registerOutParameter()
+          + registerOutParameter()
+          + registerOutParameter()
+          + registerOutParameter()
+          + registerOutParameter()
+          + registerOutParameter()
+          + registerOutParameter()
+          + registerOutParameter()
+          + registerOutParameter()
+          + registerOutParameter()
+          + registerOutParameter()
+          + setAsciiStream()
+          + setAsciiStream()
+          + setAsciiStream()
+          + setBigDecimal()
+          + setBinaryStream()
+          + setBinaryStream()
+          + setBinaryStream()
+          + setBlob()
+          + setBlob()
+          + setBlob()
+          + setBoolean()
+          + setByte()
+          + setBytes()
+          + setCharacterStream()
+          + setCharacterStream()
+          + setCharacterStream()
+          + setClob()
+          + setClob()
+          + setClob()
+          + setDate()
+          + setDate()
+          + setDouble()
+          + setFloat()
+          + setInt()
+          + setLong()
+          + setNCharacterStream()
+          + setNCharacterStream()
+          + setNClob()
+          + setNClob()
+          + setNClob()
+          + setNString()
+          + setNull()
+          + setNull()
+          + setObject()
+          + setObject()
+          + setObject()
+          + setObject()
+          + setObject()
+          + setRowId()
+          + setSQLXML()
+          + setShort()
+          + setString()
+          + setTime()
+          + setTime()
+          + setTimestamp()
+          + setTimestamp()
+          + setURL()
+          + wasNull()
+          # checkReadOnlySafeStatement()
+          # fixParameterName()
+          {static} # getInstance()
+          {static} # getInstance()
+          # getNamedParamIndex()
+          # getOutputParameters()
+          # getParameterIndexOffset()
+          # mapOutputParameterIndexToRsIndex()
+          # registerOutParameter()
+          # registerOutParameter()
+          # registerOutParameter()
+          # s2b()
+          - checkIsOutputParam()
+          - checkParameterIndexBounds()
+          - checkReadOnlyProcedure()
+          - checkStreamability()
+          - convertGetProcedureColumnsToInternalDescriptors()
+          - determineParameterTypes()
+          - extractProcedureName()
+          - fakeParameterTypes()
+          - generateParameterMap()
+          {static} - mangleParameterName()
+          - retrieveOutParams()
+          - setInOutParamsOnServer()
+          - setOutParams()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace jdbc {
+      class com.mysql.cj.jdbc.CallableStatement.CallableStatementParam {
+          ~ desiredMysqlType : MysqlType
+          ~ inOutModifier : int
+          ~ index : int
+          ~ isIn : boolean
+          ~ isOut : boolean
+          ~ jdbcType : int
+          ~ nullability : short
+          ~ paramName : String
+          ~ precision : int
+          ~ scale : int
+          ~ typeName : String
+          # clone()
+          ~ CallableStatementParam()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace jdbc {
+      class com.mysql.cj.jdbc.CallableStatement.CallableStatementParamInfo {
+          ~ dbInUse : String
+          ~ isFunctionCall : boolean
+          ~ isReadOnlySafeChecked : boolean
+          ~ isReadOnlySafeProcedure : boolean
+          ~ nativeSql : String
+          ~ numParameters : int
+          ~ parameterList : List<CallableStatementParam>
+          ~ parameterMap : Map<String, CallableStatementParam>
+          + getParameterClassName()
+          + getParameterCount()
+          + getParameterMode()
+          + getParameterType()
+          + getParameterTypeName()
+          + getPrecision()
+          + getScale()
+          + isNullable()
+          + isSigned()
+          + isWrapperFor()
+          + unwrap()
+          # checkBounds()
+          # clone()
+          ~ CallableStatementParamInfo()
+          ~ CallableStatementParamInfo()
+          ~ getParameter()
+          ~ getParameter()
+          ~ iterator()
+          ~ numberOfParameters()
+          - addParametersFromDBMD()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace jdbc {
+      class com.mysql.cj.jdbc.CallableStatementWrapper {
+          + CallableStatementWrapper()
+          + close()
+          + getArray()
+          + getArray()
+          + getBigDecimal()
+          + getBigDecimal()
+          + getBigDecimal()
+          + getBlob()
+          + getBlob()
+          + getBoolean()
+          + getBoolean()
+          + getByte()
+          + getByte()
+          + getBytes()
+          + getBytes()
+          + getCharacterStream()
+          + getCharacterStream()
+          + getClob()
+          + getClob()
+          + getDate()
+          + getDate()
+          + getDate()
+          + getDate()
+          + getDouble()
+          + getDouble()
+          + getFloat()
+          + getFloat()
+          + getInt()
+          + getInt()
+          + getLong()
+          + getLong()
+          + getNCharacterStream()
+          + getNCharacterStream()
+          + getNClob()
+          + getNClob()
+          + getNString()
+          + getNString()
+          + getObject()
+          + getObject()
+          + getObject()
+          + getObject()
+          + getObject()
+          + getObject()
+          + getRef()
+          + getRef()
+          + getRowId()
+          + getRowId()
+          + getSQLXML()
+          + getSQLXML()
+          + getShort()
+          + getShort()
+          + getString()
+          + getString()
+          + getTime()
+          + getTime()
+          + getTime()
+          + getTime()
+          + getTimestamp()
+          + getTimestamp()
+          + getTimestamp()
+          + getTimestamp()
+          + getURL()
+          + getURL()
+          + isWrapperFor()
+          + registerOutParameter()
+          + registerOutParameter()
+          + registerOutParameter()
+          + registerOutParameter()
+          + registerOutParameter()
+          + registerOutParameter()
+          + registerOutParameter()
+          + registerOutParameter()
+          + registerOutParameter()
+          + registerOutParameter()
+          + registerOutParameter()
+          + registerOutParameter()
+          + setAsciiStream()
+          + setAsciiStream()
+          + setAsciiStream()
+          + setBigDecimal()
+          + setBinaryStream()
+          + setBinaryStream()
+          + setBinaryStream()
+          + setBlob()
+          + setBlob()
+          + setBlob()
+          + setBoolean()
+          + setByte()
+          + setBytes()
+          + setCharacterStream()
+          + setCharacterStream()
+          + setCharacterStream()
+          + setClob()
+          + setClob()
+          + setClob()
+          + setDate()
+          + setDate()
+          + setDouble()
+          + setFloat()
+          + setInt()
+          + setLong()
+          + setNCharacterStream()
+          + setNCharacterStream()
+          + setNClob()
+          + setNClob()
+          + setNClob()
+          + setNString()
+          + setNull()
+          + setNull()
+          + setObject()
+          + setObject()
+          + setObject()
+          + setObject()
+          + setObject()
+          + setObject()
+          + setObject()
+          + setRowId()
+          + setSQLXML()
+          + setShort()
+          + setString()
+          + setTime()
+          + setTime()
+          + setTimestamp()
+          + setTimestamp()
+          + setURL()
+          + unwrap()
+          + wasNull()
+          {static} # getInstance()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace jdbc {
+      class com.mysql.cj.jdbc.ClientInfoProviderSP {
+          {static} + PNAME_clientInfoDatabase : String
+          {static} + PNAME_clientInfoGetBulkSPName : String
+          {static} + PNAME_clientInfoGetSPName : String
+          {static} + PNAME_clientInfoSetSPName : String
+          ~ getClientInfoBulkSp : PreparedStatement
+          ~ getClientInfoSp : PreparedStatement
+          ~ setClientInfoSp : PreparedStatement
+          + destroy()
+          + getClientInfo()
+          + getClientInfo()
+          + initialize()
+          + setClientInfo()
+          + setClientInfo()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace jdbc {
+      class com.mysql.cj.jdbc.ClientPreparedStatement {
+          # batchHasPlainStatements : boolean
+          # batchedValuesClause : String
+          # parameterMetaData : MysqlParameterMetadata
+          # rewrittenBatchSize : int
+          - compensateForOnDuplicateKeyUpdate : boolean
+          - doPingInstead : boolean
+          - pstmtResultMetaData : ResultSetMetaData
+          + ClientPreparedStatement()
+          + ClientPreparedStatement()
+          + addBatch()
+          + addBatch()
+          + asSql()
+          + asSql()
+          + clearBatch()
+          + clearParameters()
+          + execute()
+          + executeLargeUpdate()
+          + executeQuery()
+          + executeUpdate()
+          + getBytesRepresentation()
+          + getMetaData()
+          + getOrigBytes()
+          + getParameterBindings()
+          + getParameterMetaData()
+          + getParseInfo()
+          + getPreparedSql()
+          + getQueryBindings()
+          + getUpdateCount()
+          + isNull()
+          + realClose()
+          + setArray()
+          + setAsciiStream()
+          + setAsciiStream()
+          + setAsciiStream()
+          + setBigDecimal()
+          + setBigInteger()
+          + setBinaryStream()
+          + setBinaryStream()
+          + setBinaryStream()
+          + setBlob()
+          + setBlob()
+          + setBlob()
+          + setBoolean()
+          + setByte()
+          + setBytes()
+          + setBytes()
+          + setBytesNoEscape()
+          + setBytesNoEscapeNoQuotes()
+          + setCharacterStream()
+          + setCharacterStream()
+          + setCharacterStream()
+          + setClob()
+          + setClob()
+          + setClob()
+          + setDate()
+          + setDate()
+          + setDouble()
+          + setFloat()
+          + setInt()
+          + setLong()
+          + setNCharacterStream()
+          + setNCharacterStream()
+          + setNClob()
+          + setNClob()
+          + setNClob()
+          + setNString()
+          + setNull()
+          + setNull()
+          + setNull()
+          + setObject()
+          + setObject()
+          + setObject()
+          + setObject()
+          + setObject()
+          + setRef()
+          + setRowId()
+          + setSQLXML()
+          + setShort()
+          + setString()
+          + setTime()
+          + setTime()
+          + setTimestamp()
+          + setTimestamp()
+          + setTimestamp()
+          + setURL()
+          + setUnicodeStream()
+          + toString()
+          # ClientPreparedStatement()
+          # checkBounds()
+          # checkReadOnlySafeStatement()
+          # containsOnDuplicateKeyUpdateInSQL()
+          # executeBatchInternal()
+          # executeBatchSerially()
+          # executeBatchedInserts()
+          # executeInternal()
+          # executePreparedBatchAsMultiStatement()
+          # executeUpdateInternal()
+          # executeUpdateInternal()
+          # getCoreParameterIndex()
+          {static} # getInstance()
+          {static} # getInstance()
+          # getParameterIndexOffset()
+          # initQuery()
+          # isSelectQuery()
+          # prepareBatchedInsertSQL()
+          # setOneBatchedParameterSet()
+          # setRetrieveGeneratedKeys()
+          - generateMultiStatementForBatch()
+          - initializeFromParseInfo()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace jdbc {
+      class com.mysql.cj.jdbc.Clob {
+          - charData : String
+          - exceptionInterceptor : ExceptionInterceptor
+          + Clob()
+          + free()
+          + getAsciiStream()
+          + getCharacterStream()
+          + getCharacterStream()
+          + getSubString()
+          + length()
+          + position()
+          + position()
+          + setAsciiStream()
+          + setCharacterStream()
+          + setString()
+          + setString()
+          + streamClosed()
+          + truncate()
+          + writerClosed()
+          + writerClosed()
+          ~ Clob()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace jdbc {
+      class com.mysql.cj.jdbc.CommentClientInfoProvider {
+          - clientInfo : Properties
+          + destroy()
+          + getClientInfo()
+          + getClientInfo()
+          + initialize()
+          + setClientInfo()
+          + setClientInfo()
+          - setComment()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace jdbc {
+      class com.mysql.cj.jdbc.ConnectionGroup {
+          - activeConnections : long
+          - activeHosts : int
+          - closedHosts : Set<String>
+          - closedProxyTotalPhysicalConnections : long
+          - closedProxyTotalTransactions : long
+          - connectionProxies : HashMap<Long, LoadBalancedConnectionProxy>
+          - connections : long
+          - groupName : String
+          - hostList : Set<String>
+          - isInitialized : boolean
+          + addHost()
+          + addHost()
+          + closeConnectionProxy()
+          + getActiveHostCount()
+          + getActiveLogicalConnectionCount()
+          + getActivePhysicalConnectionCount()
+          + getClosedHosts()
+          + getGroupName()
+          + getInitialHosts()
+          + getTotalLogicalConnectionCount()
+          + getTotalPhysicalConnectionCount()
+          + getTotalTransactionCount()
+          + registerConnectionProxy()
+          + removeHost()
+          + removeHost()
+          + removeHost()
+          ~ ConnectionGroup()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace jdbc {
+      class com.mysql.cj.jdbc.ConnectionGroupManager {
+          {static} - GROUP_MAP : HashMap<String, ConnectionGroup>
+          {static} - hasRegisteredJmx : boolean
+          {static} - mbean : LoadBalanceConnectionGroupManager
+          {static} + addHost()
+          {static} + getActiveHostCount()
+          {static} + getActiveHostLists()
+          {static} + getActiveLogicalConnectionCount()
+          {static} + getActivePhysicalConnectionCount()
+          {static} + getConnectionGroup()
+          {static} + getConnectionGroupInstance()
+          {static} + getRegisteredConnectionGroups()
+          {static} + getTotalHostCount()
+          {static} + getTotalLogicalConnectionCount()
+          {static} + getTotalPhysicalConnectionCount()
+          {static} + getTotalTransactionCount()
+          {static} + registerJmx()
+          {static} + removeHost()
+          {static} + removeHost()
+          {static} - getGroupsMatching()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace jdbc {
+      class com.mysql.cj.jdbc.ConnectionImpl {
+          {static} + charsetMap : Map<?, ?>
+          {static} # DEFAULT_LOGGER_CLASS : String
+          # nullStatementResultSetFactory : ResultSetFactory
+          # propertySet : JdbcPropertySet
+          # props : Properties
+          # resultSetMetadataCache : LRUCache<String, CachedResultSetMetaData>
+          {static} # roundRobinStatsMap : Map<?, ?>
+          {static} - ABORT_PERM : SQLPermission
+          {static} - DEFAULT_RESULT_SET_CONCURRENCY : int
+          {static} - DEFAULT_RESULT_SET_TYPE : int
+          {static} - SET_NETWORK_TIMEOUT_PERM : SQLPermission
+          - autoIncrementIncrement : int
+          - autoReconnect : RuntimeProperty<Boolean>
+          - autoReconnectForPools : RuntimeProperty<Boolean>
+          - cachePrepStmts : RuntimeProperty<Boolean>
+          - cachedPreparedStatementParams : CacheAdapter<String, ParseInfo>
+          - connectionLifecycleInterceptors : List<ConnectionLifecycleInterceptor>
+          - database : String
+          - dbmd : DatabaseMetaData
+          - disconnectOnExpiredPasswords : RuntimeProperty<Boolean>
+          - emulateUnsupportedPstmts : RuntimeProperty<Boolean>
+          - exceptionInterceptor : ExceptionInterceptor
+          - hasTriedMasterFlag : boolean
+          - ignoreNonTxTables : RuntimeProperty<Boolean>
+          - infoProvider : ClientInfoProvider
+          - isInGlobalTx : boolean
+          - isolationLevel : int
+          {static} - mapTransIsolationNameToValue : Map<String, Integer>
+          - openStatements : CopyOnWriteArrayList<JdbcStatement>
+          - origHostInfo : HostInfo
+          - origHostToConnectTo : String
+          - origPortToConnectTo : int
+          - parentProxy : JdbcConnection
+          - parsedCallableStatementCache : LRUCache<CompoundCacheKey, CallableStatementParamInfo>
+          - password : String
+          - pedantic : RuntimeProperty<Boolean>
+          - prepStmtCacheSqlLimit : RuntimeProperty<Integer>
+          - processEscapeCodesForPrepStmts : RuntimeProperty<Boolean>
+          - queryInterceptors : List<QueryInterceptor>
+          {static} - random : Random
+          - readOnly : boolean
+          - readOnlyPropagatesToServer : RuntimeProperty<Boolean>
+          - realProxy : InvocationHandler
+          - reconnectAtTxEnd : RuntimeProperty<Boolean>
+          {static} - serialVersionUID : long
+          - serverSideStatementCache : LRUCache<CompoundCacheKey, ServerPreparedStatement>
+          - serverSideStatementCheckCache : LRUCache<String, Boolean>
+          - session : NativeSession
+          - topProxy : JdbcConnection
+          - typeMap : Map<String, Class<?>>
+          - useLocalSessionState : RuntimeProperty<Boolean>
+          - useLocalTransactionState : RuntimeProperty<Boolean>
+          - useServerPrepStmts : RuntimeProperty<Boolean>
+          - useUsageAdvisor : RuntimeProperty<Boolean>
+          - user : String
+          + ConnectionImpl()
+          + abort()
+          + abortInternal()
+          + changeUser()
+          + checkClosed()
+          + cleanup()
+          + clearHasTriedMaster()
+          + clearWarnings()
+          + clientPrepareStatement()
+          + clientPrepareStatement()
+          + clientPrepareStatement()
+          + clientPrepareStatement()
+          + clientPrepareStatement()
+          + clientPrepareStatement()
+          + clientPrepareStatement()
+          + close()
+          + commit()
+          + createArrayOf()
+          + createBlob()
+          + createClob()
+          + createNClob()
+          + createNewIO()
+          + createSQLXML()
+          + createStatement()
+          + createStatement()
+          + createStatement()
+          + createStruct()
+          + decachePreparedStatement()
+          + getActiveMySQLConnection()
+          + getActiveStatementCount()
+          + getAutoCommit()
+          + getAutoIncrementIncrement()
+          + getCachedMetaData()
+          + getCatalog()
+          + getCharacterSetMetadata()
+          + getClientInfo()
+          + getClientInfo()
+          + getClientInfoProviderImpl()
+          + getConnectionMutex()
+          + getDatabase()
+          + getExceptionInterceptor()
+          + getHoldability()
+          + getHost()
+          + getHostPortPair()
+          + getId()
+          + getIdleFor()
+          {static} + getInstance()
+          + getMetaData()
+          + getMetadataSafeStatement()
+          + getMetadataSafeStatement()
+          + getMultiHostParentProxy()
+          + getMultiHostSafeProxy()
+          + getNetworkTimeout()
+          + getProperties()
+          + getPropertySet()
+          + getQueryInterceptorsInstances()
+          + getSchema()
+          + getServerVersion()
+          + getSession()
+          + getSessionMaxRows()
+          + getStatementComment()
+          + getTransactionIsolation()
+          + getTypeMap()
+          + getURL()
+          + getUser()
+          + getWarnings()
+          + handleCleanup()
+          + handleNormalClose()
+          + handleReconnect()
+          + hasSameProperties()
+          + hasTriedMaster()
+          + initializeResultsMetadataFromCache()
+          + initializeSafeQueryInterceptors()
+          + isClosed()
+          + isInGlobalTx()
+          + isMasterConnection()
+          + isProxySet()
+          + isReadOnly()
+          + isReadOnly()
+          + isSameResource()
+          + isServerLocal()
+          + isValid()
+          + isWrapperFor()
+          + lowerCaseTableNames()
+          + nativeSQL()
+          + normalClose()
+          + ping()
+          + pingInternal()
+          + prepareCall()
+          + prepareCall()
+          + prepareCall()
+          + prepareStatement()
+          + prepareStatement()
+          + prepareStatement()
+          + prepareStatement()
+          + prepareStatement()
+          + prepareStatement()
+          + realClose()
+          + recachePreparedStatement()
+          + registerStatement()
+          + releaseSavepoint()
+          + resetServerState()
+          + rollback()
+          + rollback()
+          + serverPrepareStatement()
+          + serverPrepareStatement()
+          + serverPrepareStatement()
+          + serverPrepareStatement()
+          + serverPrepareStatement()
+          + serverPrepareStatement()
+          + setAutoCommit()
+          + setCatalog()
+          + setClientInfo()
+          + setClientInfo()
+          + setDatabase()
+          + setFailedOver()
+          + setHoldability()
+          + setInGlobalTx()
+          + setNetworkTimeout()
+          + setProxy()
+          + setReadOnly()
+          + setReadOnlyInternal()
+          + setSavepoint()
+          + setSavepoint()
+          + setSchema()
+          + setSessionMaxRows()
+          + setStatementComment()
+          + setTransactionIsolation()
+          + setTypeMap()
+          + shutdownServer()
+          + storesLowerCaseTableName()
+          + throwConnectionClosedException()
+          + transactionBegun()
+          + transactionCompleted()
+          + unSafeQueryInterceptors()
+          + unregisterStatement()
+          + unwrap()
+          + versionMeetsMinimum()
+          # ConnectionImpl()
+          {static} # getNextRoundRobinHostIndex()
+          - canHandleAsServerPreparedStatement()
+          - checkTransactionIsolationLevel()
+          - closeAllOpenStatements()
+          - closeStatement()
+          - connectOneTryOnly()
+          - connectWithRetries()
+          - createPreparedStatementCaches()
+          - getMetaData()
+          - getProxy()
+          - handleAutoCommitDefaults()
+          - initializePropsFromServer()
+          {static} - nullSafeCompare()
+          - parseCallableStatement()
+          - rollbackNoChecks()
+          - setSavepoint()
+          - setupServerForTruncationChecks()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace jdbc {
+      class com.mysql.cj.jdbc.ConnectionImpl.CompoundCacheKey {
+          ~ componentOne : String
+          ~ componentTwo : String
+          ~ hashCode : int
+          + equals()
+          + hashCode()
+          ~ CompoundCacheKey()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace jdbc {
+      class com.mysql.cj.jdbc.ConnectionImpl.NetworkTimeoutSetter {
+          - connRef : WeakReference<JdbcConnection>
+          - milliseconds : int
+          + NetworkTimeoutSetter()
+          + run()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace jdbc {
+      class com.mysql.cj.jdbc.ConnectionWrapper {
+          # mc : JdbcConnection
+          - closed : boolean
+          - invalidHandleStr : String
+          - isForXa : boolean
+          + ConnectionWrapper()
+          + abort()
+          + abortInternal()
+          + changeUser()
+          + checkClosed()
+          + cleanup()
+          + clearHasTriedMaster()
+          + clearWarnings()
+          + clientPrepare()
+          + clientPrepare()
+          + clientPrepareStatement()
+          + clientPrepareStatement()
+          + clientPrepareStatement()
+          + clientPrepareStatement()
+          + clientPrepareStatement()
+          + clientPrepareStatement()
+          + close()
+          + commit()
+          + createArrayOf()
+          + createBlob()
+          + createClob()
+          + createNClob()
+          + createNewIO()
+          + createSQLXML()
+          + createStatement()
+          + createStatement()
+          + createStatement()
+          + createStruct()
+          + decachePreparedStatement()
+          + getActiveMySQLConnection()
+          + getActiveStatementCount()
+          + getAutoCommit()
+          + getAutoIncrementIncrement()
+          + getCachedMetaData()
+          + getCatalog()
+          + getCharacterSetMetadata()
+          + getClientInfo()
+          + getClientInfo()
+          + getClientInfoProviderImpl()
+          + getConnectionMutex()
+          + getDatabase()
+          + getExceptionInterceptor()
+          + getHoldability()
+          + getHost()
+          + getHostPortPair()
+          + getId()
+          + getIdleFor()
+          + getMetaData()
+          + getMetadataSafeStatement()
+          + getMultiHostParentProxy()
+          + getMultiHostSafeProxy()
+          + getNetworkTimeout()
+          + getProperties()
+          + getPropertySet()
+          + getQueryInterceptorsInstances()
+          + getSchema()
+          + getServerVersion()
+          + getSession()
+          + getSessionMaxRows()
+          + getStatementComment()
+          + getTransactionIsolation()
+          + getTypeMap()
+          + getURL()
+          + getUser()
+          + getWarnings()
+          + hasSameProperties()
+          + hasTriedMaster()
+          + initializeResultsMetadataFromCache()
+          + initializeSafeQueryInterceptors()
+          + isClosed()
+          + isInGlobalTx()
+          + isMasterConnection()
+          + isProxySet()
+          + isReadOnly()
+          + isReadOnly()
+          + isSameResource()
+          + isServerLocal()
+          + isValid()
+          + isWrapperFor()
+          + lowerCaseTableNames()
+          + nativeSQL()
+          + normalClose()
+          + ping()
+          + pingInternal()
+          + prepareCall()
+          + prepareCall()
+          + prepareCall()
+          + prepareStatement()
+          + prepareStatement()
+          + prepareStatement()
+          + prepareStatement()
+          + prepareStatement()
+          + prepareStatement()
+          + realClose()
+          + recachePreparedStatement()
+          + registerStatement()
+          + releaseSavepoint()
+          + resetServerState()
+          + rollback()
+          + rollback()
+          + serverPrepareStatement()
+          + serverPrepareStatement()
+          + serverPrepareStatement()
+          + serverPrepareStatement()
+          + serverPrepareStatement()
+          + serverPrepareStatement()
+          + setAutoCommit()
+          + setCatalog()
+          + setClientInfo()
+          + setClientInfo()
+          + setDatabase()
+          + setFailedOver()
+          + setHoldability()
+          + setInGlobalTx()
+          + setNetworkTimeout()
+          + setProxy()
+          + setReadOnly()
+          + setReadOnlyInternal()
+          + setSavepoint()
+          + setSavepoint()
+          + setSchema()
+          + setSessionMaxRows()
+          + setStatementComment()
+          + setTransactionIsolation()
+          + setTypeMap()
+          + shutdownServer()
+          + storesLowerCaseTableName()
+          + throwConnectionClosedException()
+          + transactionBegun()
+          + transactionCompleted()
+          + unSafeQueryInterceptors()
+          + unregisterStatement()
+          + unwrap()
+          # close()
+          {static} # getInstance()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace jdbc {
+      class com.mysql.cj.jdbc.DatabaseMetaData {
+          {static} # MAX_IDENTIFIER_LENGTH : int
+          {static} # SYSTEM_TABLE_AS_BYTES : byte[]
+          {static} # TABLE_AS_BYTES : byte[]
+          {static} # VIEW_AS_BYTES : byte[]
+          # conn : JdbcConnection
+          # database : String
+          # databaseTerm : RuntimeProperty<DatabaseTerm>
+          {static} # maxBufferSize : int
+          # nullDatabaseMeansCurrent : RuntimeProperty<Boolean>
+          # pedantic : boolean
+          # quotedId : String
+          # resultSetFactory : ResultSetFactory
+          # session : NativeSession
+          # tinyInt1isBit : boolean
+          # transformedBitIsBoolean : boolean
+          # useHostsInPrivileges : boolean
+          {static} ~ SQL2003_KEYWORDS : List<String>
+          {static} - MYSQL_KEYWORDS : String[]
+          {static} - SUPPORTS_FK : String
+          - exceptionInterceptor : ExceptionInterceptor
+          - metadataCollationIndex : int
+          - metadataEncoding : String
+          {static} - mysqlKeywords : String
+          + allProceduresAreCallable()
+          + allTablesAreSelectable()
+          + autoCommitFailureClosesAllResultSets()
+          + dataDefinitionCausesTransactionCommit()
+          + dataDefinitionIgnoredInTransactions()
+          + deletesAreDetected()
+          + doesMaxRowSizeIncludeBlobs()
+          + extractForeignKeyForTable()
+          + extractForeignKeyFromCreateTable()
+          + generatedKeyAlwaysReturned()
+          + getAttributes()
+          + getBestRowIdentifier()
+          + getCatalogSeparator()
+          + getCatalogTerm()
+          + getCatalogs()
+          + getClientInfoProperties()
+          + getColumnPrivileges()
+          + getColumns()
+          + getConnection()
+          + getCrossReference()
+          + getDatabaseMajorVersion()
+          + getDatabaseMinorVersion()
+          + getDatabaseProductName()
+          + getDatabaseProductVersion()
+          + getDefaultTransactionIsolation()
+          + getDriverMajorVersion()
+          + getDriverMinorVersion()
+          + getDriverName()
+          + getDriverVersion()
+          + getExportedKeys()
+          + getExtraNameCharacters()
+          + getFunctionColumns()
+          + getFunctions()
+          + getIdentifierQuoteString()
+          + getImportedKeys()
+          + getIndexInfo()
+          + getJDBCMajorVersion()
+          + getJDBCMinorVersion()
+          + getMaxBinaryLiteralLength()
+          + getMaxCatalogNameLength()
+          + getMaxCharLiteralLength()
+          + getMaxColumnNameLength()
+          + getMaxColumnsInGroupBy()
+          + getMaxColumnsInIndex()
+          + getMaxColumnsInOrderBy()
+          + getMaxColumnsInSelect()
+          + getMaxColumnsInTable()
+          + getMaxConnections()
+          + getMaxCursorNameLength()
+          + getMaxIndexLength()
+          + getMaxProcedureNameLength()
+          + getMaxRowSize()
+          + getMaxSchemaNameLength()
+          + getMaxStatementLength()
+          + getMaxStatements()
+          + getMaxTableNameLength()
+          + getMaxTablesInSelect()
+          + getMaxUserNameLength()
+          + getMetadataCollationIndex()
+          + getMetadataEncoding()
+          + getNumericFunctions()
+          + getPrimaryKeys()
+          + getProcedureColumns()
+          + getProcedureTerm()
+          + getProcedures()
+          + getPseudoColumns()
+          + getResultSetHoldability()
+          + getRowIdLifetime()
+          + getSQLKeywords()
+          + getSQLStateType()
+          + getSchemaTerm()
+          + getSchemas()
+          + getSchemas()
+          + getSearchStringEscape()
+          + getStringFunctions()
+          + getSuperTables()
+          + getSuperTypes()
+          + getSystemFunctions()
+          + getTablePrivileges()
+          + getTableTypes()
+          + getTables()
+          + getTimeDateFunctions()
+          + getTypeInfo()
+          + getUDTs()
+          + getURL()
+          + getUserName()
+          + getVersionColumns()
+          + insertsAreDetected()
+          + isCatalogAtStart()
+          + isReadOnly()
+          + isWrapperFor()
+          + locatorsUpdateCopy()
+          + nullPlusNonNullIsNull()
+          + nullsAreSortedAtEnd()
+          + nullsAreSortedAtStart()
+          + nullsAreSortedHigh()
+          + nullsAreSortedLow()
+          + othersDeletesAreVisible()
+          + othersInsertsAreVisible()
+          + othersUpdatesAreVisible()
+          + ownDeletesAreVisible()
+          + ownInsertsAreVisible()
+          + ownUpdatesAreVisible()
+          + providesQueryObjectGenerator()
+          + setMetadataCollationIndex()
+          + setMetadataEncoding()
+          + storesLowerCaseIdentifiers()
+          + storesLowerCaseQuotedIdentifiers()
+          + storesMixedCaseIdentifiers()
+          + storesMixedCaseQuotedIdentifiers()
+          + storesUpperCaseIdentifiers()
+          + storesUpperCaseQuotedIdentifiers()
+          + supportsANSI92EntryLevelSQL()
+          + supportsANSI92FullSQL()
+          + supportsANSI92IntermediateSQL()
+          + supportsAlterTableWithAddColumn()
+          + supportsAlterTableWithDropColumn()
+          + supportsBatchUpdates()
+          + supportsCatalogsInDataManipulation()
+          + supportsCatalogsInIndexDefinitions()
+          + supportsCatalogsInPrivilegeDefinitions()
+          + supportsCatalogsInProcedureCalls()
+          + supportsCatalogsInTableDefinitions()
+          + supportsColumnAliasing()
+          + supportsConvert()
+          + supportsConvert()
+          + supportsCoreSQLGrammar()
+          + supportsCorrelatedSubqueries()
+          + supportsDataDefinitionAndDataManipulationTransactions()
+          + supportsDataManipulationTransactionsOnly()
+          + supportsDifferentTableCorrelationNames()
+          + supportsExpressionsInOrderBy()
+          + supportsExtendedSQLGrammar()
+          + supportsFullOuterJoins()
+          + supportsGetGeneratedKeys()
+          + supportsGroupBy()
+          + supportsGroupByBeyondSelect()
+          + supportsGroupByUnrelated()
+          + supportsIntegrityEnhancementFacility()
+          + supportsLikeEscapeClause()
+          + supportsLimitedOuterJoins()
+          + supportsMinimumSQLGrammar()
+          + supportsMixedCaseIdentifiers()
+          + supportsMixedCaseQuotedIdentifiers()
+          + supportsMultipleOpenResults()
+          + supportsMultipleResultSets()
+          + supportsMultipleTransactions()
+          + supportsNamedParameters()
+          + supportsNonNullableColumns()
+          + supportsOpenCursorsAcrossCommit()
+          + supportsOpenCursorsAcrossRollback()
+          + supportsOpenStatementsAcrossCommit()
+          + supportsOpenStatementsAcrossRollback()
+          + supportsOrderByUnrelated()
+          + supportsOuterJoins()
+          + supportsPositionedDelete()
+          + supportsPositionedUpdate()
+          + supportsResultSetConcurrency()
+          + supportsResultSetHoldability()
+          + supportsResultSetType()
+          + supportsSavepoints()
+          + supportsSchemasInDataManipulation()
+          + supportsSchemasInIndexDefinitions()
+          + supportsSchemasInPrivilegeDefinitions()
+          + supportsSchemasInProcedureCalls()
+          + supportsSchemasInTableDefinitions()
+          + supportsSelectForUpdate()
+          + supportsStatementPooling()
+          + supportsStoredFunctionsUsingCallSyntax()
+          + supportsStoredProcedures()
+          + supportsSubqueriesInComparisons()
+          + supportsSubqueriesInExists()
+          + supportsSubqueriesInIns()
+          + supportsSubqueriesInQuantifieds()
+          + supportsTableCorrelationNames()
+          + supportsTransactionIsolationLevel()
+          + supportsTransactions()
+          + supportsUnion()
+          + supportsUnionAll()
+          + unwrap()
+          + updatesAreDetected()
+          + usesLocalFilePerTable()
+          + usesLocalFiles()
+          # DatabaseMetaData()
+          # convertToJdbcFunctionList()
+          # convertToJdbcProcedureList()
+          # createColumnsFields()
+          # createFieldMetadataForGetProcedures()
+          # createFkMetadataFields()
+          # createFunctionColumnsFields()
+          # createIndexInfoFields()
+          # createProcedureColumnsFields()
+          # createTablesFields()
+          # getColumnPrivilegesFields()
+          # getColumnType()
+          # getDatabase()
+          # getDatabaseIterator()
+          # getDatabases()
+          # getDatabases()
+          # getExceptionInterceptor()
+          # getForeignKeyActions()
+          # getFunctionsFields()
+          {static} # getInstance()
+          # getPrimaryKeysFields()
+          {static} # getProcedureOrFunctionColumnType()
+          # getProcedureOrFunctionColumns()
+          # getProceduresAndOrFunctions()
+          # getSchemaPatternIterator()
+          # getTableNameWithCase()
+          # getVersionColumnsFields()
+          # parseTableStatusIntoLocalAndReferencedColumns()
+          # prepareMetaDataSafeStatement()
+          # s2b()
+          ~ populateKeyResults()
+          - convertTypeDescriptorToProcedureRow()
+          - endPositionOfParameterDeclaration()
+          - findEndOfReturnsClause()
+          - getCallStmtParameterTypes()
+          - getCascadeDeleteOption()
+          - getCascadeUpdateOption()
+          - getTypeInfo()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace jdbc {
+      class com.mysql.cj.jdbc.DatabaseMetaData.ComparableWrapper {
+          + ComparableWrapper()
+          + compareTo()
+          + equals()
+          + getKey()
+          + getValue()
+          + hashCode()
+          + toString()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace jdbc {
+      class com.mysql.cj.jdbc.DatabaseMetaData.IndexMetaDataKey {
+          ~ columnIndexName : String
+          ~ columnNonUnique : Boolean
+          ~ columnOrdinalPosition : Short
+          ~ columnType : Short
+          + compareTo()
+          + equals()
+          + hashCode()
+          ~ IndexMetaDataKey()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace jdbc {
+      abstract class com.mysql.cj.jdbc.DatabaseMetaData.IteratorWithCleanup {
+          {abstract} ~ close()
+          {abstract} ~ hasNext()
+          {abstract} ~ next()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace jdbc {
+      class com.mysql.cj.jdbc.DatabaseMetaData.LocalAndReferencedColumns {
+          ~ constraintName : String
+          ~ localColumnsList : List<String>
+          ~ referencedColumnsList : List<String>
+          ~ referencedDatabase : String
+          ~ referencedTable : String
+          ~ LocalAndReferencedColumns()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace jdbc {
+      enum ProcedureType {
+        FUNCTION
+        PROCEDURE
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace jdbc {
+      class com.mysql.cj.jdbc.DatabaseMetaData.SingleStringIterator {
+          ~ onFirst : boolean
+          ~ value : String
+          ~ SingleStringIterator()
+          ~ close()
+          ~ hasNext()
+          ~ next()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace jdbc {
+      class com.mysql.cj.jdbc.DatabaseMetaData.StringListIterator {
+          ~ idx : int
+          ~ list : List<String>
+          ~ StringListIterator()
+          ~ close()
+          ~ hasNext()
+          ~ next()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace jdbc {
+      class com.mysql.cj.jdbc.DatabaseMetaData.TableMetaDataKey {
+          ~ tableCat : String
+          ~ tableName : String
+          ~ tableSchem : String
+          ~ tableType : String
+          + compareTo()
+          + equals()
+          + hashCode()
+          ~ TableMetaDataKey()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace jdbc {
+      enum TableType {
+        LOCAL_TEMPORARY
+        SYSTEM_TABLE
+        SYSTEM_VIEW
+        TABLE
+        UNKNOWN
+        VIEW
+        name
+        nameAsBytes
+        synonyms
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace jdbc {
+      class com.mysql.cj.jdbc.DatabaseMetaData.TypeDescriptor {
+          ~ bufferLength : int
+          ~ charOctetLength : int
+          ~ columnSize : Integer
+          ~ datetimePrecision : Integer
+          ~ decimalDigits : Integer
+          ~ isNullable : String
+          ~ mysqlType : MysqlType
+          ~ mysqlTypeName : String
+          ~ nullability : int
+          ~ numPrecRadix : int
+          ~ TypeDescriptor()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace jdbc {
+      class com.mysql.cj.jdbc.DatabaseMetaDataUsingInfoSchema {
+          {static} - keywordsCache : Map<ServerVersion, String>
+          + getBestRowIdentifier()
+          + getCatalogs()
+          + getColumnPrivileges()
+          + getColumns()
+          + getCrossReference()
+          + getExportedKeys()
+          + getFunctionColumns()
+          + getFunctions()
+          + getImportedKeys()
+          + getIndexInfo()
+          + getPrimaryKeys()
+          + getProcedureColumns()
+          + getProcedures()
+          + getSQLKeywords()
+          + getSchemas()
+          + getSchemas()
+          + getTablePrivileges()
+          + getTables()
+          + getVersionColumns()
+          # DatabaseMetaDataUsingInfoSchema()
+          # executeMetadataQuery()
+          # getFunctionConstant()
+          - appendJdbcTypeMappingQuery()
+          - generateDeleteRuleClause()
+          - generateOptionalRefContraintsJoin()
+          - generateUpdateRuleClause()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace jdbc {
+      enum FunctionConstant {
+        FUNCTION_COLUMN_IN
+        FUNCTION_COLUMN_INOUT
+        FUNCTION_COLUMN_OUT
+        FUNCTION_COLUMN_RESULT
+        FUNCTION_COLUMN_RETURN
+        FUNCTION_COLUMN_UNKNOWN
+        FUNCTION_NO_NULLS
+        FUNCTION_NULLABLE
+        FUNCTION_NULLABLE_UNKNOWN
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace jdbc {
+      class com.mysql.cj.jdbc.Driver {
+          + Driver()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace jdbc {
+      class com.mysql.cj.jdbc.EscapeProcessor {
+          {static} - JDBC_CONVERT_TO_MYSQL_TYPE_MAP : Map<String, String>
+          {static} + escapeSQL()
+          {static} - processConvertToken()
+          {static} - processTimeToken()
+          {static} - processTimestampToken()
+          {static} - removeWhitespace()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace jdbc {
+      class com.mysql.cj.jdbc.EscapeProcessorResult {
+          ~ callingStoredFunction : boolean
+          ~ escapedSql : String
+          ~ usesVariables : byte
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace jdbc {
+      abstract class com.mysql.cj.jdbc.IterateBlock {
+          ~ iteratorWithCleanup : IteratorWithCleanup<T>
+          ~ javaIterator : Iterator<T>
+          ~ stopIterating : boolean
+          + doForAll()
+          + fullIteration()
+          ~ IterateBlock()
+          ~ IterateBlock()
+          {abstract} ~ forEach()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace jdbc {
+      class com.mysql.cj.jdbc.JdbcPropertySetImpl {
+          {static} - serialVersionUID : long
+          + exposeAsDriverPropertyInfo()
+          + postInitialization()
+          - getAsDriverPropertyInfo()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace jdbc {
+      class com.mysql.cj.jdbc.MysqlConnectionPoolDataSource {
+          {static} ~ serialVersionUID : long
+          + getPooledConnection()
+          + getPooledConnection()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace jdbc {
+      class com.mysql.cj.jdbc.MysqlDataSource {
+          # databaseName : String
+          # description : String
+          # encoding : String
+          # explicitPort : boolean
+          # explicitUrl : boolean
+          # hostName : String
+          # logWriter : PrintWriter
+          {static} # mysqlDriver : NonRegisteringDriver
+          # password : String
+          # port : int
+          # profileSQLString : String
+          # url : String
+          # user : String
+          {static} ~ serialVersionUID : long
+          + MysqlDataSource()
+          + exposeAsProperties()
+          + getConnection()
+          + getConnection()
+          + getDatabaseName()
+          + getDescription()
+          + getLogWriter()
+          + getLoginTimeout()
+          + getParentLogger()
+          + getPassword()
+          + getPort()
+          + getPortNumber()
+          + getReference()
+          + getServerName()
+          + getURL()
+          + getUrl()
+          + getUser()
+          + isWrapperFor()
+          + setDatabaseName()
+          + setDescription()
+          + setLogWriter()
+          + setLoginTimeout()
+          + setPassword()
+          + setPort()
+          + setPortNumber()
+          + setPropertiesViaRef()
+          + setServerName()
+          + setURL()
+          + setUrl()
+          + setUser()
+          + unwrap()
+          # getBooleanRuntimeProperty()
+          # getConnection()
+          # getEnumRuntimeProperty()
+          # getIntegerRuntimeProperty()
+          # getLongRuntimeProperty()
+          # getMemorySizeRuntimeProperty()
+          # getStringRuntimeProperty()
+          # setBooleanRuntimeProperty()
+          # setEnumRuntimeProperty()
+          # setIntegerRuntimeProperty()
+          # setLongRuntimeProperty()
+          # setMemorySizeRuntimeProperty()
+          # setStringRuntimeProperty()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace jdbc {
+      class com.mysql.cj.jdbc.MysqlDataSourceFactory {
+          {static} # DATA_SOURCE_CLASS_NAME : String
+          {static} # POOL_DATA_SOURCE_CLASS_NAME : String
+          {static} # XA_DATA_SOURCE_CLASS_NAME : String
+          + getObjectInstance()
+          - nullSafeRefAddrStringGet()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace jdbc {
+      class com.mysql.cj.jdbc.MysqlParameterMetadata {
+          ~ metadata : ResultSetMetaData
+          ~ parameterCount : int
+          ~ returnSimpleMetadata : boolean
+          - exceptionInterceptor : ExceptionInterceptor
+          + MysqlParameterMetadata()
+          + getParameterClassName()
+          + getParameterCount()
+          + getParameterMode()
+          + getParameterType()
+          + getParameterTypeName()
+          + getPrecision()
+          + getScale()
+          + isNullable()
+          + isSigned()
+          + isWrapperFor()
+          + unwrap()
+          ~ MysqlParameterMetadata()
+          - checkAvailable()
+          - checkBounds()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace jdbc {
+      class com.mysql.cj.jdbc.MysqlPooledConnection {
+          {static} + CONNECTION_CLOSED_EVENT : int
+          {static} + CONNECTION_ERROR_EVENT : int
+          - connectionEventListeners : Map<ConnectionEventListener, ConnectionEventListener>
+          - exceptionInterceptor : ExceptionInterceptor
+          - logicalHandle : Connection
+          - physicalConn : JdbcConnection
+          - statementEventListeners : Map<StatementEventListener, StatementEventListener>
+          + MysqlPooledConnection()
+          + addConnectionEventListener()
+          + addStatementEventListener()
+          + close()
+          + getConnection()
+          + removeConnectionEventListener()
+          + removeStatementEventListener()
+          # callConnectionEventListeners()
+          # getConnection()
+          # getExceptionInterceptor()
+          {static} # getInstance()
+          ~ fireStatementEvent()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace jdbc {
+      class com.mysql.cj.jdbc.MysqlSQLXML {
+          - asByteArrayOutputStream : ByteArrayOutputStream
+          - asDOMResult : DOMResult
+          - asSAXResult : SAXResult
+          - asStringWriter : StringWriter
+          - columnIndexOfXml : int
+          - exceptionInterceptor : ExceptionInterceptor
+          - fromResultSet : boolean
+          - inputFactory : XMLInputFactory
+          - isClosed : boolean
+          - outputFactory : XMLOutputFactory
+          - owningResultSet : ResultSetInternalMethods
+          - stringRep : String
+          - workingWithResult : boolean
+          + MysqlSQLXML()
+          + MysqlSQLXML()
+          + free()
+          + getBinaryStream()
+          + getCharacterStream()
+          + getSource()
+          + getString()
+          + isEmpty()
+          + setBinaryStream()
+          + setCharacterStream()
+          + setResult()
+          + setString()
+          # domSourceToString()
+          # readerToString()
+          # serializeAsCharacterStream()
+          # serializeAsString()
+          - binaryInputStreamStreamToReader()
+          - checkClosed()
+          - checkWorkingWithResult()
+          - setBinaryStreamInternal()
+          - setCharacterStreamInternal()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace jdbc {
+      class com.mysql.cj.jdbc.MysqlSQLXML.SimpleSaxToReader {
+          ~ buf : StringBuilder
+          - inCDATA : boolean
+          + characters()
+          + comment()
+          + endCDATA()
+          + endDocument()
+          + ignorableWhitespace()
+          + startCDATA()
+          + startDocument()
+          + startElement()
+          ~ toReader()
+          - escapeCharsForXml()
+          - escapeCharsForXml()
+          - escapeCharsForXml()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace jdbc {
+      class com.mysql.cj.jdbc.MysqlSavepoint {
+          - exceptionInterceptor : ExceptionInterceptor
+          - savepointName : String
+          + getSavepointId()
+          + getSavepointName()
+          ~ MysqlSavepoint()
+          ~ MysqlSavepoint()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace jdbc {
+      class com.mysql.cj.jdbc.MysqlXAConnection {
+          # logXaCommands : boolean
+          {static} - MAX_COMMAND_LENGTH : int
+          {static} - MYSQL_ERROR_CODES_TO_XA_ERROR_CODES : Map<Integer, Integer>
+          - log : Log
+          - underlyingConnection : JdbcConnection
+          + MysqlXAConnection()
+          + commit()
+          + end()
+          + forget()
+          + getConnection()
+          + getTransactionTimeout()
+          + getXAResource()
+          + isSameRM()
+          + prepare()
+          + recover()
+          + rollback()
+          + setTransactionTimeout()
+          + start()
+          {static} # getInstance()
+          {static} # mapXAExceptionFromSQLException()
+          {static} # recover()
+          {static} - appendXid()
+          - dispatchCommand()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace jdbc {
+      class com.mysql.cj.jdbc.MysqlXADataSource {
+          {static} ~ serialVersionUID : long
+          + MysqlXADataSource()
+          + getXAConnection()
+          + getXAConnection()
+          - wrapConnection()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace jdbc {
+      class com.mysql.cj.jdbc.MysqlXAException {
+          # xidAsString : String
+          - message : String
+          {static} - serialVersionUID : long
+          + MysqlXAException()
+          + MysqlXAException()
+          + getMessage()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace jdbc {
+      class com.mysql.cj.jdbc.MysqlXid {
+          ~ hash : int
+          ~ myBqual : byte[]
+          ~ myFormatId : int
+          ~ myGtrid : byte[]
+          + MysqlXid()
+          + equals()
+          + getBranchQualifier()
+          + getFormatId()
+          + getGlobalTransactionId()
+          + hashCode()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace jdbc {
+      class com.mysql.cj.jdbc.NClob {
+          + NClob()
+          ~ NClob()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace jdbc {
+      class com.mysql.cj.jdbc.NonRegisteringDriver {
+          + NonRegisteringDriver()
+          + acceptsURL()
+          + connect()
+          + getMajorVersion()
+          + getMinorVersion()
+          {static} + getOSName()
+          + getParentLogger()
+          {static} + getPlatform()
+          + getPropertyInfo()
+          + jdbcCompliant()
+          {static} ~ getMajorVersionInternal()
+          {static} ~ getMinorVersionInternal()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace jdbc {
+      class com.mysql.cj.jdbc.ParameterBindingsImpl {
+          - batchedArgs : List<Object>
+          - bindValues : BindValue[]
+          - bindingsAsRs : ResultSetImpl
+          - exceptionInterceptor : ExceptionInterceptor
+          - propertySet : PropertySet
+          - queryBindings : QueryBindings<?>
+          + getArray()
+          + getAsciiStream()
+          + getBigDecimal()
+          + getBigInteger()
+          + getBinaryStream()
+          + getBlob()
+          + getBoolean()
+          + getByte()
+          + getBytes()
+          + getCharacterStream()
+          + getClob()
+          + getDate()
+          + getDouble()
+          + getFloat()
+          + getInt()
+          + getLong()
+          + getNCharacterStream()
+          + getNClob()
+          + getObject()
+          + getRef()
+          + getShort()
+          + getString()
+          + getTime()
+          + getTimestamp()
+          + getURL()
+          + isNull()
+          ~ ParameterBindingsImpl()
+          - getBytesRepresentation()
+          - getBytesRepresentationForBatch()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace jdbc {
+      class com.mysql.cj.jdbc.PreparedStatementWrapper {
+          + addBatch()
+          + clearParameters()
+          + close()
+          + execute()
+          + executeLargeUpdate()
+          + executeQuery()
+          + executeUpdate()
+          + getMetaData()
+          + getParameterMetaData()
+          + isWrapperFor()
+          + setArray()
+          + setAsciiStream()
+          + setAsciiStream()
+          + setAsciiStream()
+          + setBigDecimal()
+          + setBinaryStream()
+          + setBinaryStream()
+          + setBinaryStream()
+          + setBlob()
+          + setBlob()
+          + setBlob()
+          + setBoolean()
+          + setByte()
+          + setBytes()
+          + setCharacterStream()
+          + setCharacterStream()
+          + setCharacterStream()
+          + setClob()
+          + setClob()
+          + setClob()
+          + setDate()
+          + setDate()
+          + setDouble()
+          + setFloat()
+          + setInt()
+          + setLong()
+          + setNCharacterStream()
+          + setNCharacterStream()
+          + setNClob()
+          + setNClob()
+          + setNClob()
+          + setNString()
+          + setNull()
+          + setNull()
+          + setObject()
+          + setObject()
+          + setObject()
+          + setObject()
+          + setObject()
+          + setRef()
+          + setRowId()
+          + setSQLXML()
+          + setShort()
+          + setString()
+          + setTime()
+          + setTime()
+          + setTimestamp()
+          + setTimestamp()
+          + setURL()
+          + setUnicodeStream()
+          + toString()
+          + unwrap()
+          {static} # getInstance()
+          ~ PreparedStatementWrapper()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace jdbc {
+      class com.mysql.cj.jdbc.ServerPreparedStatement {
+          # isCacheable : boolean
+          # isCached : boolean
+          - hasOnDuplicateKeyUpdate : boolean
+          - invalid : boolean
+          - invalidationException : CJException
+          + addBatch()
+          + asSql()
+          + clearParameters()
+          + close()
+          + getMetaData()
+          + getParameterMetaData()
+          + getServerStatementId()
+          + isNull()
+          + realClose()
+          + setPoolable()
+          + setURL()
+          + setUnicodeStream()
+          + toString()
+          # ServerPreparedStatement()
+          # checkBounds()
+          # checkClosed()
+          # containsOnDuplicateKeyUpdateInSQL()
+          # executeBatchSerially()
+          # executeInternal()
+          # getBinding()
+          {static} # getInstance()
+          # initQuery()
+          # prepareBatchedInsertSQL()
+          # rePrepare()
+          # serverExecute()
+          # serverPrepare()
+          # setClosed()
+          # setOneBatchedParameterSet()
+          {static} - appendMessageToException()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace jdbc {
+      class com.mysql.cj.jdbc.StatementImpl {
+          {static} + USES_VARIABLES_FALSE : byte
+          {static} + USES_VARIABLES_TRUE : byte
+          {static} + USES_VARIABLES_UNKNOWN : byte
+          + maxRows : int
+          {static} # PING_MARKER : String
+          # batchedGeneratedKeys : ArrayList<Row>
+          # charEncoding : String
+          # commandBuilder : NativeMessageBuilder
+          # connection : JdbcConnection
+          # continueBatchOnError : boolean
+          # doEscapeProcessing : boolean
+          # dontCheckOnDuplicateKeyUpdateInSQL : boolean
+          # dontTrackOpenResources : RuntimeProperty<Boolean>
+          # dumpQueriesOnException : RuntimeProperty<Boolean>
+          # exceptionInterceptor : ExceptionInterceptor
+          # generatedKeysResults : ResultSetInternalMethods
+          # holdResultsOpenOverClose : boolean
+          # isClosed : boolean
+          # lastInsertId : long
+          # lastQueryIsOnDupKeyUpdate : boolean
+          # logSlowQueries : boolean
+          # maxAllowedPacket : RuntimeProperty<Integer>
+          # maxFieldSize : int
+          # openResults : Set<ResultSetInternalMethods>
+          # pedantic : boolean
+          # pingTarget : PingTarget
+          # profileSQL : boolean
+          # query : Query
+          # resultSetConcurrency : int
+          # resultSetFactory : ResultSetFactory
+          # results : ResultSetInternalMethods
+          # retrieveGeneratedKeys : boolean
+          # rewriteBatchedStatements : RuntimeProperty<Boolean>
+          # sendFractionalSeconds : RuntimeProperty<Boolean>
+          # session : NativeSession
+          # updateCount : long
+          # useUsageAdvisor : boolean
+          # warningChain : SQLWarning
+          - closeOnCompletion : boolean
+          - isImplicitlyClosingResults : boolean
+          - isPoolable : boolean
+          - originalFetchSize : int
+          - originalResultSetType : Type
+          + StatementImpl()
+          + addBatch()
+          + addBatch()
+          + cancel()
+          + checkCancelTimeout()
+          + clearBatch()
+          + clearBatchedArgs()
+          + clearWarnings()
+          + close()
+          + closeOnCompletion()
+          + closeQuery()
+          + disableStreamingResults()
+          + enableStreamingResults()
+          + execute()
+          + execute()
+          + execute()
+          + execute()
+          + executeBatch()
+          + executeLargeBatch()
+          + executeLargeUpdate()
+          + executeLargeUpdate()
+          + executeLargeUpdate()
+          + executeLargeUpdate()
+          + executeQuery()
+          + executeSimpleNonQuery()
+          + executeUpdate()
+          + executeUpdate()
+          + executeUpdate()
+          + executeUpdate()
+          + getBatchedArgs()
+          + getCancelTimeoutMutex()
+          + getConnection()
+          + getCurrentDatabase()
+          + getExceptionInterceptor()
+          + getFetchDirection()
+          + getFetchSize()
+          + getGeneratedKeys()
+          + getId()
+          + getLargeMaxRows()
+          + getLargeUpdateCount()
+          + getLastInsertID()
+          + getLocalInfileInputStream()
+          + getLongUpdateCount()
+          + getMaxFieldSize()
+          + getMaxRows()
+          + getMoreResults()
+          + getMoreResults()
+          + getOpenResultSetCount()
+          + getQuery()
+          + getQueryTimeout()
+          + getResultFetchSize()
+          + getResultSet()
+          + getResultSetConcurrency()
+          + getResultSetFactory()
+          + getResultSetHoldability()
+          + getResultSetType()
+          + getResultType()
+          + getServerStatementId()
+          + getSession()
+          + getStatementExecuting()
+          + getTimeoutInMillis()
+          + getUpdateCount()
+          + getWarnings()
+          + isClearWarningsCalled()
+          + isCloseOnCompletion()
+          + isClosed()
+          + isPoolable()
+          + isWrapperFor()
+          + removeOpenResultSet()
+          + resetCancelledState()
+          + setCancelStatus()
+          + setClearWarningsCalled()
+          + setCurrentDatabase()
+          + setCursorName()
+          + setEscapeProcessing()
+          + setFetchDirection()
+          + setFetchSize()
+          + setHoldResultsOpenOverClose()
+          + setLargeMaxRows()
+          + setLocalInfileInputStream()
+          + setMaxFieldSize()
+          + setMaxRows()
+          + setPingTarget()
+          + setPoolable()
+          + setQueryTimeout()
+          + setResultFetchSize()
+          + setResultType()
+          + setTimeoutInMillis()
+          + startQueryTimer()
+          + statementBegins()
+          + stopQueryTimer()
+          + unwrap()
+          # checkClosed()
+          # checkForDml()
+          # checkNullOrEmptyQuery()
+          # closeAllOpenResults()
+          # containsOnDuplicateKeyInString()
+          # createStreamingResultSet()
+          # doPingInstead()
+          # executeBatchInternal()
+          # executeUpdateInternal()
+          {static} # findStartOfStatement()
+          # generatePingResultSet()
+          # getBatchedGeneratedKeys()
+          # getBatchedGeneratedKeys()
+          # getGeneratedKeysInternal()
+          # getGeneratedKeysInternal()
+          # getResultSetInternal()
+          # handleExceptionForBatch()
+          # hasDeadlockOrTimeoutRolledBackTx()
+          # implicitlyCloseAllOpenResults()
+          # initQuery()
+          # processMultiCountsAndKeys()
+          # realClose()
+          # setupStreamingTimeout()
+          ~ setResultSetConcurrency()
+          ~ setResultSetType()
+          ~ setResultSetType()
+          - checkAndPerformCloseOnCompletionAction()
+          - createResultSetUsingServerFetch()
+          - executeBatchUsingMultiQueries()
+          - executeInternal()
+          - getRecordCountFromInfo()
+          - useServerFetch()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace jdbc {
+      class com.mysql.cj.jdbc.StatementWrapper {
+          # wrappedConn : ConnectionWrapper
+          # wrappedStmt : Statement
+          + StatementWrapper()
+          + addBatch()
+          + cancel()
+          + clearBatch()
+          + clearWarnings()
+          + close()
+          + closeOnCompletion()
+          + enableStreamingResults()
+          + execute()
+          + execute()
+          + execute()
+          + execute()
+          + executeBatch()
+          + executeLargeBatch()
+          + executeLargeUpdate()
+          + executeLargeUpdate()
+          + executeLargeUpdate()
+          + executeLargeUpdate()
+          + executeQuery()
+          + executeUpdate()
+          + executeUpdate()
+          + executeUpdate()
+          + executeUpdate()
+          + getConnection()
+          + getFetchDirection()
+          + getFetchSize()
+          + getGeneratedKeys()
+          + getLargeMaxRows()
+          + getLargeUpdateCount()
+          + getMaxFieldSize()
+          + getMaxRows()
+          + getMoreResults()
+          + getMoreResults()
+          + getQueryTimeout()
+          + getResultSet()
+          + getResultSetConcurrency()
+          + getResultSetHoldability()
+          + getResultSetType()
+          + getUpdateCount()
+          + getWarnings()
+          + isCloseOnCompletion()
+          + isClosed()
+          + isPoolable()
+          + isWrapperFor()
+          + setCursorName()
+          + setEscapeProcessing()
+          + setFetchDirection()
+          + setFetchSize()
+          + setLargeMaxRows()
+          + setMaxFieldSize()
+          + setMaxRows()
+          + setPoolable()
+          + setQueryTimeout()
+          + unwrap()
+          {static} # getInstance()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace jdbc {
+      class com.mysql.cj.jdbc.SuspendableXAConnection {
+          {static} - XIDS_TO_PHYSICAL_CONNECTIONS : Map<Xid, XAConnection>
+          - currentXAConnection : XAConnection
+          - currentXAResource : XAResource
+          - currentXid : Xid
+          - underlyingConnection : JdbcConnection
+          + SuspendableXAConnection()
+          + close()
+          + commit()
+          + end()
+          + forget()
+          + getConnection()
+          + getTransactionTimeout()
+          + getXAResource()
+          + isSameRM()
+          + prepare()
+          + recover()
+          + rollback()
+          + setTransactionTimeout()
+          + start()
+          {static} # getInstance()
+          {static} - findConnectionForXid()
+          {static} - removeXAConnectionMapping()
+          - switchToXid()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace jdbc {
+      abstract class com.mysql.cj.jdbc.WrapperBase {
+          # exceptionInterceptor : ExceptionInterceptor
+          # pooledConnection : MysqlPooledConnection
+          # unwrappedInterfaces : Map<Class<?>, Object>
+          # WrapperBase()
+          # checkAndFireConnectionError()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace jdbc {
+      class com.mysql.cj.jdbc.WrapperBase.ConnectionErrorFiringInvocationHandler {
+          ~ invokeOn : Object
+          + ConnectionErrorFiringInvocationHandler()
+          + invoke()
+          - proxyIfInterfaceIsJdbc()
+      }
+    }
+  }
+  
+
+  com.mysql.cj.jdbc.AbandonedConnectionCleanupThread .up.|> Runnable
+  com.mysql.cj.jdbc.AbandonedConnectionCleanupThread +-down- com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.ConnectionFinalizerPhantomReference
+  com.mysql.cj.jdbc.Blob .up.|> OutputStreamWatcher
+  com.mysql.cj.jdbc.Blob .up.|> java.sql.Blob
+  com.mysql.cj.jdbc.BlobFromLocator .up.|> java.sql.Blob
+  com.mysql.cj.jdbc.BlobFromLocator +-down- com.mysql.cj.jdbc.BlobFromLocator.LocatorInputStream
+  com.mysql.cj.jdbc.CallableStatement .up.|> java.sql.CallableStatement
+  com.mysql.cj.jdbc.CallableStatement o-- com.mysql.cj.jdbc.CallableStatement.CallableStatementParamInfo : paramInfo
+  com.mysql.cj.jdbc.CallableStatement o-- com.mysql.cj.jdbc.CallableStatement.CallableStatementParam : returnValueParam
+  com.mysql.cj.jdbc.CallableStatement +-down- com.mysql.cj.jdbc.CallableStatement.CallableStatementParam
+  com.mysql.cj.jdbc.CallableStatement +-down- com.mysql.cj.jdbc.CallableStatement.CallableStatementParamInfo
+  com.mysql.cj.jdbc.CallableStatement.CallableStatementParamInfo .up.|> ParameterMetaData
+  com.mysql.cj.jdbc.CallableStatementWrapper .up.|> CallableStatement
+  com.mysql.cj.jdbc.ClientInfoProviderSP .up.|> ClientInfoProvider
+  com.mysql.cj.jdbc.ClientPreparedStatement .up.|> JdbcPreparedStatement
+  com.mysql.cj.jdbc.Clob .up.|> OutputStreamWatcher
+  com.mysql.cj.jdbc.Clob .up.|> WriterWatcher
+  com.mysql.cj.jdbc.Clob .up.|> java.sql.Clob
+  com.mysql.cj.jdbc.CommentClientInfoProvider .up.|> ClientInfoProvider
+  com.mysql.cj.jdbc.ConnectionImpl .up.|> JdbcConnection
+  com.mysql.cj.jdbc.ConnectionImpl .up.|> Serializable
+  com.mysql.cj.jdbc.ConnectionImpl .up.|> SessionEventListener
+  com.mysql.cj.jdbc.ConnectionImpl +-down- com.mysql.cj.jdbc.ConnectionImpl.CompoundCacheKey
+  com.mysql.cj.jdbc.ConnectionImpl +-down- com.mysql.cj.jdbc.ConnectionImpl.NetworkTimeoutSetter
+  com.mysql.cj.jdbc.ConnectionImpl.NetworkTimeoutSetter .up.|> Runnable
+  com.mysql.cj.jdbc.ConnectionWrapper .up.|> JdbcConnection
+  com.mysql.cj.jdbc.DatabaseMetaData .up.|> java.sql.DatabaseMetaData
+  com.mysql.cj.jdbc.DatabaseMetaData +-down- com.mysql.cj.jdbc.DatabaseMetaData.ComparableWrapper
+  com.mysql.cj.jdbc.DatabaseMetaData +-down- com.mysql.cj.jdbc.DatabaseMetaData.IndexMetaDataKey
+  com.mysql.cj.jdbc.DatabaseMetaData +-down- com.mysql.cj.jdbc.DatabaseMetaData.IteratorWithCleanup
+  com.mysql.cj.jdbc.DatabaseMetaData +-down- com.mysql.cj.jdbc.DatabaseMetaData.LocalAndReferencedColumns
+  com.mysql.cj.jdbc.DatabaseMetaData +-down- com.mysql.cj.jdbc.DatabaseMetaData.ProcedureType
+  com.mysql.cj.jdbc.DatabaseMetaData +-down- com.mysql.cj.jdbc.DatabaseMetaData.SingleStringIterator
+  com.mysql.cj.jdbc.DatabaseMetaData +-down- com.mysql.cj.jdbc.DatabaseMetaData.StringListIterator
+  com.mysql.cj.jdbc.DatabaseMetaData +-down- com.mysql.cj.jdbc.DatabaseMetaData.TableMetaDataKey
+  com.mysql.cj.jdbc.DatabaseMetaData +-down- com.mysql.cj.jdbc.DatabaseMetaData.TableType
+  com.mysql.cj.jdbc.DatabaseMetaData +-down- com.mysql.cj.jdbc.DatabaseMetaData.TypeDescriptor
+  com.mysql.cj.jdbc.DatabaseMetaData.ComparableWrapper .up.|> Comparable
+  com.mysql.cj.jdbc.DatabaseMetaData.ComparableWrapper o-- K : key
+  com.mysql.cj.jdbc.DatabaseMetaData.ComparableWrapper o-- V : value
+  com.mysql.cj.jdbc.DatabaseMetaData.IndexMetaDataKey .up.|> Comparable
+  com.mysql.cj.jdbc.DatabaseMetaData.SingleStringIterator -up-|> com.mysql.cj.jdbc.DatabaseMetaData.IteratorWithCleanup
+  com.mysql.cj.jdbc.DatabaseMetaData.StringListIterator -up-|> com.mysql.cj.jdbc.DatabaseMetaData.IteratorWithCleanup
+  com.mysql.cj.jdbc.DatabaseMetaData.TableMetaDataKey .up.|> Comparable
+  com.mysql.cj.jdbc.DatabaseMetaDataUsingInfoSchema +-down- com.mysql.cj.jdbc.DatabaseMetaDataUsingInfoSchema.FunctionConstant
+  com.mysql.cj.jdbc.Driver .up.|> java.sql.Driver
+  com.mysql.cj.jdbc.JdbcPropertySetImpl .up.|> JdbcPropertySet
+  com.mysql.cj.jdbc.MysqlConnectionPoolDataSource .up.|> ConnectionPoolDataSource
+  com.mysql.cj.jdbc.MysqlDataSource .up.|> DataSource
+  com.mysql.cj.jdbc.MysqlDataSource .up.|> JdbcPropertySet
+  com.mysql.cj.jdbc.MysqlDataSource .up.|> Referenceable
+  com.mysql.cj.jdbc.MysqlDataSource .up.|> Serializable
+  com.mysql.cj.jdbc.MysqlDataSourceFactory .up.|> ObjectFactory
+  com.mysql.cj.jdbc.MysqlParameterMetadata .up.|> ParameterMetaData
+  com.mysql.cj.jdbc.MysqlPooledConnection .up.|> PooledConnection
+  com.mysql.cj.jdbc.MysqlSQLXML .up.|> SQLXML
+  com.mysql.cj.jdbc.MysqlSQLXML o-- com.mysql.cj.jdbc.MysqlSQLXML.SimpleSaxToReader : saxToReaderConverter
+  com.mysql.cj.jdbc.MysqlSQLXML +-down- com.mysql.cj.jdbc.MysqlSQLXML.SimpleSaxToReader
+  com.mysql.cj.jdbc.MysqlSavepoint .up.|> Savepoint
+  com.mysql.cj.jdbc.MysqlXAConnection .up.|> XAConnection
+  com.mysql.cj.jdbc.MysqlXAConnection .up.|> XAResource
+  com.mysql.cj.jdbc.MysqlXADataSource .up.|> javax.sql.XADataSource
+  com.mysql.cj.jdbc.MysqlXid .up.|> Xid
+  com.mysql.cj.jdbc.NClob .up.|> java.sql.NClob
+  com.mysql.cj.jdbc.NonRegisteringDriver .up.|> java.sql.Driver
+  com.mysql.cj.jdbc.ParameterBindingsImpl .up.|> ParameterBindings
+  com.mysql.cj.jdbc.PreparedStatementWrapper .up.|> PreparedStatement
+  com.mysql.cj.jdbc.StatementImpl .up.|> JdbcStatement
+  com.mysql.cj.jdbc.StatementWrapper .up.|> Statement
+  com.mysql.cj.jdbc.SuspendableXAConnection .up.|> XAConnection
+  com.mysql.cj.jdbc.SuspendableXAConnection .up.|> XAResource
+  com.mysql.cj.jdbc.WrapperBase +-down- com.mysql.cj.jdbc.WrapperBase.ConnectionErrorFiringInvocationHandler
+  com.mysql.cj.jdbc.WrapperBase.ConnectionErrorFiringInvocationHandler .up.|> InvocationHandler
+
+
+right footer
+
+
+PlantUML diagram generated by SketchIt! (https://bitbucket.org/pmesmeur/sketch.it)
+For more information about this tool, please contact philippe.mesmeur@gmail.com
+endfooter
+
+@enduml

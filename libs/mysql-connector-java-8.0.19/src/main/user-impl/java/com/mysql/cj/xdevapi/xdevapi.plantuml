@@ -1,0 +1,1401 @@
+@startuml
+
+title __XDEVAPI's Class Diagram__\n
+
+  namespace com.mysql.cj {
+    namespace xdevapi {
+      abstract class com.mysql.cj.xdevapi.AbstractDataResult {
+          # all : List<T>
+          # completer : Supplier<ProtocolEntity>
+          # count : int
+          # ok : StatementExecuteOk
+          # position : int
+          # rowToData : ProtocolEntityFactory<T, XMessage>
+          # rows : RowList
+          + AbstractDataResult()
+          + count()
+          + fetchAll()
+          + finishStreaming()
+          + getAffectedItemsCount()
+          + getStatementExecuteOk()
+          + getWarnings()
+          + getWarningsCount()
+          + hasNext()
+          + next()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace xdevapi {
+      abstract class com.mysql.cj.xdevapi.AbstractFilterParams {
+          # args : Scalar[]
+          # collection : Collection
+          # criteriaStr : String
+          # fields : List<Projection>
+          # groupBy : String[]
+          # isRelational : boolean
+          # limit : Long
+          # lock : RowLock
+          # lockOption : RowLockOptions
+          # offset : Long
+          # orderExpr : String[]
+          # projection : String[]
+          # supportsOffset : boolean
+          ~ having : String
+          - criteria : Expr
+          - grouping : List<Expr>
+          - groupingCriteria : Expr
+          - order : List<Order>
+          - placeholderNameToPosition : Map<String, Integer>
+          + AbstractFilterParams()
+          + addArg()
+          + clearArgs()
+          + getArgs()
+          + getCollection()
+          + getCriteria()
+          + getFields()
+          + getGrouping()
+          + getGroupingCriteria()
+          + getLimit()
+          + getLock()
+          + getLockOption()
+          + getOffset()
+          + getOrder()
+          + isRelational()
+          + setCriteria()
+          {abstract} + setFields()
+          + setGrouping()
+          + setGroupingCriteria()
+          + setLimit()
+          + setLock()
+          + setLockOption()
+          + setOffset()
+          + setOrder()
+          + supportsOffset()
+          + verifyAllArgsBound()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace xdevapi {
+      class com.mysql.cj.xdevapi.AddResultBuilder {
+          + build()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace xdevapi {
+      class com.mysql.cj.xdevapi.AddResultImpl {
+          + AddResultImpl()
+          + getGeneratedIds()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace xdevapi {
+      class com.mysql.cj.xdevapi.AddStatementImpl {
+          - collectionName : String
+          - mysqlxSession : MysqlxSession
+          - newDocs : List<DbDoc>
+          - schemaName : String
+          - upsert : boolean
+          + add()
+          + add()
+          + execute()
+          + executeAsync()
+          + isUpsert()
+          + setUpsert()
+          ~ AddStatementImpl()
+          ~ AddStatementImpl()
+          - serializeDocs()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace xdevapi {
+      class com.mysql.cj.xdevapi.ClientImpl {
+          ~ activeProtocols : Set<WeakReference<PooledXProtocol>>
+          ~ demotedHosts : Map<HostInfo, Long>
+          ~ idleProtocols : BlockingQueue<PooledXProtocol>
+          ~ isClosed : boolean
+          ~ maxIdleTime : int
+          ~ nonPooledSessions : Set<WeakReference<Session>>
+          ~ sessionFactory : SessionFactory
+          - connUrl : ConnectionUrl
+          - demotedTimeout : int
+          - maxSize : int
+          - poolingEnabled : boolean
+          - queueTimeout : int
+          + ClientImpl()
+          + ClientImpl()
+          + close()
+          + getSession()
+          ~ idleProtocol()
+          - clientPropsFromJson()
+          - init()
+          - newPooledXProtocol()
+          - validateAndInitializeClientProps()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace xdevapi {
+      class com.mysql.cj.xdevapi.ClientImpl.PooledXProtocol {
+          ~ hostInfo : HostInfo
+          ~ idleSince : long
+          + PooledXProtocol()
+          + close()
+          + getHostInfo()
+          ~ isHostInfoValid()
+          ~ isIdleTimeoutReached()
+          ~ realClose()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace xdevapi {
+      class com.mysql.cj.xdevapi.CollectionImpl {
+          - mysqlxSession : MysqlxSession
+          - name : String
+          - schema : SchemaImpl
+          - xbuilder : XMessageBuilder
+          + add()
+          + add()
+          + add()
+          + add()
+          + addOrReplaceOne()
+          + addOrReplaceOne()
+          + count()
+          + createIndex()
+          + createIndex()
+          + dropIndex()
+          + equals()
+          + existsInDatabase()
+          + find()
+          + find()
+          + getName()
+          + getOne()
+          + getSchema()
+          + getSession()
+          + hashCode()
+          + modify()
+          + newDoc()
+          + remove()
+          + removeOne()
+          + replaceOne()
+          + replaceOne()
+          + toString()
+          ~ CollectionImpl()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace xdevapi {
+      class com.mysql.cj.xdevapi.ColumnImpl {
+          - field : Field
+          + ColumnImpl()
+          + getCharacterSetName()
+          + getCollationName()
+          + getColumnLabel()
+          + getColumnName()
+          + getFractionalDigits()
+          + getLength()
+          + getSchemaName()
+          + getTableLabel()
+          + getTableName()
+          + getType()
+          + isAutoIncrement()
+          + isNullable()
+          + isNumberSigned()
+          + isPadded()
+          + isPartKey()
+          + isPrimaryKey()
+          + isUniqueKey()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace xdevapi {
+      class com.mysql.cj.xdevapi.CreateIndexParams {
+          {static} + GEOJSON : String
+          {static} + INDEX : String
+          {static} + SPATIAL : String
+          - fields : List<IndexField>
+          - indexName : String
+          - indexType : String
+          + CreateIndexParams()
+          + CreateIndexParams()
+          + getFields()
+          + getIndexName()
+          + getIndexType()
+          - init()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace xdevapi {
+      class com.mysql.cj.xdevapi.CreateIndexParams.IndexField {
+          {static} - ARRAY : String
+          {static} - FIELD : String
+          {static} - OPTIONS : String
+          {static} - REQUIRED : String
+          {static} - SRID : String
+          {static} - TYPE : String
+          - array : Boolean
+          - field : String
+          - options : Integer
+          - required : Boolean
+          - srid : Integer
+          - type : String
+          + IndexField()
+          + getField()
+          + getOptions()
+          + getSrid()
+          + getType()
+          + isArray()
+          + isRequired()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace xdevapi {
+      class com.mysql.cj.xdevapi.DatabaseObjectDescription {
+          - objectName : String
+          - objectType : DbObjectType
+          + DatabaseObjectDescription()
+          + getObjectName()
+          + getObjectType()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace xdevapi {
+      class com.mysql.cj.xdevapi.DbDocFactory {
+          - pset : PropertySet
+          + DbDocFactory()
+          + createFromProtocolEntity()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace xdevapi {
+      class com.mysql.cj.xdevapi.DbDocImpl {
+          {static} - serialVersionUID : long
+          + add()
+          + toFormattedString()
+          + toString()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace xdevapi {
+      class com.mysql.cj.xdevapi.DbDocValueFactory {
+          + DbDocValueFactory()
+          + createFromBytes()
+          + createFromNull()
+          + getTargetTypeName()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace xdevapi {
+      class com.mysql.cj.xdevapi.DeleteStatementImpl {
+          + executeAsync()
+          # executePreparedStatement()
+          # executeStatement()
+          # getPrepareStatementXMessage()
+          ~ DeleteStatementImpl()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace xdevapi {
+      class com.mysql.cj.xdevapi.DocFilterParams {
+          + DocFilterParams()
+          + DocFilterParams()
+          + setFields()
+          + setFields()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace xdevapi {
+      class com.mysql.cj.xdevapi.DocResultBuilder {
+          ~ pset : PropertySet
+          - fields : ArrayList<Field>
+          - metadata : ColumnDefinition
+          - result : DocResult
+          - rows : List<Row>
+          - statementExecuteOkBuilder : StatementExecuteOkBuilder
+          + DocResultBuilder()
+          + addProtocolEntity()
+          + build()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace xdevapi {
+      class com.mysql.cj.xdevapi.DocResultImpl {
+          + DocResultImpl()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace xdevapi {
+      class com.mysql.cj.xdevapi.ExprParser {
+          ~ placeholderNameToPosition : Map<String, Integer>
+          ~ positionalPlaceholderCount : int
+          {static} ~ reservedWords : Map<String, TokenType>
+          ~ string : String
+          ~ tokenPos : int
+          ~ tokens : List<Token>
+          - allowRelationalColumns : boolean
+          + ExprParser()
+          + ExprParser()
+          + documentField()
+          + documentPath()
+          + getPlaceholderNameToPositionMap()
+          + getPositionalPlaceholderCount()
+          + parse()
+          + parseDocumentProjection()
+          + parseExprList()
+          + parseOrderSpec()
+          + parseTableInsertField()
+          + parseTableSelectProjection()
+          + parseTableUpdateField()
+          ~ addSubExpr()
+          ~ addSubIntervalExpr()
+          ~ andExpr()
+          ~ assertTokenAt()
+          ~ atomicExpr()
+          ~ bitExpr()
+          ~ buildUnaryOp()
+          ~ columnIdentifier()
+          ~ compExpr()
+          ~ consumeToken()
+          ~ currentTokenTypeEquals()
+          ~ docPathArrayLoc()
+          ~ docPathMember()
+          ~ expr()
+          ~ functionCall()
+          ~ identifier()
+          ~ ilriExpr()
+          ~ lex()
+          ~ mulDivExpr()
+          ~ nextCharEquals()
+          ~ nextTokenTypeEquals()
+          ~ orExpr()
+          ~ parenExprList()
+          ~ parseLeftAssocBinaryOpExpr()
+          ~ posTokenTypeEquals()
+          ~ shiftExpr()
+          ~ starOperator()
+          - lexNumber()
+          - parseCommaSeparatedList()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace xdevapi {
+      interface com.mysql.cj.xdevapi.ExprParser.ParseExpr {
+          {abstract} + parseExpr()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace xdevapi {
+      class com.mysql.cj.xdevapi.ExprParser.Token {
+          ~ value : String
+          + Token()
+          + Token()
+          + toString()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace xdevapi {
+      enum TokenType {
+        AND
+        ANDAND
+        AS
+        BANG
+        BETWEEN
+        BIN
+        BINARY
+        BITAND
+        BITOR
+        BITXOR
+        CAST
+        CHAR
+        COLDOCPATH
+        COLON
+        COMMA
+        DATE
+        DATETIME
+        DAY
+        DAY_HOUR
+        DAY_MICROSECOND
+        DAY_MINUTE
+        DAY_SECOND
+        DECIMAL
+        DOLLAR
+        DOT
+        DOTSTAR
+        DOUBLESTAR
+        EQ
+        EROTEME
+        ESCAPE
+        FALSE
+        GE
+        GT
+        HEX
+        HOUR
+        HOUR_MICROSECOND
+        HOUR_MINUTE
+        HOUR_SECOND
+        IDENT
+        IN
+        INTEGER
+        INTERVAL
+        IS
+        JSON
+        LCURLY
+        LE
+        LIKE
+        LNUM_DOUBLE
+        LNUM_INT
+        LPAREN
+        LSHIFT
+        LSQBRACKET
+        LSTRING
+        LT
+        MICROSECOND
+        MINUS
+        MINUTE
+        MINUTE_MICROSECOND
+        MINUTE_SECOND
+        MOD
+        MONTH
+        NE
+        NEG
+        NOT
+        NULL
+        OR
+        ORDERBY_ASC
+        ORDERBY_DESC
+        OROR
+        OVERLAPS
+        PLUS
+        QUARTER
+        RCURLY
+        REGEXP
+        RPAREN
+        RSHIFT
+        RSQBRACKET
+        SECOND
+        SECOND_MICROSECOND
+        SIGNED
+        SLASH
+        STAR
+        TIME
+        TRUE
+        UNSIGNED
+        WEEK
+        XOR
+        YEAR
+        YEAR_MONTH
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace xdevapi {
+      class com.mysql.cj.xdevapi.ExprUnparser {
+          {static} ~ infixOperators : Set<String>
+          {static} + escapeLiteral()
+          {static} + exprToString()
+          {static} + quoteDocumentPathMember()
+          {static} + quoteIdentifier()
+          {static} + quoteJsonKey()
+          {static} ~ arrayToString()
+          {static} ~ columnIdentifierToString()
+          {static} ~ documentPathToString()
+          {static} ~ functionCallToString()
+          {static} ~ objectToString()
+          {static} ~ operatorToString()
+          {static} ~ paramListToString()
+          {static} ~ scalarToString()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace xdevapi {
+      class com.mysql.cj.xdevapi.ExprUtil {
+          {static} - javaSqlDateFormat : SimpleDateFormat
+          {static} - javaSqlTimeFormat : SimpleDateFormat
+          {static} - javaSqlTimestampFormat : SimpleDateFormat
+          {static} - javaUtilDateFormat : SimpleDateFormat
+          {static} + anyOf()
+          {static} + argObjectToExpr()
+          {static} + argObjectToScalar()
+          {static} + argObjectToScalarAny()
+          {static} + buildAny()
+          {static} + buildAny()
+          {static} + buildCollection()
+          {static} + buildLiteralExpr()
+          {static} + buildLiteralNullScalar()
+          {static} + buildLiteralScalar()
+          {static} + buildLiteralScalar()
+          {static} + buildLiteralScalar()
+          {static} + buildLiteralScalar()
+          {static} + buildLiteralScalar()
+          {static} + buildPlaceholderExpr()
+          {static} + nullScalar()
+          {static} + scalarOf()
+          {static} + scalarOf()
+          {static} + scalarOf()
+          {static} + scalarOf()
+          {static} + scalarOf()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace xdevapi {
+      abstract class com.mysql.cj.xdevapi.FilterableStatement {
+          # filterParams : FilterParams
+          + FilterableStatement()
+          + bind()
+          + clearBindings()
+          + isRelational()
+          + limit()
+          + offset()
+          + orderBy()
+          + sort()
+          + where()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace xdevapi {
+      class com.mysql.cj.xdevapi.FindStatementImpl {
+          + executeAsync()
+          + fields()
+          + fields()
+          + groupBy()
+          + having()
+          + lockExclusive()
+          + lockExclusive()
+          + lockShared()
+          + lockShared()
+          + where()
+          # executePreparedStatement()
+          # executeStatement()
+          # getPrepareStatementXMessage()
+          ~ FindStatementImpl()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace xdevapi {
+      class com.mysql.cj.xdevapi.InsertParams {
+          - projection : List<Column>
+          - rows : List<TypedRow>
+          + addRow()
+          + getProjection()
+          + getRows()
+          + setFieldsAndValues()
+          + setProjection()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace xdevapi {
+      class com.mysql.cj.xdevapi.InsertResultBuilder {
+          + build()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace xdevapi {
+      class com.mysql.cj.xdevapi.InsertResultImpl {
+          + InsertResultImpl()
+          + getAutoIncrementValue()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace xdevapi {
+      class com.mysql.cj.xdevapi.InsertStatementImpl {
+          - insertParams : InsertParams
+          - mysqlxSession : MysqlxSession
+          - schemaName : String
+          - tableName : String
+          + execute()
+          + executeAsync()
+          + values()
+          ~ InsertStatementImpl()
+          ~ InsertStatementImpl()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace xdevapi {
+      class com.mysql.cj.xdevapi.JsonArray {
+          {static} - serialVersionUID : long
+          + addValue()
+          + toFormattedString()
+          + toString()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace xdevapi {
+      enum JsonLiteral {
+        FALSE
+        NULL
+        TRUE
+        value
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace xdevapi {
+      class com.mysql.cj.xdevapi.JsonNumber {
+          - val : String
+          + getBigDecimal()
+          + getInteger()
+          + setValue()
+          + toString()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace xdevapi {
+      class com.mysql.cj.xdevapi.JsonParser {
+          {static} ~ unescapeChars : HashMap<Character, Character>
+          {static} ~ whitespaceChars : Set<Character>
+          {static} + parseArray()
+          {static} + parseDoc()
+          {static} + parseDoc()
+          {static} ~ parseLiteral()
+          {static} ~ parseNumber()
+          {static} ~ parseString()
+          {static} - appendChar()
+          {static} - isValidEndOfValue()
+          {static} - nextKey()
+          {static} - nextValue()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace xdevapi {
+      enum EscapeChar {
+        BACKSPACE
+        CHAR
+        CR
+        ESCAPED
+        FF
+        LF
+        QUOTE
+        RSOLIDUS
+        SOLIDUS
+        TAB
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace xdevapi {
+      enum StructuralToken {
+        CHAR
+        COLON
+        COMMA
+        LCRBRACKET
+        LSQBRACKET
+        RCRBRACKET
+        RSQBRACKET
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace xdevapi {
+      enum Whitespace {
+        CHAR
+        CR
+        LF
+        SPACE
+        TAB
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace xdevapi {
+      class com.mysql.cj.xdevapi.JsonString {
+          {static} ~ escapeChars : HashMap<Character, String>
+          - val : String
+          + getString()
+          + setValue()
+          + toString()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace xdevapi {
+      class com.mysql.cj.xdevapi.ModifyStatementImpl {
+          - updates : List<UpdateSpec>
+          + arrayAppend()
+          + arrayInsert()
+          + change()
+          + executeAsync()
+          + patch()
+          + patch()
+          + set()
+          + unset()
+          + where()
+          # executePreparedStatement()
+          # executeStatement()
+          # getPrepareStatementXMessage()
+          ~ ModifyStatementImpl()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace xdevapi {
+      abstract class com.mysql.cj.xdevapi.PreparableStatement {
+          # mysqlxSession : MysqlxSession
+          # preparedStatementId : int
+          + execute()
+          # deallocatePrepared()
+          {abstract} # executePreparedStatement()
+          {abstract} # executeStatement()
+          # getMessageBuilder()
+          {abstract} # getPrepareStatementXMessage()
+          # resetPrepareState()
+          # setReprepareState()
+          - prepareStatement()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace xdevapi {
+      class com.mysql.cj.xdevapi.PreparableStatement.PreparableStatementFinalizer {
+          ~ prepredStatementId : int
+          + PreparableStatementFinalizer()
+          + getPreparedStatementId()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace xdevapi {
+      enum PreparedState {
+        DEALLOCATE
+        PREPARE
+        PREPARED
+        REPREPARE
+        SUSPENDED
+        UNPREPARED
+        UNSUPPORTED
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace xdevapi {
+      class com.mysql.cj.xdevapi.RemoveStatementImpl {
+          + executeAsync()
+          + executeStatement()
+          + orderBy()
+          + where()
+          # executePreparedStatement()
+          # getPrepareStatementXMessage()
+          ~ RemoveStatementImpl()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace xdevapi {
+      class com.mysql.cj.xdevapi.RowFactory {
+          - defaultTimeZone : TimeZone
+          - metadata : ColumnDefinition
+          - pset : PropertySet
+          + RowFactory()
+          + createFromProtocolEntity()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace xdevapi {
+      class com.mysql.cj.xdevapi.RowImpl {
+          - defaultTimeZone : TimeZone
+          - metadata : ColumnDefinition
+          - pset : PropertySet
+          - row : Row
+          + RowImpl()
+          + getBigDecimal()
+          + getBigDecimal()
+          + getBoolean()
+          + getBoolean()
+          + getByte()
+          + getByte()
+          + getDate()
+          + getDate()
+          + getDbDoc()
+          + getDbDoc()
+          + getDouble()
+          + getDouble()
+          + getInt()
+          + getInt()
+          + getLong()
+          + getLong()
+          + getString()
+          + getString()
+          + getTime()
+          + getTime()
+          + getTimestamp()
+          + getTimestamp()
+          - fieldNameToIndex()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace xdevapi {
+      class com.mysql.cj.xdevapi.RowResultBuilder {
+          ~ defaultTimeZone : TimeZone
+          ~ pset : PropertySet
+          - fields : ArrayList<Field>
+          - metadata : ColumnDefinition
+          - result : RowResult
+          - rows : List<Row>
+          - statementExecuteOkBuilder : StatementExecuteOkBuilder
+          + RowResultBuilder()
+          + addProtocolEntity()
+          + build()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace xdevapi {
+      class com.mysql.cj.xdevapi.RowResultImpl {
+          - metadata : ColumnDefinition
+          + RowResultImpl()
+          + getColumnCount()
+          + getColumnNames()
+          + getColumns()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace xdevapi {
+      class com.mysql.cj.xdevapi.SchemaImpl {
+          - mysqlxSession : MysqlxSession
+          - name : String
+          - session : Session
+          - svf : ValueFactory<String>
+          - xbuilder : XMessageBuilder
+          + createCollection()
+          + createCollection()
+          + dropCollection()
+          + equals()
+          + existsInDatabase()
+          + getCollection()
+          + getCollection()
+          + getCollectionAsTable()
+          + getCollections()
+          + getCollections()
+          + getName()
+          + getSchema()
+          + getSession()
+          + getTable()
+          + getTable()
+          + getTables()
+          + getTables()
+          + hashCode()
+          + toString()
+          ~ SchemaImpl()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace xdevapi {
+      class com.mysql.cj.xdevapi.SelectStatementImpl {
+          + executeAsync()
+          + getFilterParams()
+          + groupBy()
+          + having()
+          + lockExclusive()
+          + lockExclusive()
+          + lockShared()
+          + lockShared()
+          # executePreparedStatement()
+          # executeStatement()
+          # getPrepareStatementXMessage()
+          ~ SelectStatementImpl()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace xdevapi {
+      class com.mysql.cj.xdevapi.SessionImpl {
+          # defaultSchemaName : String
+          # session : MysqlxSession
+          - xbuilder : XMessageBuilder
+          + SessionImpl()
+          + SessionImpl()
+          + close()
+          + commit()
+          + createSchema()
+          + createSchema()
+          + dropSchema()
+          + getDefaultSchema()
+          + getDefaultSchemaName()
+          + getSchema()
+          + getSchemas()
+          + getSession()
+          + getUri()
+          + isOpen()
+          + releaseSavepoint()
+          + rollback()
+          + rollbackTo()
+          + setSavepoint()
+          + setSavepoint()
+          + sql()
+          + startTransaction()
+          # SessionImpl()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace xdevapi {
+      class com.mysql.cj.xdevapi.SqlMultiResult {
+          - currentResult : SqlResult
+          - pendingResults : List<SqlResult>
+          - resultStream : Supplier<SqlResult>
+          + SqlMultiResult()
+          + count()
+          + fetchAll()
+          + finishStreaming()
+          + getAffectedItemsCount()
+          + getAutoIncrementValue()
+          + getColumnCount()
+          + getColumnNames()
+          + getColumns()
+          + getWarnings()
+          + getWarningsCount()
+          + hasData()
+          + hasNext()
+          + next()
+          + nextResult()
+          - getCurrentResult()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace xdevapi {
+      class com.mysql.cj.xdevapi.SqlResultBuilder {
+          ~ defaultTimeZone : TimeZone
+          ~ isRowResult : boolean
+          ~ pset : PropertySet
+          ~ resultSets : List<SqlSingleResult>
+          - fields : ArrayList<Field>
+          - metadata : ColumnDefinition
+          - prevEntity : ProtocolEntity
+          - rows : List<Row>
+          - statementExecuteOkBuilder : StatementExecuteOkBuilder
+          + SqlResultBuilder()
+          + SqlResultBuilder()
+          + addProtocolEntity()
+          + build()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace xdevapi {
+      class com.mysql.cj.xdevapi.SqlSingleResult {
+          + SqlSingleResult()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace xdevapi {
+      class com.mysql.cj.xdevapi.SqlStatementImpl {
+          - args : List<Object>
+          - mysqlxSession : MysqlxSession
+          - sql : String
+          + SqlStatementImpl()
+          + bind()
+          + bind()
+          + clearBindings()
+          + execute()
+          + executeAsync()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace xdevapi {
+      class com.mysql.cj.xdevapi.SqlUpdateResult {
+          + SqlUpdateResult()
+          + count()
+          + fetchAll()
+          + getAutoIncrementValue()
+          + getColumnCount()
+          + getColumnNames()
+          + getColumns()
+          + hasData()
+          + hasNext()
+          + next()
+          + nextResult()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace xdevapi {
+      class com.mysql.cj.xdevapi.StreamingDocResultBuilder {
+          ~ protocol : XProtocol
+          ~ pset : PropertySet
+          - fields : ArrayList<Field>
+          - metadata : ColumnDefinition
+          - rowList : RowList
+          - statementExecuteOkBuilder : StatementExecuteOkBuilder
+          + StreamingDocResultBuilder()
+          + addProtocolEntity()
+          + build()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace xdevapi {
+      class com.mysql.cj.xdevapi.StreamingRowResultBuilder {
+          ~ defaultTimeZone : TimeZone
+          ~ protocol : XProtocol
+          ~ pset : PropertySet
+          - fields : ArrayList<Field>
+          - metadata : ColumnDefinition
+          - rowList : RowList
+          - statementExecuteOkBuilder : StatementExecuteOkBuilder
+          + StreamingRowResultBuilder()
+          + addProtocolEntity()
+          + build()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace xdevapi {
+      class com.mysql.cj.xdevapi.StreamingSqlResultBuilder {
+          ~ defaultTimeZone : TimeZone
+          ~ isRowResult : boolean
+          ~ lastEntity : ProtocolEntity
+          ~ protocol : XProtocol
+          ~ pset : PropertySet
+          ~ resultSets : List<SqlSingleResult>
+          ~ statementExecuteOkBuilder : StatementExecuteOkBuilder
+          - result : SqlResult
+          + StreamingSqlResultBuilder()
+          + addProtocolEntity()
+          + build()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace xdevapi {
+      class com.mysql.cj.xdevapi.TableFilterParams {
+          + TableFilterParams()
+          + TableFilterParams()
+          + setFields()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace xdevapi {
+      class com.mysql.cj.xdevapi.TableImpl {
+          - isView : Boolean
+          - mysqlxSession : MysqlxSession
+          - name : String
+          - schema : SchemaImpl
+          - xbuilder : XMessageBuilder
+          + count()
+          + delete()
+          + equals()
+          + existsInDatabase()
+          + getName()
+          + getSchema()
+          + getSession()
+          + hashCode()
+          + insert()
+          + insert()
+          + insert()
+          + isView()
+          + select()
+          + setView()
+          + toString()
+          + update()
+          ~ TableImpl()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace xdevapi {
+      class com.mysql.cj.xdevapi.UpdateParams {
+          - updateOps : Map<ColumnIdentifier, Expr>
+          + addUpdate()
+          + getUpdates()
+          + setUpdates()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace xdevapi {
+      class com.mysql.cj.xdevapi.UpdateResult {
+          # ok : StatementExecuteOk
+          + UpdateResult()
+          + getAffectedItemsCount()
+          + getWarnings()
+          + getWarningsCount()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace xdevapi {
+      class com.mysql.cj.xdevapi.UpdateResultBuilder {
+          # statementExecuteOkBuilder : StatementExecuteOkBuilder
+          + addProtocolEntity()
+          + build()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace xdevapi {
+      class com.mysql.cj.xdevapi.UpdateSpec {
+          - source : ColumnIdentifier
+          - updateType : UpdateType
+          - value : Expr
+          + UpdateSpec()
+          + getSource()
+          + getUpdateType()
+          + getValue()
+          + setValue()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace xdevapi {
+      class com.mysql.cj.xdevapi.UpdateStatementImpl {
+          - updateParams : UpdateParams
+          + executeAsync()
+          + set()
+          + set()
+          # executePreparedStatement()
+          # executeStatement()
+          # getPrepareStatementXMessage()
+          ~ UpdateStatementImpl()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace xdevapi {
+      class com.mysql.cj.xdevapi.WarningImpl {
+          - message : Warning
+          + WarningImpl()
+          + getCode()
+          + getLevel()
+          + getMessage()
+      }
+    }
+  }
+  
+
+  com.mysql.cj.xdevapi.AbstractDataResult .up.|> Iterator
+  com.mysql.cj.xdevapi.AbstractDataResult .up.|> Result
+  com.mysql.cj.xdevapi.AbstractDataResult .up.|> ResultStreamer
+  com.mysql.cj.xdevapi.AbstractFilterParams .up.|> FilterParams
+  com.mysql.cj.xdevapi.AddResultImpl .up.|> AddResult
+  com.mysql.cj.xdevapi.AddStatementImpl .up.|> AddStatement
+  com.mysql.cj.xdevapi.ClientImpl .up.|> Client
+  com.mysql.cj.xdevapi.ClientImpl +-down- com.mysql.cj.xdevapi.ClientImpl.PooledXProtocol
+  com.mysql.cj.xdevapi.CollectionImpl .up.|> Collection
+  com.mysql.cj.xdevapi.ColumnImpl .up.|> Column
+  com.mysql.cj.xdevapi.CreateIndexParams +-down- com.mysql.cj.xdevapi.CreateIndexParams.IndexField
+  com.mysql.cj.xdevapi.DbDocFactory .up.|> ProtocolEntityFactory
+  com.mysql.cj.xdevapi.DbDocImpl .up.|> DbDoc
+  com.mysql.cj.xdevapi.DeleteStatementImpl .up.|> DeleteStatement
+  com.mysql.cj.xdevapi.DocResultBuilder .up.|> ResultBuilder
+  com.mysql.cj.xdevapi.DocResultImpl .up.|> DocResult
+  com.mysql.cj.xdevapi.ExprParser +-down- com.mysql.cj.xdevapi.ExprParser.ParseExpr
+  com.mysql.cj.xdevapi.ExprParser +-down- com.mysql.cj.xdevapi.ExprParser.Token
+  com.mysql.cj.xdevapi.ExprParser +-down- com.mysql.cj.xdevapi.ExprParser.TokenType
+  com.mysql.cj.xdevapi.ExprParser.Token o-- com.mysql.cj.xdevapi.ExprParser.TokenType : type
+  com.mysql.cj.xdevapi.FilterableStatement .up.|> Statement
+  com.mysql.cj.xdevapi.FindStatementImpl .up.|> FindStatement
+  com.mysql.cj.xdevapi.InsertResultImpl .up.|> InsertResult
+  com.mysql.cj.xdevapi.InsertStatementImpl .up.|> InsertStatement
+  com.mysql.cj.xdevapi.JsonArray .up.|> JsonValue
+  com.mysql.cj.xdevapi.JsonLiteral .up.|> JsonValue
+  com.mysql.cj.xdevapi.JsonNumber .up.|> JsonValue
+  com.mysql.cj.xdevapi.JsonParser +-down- com.mysql.cj.xdevapi.JsonParser.EscapeChar
+  com.mysql.cj.xdevapi.JsonParser +-down- com.mysql.cj.xdevapi.JsonParser.StructuralToken
+  com.mysql.cj.xdevapi.JsonParser +-down- com.mysql.cj.xdevapi.JsonParser.Whitespace
+  com.mysql.cj.xdevapi.JsonString .up.|> JsonValue
+  com.mysql.cj.xdevapi.ModifyStatementImpl .up.|> ModifyStatement
+  com.mysql.cj.xdevapi.PreparableStatement o-- com.mysql.cj.xdevapi.PreparableStatement.PreparedState : preparedState
+  com.mysql.cj.xdevapi.PreparableStatement +-down- com.mysql.cj.xdevapi.PreparableStatement.PreparableStatementFinalizer
+  com.mysql.cj.xdevapi.PreparableStatement +-down- com.mysql.cj.xdevapi.PreparableStatement.PreparedState
+  com.mysql.cj.xdevapi.RemoveStatementImpl .up.|> RemoveStatement
+  com.mysql.cj.xdevapi.RowFactory .up.|> ProtocolEntityFactory
+  com.mysql.cj.xdevapi.RowImpl .up.|> com.mysql.cj.xdevapi.Row
+  com.mysql.cj.xdevapi.RowResultBuilder .up.|> ResultBuilder
+  com.mysql.cj.xdevapi.RowResultImpl .up.|> RowResult
+  com.mysql.cj.xdevapi.SchemaImpl .up.|> Schema
+  com.mysql.cj.xdevapi.SelectStatementImpl .up.|> SelectStatement
+  com.mysql.cj.xdevapi.SessionImpl .up.|> Session
+  com.mysql.cj.xdevapi.SqlMultiResult .up.|> ResultStreamer
+  com.mysql.cj.xdevapi.SqlMultiResult .up.|> SqlResult
+  com.mysql.cj.xdevapi.SqlResultBuilder .up.|> ResultBuilder
+  com.mysql.cj.xdevapi.SqlSingleResult .up.|> SqlResult
+  com.mysql.cj.xdevapi.SqlStatementImpl .up.|> SqlStatement
+  com.mysql.cj.xdevapi.SqlUpdateResult .up.|> SqlResult
+  com.mysql.cj.xdevapi.StreamingDocResultBuilder .up.|> ResultBuilder
+  com.mysql.cj.xdevapi.StreamingRowResultBuilder .up.|> ResultBuilder
+  com.mysql.cj.xdevapi.StreamingSqlResultBuilder .up.|> ResultBuilder
+  com.mysql.cj.xdevapi.TableImpl .up.|> Table
+  com.mysql.cj.xdevapi.UpdateResult .up.|> Result
+  com.mysql.cj.xdevapi.UpdateResultBuilder .up.|> ResultBuilder
+  com.mysql.cj.xdevapi.UpdateStatementImpl .up.|> UpdateStatement
+  com.mysql.cj.xdevapi.WarningImpl .up.|> com.mysql.cj.xdevapi.Warning
+
+
+right footer
+
+
+PlantUML diagram generated by SketchIt! (https://bitbucket.org/pmesmeur/sketch.it)
+For more information about this tool, please contact philippe.mesmeur@gmail.com
+endfooter
+
+@enduml

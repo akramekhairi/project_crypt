@@ -1,0 +1,610 @@
+@startuml
+
+title __XDEVAPI's Class Diagram__\n
+
+  namespace com.mysql.cj {
+    namespace xdevapi {
+      interface com.mysql.cj.xdevapi.AddResult {
+          {abstract} + getGeneratedIds()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace xdevapi {
+      interface com.mysql.cj.xdevapi.AddStatement {
+          {abstract} + add()
+          {abstract} + add()
+          {abstract} + isUpsert()
+          {abstract} + setUpsert()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace xdevapi {
+      interface com.mysql.cj.xdevapi.Client {
+          {abstract} + close()
+          {abstract} + getSession()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace xdevapi {
+      enum ClientProperty {
+        POOLING_ENABLED
+        POOLING_MAX_IDLE_TIME
+        POOLING_MAX_SIZE
+        POOLING_QUEUE_TIMEOUT
+        keyName
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace xdevapi {
+      class com.mysql.cj.xdevapi.ClientFactory {
+          + getClient()
+          + getClient()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace xdevapi {
+      interface com.mysql.cj.xdevapi.Collection {
+          {abstract} + add()
+          {abstract} + add()
+          {abstract} + add()
+          {abstract} + add()
+          {abstract} + addOrReplaceOne()
+          {abstract} + addOrReplaceOne()
+          {abstract} + count()
+          {abstract} + createIndex()
+          {abstract} + createIndex()
+          {abstract} + dropIndex()
+          {abstract} + find()
+          {abstract} + find()
+          {abstract} + getOne()
+          {abstract} + modify()
+          {abstract} + newDoc()
+          {abstract} + remove()
+          {abstract} + removeOne()
+          {abstract} + replaceOne()
+          {abstract} + replaceOne()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace xdevapi {
+      interface com.mysql.cj.xdevapi.Column {
+          {abstract} + getCharacterSetName()
+          {abstract} + getCollationName()
+          {abstract} + getColumnLabel()
+          {abstract} + getColumnName()
+          {abstract} + getFractionalDigits()
+          {abstract} + getLength()
+          {abstract} + getSchemaName()
+          {abstract} + getTableLabel()
+          {abstract} + getTableName()
+          {abstract} + getType()
+          {abstract} + isAutoIncrement()
+          {abstract} + isNullable()
+          {abstract} + isNumberSigned()
+          {abstract} + isPadded()
+          {abstract} + isPartKey()
+          {abstract} + isPrimaryKey()
+          {abstract} + isUniqueKey()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace xdevapi {
+      interface com.mysql.cj.xdevapi.DatabaseObject {
+          {abstract} + existsInDatabase()
+          {abstract} + getName()
+          {abstract} + getSchema()
+          {abstract} + getSession()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace xdevapi {
+      enum DbObjectStatus {
+        EXISTS
+        NOT_EXISTS
+        UNKNOWN
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace xdevapi {
+      enum DbObjectType {
+        COLLECTION
+        COLLECTION_VIEW
+        TABLE
+        VIEW
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace xdevapi {
+      interface com.mysql.cj.xdevapi.DbDoc {
+          {abstract} + add()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace xdevapi {
+      interface com.mysql.cj.xdevapi.DeleteStatement {
+          {abstract} + limit()
+          {abstract} + orderBy()
+          {abstract} + where()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace xdevapi {
+      interface com.mysql.cj.xdevapi.DocResult {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace xdevapi {
+      class com.mysql.cj.xdevapi.Expression {
+          - expressionString : String
+          + Expression()
+          {static} + expr()
+          + getExpressionString()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace xdevapi {
+      interface com.mysql.cj.xdevapi.FetchResult {
+          {abstract} + count()
+          {abstract} + fetchAll()
+          + fetchOne()
+          + hasData()
+          + iterator()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace xdevapi {
+      interface com.mysql.cj.xdevapi.FilterParams {
+          {abstract} + addArg()
+          {abstract} + clearArgs()
+          {abstract} + getArgs()
+          {abstract} + getCollection()
+          {abstract} + getCriteria()
+          {abstract} + getFields()
+          {abstract} + getGrouping()
+          {abstract} + getGroupingCriteria()
+          {abstract} + getLimit()
+          {abstract} + getLock()
+          {abstract} + getLockOption()
+          {abstract} + getOffset()
+          {abstract} + getOrder()
+          {abstract} + isRelational()
+          {abstract} + setCriteria()
+          {abstract} + setFields()
+          {abstract} + setGrouping()
+          {abstract} + setGroupingCriteria()
+          {abstract} + setLimit()
+          {abstract} + setLock()
+          {abstract} + setLockOption()
+          {abstract} + setOffset()
+          {abstract} + setOrder()
+          {abstract} + supportsOffset()
+          {abstract} + verifyAllArgsBound()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace xdevapi {
+      enum RowLock {
+        EXCLUSIVE_LOCK
+        SHARED_LOCK
+        rowLock
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace xdevapi {
+      enum RowLockOptions {
+        NOWAIT
+        SKIP_LOCKED
+        rowLockOption
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace xdevapi {
+      interface com.mysql.cj.xdevapi.FindStatement {
+          {abstract} + fields()
+          {abstract} + fields()
+          {abstract} + groupBy()
+          {abstract} + having()
+          {abstract} + limit()
+          {abstract} + lockExclusive()
+          {abstract} + lockExclusive()
+          {abstract} + lockShared()
+          {abstract} + lockShared()
+          {abstract} + offset()
+          {abstract} + orderBy()
+          + skip()
+          {abstract} + sort()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace xdevapi {
+      interface com.mysql.cj.xdevapi.InsertResult {
+          {abstract} + getAutoIncrementValue()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace xdevapi {
+      interface com.mysql.cj.xdevapi.InsertStatement {
+          {abstract} + values()
+          + values()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace xdevapi {
+      interface com.mysql.cj.xdevapi.JsonValue {
+          + toFormattedString()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace xdevapi {
+      interface com.mysql.cj.xdevapi.ModifyStatement {
+          {abstract} + arrayAppend()
+          {abstract} + arrayInsert()
+          {abstract} + change()
+          {abstract} + limit()
+          {abstract} + patch()
+          {abstract} + patch()
+          {abstract} + set()
+          {abstract} + sort()
+          {abstract} + unset()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace xdevapi {
+      interface com.mysql.cj.xdevapi.RemoveStatement {
+          {abstract} + limit()
+          {abstract} + orderBy()
+          {abstract} + sort()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace xdevapi {
+      interface com.mysql.cj.xdevapi.Result {
+          {abstract} + getAffectedItemsCount()
+          {abstract} + getWarnings()
+          {abstract} + getWarningsCount()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace xdevapi {
+      interface com.mysql.cj.xdevapi.Row {
+          {abstract} + getBigDecimal()
+          {abstract} + getBigDecimal()
+          {abstract} + getBoolean()
+          {abstract} + getBoolean()
+          {abstract} + getByte()
+          {abstract} + getByte()
+          {abstract} + getDate()
+          {abstract} + getDate()
+          {abstract} + getDbDoc()
+          {abstract} + getDbDoc()
+          {abstract} + getDouble()
+          {abstract} + getDouble()
+          {abstract} + getInt()
+          {abstract} + getInt()
+          {abstract} + getLong()
+          {abstract} + getLong()
+          {abstract} + getString()
+          {abstract} + getString()
+          {abstract} + getTime()
+          {abstract} + getTime()
+          {abstract} + getTimestamp()
+          {abstract} + getTimestamp()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace xdevapi {
+      interface com.mysql.cj.xdevapi.RowResult {
+          {abstract} + getColumnCount()
+          {abstract} + getColumnNames()
+          {abstract} + getColumns()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace xdevapi {
+      interface com.mysql.cj.xdevapi.Schema {
+          {abstract} + createCollection()
+          {abstract} + createCollection()
+          {abstract} + dropCollection()
+          {abstract} + getCollection()
+          {abstract} + getCollection()
+          {abstract} + getCollectionAsTable()
+          {abstract} + getCollections()
+          {abstract} + getCollections()
+          {abstract} + getTable()
+          {abstract} + getTable()
+          {abstract} + getTables()
+          {abstract} + getTables()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace xdevapi {
+      interface com.mysql.cj.xdevapi.SelectStatement {
+          {abstract} + getFilterParams()
+          {abstract} + groupBy()
+          {abstract} + having()
+          {abstract} + limit()
+          {abstract} + lockExclusive()
+          {abstract} + lockExclusive()
+          {abstract} + lockShared()
+          {abstract} + lockShared()
+          {abstract} + offset()
+          {abstract} + orderBy()
+          {abstract} + where()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace xdevapi {
+      interface com.mysql.cj.xdevapi.Session {
+          {abstract} + close()
+          {abstract} + commit()
+          {abstract} + createSchema()
+          {abstract} + createSchema()
+          {abstract} + dropSchema()
+          {abstract} + getDefaultSchema()
+          {abstract} + getDefaultSchemaName()
+          {abstract} + getSchema()
+          {abstract} + getSchemas()
+          {abstract} + getUri()
+          {abstract} + isOpen()
+          {abstract} + releaseSavepoint()
+          {abstract} + rollback()
+          {abstract} + rollbackTo()
+          {abstract} + setSavepoint()
+          {abstract} + setSavepoint()
+          {abstract} + sql()
+          {abstract} + startTransaction()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace xdevapi {
+      class com.mysql.cj.xdevapi.SessionFactory {
+          + getSession()
+          + getSession()
+          # getSession()
+          # parseUrl()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace xdevapi {
+      interface com.mysql.cj.xdevapi.SqlResult {
+          + getAutoIncrementValue()
+          + nextResult()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace xdevapi {
+      interface com.mysql.cj.xdevapi.SqlStatement {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace xdevapi {
+      interface com.mysql.cj.xdevapi.Statement {
+          + bind()
+          + bind()
+          + bind()
+          + bind()
+          + clearBindings()
+          {abstract} + execute()
+          {abstract} + executeAsync()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace xdevapi {
+      enum LockContention {
+        DEFAULT
+        NOWAIT
+        SKIP_LOCKED
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace xdevapi {
+      interface com.mysql.cj.xdevapi.Table {
+          {abstract} + count()
+          {abstract} + delete()
+          {abstract} + insert()
+          {abstract} + insert()
+          {abstract} + insert()
+          {abstract} + isView()
+          {abstract} + select()
+          {abstract} + update()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace xdevapi {
+      enum Type {
+        BIGINT
+        BIT
+        BYTES
+        DATE
+        DATETIME
+        DECIMAL
+        DOUBLE
+        ENUM
+        FLOAT
+        GEOMETRY
+        INT
+        JSON
+        MEDIUMINT
+        SET
+        SMALLINT
+        STRING
+        TIME
+        TIMESTAMP
+        TINYINT
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace xdevapi {
+      interface com.mysql.cj.xdevapi.UpdateStatement {
+          {abstract} + limit()
+          {abstract} + orderBy()
+          {abstract} + set()
+          {abstract} + set()
+          {abstract} + where()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace xdevapi {
+      enum UpdateType {
+        ARRAY_APPEND
+        ARRAY_INSERT
+        ITEM_MERGE
+        ITEM_REMOVE
+        ITEM_REPLACE
+        ITEM_SET
+        MERGE_PATCH
+        SET
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace xdevapi {
+      interface com.mysql.cj.xdevapi.Warning {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace xdevapi {
+      class com.mysql.cj.xdevapi.XDevAPIError {
+          {static} - serialVersionUID : long
+          + XDevAPIError()
+          + XDevAPIError()
+      }
+    }
+  }
+  
+
+  com.mysql.cj.xdevapi.Client +-down- com.mysql.cj.xdevapi.Client.ClientProperty
+  com.mysql.cj.xdevapi.DatabaseObject +-down- com.mysql.cj.xdevapi.DatabaseObject.DbObjectStatus
+  com.mysql.cj.xdevapi.DatabaseObject +-down- com.mysql.cj.xdevapi.DatabaseObject.DbObjectType
+  com.mysql.cj.xdevapi.FilterParams +-down- com.mysql.cj.xdevapi.FilterParams.RowLock
+  com.mysql.cj.xdevapi.FilterParams +-down- com.mysql.cj.xdevapi.FilterParams.RowLockOptions
+  com.mysql.cj.xdevapi.Statement +-down- com.mysql.cj.xdevapi.Statement.LockContention
+
+
+right footer
+
+
+PlantUML diagram generated by SketchIt! (https://bitbucket.org/pmesmeur/sketch.it)
+For more information about this tool, please contact philippe.mesmeur@gmail.com
+endfooter
+
+@enduml

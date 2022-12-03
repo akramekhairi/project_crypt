@@ -1,0 +1,5867 @@
+@startuml
+
+title __PROJECT_CRYPT's Class Diagram__\n
+
+  namespace com.gmail.ib.projectCrypt {
+    class authInitListener {
+    }
+  }
+  
+
+  namespace com.gmail.ib.projectCrypt {
+    namespace authentication {
+      interface AccessControl {
+      }
+    }
+  }
+  
+
+  namespace com.gmail.ib.projectCrypt {
+    namespace authentication {
+      class AccessControlFactory {
+      }
+    }
+  }
+  
+
+  namespace com.gmail.ib.projectCrypt {
+    namespace authentication {
+      class BasicAccessControl {
+      }
+    }
+  }
+  
+
+  namespace com.gmail.ib.projectCrypt {
+    namespace authentication {
+      class CurrentUser {
+      }
+    }
+  }
+  
+
+  namespace com.gmail.ib.projectCrypt {
+    namespace authentication {
+      class User {
+      }
+    }
+  }
+  
+
+  namespace com.gmail.ib.projectCrypt {
+    namespace backend.cryptData {
+      class API {
+      }
+    }
+  }
+  
+
+  namespace com.gmail.ib.projectCrypt {
+    namespace backend.cryptData {
+      class SQLConnector {
+      }
+    }
+  }
+  
+
+  namespace com.gmail.ib.projectCrypt {
+    namespace backend.cryptData {
+      class cryptCurrencyPriceData {
+      }
+    }
+  }
+  
+
+  namespace com.gmail.ib.projectCrypt {
+    namespace newsPage {
+      class news {
+      }
+    }
+  }
+  
+
+  namespace com.gmail.ib.projectCrypt {
+    namespace newsPage {
+      class newsView {
+      }
+    }
+  }
+  
+
+  namespace com.gmail.ib.projectCrypt {
+    namespace ui {
+      class ConfirmDialog {
+      }
+    }
+  }
+  
+
+  namespace com.gmail.ib.projectCrypt {
+    namespace ui {
+      class ErrorView {
+      }
+    }
+  }
+  
+
+  namespace com.gmail.ib.projectCrypt {
+    namespace ui {
+      class MainLayout {
+      }
+    }
+  }
+  
+
+  namespace com.gmail.ib.projectCrypt {
+    namespace ui {
+      namespace about {
+        class AboutView {
+        }
+      }
+    }
+  }
+  
+
+  namespace com.gmail.ib.projectCrypt {
+    namespace ui {
+      namespace dashboard {
+        class Dashboard {
+        }
+      }
+    }
+  }
+  
+
+  namespace com.gmail.ib.projectCrypt {
+    namespace ui {
+      namespace dashboard {
+        class card {
+        }
+      }
+    }
+  }
+  
+
+  namespace com.gmail.ib.projectCrypt {
+    namespace ui {
+      namespace dashboard {
+        class chart {
+        }
+      }
+    }
+  }
+  
+
+  namespace com.gmail.ib.projectCrypt {
+    namespace ui {
+      namespace dashboard {
+        class content {
+        }
+      }
+    }
+  }
+  
+
+  namespace com.gmail.ib.projectCrypt {
+    namespace ui {
+      namespace dashboard {
+        class dashboardContent {
+        }
+      }
+    }
+  }
+  
+
+  namespace com.gmail.ib.projectCrypt {
+    namespace ui {
+      namespace dashboard {
+        class trendingCurrencies {
+        }
+      }
+    }
+  }
+  
+
+  namespace com.gmail.ib.projectCrypt {
+    namespace ui {
+      namespace hubs {
+        class HubView {
+        }
+      }
+    }
+  }
+  
+
+  namespace com.gmail.ib.projectCrypt {
+    namespace ui {
+      namespace login {
+        class LoginScreen {
+        }
+      }
+    }
+  }
+  
+
+  namespace com.gmail.ib.projectCrypt {
+    namespace ui {
+      namespace profile {
+        class Profile {
+        }
+      }
+    }
+  }
+  
+
+  namespace com.gmail.ib.projectCrypt {
+    namespace ui {
+      namespace profile {
+        class profileContent {
+        }
+      }
+    }
+  }
+  
+
+  namespace com.gmail.ib.projectCrypt {
+    namespace ui {
+      namespace profile {
+        class profileInformation {
+        }
+      }
+    }
+  }
+  
+
+  namespace com.gmail.ib.projectCrypt {
+    namespace ui {
+      namespace settings {
+        class Settings {
+        }
+      }
+    }
+  }
+  
+
+  namespace com.gmail.ib.projectCrypt {
+    namespace ui {
+      namespace settings {
+        class personalInformation {
+        }
+      }
+    }
+  }
+  
+
+  namespace com.gmail.ib.projectCrypt {
+    namespace ui {
+      namespace settings {
+        class settingsMenu {
+        }
+      }
+    }
+  }
+  
+
+  namespace com.gmail.ib.projectCrypt {
+    namespace ui {
+      namespace settings {
+        class subscriptionInfo {
+        }
+      }
+    }
+  }
+  
+
+  namespace com.gmail.ib.projectCrypt {
+    namespace ui {
+      namespace signUp {
+        class SignUpScreen {
+        }
+      }
+    }
+  }
+  
+
+  namespace com.gmail.ib.projectCrypt {
+    namespace ui {
+      namespace signUp {
+        class userControl {
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    abstract class com.mysql.cj.AbstractPreparedQuery {
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    abstract class com.mysql.cj.AbstractQuery {
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    abstract class com.mysql.cj.AbstractQueryBindings {
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    class com.mysql.cj.AppendingBatchVisitor {
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    interface com.mysql.cj.BatchVisitor {
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    interface com.mysql.cj.BindValue {
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    interface com.mysql.cj.CacheAdapter {
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    interface com.mysql.cj.CacheAdapterFactory {
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    interface com.mysql.cj.CancelQueryTask {
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    class com.mysql.cj.CancelQueryTaskImpl {
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    class com.mysql.cj.CharsetMapping {
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    class com.mysql.cj.ClientPreparedQuery {
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    class com.mysql.cj.ClientPreparedQueryBindValue {
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    class com.mysql.cj.ClientPreparedQueryBindings {
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    class com.mysql.cj.Collation {
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    class com.mysql.cj.ConnectionUrlTest {
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    class com.mysql.cj.Constants {
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    abstract class com.mysql.cj.CoreSession {
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    interface com.mysql.cj.DataStoreMetadata {
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    class com.mysql.cj.DataStoreMetadataImpl {
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    class com.mysql.cj.LicenseConfiguration {
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    interface com.mysql.cj.MessageBuilder {
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    class com.mysql.cj.Messages {
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    class com.mysql.cj.MessagesTest {
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    class com.mysql.cj.MysqlCharset {
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    interface com.mysql.cj.MysqlConnection {
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    enum MysqlType {
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    class com.mysql.cj.MysqlxSession {
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    class com.mysql.cj.NativeSession {
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    class com.mysql.cj.NoSubInterceptorWrapper {
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    class com.mysql.cj.ParseInfo {
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    class com.mysql.cj.PerConnectionLRUFactory {
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    interface com.mysql.cj.PingTarget {
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    interface com.mysql.cj.PreparedQuery {
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    interface com.mysql.cj.Query {
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    interface com.mysql.cj.QueryBindings {
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    interface com.mysql.cj.QueryResult {
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    class com.mysql.cj.ServerPreparedQuery {
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    class com.mysql.cj.ServerPreparedQueryBindValue {
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    class com.mysql.cj.ServerPreparedQueryBindings {
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    class com.mysql.cj.ServerPreparedQueryTestcaseGenerator {
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    class com.mysql.cj.ServerVersion {
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    class com.mysql.cj.ServerVersionTest {
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    interface com.mysql.cj.Session {
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    class com.mysql.cj.SimpleQuery {
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    interface com.mysql.cj.TransactionEventHandler {
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    interface com.mysql.cj.WarningListener {
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace admin {
+      class com.mysql.cj.admin.ServerController {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace conf {
+      abstract class com.mysql.cj.conf.AbstractPropertyDefinition {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace conf {
+      abstract class com.mysql.cj.conf.AbstractRuntimeProperty {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace conf {
+      class com.mysql.cj.conf.BooleanProperty {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace conf {
+      class com.mysql.cj.conf.BooleanPropertyDefinition {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace conf {
+      interface com.mysql.cj.conf.ConnectionPropertiesTransform {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace conf {
+      abstract class com.mysql.cj.conf.ConnectionUrl {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace conf {
+      class com.mysql.cj.conf.ConnectionUrlParser {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace conf {
+      interface com.mysql.cj.conf.DatabaseUrlContainer {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace conf {
+      class com.mysql.cj.conf.DefaultPropertySet {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace conf {
+      class com.mysql.cj.conf.EnumProperty {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace conf {
+      class com.mysql.cj.conf.EnumPropertyDefinition {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace conf {
+      class com.mysql.cj.conf.HostInfo {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace conf {
+      enum HostsListView {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace conf {
+      class com.mysql.cj.conf.IntegerProperty {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace conf {
+      class com.mysql.cj.conf.IntegerPropertyDefinition {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace conf {
+      class com.mysql.cj.conf.LongProperty {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace conf {
+      class com.mysql.cj.conf.LongPropertyDefinition {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace conf {
+      class com.mysql.cj.conf.MemorySizeProperty {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace conf {
+      class com.mysql.cj.conf.MemorySizePropertyDefinition {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace conf {
+      interface com.mysql.cj.conf.PropertyDefinition {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace conf {
+      class com.mysql.cj.conf.PropertyDefinitions {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace conf {
+      enum PropertyKey {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace conf {
+      interface com.mysql.cj.conf.PropertySet {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace conf {
+      interface com.mysql.cj.conf.RuntimeProperty {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace conf {
+      class com.mysql.cj.conf.StringProperty {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace conf {
+      class com.mysql.cj.conf.StringPropertyDefinition {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace conf {
+      namespace url {
+        class com.mysql.cj.conf.url.FailoverConnectionUrl {
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace conf {
+      namespace url {
+        class com.mysql.cj.conf.url.FailoverDnsSrvConnectionUrl {
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace conf {
+      namespace url {
+        class com.mysql.cj.conf.url.LoadBalanceConnectionUrl {
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace conf {
+      namespace url {
+        class com.mysql.cj.conf.url.LoadBalanceDnsSrvConnectionUrl {
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace conf {
+      namespace url {
+        class com.mysql.cj.conf.url.ReplicationConnectionUrl {
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace conf {
+      namespace url {
+        class com.mysql.cj.conf.url.ReplicationDnsSrvConnectionUrl {
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace conf {
+      namespace url {
+        class com.mysql.cj.conf.url.SingleConnectionUrl {
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace conf {
+      namespace url {
+        class com.mysql.cj.conf.url.XDevApiConnectionUrl {
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace conf {
+      namespace url {
+        class com.mysql.cj.conf.url.XDevApiDnsSrvConnectionUrl {
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace exceptions {
+      class com.mysql.cj.exceptions.AssertionFailedException {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace exceptions {
+      class com.mysql.cj.exceptions.CJCommunicationsException {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace exceptions {
+      class com.mysql.cj.exceptions.CJConnectionFeatureNotAvailableException {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace exceptions {
+      class com.mysql.cj.exceptions.CJException {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace exceptions {
+      class com.mysql.cj.exceptions.CJOperationNotSupportedException {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace exceptions {
+      class com.mysql.cj.exceptions.CJPacketTooBigException {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace exceptions {
+      class com.mysql.cj.exceptions.CJTimeoutException {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace exceptions {
+      class com.mysql.cj.exceptions.ClosedOnExpiredPasswordException {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace exceptions {
+      class com.mysql.cj.exceptions.ConnectionIsClosedException {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace exceptions {
+      class com.mysql.cj.exceptions.DataConversionException {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace exceptions {
+      class com.mysql.cj.exceptions.DataReadException {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace exceptions {
+      class com.mysql.cj.exceptions.DataTruncationException {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace exceptions {
+      interface com.mysql.cj.exceptions.DeadlockTimeoutRollbackMarker {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace exceptions {
+      class com.mysql.cj.exceptions.ExceptionFactory {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace exceptions {
+      interface com.mysql.cj.exceptions.ExceptionInterceptor {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace exceptions {
+      class com.mysql.cj.exceptions.ExceptionInterceptorChain {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace exceptions {
+      class com.mysql.cj.exceptions.FeatureNotAvailableException {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace exceptions {
+      class com.mysql.cj.exceptions.InvalidConnectionAttributeException {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace exceptions {
+      class com.mysql.cj.exceptions.MysqlErrorNumbers {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace exceptions {
+      class com.mysql.cj.exceptions.NumberOutOfRange {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace exceptions {
+      class com.mysql.cj.exceptions.OperationCancelledException {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace exceptions {
+      class com.mysql.cj.exceptions.PasswordExpiredException {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace exceptions {
+      class com.mysql.cj.exceptions.PropertyNotModifiableException {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace exceptions {
+      class com.mysql.cj.exceptions.RSAException {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace exceptions {
+      class com.mysql.cj.exceptions.SSLParamsException {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace exceptions {
+      class com.mysql.cj.exceptions.StatementIsClosedException {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace exceptions {
+      interface com.mysql.cj.exceptions.StreamingNotifiable {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace exceptions {
+      class com.mysql.cj.exceptions.UnableToConnectException {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace exceptions {
+      class com.mysql.cj.exceptions.UnsupportedConnectionStringException {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace exceptions {
+      class com.mysql.cj.exceptions.WrongArgumentException {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace interceptors {
+      interface com.mysql.cj.interceptors.QueryInterceptor {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace jdbc {
+      class com.mysql.cj.jdbc.AbandonedConnectionCleanupThread {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace jdbc {
+      class com.mysql.cj.jdbc.Blob {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace jdbc {
+      class com.mysql.cj.jdbc.BlobFromLocator {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace jdbc {
+      class com.mysql.cj.jdbc.CallableStatement {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace jdbc {
+      class com.mysql.cj.jdbc.CallableStatementWrapper {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace jdbc {
+      interface com.mysql.cj.jdbc.ClientInfoProvider {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace jdbc {
+      class com.mysql.cj.jdbc.ClientInfoProviderSP {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace jdbc {
+      class com.mysql.cj.jdbc.ClientPreparedStatement {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace jdbc {
+      class com.mysql.cj.jdbc.Clob {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace jdbc {
+      class com.mysql.cj.jdbc.CommentClientInfoProvider {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace jdbc {
+      class com.mysql.cj.jdbc.ConnectionGroup {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace jdbc {
+      class com.mysql.cj.jdbc.ConnectionGroupManager {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace jdbc {
+      class com.mysql.cj.jdbc.ConnectionImpl {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace jdbc {
+      class com.mysql.cj.jdbc.ConnectionWrapper {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace jdbc {
+      class com.mysql.cj.jdbc.DatabaseMetaData {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace jdbc {
+      class com.mysql.cj.jdbc.DatabaseMetaDataUsingInfoSchema {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace jdbc {
+      class com.mysql.cj.jdbc.Driver {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace jdbc {
+      class com.mysql.cj.jdbc.EscapeProcessor {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace jdbc {
+      class com.mysql.cj.jdbc.EscapeProcessorResult {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace jdbc {
+      abstract class com.mysql.cj.jdbc.IterateBlock {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace jdbc {
+      interface com.mysql.cj.jdbc.JdbcConnection {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace jdbc {
+      interface com.mysql.cj.jdbc.JdbcPreparedStatement {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace jdbc {
+      interface com.mysql.cj.jdbc.JdbcPropertySet {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace jdbc {
+      class com.mysql.cj.jdbc.JdbcPropertySetImpl {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace jdbc {
+      interface com.mysql.cj.jdbc.JdbcStatement {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace jdbc {
+      class com.mysql.cj.jdbc.MysqlConnectionPoolDataSource {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace jdbc {
+      class com.mysql.cj.jdbc.MysqlDataSource {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace jdbc {
+      class com.mysql.cj.jdbc.MysqlDataSourceFactory {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace jdbc {
+      class com.mysql.cj.jdbc.MysqlParameterMetadata {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace jdbc {
+      class com.mysql.cj.jdbc.MysqlPooledConnection {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace jdbc {
+      class com.mysql.cj.jdbc.MysqlSQLXML {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace jdbc {
+      class com.mysql.cj.jdbc.MysqlSavepoint {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace jdbc {
+      class com.mysql.cj.jdbc.MysqlXAConnection {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace jdbc {
+      class com.mysql.cj.jdbc.MysqlXADataSource {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace jdbc {
+      class com.mysql.cj.jdbc.MysqlXAException {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace jdbc {
+      class com.mysql.cj.jdbc.MysqlXid {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace jdbc {
+      class com.mysql.cj.jdbc.NClob {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace jdbc {
+      class com.mysql.cj.jdbc.NonRegisteringDriver {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace jdbc {
+      interface com.mysql.cj.jdbc.ParameterBindings {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace jdbc {
+      class com.mysql.cj.jdbc.ParameterBindingsImpl {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace jdbc {
+      class com.mysql.cj.jdbc.PreparedStatementWrapper {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace jdbc {
+      class com.mysql.cj.jdbc.ServerPreparedStatement {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace jdbc {
+      class com.mysql.cj.jdbc.StatementImpl {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace jdbc {
+      class com.mysql.cj.jdbc.StatementWrapper {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace jdbc {
+      class com.mysql.cj.jdbc.SuspendableXAConnection {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace jdbc {
+      abstract class com.mysql.cj.jdbc.WrapperBase {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace jdbc {
+      namespace admin {
+        class com.mysql.cj.jdbc.admin.MiniAdmin {
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace jdbc {
+      namespace admin {
+        class com.mysql.cj.jdbc.admin.TimezoneDump {
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace jdbc {
+      namespace exceptions {
+        class com.mysql.cj.jdbc.exceptions.CommunicationsException {
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace jdbc {
+      namespace exceptions {
+        class com.mysql.cj.jdbc.exceptions.ConnectionFeatureNotAvailableException {
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace jdbc {
+      namespace exceptions {
+        class com.mysql.cj.jdbc.exceptions.MySQLQueryInterruptedException {
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace jdbc {
+      namespace exceptions {
+        class com.mysql.cj.jdbc.exceptions.MySQLStatementCancelledException {
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace jdbc {
+      namespace exceptions {
+        class com.mysql.cj.jdbc.exceptions.MySQLTimeoutException {
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace jdbc {
+      namespace exceptions {
+        class com.mysql.cj.jdbc.exceptions.MySQLTransactionRollbackException {
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace jdbc {
+      namespace exceptions {
+        class com.mysql.cj.jdbc.exceptions.MysqlDataTruncation {
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace jdbc {
+      namespace exceptions {
+        class com.mysql.cj.jdbc.exceptions.NotUpdatable {
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace jdbc {
+      namespace exceptions {
+        class com.mysql.cj.jdbc.exceptions.OperationNotSupportedException {
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace jdbc {
+      namespace exceptions {
+        class com.mysql.cj.jdbc.exceptions.PacketTooBigException {
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace jdbc {
+      namespace exceptions {
+        class com.mysql.cj.jdbc.exceptions.SQLError {
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace jdbc {
+      namespace exceptions {
+        class com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping {
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace jdbc {
+      namespace ha {
+        interface com.mysql.cj.jdbc.ha.BalanceStrategy {
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace jdbc {
+      namespace ha {
+        class com.mysql.cj.jdbc.ha.BestResponseTimeBalanceStrategy {
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace jdbc {
+      namespace ha {
+        class com.mysql.cj.jdbc.ha.FailoverConnectionProxy {
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace jdbc {
+      namespace ha {
+        interface com.mysql.cj.jdbc.ha.LoadBalanceExceptionChecker {
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace jdbc {
+      namespace ha {
+        class com.mysql.cj.jdbc.ha.LoadBalancedAutoCommitInterceptor {
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace jdbc {
+      namespace ha {
+        interface com.mysql.cj.jdbc.ha.LoadBalancedConnection {
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace jdbc {
+      namespace ha {
+        class com.mysql.cj.jdbc.ha.LoadBalancedConnectionProxy {
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace jdbc {
+      namespace ha {
+        class com.mysql.cj.jdbc.ha.LoadBalancedMySQLConnection {
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace jdbc {
+      namespace ha {
+        abstract class com.mysql.cj.jdbc.ha.MultiHostConnectionProxy {
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace jdbc {
+      namespace ha {
+        class com.mysql.cj.jdbc.ha.MultiHostMySQLConnection {
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace jdbc {
+      namespace ha {
+        class com.mysql.cj.jdbc.ha.NdbLoadBalanceExceptionChecker {
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace jdbc {
+      namespace ha {
+        class com.mysql.cj.jdbc.ha.RandomBalanceStrategy {
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace jdbc {
+      namespace ha {
+        interface com.mysql.cj.jdbc.ha.ReplicationConnection {
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace jdbc {
+      namespace ha {
+        class com.mysql.cj.jdbc.ha.ReplicationConnectionGroup {
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace jdbc {
+      namespace ha {
+        class com.mysql.cj.jdbc.ha.ReplicationConnectionGroupManager {
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace jdbc {
+      namespace ha {
+        class com.mysql.cj.jdbc.ha.ReplicationConnectionProxy {
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace jdbc {
+      namespace ha {
+        class com.mysql.cj.jdbc.ha.ReplicationMySQLConnection {
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace jdbc {
+      namespace ha {
+        class com.mysql.cj.jdbc.ha.SequentialBalanceStrategy {
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace jdbc {
+      namespace ha {
+        class com.mysql.cj.jdbc.ha.ServerAffinityStrategy {
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace jdbc {
+      namespace ha {
+        class com.mysql.cj.jdbc.ha.StandardLoadBalanceExceptionChecker {
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace jdbc {
+      namespace integration.c3p0 {
+        class com.mysql.cj.jdbc.integration.c3p0.MysqlConnectionTester {
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace jdbc {
+      namespace integration.jboss {
+        class com.mysql.cj.jdbc.integration.jboss.ExtendedMysqlExceptionSorter {
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace jdbc {
+      namespace integration.jboss {
+        class com.mysql.cj.jdbc.integration.jboss.MysqlValidConnectionChecker {
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace jdbc {
+      namespace interceptors {
+        interface com.mysql.cj.jdbc.interceptors.ConnectionLifecycleInterceptor {
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace jdbc {
+      namespace interceptors {
+        class com.mysql.cj.jdbc.interceptors.ResultSetScannerInterceptor {
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace jdbc {
+      namespace interceptors {
+        class com.mysql.cj.jdbc.interceptors.ServerStatusDiffInterceptor {
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace jdbc {
+      namespace interceptors {
+        class com.mysql.cj.jdbc.interceptors.SessionAssociationInterceptor {
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace jdbc {
+      namespace jmx {
+        class com.mysql.cj.jdbc.jmx.LoadBalanceConnectionGroupManager {
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace jdbc {
+      namespace jmx {
+        interface com.mysql.cj.jdbc.jmx.LoadBalanceConnectionGroupManagerMBean {
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace jdbc {
+      namespace jmx {
+        class com.mysql.cj.jdbc.jmx.ReplicationGroupManager {
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace jdbc {
+      namespace jmx {
+        interface com.mysql.cj.jdbc.jmx.ReplicationGroupManagerMBean {
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace jdbc {
+      namespace result {
+        interface com.mysql.cj.jdbc.result.CachedResultSetMetaData {
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace jdbc {
+      namespace result {
+        class com.mysql.cj.jdbc.result.CachedResultSetMetaDataImpl {
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace jdbc {
+      namespace result {
+        class com.mysql.cj.jdbc.result.ResultSetFactory {
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace jdbc {
+      namespace result {
+        class com.mysql.cj.jdbc.result.ResultSetImpl {
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace jdbc {
+      namespace result {
+        interface com.mysql.cj.jdbc.result.ResultSetInternalMethods {
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace jdbc {
+      namespace result {
+        class com.mysql.cj.jdbc.result.ResultSetMetaData {
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace jdbc {
+      namespace result {
+        class com.mysql.cj.jdbc.result.UpdatableResultSet {
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace jdbc {
+      namespace util {
+        abstract class com.mysql.cj.jdbc.util.BaseBugReport {
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace jdbc {
+      namespace util {
+        class com.mysql.cj.jdbc.util.ResultSetUtil {
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace log {
+      class com.mysql.cj.log.BaseMetricsHolder {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace log {
+      class com.mysql.cj.log.Jdk14Logger {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace log {
+      interface com.mysql.cj.log.Log {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace log {
+      class com.mysql.cj.log.LogFactory {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace log {
+      class com.mysql.cj.log.LoggingProfilerEventHandler {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace log {
+      class com.mysql.cj.log.NullLogger {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace log {
+      interface com.mysql.cj.log.ProfilerEvent {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace log {
+      interface com.mysql.cj.log.ProfilerEventHandler {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace log {
+      class com.mysql.cj.log.ProfilerEventImpl {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace log {
+      class com.mysql.cj.log.Slf4JLogger {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace log {
+      class com.mysql.cj.log.StandardLogger {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      abstract class com.mysql.cj.protocol.AbstractProtocol {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      abstract class com.mysql.cj.protocol.AbstractSocketConnection {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      class com.mysql.cj.protocol.AsyncSocketFactory {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      interface com.mysql.cj.protocol.AuthenticationPlugin {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      interface com.mysql.cj.protocol.AuthenticationProvider {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      interface com.mysql.cj.protocol.ColumnDefinition {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      class com.mysql.cj.protocol.ExportControlled {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      class com.mysql.cj.protocol.FullReadInputStream {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      class com.mysql.cj.protocol.InternalDate {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      class com.mysql.cj.protocol.InternalTime {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      class com.mysql.cj.protocol.InternalTimestamp {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      interface com.mysql.cj.protocol.Message {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      interface com.mysql.cj.protocol.MessageHeader {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      interface com.mysql.cj.protocol.MessageListener {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      interface com.mysql.cj.protocol.MessageReader {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      interface com.mysql.cj.protocol.MessageSender {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      class com.mysql.cj.protocol.NamedPipeSocketFactory {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      class com.mysql.cj.protocol.NetworkResources {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      interface com.mysql.cj.protocol.OutputStreamWatcher {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      interface com.mysql.cj.protocol.PacketReceivedTimeHolder {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      interface com.mysql.cj.protocol.PacketSentTimeHolder {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      interface com.mysql.cj.protocol.Protocol {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      interface com.mysql.cj.protocol.ProtocolEntity {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      interface com.mysql.cj.protocol.ProtocolEntityFactory {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      interface com.mysql.cj.protocol.ProtocolEntityReader {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      class com.mysql.cj.protocol.ReadAheadInputStream {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      interface com.mysql.cj.protocol.ResultBuilder {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      interface com.mysql.cj.protocol.ResultStreamer {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      interface com.mysql.cj.protocol.Resultset {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      interface com.mysql.cj.protocol.ResultsetRow {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      interface com.mysql.cj.protocol.ResultsetRows {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      interface com.mysql.cj.protocol.ResultsetRowsOwner {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      class com.mysql.cj.protocol.Security {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      class com.mysql.cj.protocol.SerializingBufferWriter {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      interface com.mysql.cj.protocol.ServerCapabilities {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      interface com.mysql.cj.protocol.ServerSession {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      interface com.mysql.cj.protocol.SocketConnection {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      interface com.mysql.cj.protocol.SocketFactory {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      interface com.mysql.cj.protocol.SocketMetadata {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      class com.mysql.cj.protocol.SocksProxySocketFactory {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      class com.mysql.cj.protocol.StandardSocketFactory {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      class com.mysql.cj.protocol.TlsAsynchronousSocketChannel {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      interface com.mysql.cj.protocol.ValueDecoder {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      interface com.mysql.cj.protocol.Warning {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      class com.mysql.cj.protocol.WatchableOutputStream {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      interface com.mysql.cj.protocol.WatchableStream {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      class com.mysql.cj.protocol.WatchableWriter {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      interface com.mysql.cj.protocol.WriterWatcher {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      namespace a {
+        abstract class com.mysql.cj.protocol.a.AbstractRowFactory {
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      namespace a {
+        class com.mysql.cj.protocol.a.BinaryResultsetReader {
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      namespace a {
+        class com.mysql.cj.protocol.a.BinaryRowFactory {
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      namespace a {
+        class com.mysql.cj.protocol.a.ColumnDefinitionFactory {
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      namespace a {
+        class com.mysql.cj.protocol.a.ColumnDefinitionReader {
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      namespace a {
+        class com.mysql.cj.protocol.a.CompressedInputStream {
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      namespace a {
+        class com.mysql.cj.protocol.a.CompressedPacketSender {
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      namespace a {
+        class com.mysql.cj.protocol.a.CompressedPacketSenderTest {
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      namespace a {
+        class com.mysql.cj.protocol.a.DebugBufferingPacketReader {
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      namespace a {
+        class com.mysql.cj.protocol.a.DebugBufferingPacketSender {
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      namespace a {
+        class com.mysql.cj.protocol.a.DebugBufferingPacketSenderTest {
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      namespace a {
+        class com.mysql.cj.protocol.a.MergingColumnDefinitionFactory {
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      namespace a {
+        class com.mysql.cj.protocol.a.MultiPacketReader {
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      namespace a {
+        class com.mysql.cj.protocol.a.MysqlBinaryValueDecoder {
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      namespace a {
+        class com.mysql.cj.protocol.a.MysqlBinaryValueDecoderTest {
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      namespace a {
+        class com.mysql.cj.protocol.a.MysqlTextValueDecoder {
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      namespace a {
+        class com.mysql.cj.protocol.a.MysqlTextValueDecoderTest {
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      namespace a {
+        class com.mysql.cj.protocol.a.NativeAuthenticationProvider {
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      namespace a {
+        class com.mysql.cj.protocol.a.NativeCapabilities {
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      namespace a {
+        class com.mysql.cj.protocol.a.NativeConstants {
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      namespace a {
+        class com.mysql.cj.protocol.a.NativeMessageBuilder {
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      namespace a {
+        class com.mysql.cj.protocol.a.NativePacketHeader {
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      namespace a {
+        class com.mysql.cj.protocol.a.NativePacketPayload {
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      namespace a {
+        class com.mysql.cj.protocol.a.NativeProtocol {
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      namespace a {
+        class com.mysql.cj.protocol.a.NativeServerSession {
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      namespace a {
+        class com.mysql.cj.protocol.a.NativeSocketConnection {
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      namespace a {
+        class com.mysql.cj.protocol.a.NativeUtils {
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      namespace a {
+        class com.mysql.cj.protocol.a.PacketSenderTestBase {
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      namespace a {
+        class com.mysql.cj.protocol.a.PacketSplitter {
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      namespace a {
+        class com.mysql.cj.protocol.a.ResultsetFactory {
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      namespace a {
+        class com.mysql.cj.protocol.a.ResultsetRowReader {
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      namespace a {
+        class com.mysql.cj.protocol.a.SimplePacketReader {
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      namespace a {
+        class com.mysql.cj.protocol.a.SimplePacketReaderTest {
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      namespace a {
+        class com.mysql.cj.protocol.a.SimplePacketSender {
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      namespace a {
+        class com.mysql.cj.protocol.a.SimplePacketSenderTest {
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      namespace a {
+        class com.mysql.cj.protocol.a.TextResultsetReader {
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      namespace a {
+        class com.mysql.cj.protocol.a.TextRowFactory {
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      namespace a {
+        class com.mysql.cj.protocol.a.TimeTrackingPacketReader {
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      namespace a {
+        class com.mysql.cj.protocol.a.TimeTrackingPacketSender {
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      namespace a {
+        class com.mysql.cj.protocol.a.TracingPacketReader {
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      namespace a {
+        class com.mysql.cj.protocol.a.TracingPacketSender {
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      namespace a {
+        namespace authentication {
+          class com.mysql.cj.protocol.a.authentication.CachingSha2PasswordPlugin {
+          }
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      namespace a {
+        namespace authentication {
+          class com.mysql.cj.protocol.a.authentication.MysqlClearPasswordPlugin {
+          }
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      namespace a {
+        namespace authentication {
+          class com.mysql.cj.protocol.a.authentication.MysqlNativePasswordPlugin {
+          }
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      namespace a {
+        namespace authentication {
+          class com.mysql.cj.protocol.a.authentication.MysqlOldPasswordPlugin {
+          }
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      namespace a {
+        namespace authentication {
+          class com.mysql.cj.protocol.a.authentication.Sha256PasswordPlugin {
+          }
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      namespace a {
+        namespace result {
+          abstract class com.mysql.cj.protocol.a.result.AbstractBufferRow {
+          }
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      namespace a {
+        namespace result {
+          abstract class com.mysql.cj.protocol.a.result.AbstractResultsetRows {
+          }
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      namespace a {
+        namespace result {
+          class com.mysql.cj.protocol.a.result.BinaryBufferRow {
+          }
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      namespace a {
+        namespace result {
+          class com.mysql.cj.protocol.a.result.ByteArrayRow {
+          }
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      namespace a {
+        namespace result {
+          class com.mysql.cj.protocol.a.result.NativeResultset {
+          }
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      namespace a {
+        namespace result {
+          class com.mysql.cj.protocol.a.result.OkPacket {
+          }
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      namespace a {
+        namespace result {
+          class com.mysql.cj.protocol.a.result.ResultsetRowsCursor {
+          }
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      namespace a {
+        namespace result {
+          class com.mysql.cj.protocol.a.result.ResultsetRowsStatic {
+          }
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      namespace a {
+        namespace result {
+          class com.mysql.cj.protocol.a.result.ResultsetRowsStreaming {
+          }
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      namespace a {
+        namespace result {
+          class com.mysql.cj.protocol.a.result.TextBufferRow {
+          }
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      namespace result {
+        abstract class com.mysql.cj.protocol.result.AbstractResultsetRow {
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      namespace x {
+        class com.mysql.cj.protocol.x.AsyncMessageReader {
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      namespace x {
+        class com.mysql.cj.protocol.x.AsyncMessageReaderTest {
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      namespace x {
+        class com.mysql.cj.protocol.x.AsyncMessageSender {
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      namespace x {
+        class com.mysql.cj.protocol.x.ErrorToFutureCompletionHandler {
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      namespace x {
+        class com.mysql.cj.protocol.x.FetchDoneEntity {
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      namespace x {
+        class com.mysql.cj.protocol.x.FetchDoneEntityFactory {
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      namespace x {
+        class com.mysql.cj.protocol.x.FetchDoneMoreResults {
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      namespace x {
+        class com.mysql.cj.protocol.x.FetchDoneMoreResultsFactory {
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      namespace x {
+        class com.mysql.cj.protocol.x.FieldFactory {
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      namespace x {
+        class com.mysql.cj.protocol.x.MessageConstants {
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      namespace x {
+        class com.mysql.cj.protocol.x.Notice {
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      namespace x {
+        class com.mysql.cj.protocol.x.NoticeFactory {
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      namespace x {
+        class com.mysql.cj.protocol.x.Ok {
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      namespace x {
+        class com.mysql.cj.protocol.x.OkBuilder {
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      namespace x {
+        class com.mysql.cj.protocol.x.OkFactory {
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      namespace x {
+        class com.mysql.cj.protocol.x.ResultMessageListener {
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      namespace x {
+        class com.mysql.cj.protocol.x.StatementExecuteOk {
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      namespace x {
+        class com.mysql.cj.protocol.x.StatementExecuteOkBuilder {
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      namespace x {
+        class com.mysql.cj.protocol.x.StatementExecuteOkFactory {
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      namespace x {
+        class com.mysql.cj.protocol.x.SyncMessageReader {
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      namespace x {
+        class com.mysql.cj.protocol.x.SyncMessageReaderTest {
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      namespace x {
+        class com.mysql.cj.protocol.x.SyncMessageSender {
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      namespace x {
+        class com.mysql.cj.protocol.x.SyncMessageWriterTest {
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      namespace x {
+        class com.mysql.cj.protocol.x.XAsyncSocketConnection {
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      namespace x {
+        class com.mysql.cj.protocol.x.XAuthenticationProvider {
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      namespace x {
+        class com.mysql.cj.protocol.x.XMessage {
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      namespace x {
+        class com.mysql.cj.protocol.x.XMessageBuilder {
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      namespace x {
+        class com.mysql.cj.protocol.x.XMessageHeader {
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      namespace x {
+        class com.mysql.cj.protocol.x.XProtocol {
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      namespace x {
+        class com.mysql.cj.protocol.x.XProtocolDecoder {
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      namespace x {
+        class com.mysql.cj.protocol.x.XProtocolError {
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      namespace x {
+        class com.mysql.cj.protocol.x.XProtocolRow {
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      namespace x {
+        class com.mysql.cj.protocol.x.XProtocolRowFactory {
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      namespace x {
+        class com.mysql.cj.protocol.x.XProtocolRowInputStream {
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      namespace x {
+        class com.mysql.cj.protocol.x.XServerCapabilities {
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      namespace x {
+        class com.mysql.cj.protocol.x.XServerSession {
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      namespace x {
+        enum XpluginStatementCommand {
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace result {
+      abstract class com.mysql.cj.result.AbstractDateTimeValueFactory {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace result {
+      abstract class com.mysql.cj.result.AbstractNumericValueFactory {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace result {
+      class com.mysql.cj.result.BigDecimalValueFactory {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace result {
+      class com.mysql.cj.result.BigDecimalValueFactoryTest {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace result {
+      class com.mysql.cj.result.BinaryStreamValueFactory {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace result {
+      class com.mysql.cj.result.BinaryStreamValueFactoryTest {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace result {
+      class com.mysql.cj.result.BooleanValueFactory {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace result {
+      class com.mysql.cj.result.BooleanValueFactoryTest {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace result {
+      class com.mysql.cj.result.BufferedRowList {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace result {
+      class com.mysql.cj.result.ByteValueFactory {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace result {
+      class com.mysql.cj.result.ByteValueFactoryTest {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace result {
+      class com.mysql.cj.result.CommonAsserts {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace result {
+      class com.mysql.cj.result.DefaultColumnDefinition {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace result {
+      abstract class com.mysql.cj.result.DefaultValueFactory {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace result {
+      class com.mysql.cj.result.DoubleValueFactory {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace result {
+      class com.mysql.cj.result.DoubleValueFactoryTest {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace result {
+      class com.mysql.cj.result.Field {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace result {
+      class com.mysql.cj.result.FloatValueFactory {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace result {
+      class com.mysql.cj.result.FloatValueFactoryTest {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace result {
+      class com.mysql.cj.result.IntegerValueFactory {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace result {
+      class com.mysql.cj.result.IntegerValueFactoryTest {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace result {
+      class com.mysql.cj.result.LocalDateTimeValueFactory {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace result {
+      class com.mysql.cj.result.LocalDateTimeValueFactoryTest {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace result {
+      class com.mysql.cj.result.LocalDateValueFactory {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace result {
+      class com.mysql.cj.result.LocalDateValueFactoryTest {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace result {
+      class com.mysql.cj.result.LocalTimeValueFactory {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace result {
+      class com.mysql.cj.result.LocalTimeValueFactoryTest {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace result {
+      class com.mysql.cj.result.LongValueFactory {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace result {
+      class com.mysql.cj.result.LongValueFactoryTest {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace result {
+      interface com.mysql.cj.result.Row {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace result {
+      interface com.mysql.cj.result.RowList {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace result {
+      class com.mysql.cj.result.ShortValueFactory {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace result {
+      class com.mysql.cj.result.ShortValueFactoryTest {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace result {
+      class com.mysql.cj.result.SqlDateValueFactory {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace result {
+      class com.mysql.cj.result.SqlDateValueFactoryTest {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace result {
+      class com.mysql.cj.result.SqlTimeValueFactory {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace result {
+      class com.mysql.cj.result.SqlTimeValueFactoryTest {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace result {
+      class com.mysql.cj.result.SqlTimestampValueFactory {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace result {
+      class com.mysql.cj.result.SqlTimestampValueFactoryTest {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace result {
+      class com.mysql.cj.result.StringValueFactory {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace result {
+      class com.mysql.cj.result.StringValueFactoryTest {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace result {
+      interface com.mysql.cj.result.ValueFactory {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace result {
+      class com.mysql.cj.result.ZeroDateTimeToNullValueFactoryTest {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace util {
+      class com.mysql.cj.util.Base64Decoder {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace util {
+      class com.mysql.cj.util.DataTypeUtil {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace util {
+      class com.mysql.cj.util.DnsSrv {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace util {
+      class com.mysql.cj.util.EscapeTokenizer {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace util {
+      class com.mysql.cj.util.LRUCache {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace util {
+      class com.mysql.cj.util.LazyString {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace util {
+      class com.mysql.cj.util.LogUtils {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace util {
+      class com.mysql.cj.util.PerVmServerConfigCacheFactory {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace util {
+      class com.mysql.cj.util.SequentialIdLease {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace util {
+      class com.mysql.cj.util.StringUtils {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace util {
+      class com.mysql.cj.util.TestUtils {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace util {
+      class com.mysql.cj.util.TimeUtil {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace util {
+      class com.mysql.cj.util.Util {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace x.protobuf {
+      class com.mysql.cj.x.protobuf.Mysqlx {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace x.protobuf {
+      class com.mysql.cj.x.protobuf.MysqlxConnection {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace x.protobuf {
+      class com.mysql.cj.x.protobuf.MysqlxCrud {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace x.protobuf {
+      class com.mysql.cj.x.protobuf.MysqlxCursor {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace x.protobuf {
+      class com.mysql.cj.x.protobuf.MysqlxDatatypes {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace x.protobuf {
+      class com.mysql.cj.x.protobuf.MysqlxExpect {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace x.protobuf {
+      class com.mysql.cj.x.protobuf.MysqlxExpr {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace x.protobuf {
+      class com.mysql.cj.x.protobuf.MysqlxNotice {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace x.protobuf {
+      class com.mysql.cj.x.protobuf.MysqlxPrepare {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace x.protobuf {
+      class com.mysql.cj.x.protobuf.MysqlxResultset {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace x.protobuf {
+      class com.mysql.cj.x.protobuf.MysqlxSession {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace x.protobuf {
+      class com.mysql.cj.x.protobuf.MysqlxSql {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace xdevapi {
+      abstract class com.mysql.cj.xdevapi.AbstractDataResult {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace xdevapi {
+      abstract class com.mysql.cj.xdevapi.AbstractFilterParams {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace xdevapi {
+      interface com.mysql.cj.xdevapi.AddResult {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace xdevapi {
+      class com.mysql.cj.xdevapi.AddResultBuilder {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace xdevapi {
+      class com.mysql.cj.xdevapi.AddResultImpl {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace xdevapi {
+      interface com.mysql.cj.xdevapi.AddStatement {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace xdevapi {
+      class com.mysql.cj.xdevapi.AddStatementImpl {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace xdevapi {
+      interface com.mysql.cj.xdevapi.Client {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace xdevapi {
+      class com.mysql.cj.xdevapi.ClientFactory {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace xdevapi {
+      class com.mysql.cj.xdevapi.ClientImpl {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace xdevapi {
+      interface com.mysql.cj.xdevapi.Collection {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace xdevapi {
+      class com.mysql.cj.xdevapi.CollectionImpl {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace xdevapi {
+      interface com.mysql.cj.xdevapi.Column {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace xdevapi {
+      class com.mysql.cj.xdevapi.ColumnImpl {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace xdevapi {
+      class com.mysql.cj.xdevapi.CreateIndexParams {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace xdevapi {
+      interface com.mysql.cj.xdevapi.DatabaseObject {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace xdevapi {
+      class com.mysql.cj.xdevapi.DatabaseObjectDescription {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace xdevapi {
+      interface com.mysql.cj.xdevapi.DbDoc {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace xdevapi {
+      class com.mysql.cj.xdevapi.DbDocFactory {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace xdevapi {
+      class com.mysql.cj.xdevapi.DbDocImpl {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace xdevapi {
+      class com.mysql.cj.xdevapi.DbDocValueFactory {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace xdevapi {
+      interface com.mysql.cj.xdevapi.DeleteStatement {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace xdevapi {
+      class com.mysql.cj.xdevapi.DeleteStatementImpl {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace xdevapi {
+      class com.mysql.cj.xdevapi.DocFilterParams {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace xdevapi {
+      interface com.mysql.cj.xdevapi.DocResult {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace xdevapi {
+      class com.mysql.cj.xdevapi.DocResultBuilder {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace xdevapi {
+      class com.mysql.cj.xdevapi.DocResultImpl {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace xdevapi {
+      class com.mysql.cj.xdevapi.ExprParser {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace xdevapi {
+      class com.mysql.cj.xdevapi.ExprParserTest {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace xdevapi {
+      class com.mysql.cj.xdevapi.ExprUnparser {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace xdevapi {
+      class com.mysql.cj.xdevapi.ExprUtil {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace xdevapi {
+      class com.mysql.cj.xdevapi.Expression {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace xdevapi {
+      interface com.mysql.cj.xdevapi.FetchResult {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace xdevapi {
+      interface com.mysql.cj.xdevapi.FilterParams {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace xdevapi {
+      abstract class com.mysql.cj.xdevapi.FilterableStatement {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace xdevapi {
+      interface com.mysql.cj.xdevapi.FindStatement {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace xdevapi {
+      class com.mysql.cj.xdevapi.FindStatementImpl {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace xdevapi {
+      class com.mysql.cj.xdevapi.InsertParams {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace xdevapi {
+      interface com.mysql.cj.xdevapi.InsertResult {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace xdevapi {
+      class com.mysql.cj.xdevapi.InsertResultBuilder {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace xdevapi {
+      class com.mysql.cj.xdevapi.InsertResultImpl {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace xdevapi {
+      interface com.mysql.cj.xdevapi.InsertStatement {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace xdevapi {
+      class com.mysql.cj.xdevapi.InsertStatementImpl {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace xdevapi {
+      class com.mysql.cj.xdevapi.JsonArray {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace xdevapi {
+      class com.mysql.cj.xdevapi.JsonDocTest {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace xdevapi {
+      enum JsonLiteral {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace xdevapi {
+      class com.mysql.cj.xdevapi.JsonNumber {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace xdevapi {
+      class com.mysql.cj.xdevapi.JsonParser {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace xdevapi {
+      class com.mysql.cj.xdevapi.JsonString {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace xdevapi {
+      interface com.mysql.cj.xdevapi.JsonValue {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace xdevapi {
+      interface com.mysql.cj.xdevapi.ModifyStatement {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace xdevapi {
+      class com.mysql.cj.xdevapi.ModifyStatementImpl {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace xdevapi {
+      abstract class com.mysql.cj.xdevapi.PreparableStatement {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace xdevapi {
+      interface com.mysql.cj.xdevapi.RemoveStatement {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace xdevapi {
+      class com.mysql.cj.xdevapi.RemoveStatementImpl {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace xdevapi {
+      interface com.mysql.cj.xdevapi.Result {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace xdevapi {
+      interface com.mysql.cj.xdevapi.Row {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace xdevapi {
+      class com.mysql.cj.xdevapi.RowFactory {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace xdevapi {
+      class com.mysql.cj.xdevapi.RowImpl {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace xdevapi {
+      interface com.mysql.cj.xdevapi.RowResult {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace xdevapi {
+      class com.mysql.cj.xdevapi.RowResultBuilder {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace xdevapi {
+      class com.mysql.cj.xdevapi.RowResultImpl {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace xdevapi {
+      interface com.mysql.cj.xdevapi.Schema {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace xdevapi {
+      class com.mysql.cj.xdevapi.SchemaImpl {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace xdevapi {
+      interface com.mysql.cj.xdevapi.SelectStatement {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace xdevapi {
+      class com.mysql.cj.xdevapi.SelectStatementImpl {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace xdevapi {
+      interface com.mysql.cj.xdevapi.Session {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace xdevapi {
+      class com.mysql.cj.xdevapi.SessionFactory {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace xdevapi {
+      class com.mysql.cj.xdevapi.SessionImpl {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace xdevapi {
+      class com.mysql.cj.xdevapi.SqlMultiResult {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace xdevapi {
+      interface com.mysql.cj.xdevapi.SqlResult {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace xdevapi {
+      class com.mysql.cj.xdevapi.SqlResultBuilder {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace xdevapi {
+      class com.mysql.cj.xdevapi.SqlSingleResult {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace xdevapi {
+      interface com.mysql.cj.xdevapi.SqlStatement {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace xdevapi {
+      class com.mysql.cj.xdevapi.SqlStatementImpl {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace xdevapi {
+      class com.mysql.cj.xdevapi.SqlUpdateResult {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace xdevapi {
+      interface com.mysql.cj.xdevapi.Statement {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace xdevapi {
+      class com.mysql.cj.xdevapi.StreamingDocResultBuilder {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace xdevapi {
+      class com.mysql.cj.xdevapi.StreamingRowResultBuilder {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace xdevapi {
+      class com.mysql.cj.xdevapi.StreamingSqlResultBuilder {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace xdevapi {
+      interface com.mysql.cj.xdevapi.Table {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace xdevapi {
+      class com.mysql.cj.xdevapi.TableFilterParams {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace xdevapi {
+      class com.mysql.cj.xdevapi.TableImpl {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace xdevapi {
+      enum Type {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace xdevapi {
+      class com.mysql.cj.xdevapi.UpdateParams {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace xdevapi {
+      class com.mysql.cj.xdevapi.UpdateResult {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace xdevapi {
+      class com.mysql.cj.xdevapi.UpdateResultBuilder {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace xdevapi {
+      class com.mysql.cj.xdevapi.UpdateSpec {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace xdevapi {
+      interface com.mysql.cj.xdevapi.UpdateStatement {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace xdevapi {
+      class com.mysql.cj.xdevapi.UpdateStatementImpl {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace xdevapi {
+      enum UpdateType {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace xdevapi {
+      interface com.mysql.cj.xdevapi.Warning {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace xdevapi {
+      class com.mysql.cj.xdevapi.WarningImpl {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace xdevapi {
+      class com.mysql.cj.xdevapi.XDevAPIError {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.jdbc {
+    class com.mysql.jdbc.Driver {
+    }
+  }
+  
+
+  namespace com.mysql.jdbc {
+    interface com.mysql.jdbc.SocketFactory {
+    }
+  }
+  
+
+  namespace com.mysql.jdbc {
+    class com.mysql.jdbc.SocketFactoryWrapper {
+    }
+  }
+  
+
+  namespace demo.x.devapi {
+    class demo.x.devapi.DevApiSample {
+    }
+  }
+  
+
+  namespace documentation {
+    class documentation.ErrorMappingsDocGenerator {
+    }
+  }
+  
+
+  namespace documentation {
+    class documentation.PropertiesDocGenerator {
+    }
+  }
+  
+
+  namespace instrumentation {
+    class instrumentation.AddMethods {
+    }
+  }
+  
+
+  namespace instrumentation {
+    class instrumentation.CommonChecks {
+    }
+  }
+  
+
+  namespace instrumentation {
+    class instrumentation.TranslateExceptions {
+    }
+  }
+  
+
+  namespace testsuite {
+    class testsuite.BaseQueryInterceptor {
+    }
+  }
+  
+
+  namespace testsuite {
+    abstract class testsuite.BaseTestCase {
+    }
+  }
+  
+
+  namespace testsuite {
+    class testsuite.BufferingLogger {
+    }
+  }
+  
+
+  namespace testsuite {
+    class testsuite.TestUtils {
+    }
+  }
+  
+
+  namespace testsuite {
+    class testsuite.UnreliableSocketFactory {
+    }
+  }
+  
+
+  namespace testsuite {
+    namespace perf {
+      abstract class testsuite.perf.BasePerfTest {
+      }
+    }
+  }
+  
+
+  namespace testsuite {
+    namespace perf {
+      class testsuite.perf.LoadStorePerfTest {
+      }
+    }
+  }
+  
+
+  namespace testsuite {
+    namespace perf {
+      class testsuite.perf.RetrievalPerfTest {
+      }
+    }
+  }
+  
+
+  namespace testsuite {
+    namespace regression {
+      class testsuite.regression.BlobRegressionTest {
+      }
+    }
+  }
+  
+
+  namespace testsuite {
+    namespace regression {
+      class testsuite.regression.CachedRowsetTest {
+      }
+    }
+  }
+  
+
+  namespace testsuite {
+    namespace regression {
+      class testsuite.regression.CallableStatementRegressionTest {
+      }
+    }
+  }
+  
+
+  namespace testsuite {
+    namespace regression {
+      class testsuite.regression.CharsetRegressionTest {
+      }
+    }
+  }
+  
+
+  namespace testsuite {
+    namespace regression {
+      class testsuite.regression.ConnectionRegressionTest {
+      }
+    }
+  }
+  
+
+  namespace testsuite {
+    namespace regression {
+      class testsuite.regression.DataSourceRegressionTest {
+      }
+    }
+  }
+  
+
+  namespace testsuite {
+    namespace regression {
+      class testsuite.regression.EscapeProcessorRegressionTest {
+      }
+    }
+  }
+  
+
+  namespace testsuite {
+    namespace regression {
+      class testsuite.regression.ExceptionSubclassesTest {
+      }
+    }
+  }
+  
+
+  namespace testsuite {
+    namespace regression {
+      class testsuite.regression.MetaDataRegressionTest {
+      }
+    }
+  }
+  
+
+  namespace testsuite {
+    namespace regression {
+      class testsuite.regression.MicroPerformanceRegressionTest {
+      }
+    }
+  }
+  
+
+  namespace testsuite {
+    namespace regression {
+      class testsuite.regression.NonLocalSocketFactory {
+      }
+    }
+  }
+  
+
+  namespace testsuite {
+    namespace regression {
+      class testsuite.regression.NumbersRegressionTest {
+      }
+    }
+  }
+  
+
+  namespace testsuite {
+    namespace regression {
+      class testsuite.regression.PooledConnectionRegressionTest {
+      }
+    }
+  }
+  
+
+  namespace testsuite {
+    namespace regression {
+      class testsuite.regression.ResultSetRegressionTest {
+      }
+    }
+  }
+  
+
+  namespace testsuite {
+    namespace regression {
+      class testsuite.regression.StatementRegressionTest {
+      }
+    }
+  }
+  
+
+  namespace testsuite {
+    namespace regression {
+      class testsuite.regression.StressRegressionTest {
+      }
+    }
+  }
+  
+
+  namespace testsuite {
+    namespace regression {
+      class testsuite.regression.StringRegressionTest {
+      }
+    }
+  }
+  
+
+  namespace testsuite {
+    namespace regression {
+      class testsuite.regression.SubqueriesRegressionTest {
+      }
+    }
+  }
+  
+
+  namespace testsuite {
+    namespace regression {
+      class testsuite.regression.SyntaxRegressionTest {
+      }
+    }
+  }
+  
+
+  namespace testsuite {
+    namespace regression {
+      class testsuite.regression.UtilsRegressionTest {
+      }
+    }
+  }
+  
+
+  namespace testsuite {
+    namespace simple {
+      class testsuite.simple.BlobTest {
+      }
+    }
+  }
+  
+
+  namespace testsuite {
+    namespace simple {
+      class testsuite.simple.CallableStatementTest {
+      }
+    }
+  }
+  
+
+  namespace testsuite {
+    namespace simple {
+      class testsuite.simple.CharsetTest {
+      }
+    }
+  }
+  
+
+  namespace testsuite {
+    namespace simple {
+      class testsuite.simple.ConnectionTest {
+      }
+    }
+  }
+  
+
+  namespace testsuite {
+    namespace simple {
+      class testsuite.simple.DataSourceTest {
+      }
+    }
+  }
+  
+
+  namespace testsuite {
+    namespace simple {
+      class testsuite.simple.DateTest {
+      }
+    }
+  }
+  
+
+  namespace testsuite {
+    namespace simple {
+      class testsuite.simple.EscapeProcessingTest {
+      }
+    }
+  }
+  
+
+  namespace testsuite {
+    namespace simple {
+      class testsuite.simple.ExceptionsTest {
+      }
+    }
+  }
+  
+
+  namespace testsuite {
+    namespace simple {
+      class testsuite.simple.MetadataTest {
+      }
+    }
+  }
+  
+
+  namespace testsuite {
+    namespace simple {
+      class testsuite.simple.MiniAdminTest {
+      }
+    }
+  }
+  
+
+  namespace testsuite {
+    namespace simple {
+      class testsuite.simple.MultiHostConnectionTest {
+      }
+    }
+  }
+  
+
+  namespace testsuite {
+    namespace simple {
+      class testsuite.simple.NumbersTest {
+      }
+    }
+  }
+  
+
+  namespace testsuite {
+    namespace simple {
+      class testsuite.simple.ReadOnlyCallableStatementTest {
+      }
+    }
+  }
+  
+
+  namespace testsuite {
+    namespace simple {
+      class testsuite.simple.ResultSetTest {
+      }
+    }
+  }
+  
+
+  namespace testsuite {
+    namespace simple {
+      class testsuite.simple.SSLTest {
+      }
+    }
+  }
+  
+
+  namespace testsuite {
+    namespace simple {
+      class testsuite.simple.SequentialIdLeaseTest {
+      }
+    }
+  }
+  
+
+  namespace testsuite {
+    namespace simple {
+      class testsuite.simple.ServerControllerTest {
+      }
+    }
+  }
+  
+
+  namespace testsuite {
+    namespace simple {
+      class testsuite.simple.SimpleTransformer {
+      }
+    }
+  }
+  
+
+  namespace testsuite {
+    namespace simple {
+      class testsuite.simple.SplitDBdotNameTest {
+      }
+    }
+  }
+  
+
+  namespace testsuite {
+    namespace simple {
+      class testsuite.simple.StatementsTest {
+      }
+    }
+  }
+  
+
+  namespace testsuite {
+    namespace simple {
+      class testsuite.simple.StringUtilsTest {
+      }
+    }
+  }
+  
+
+  namespace testsuite {
+    namespace simple {
+      class testsuite.simple.TestBug57662Logger {
+      }
+    }
+  }
+  
+
+  namespace testsuite {
+    namespace simple {
+      class testsuite.simple.TestLifecycleInterceptor {
+      }
+    }
+  }
+  
+
+  namespace testsuite {
+    namespace simple {
+      class testsuite.simple.TransactionTest {
+      }
+    }
+  }
+  
+
+  namespace testsuite {
+    namespace simple {
+      class testsuite.simple.TraversalTest {
+      }
+    }
+  }
+  
+
+  namespace testsuite {
+    namespace simple {
+      class testsuite.simple.UpdatabilityTest {
+      }
+    }
+  }
+  
+
+  namespace testsuite {
+    namespace simple {
+      class testsuite.simple.UtilsTest {
+      }
+    }
+  }
+  
+
+  namespace testsuite {
+    namespace simple {
+      class testsuite.simple.XATest {
+      }
+    }
+  }
+  
+
+  namespace testsuite {
+    namespace x {
+      interface testsuite.x.AsyncTests {
+      }
+    }
+  }
+  
+
+  namespace testsuite {
+    namespace x {
+      abstract class testsuite.x.BaseXDevAPITestCase {
+      }
+    }
+  }
+  
+
+  namespace testsuite {
+    namespace x {
+      class testsuite.x.TestXDevAPIRequirements {
+      }
+    }
+  }
+  
+
+  namespace testsuite {
+    namespace x {
+      namespace devapi {
+        class testsuite.x.devapi.AsyncQueryTest {
+        }
+      }
+    }
+  }
+  
+
+  namespace testsuite {
+    namespace x {
+      namespace devapi {
+        class testsuite.x.devapi.BaseCollectionTestCase {
+        }
+      }
+    }
+  }
+  
+
+  namespace testsuite {
+    namespace x {
+      namespace devapi {
+        class testsuite.x.devapi.BaseTableTestCase {
+        }
+      }
+    }
+  }
+  
+
+  namespace testsuite {
+    namespace x {
+      namespace devapi {
+        class testsuite.x.devapi.BindTest {
+        }
+      }
+    }
+  }
+  
+
+  namespace testsuite {
+    namespace x {
+      namespace devapi {
+        class testsuite.x.devapi.CollectionAddTest {
+        }
+      }
+    }
+  }
+  
+
+  namespace testsuite {
+    namespace x {
+      namespace devapi {
+        class testsuite.x.devapi.CollectionFindTest {
+        }
+      }
+    }
+  }
+  
+
+  namespace testsuite {
+    namespace x {
+      namespace devapi {
+        class testsuite.x.devapi.CollectionModifyTest {
+        }
+      }
+    }
+  }
+  
+
+  namespace testsuite {
+    namespace x {
+      namespace devapi {
+        class testsuite.x.devapi.CollectionRemoveTest {
+        }
+      }
+    }
+  }
+  
+
+  namespace testsuite {
+    namespace x {
+      namespace devapi {
+        class testsuite.x.devapi.CollectionTest {
+        }
+      }
+    }
+  }
+  
+
+  namespace testsuite {
+    namespace x {
+      namespace devapi {
+        class testsuite.x.devapi.DevApiBaseTestCase {
+        }
+      }
+    }
+  }
+  
+
+  namespace testsuite {
+    namespace x {
+      namespace devapi {
+        class testsuite.x.devapi.Ipv6SupportTest {
+        }
+      }
+    }
+  }
+  
+
+  namespace testsuite {
+    namespace x {
+      namespace devapi {
+        class testsuite.x.devapi.MetadataTest {
+        }
+      }
+    }
+  }
+  
+
+  namespace testsuite {
+    namespace x {
+      namespace devapi {
+        class testsuite.x.devapi.ResultTest {
+        }
+      }
+    }
+  }
+  
+
+  namespace testsuite {
+    namespace x {
+      namespace devapi {
+        class testsuite.x.devapi.SchemaTest {
+        }
+      }
+    }
+  }
+  
+
+  namespace testsuite {
+    namespace x {
+      namespace devapi {
+        class testsuite.x.devapi.SecureSessionTest {
+        }
+      }
+    }
+  }
+  
+
+  namespace testsuite {
+    namespace x {
+      namespace devapi {
+        class testsuite.x.devapi.SessionFailoverTest {
+        }
+      }
+    }
+  }
+  
+
+  namespace testsuite {
+    namespace x {
+      namespace devapi {
+        class testsuite.x.devapi.SessionTest {
+        }
+      }
+    }
+  }
+  
+
+  namespace testsuite {
+    namespace x {
+      namespace devapi {
+        class testsuite.x.devapi.TableDeleteTest {
+        }
+      }
+    }
+  }
+  
+
+  namespace testsuite {
+    namespace x {
+      namespace devapi {
+        class testsuite.x.devapi.TableInsertTest {
+        }
+      }
+    }
+  }
+  
+
+  namespace testsuite {
+    namespace x {
+      namespace devapi {
+        class testsuite.x.devapi.TableSelectTest {
+        }
+      }
+    }
+  }
+  
+
+  namespace testsuite {
+    namespace x {
+      namespace devapi {
+        class testsuite.x.devapi.TableTest {
+        }
+      }
+    }
+  }
+  
+
+  namespace testsuite {
+    namespace x {
+      namespace devapi {
+        class testsuite.x.devapi.TableUpdateTest {
+        }
+      }
+    }
+  }
+  
+
+  namespace testsuite {
+    namespace x {
+      namespace devapi {
+        class testsuite.x.devapi.TransactionTest {
+        }
+      }
+    }
+  }
+  
+
+  namespace testsuite {
+    namespace x {
+      namespace internal {
+        class testsuite.x.internal.InternalXBaseTestCase {
+        }
+      }
+    }
+  }
+  
+
+  namespace testsuite {
+    namespace x {
+      namespace internal {
+        class testsuite.x.internal.MysqlxSessionTest {
+        }
+      }
+    }
+  }
+  
+
+  namespace testsuite {
+    namespace x {
+      namespace internal {
+        class testsuite.x.internal.XProtocolAsyncTest {
+        }
+      }
+    }
+  }
+  
+
+  namespace testsuite {
+    namespace x {
+      namespace internal {
+        class testsuite.x.internal.XProtocolAuthTest {
+        }
+      }
+    }
+  }
+  
+
+  namespace testsuite {
+    namespace x {
+      namespace internal {
+        class testsuite.x.internal.XProtocolTest {
+        }
+      }
+    }
+  }
+  
+
+  authInitListener .up.|> com.vaadin.flow.server.VaadinServiceInitListener
+  AccessControlFactory o-- AccessControl : accessControl
+  BasicAccessControl .up.|> AccessControl
+  cryptCurrencyPriceData .up.|> java.io.Serializable
+  newsView -up-|> com.vaadin.flow.component.orderedlayout.VerticalLayout
+  ConfirmDialog -up-|> com.vaadin.flow.component.dialog.Dialog
+  ErrorView .up.|> com.vaadin.flow.router.HasErrorParameter
+  ErrorView -up-|> com.vaadin.flow.component.orderedlayout.VerticalLayout
+  MainLayout .up.|> com.vaadin.flow.router.RouterLayout
+  MainLayout -up-|> com.vaadin.flow.component.applayout.AppLayout
+  AboutView -up-|> com.vaadin.flow.component.orderedlayout.VerticalLayout
+  Dashboard -up-|> com.vaadin.flow.component.orderedlayout.VerticalLayout
+  card -up-|> com.vaadin.flow.component.orderedlayout.VerticalLayout
+  chart -up-|> com.vaadin.flow.component.orderedlayout.VerticalLayout
+  content -up-|> com.vaadin.flow.component.orderedlayout.VerticalLayout
+  dashboardContent -up-|> com.vaadin.flow.component.orderedlayout.VerticalLayout
+  trendingCurrencies .up.|> com.vaadin.flow.component.HasSize
+  trendingCurrencies -up-|> com.vaadin.flow.component.orderedlayout.HorizontalLayout
+  HubView -up-|> com.vaadin.flow.component.orderedlayout.VerticalLayout
+  LoginScreen -up-|> com.vaadin.flow.component.orderedlayout.FlexLayout
+  LoginScreen o-- AccessControl : accessControl
+  Profile -up-|> com.vaadin.flow.component.orderedlayout.VerticalLayout
+  profileContent -up-|> com.vaadin.flow.component.orderedlayout.HorizontalLayout
+  profileInformation .up.|> com.vaadin.flow.component.HasSize
+  profileInformation -up-|> com.vaadin.flow.component.orderedlayout.VerticalLayout
+  Settings -up-|> com.vaadin.flow.component.orderedlayout.VerticalLayout
+  settingsMenu -up-|> com.vaadin.flow.component.orderedlayout.VerticalLayout
+  subscriptionInfo -up-|> com.vaadin.flow.component.orderedlayout.VerticalLayout
+  SignUpScreen -up-|> com.vaadin.flow.component.orderedlayout.VerticalLayout
+  SignUpScreen o-- AccessControl : accessControl
+  com.mysql.cj.AbstractPreparedQuery .up.|> PreparedQuery
+  com.mysql.cj.AbstractPreparedQuery o-- T : queryBindings
+  com.mysql.cj.AbstractQuery .up.|> Query
+  com.mysql.cj.AbstractQueryBindings .up.|> QueryBindings
+  com.mysql.cj.AppendingBatchVisitor .up.|> BatchVisitor
+  com.mysql.cj.CancelQueryTaskImpl .up.|> CancelQueryTask
+  com.mysql.cj.ClientPreparedQueryBindValue .up.|> BindValue
+  com.mysql.cj.Collation o-- com.mysql.cj.MysqlCharset : mysqlCharset
+  com.mysql.cj.CoreSession .up.|> Session
+  com.mysql.cj.DataStoreMetadataImpl .up.|> DataStoreMetadata
+  com.mysql.cj.MysqlType .up.|> SQLType
+  com.mysql.cj.NativeSession .up.|> Serializable
+  com.mysql.cj.NoSubInterceptorWrapper .up.|> QueryInterceptor
+  com.mysql.cj.ParseInfo o-- com.mysql.cj.ParseInfo : batchHead
+  com.mysql.cj.ParseInfo o-- com.mysql.cj.ParseInfo : batchODKUClause
+  com.mysql.cj.ParseInfo o-- com.mysql.cj.ParseInfo : batchValues
+  com.mysql.cj.PerConnectionLRUFactory .up.|> CacheAdapterFactory
+  com.mysql.cj.ServerPreparedQueryBindValue .up.|> BindValue
+  com.mysql.cj.ServerVersion .up.|> Comparable
+  com.mysql.cj.conf.AbstractPropertyDefinition .up.|> PropertyDefinition
+  com.mysql.cj.conf.AbstractPropertyDefinition .up.|> Serializable
+  com.mysql.cj.conf.AbstractPropertyDefinition o-- T : defaultValue
+  com.mysql.cj.conf.AbstractRuntimeProperty .up.|> RuntimeProperty
+  com.mysql.cj.conf.AbstractRuntimeProperty .up.|> Serializable
+  com.mysql.cj.conf.AbstractRuntimeProperty o-- T : initialValue
+  com.mysql.cj.conf.AbstractRuntimeProperty o-- T : value
+  com.mysql.cj.conf.ConnectionUrl .up.|> DatabaseUrlContainer
+  com.mysql.cj.conf.ConnectionUrl o-- com.mysql.cj.conf.ConnectionUrl.Type : type
+  com.mysql.cj.conf.ConnectionUrlParser .up.|> DatabaseUrlContainer
+  com.mysql.cj.conf.DefaultPropertySet .up.|> PropertySet
+  com.mysql.cj.conf.DefaultPropertySet .up.|> Serializable
+  com.mysql.cj.conf.HostInfo .up.|> DatabaseUrlContainer
+  com.mysql.cj.exceptions.ExceptionInterceptorChain .up.|> ExceptionInterceptor
+  com.mysql.cj.jdbc.AbandonedConnectionCleanupThread .up.|> Runnable
+  com.mysql.cj.jdbc.Blob .up.|> OutputStreamWatcher
+  com.mysql.cj.jdbc.Blob .up.|> java.sql.Blob
+  com.mysql.cj.jdbc.BlobFromLocator .up.|> java.sql.Blob
+  com.mysql.cj.jdbc.CallableStatement .up.|> java.sql.CallableStatement
+  com.mysql.cj.jdbc.CallableStatement o-- com.mysql.cj.jdbc.CallableStatement.CallableStatementParamInfo : paramInfo
+  com.mysql.cj.jdbc.CallableStatement o-- com.mysql.cj.jdbc.CallableStatement.CallableStatementParam : returnValueParam
+  com.mysql.cj.jdbc.CallableStatementWrapper .up.|> CallableStatement
+  com.mysql.cj.jdbc.ClientInfoProviderSP .up.|> ClientInfoProvider
+  com.mysql.cj.jdbc.ClientPreparedStatement .up.|> JdbcPreparedStatement
+  com.mysql.cj.jdbc.Clob .up.|> OutputStreamWatcher
+  com.mysql.cj.jdbc.Clob .up.|> WriterWatcher
+  com.mysql.cj.jdbc.Clob .up.|> java.sql.Clob
+  com.mysql.cj.jdbc.CommentClientInfoProvider .up.|> ClientInfoProvider
+  com.mysql.cj.jdbc.ConnectionImpl .up.|> JdbcConnection
+  com.mysql.cj.jdbc.ConnectionImpl .up.|> Serializable
+  com.mysql.cj.jdbc.ConnectionImpl .up.|> SessionEventListener
+  com.mysql.cj.jdbc.ConnectionWrapper .up.|> JdbcConnection
+  com.mysql.cj.jdbc.DatabaseMetaData .up.|> java.sql.DatabaseMetaData
+  com.mysql.cj.jdbc.Driver .up.|> java.sql.Driver
+  com.mysql.cj.jdbc.JdbcPropertySetImpl .up.|> JdbcPropertySet
+  com.mysql.cj.jdbc.MysqlConnectionPoolDataSource .up.|> ConnectionPoolDataSource
+  com.mysql.cj.jdbc.MysqlDataSource .up.|> DataSource
+  com.mysql.cj.jdbc.MysqlDataSource .up.|> JdbcPropertySet
+  com.mysql.cj.jdbc.MysqlDataSource .up.|> Referenceable
+  com.mysql.cj.jdbc.MysqlDataSource .up.|> Serializable
+  com.mysql.cj.jdbc.MysqlDataSourceFactory .up.|> ObjectFactory
+  com.mysql.cj.jdbc.MysqlParameterMetadata .up.|> ParameterMetaData
+  com.mysql.cj.jdbc.MysqlPooledConnection .up.|> PooledConnection
+  com.mysql.cj.jdbc.MysqlSQLXML .up.|> SQLXML
+  com.mysql.cj.jdbc.MysqlSQLXML o-- com.mysql.cj.jdbc.MysqlSQLXML.SimpleSaxToReader : saxToReaderConverter
+  com.mysql.cj.jdbc.MysqlSavepoint .up.|> Savepoint
+  com.mysql.cj.jdbc.MysqlXAConnection .up.|> XAConnection
+  com.mysql.cj.jdbc.MysqlXAConnection .up.|> XAResource
+  com.mysql.cj.jdbc.MysqlXADataSource .up.|> javax.sql.XADataSource
+  com.mysql.cj.jdbc.MysqlXid .up.|> Xid
+  com.mysql.cj.jdbc.NClob .up.|> java.sql.NClob
+  com.mysql.cj.jdbc.NonRegisteringDriver .up.|> java.sql.Driver
+  com.mysql.cj.jdbc.ParameterBindingsImpl .up.|> ParameterBindings
+  com.mysql.cj.jdbc.PreparedStatementWrapper .up.|> PreparedStatement
+  com.mysql.cj.jdbc.StatementImpl .up.|> JdbcStatement
+  com.mysql.cj.jdbc.StatementWrapper .up.|> Statement
+  com.mysql.cj.jdbc.SuspendableXAConnection .up.|> XAConnection
+  com.mysql.cj.jdbc.SuspendableXAConnection .up.|> XAResource
+  com.mysql.cj.jdbc.exceptions.CommunicationsException .up.|> StreamingNotifiable
+  com.mysql.cj.jdbc.exceptions.MySQLTransactionRollbackException .up.|> DeadlockTimeoutRollbackMarker
+  com.mysql.cj.jdbc.ha.BestResponseTimeBalanceStrategy .up.|> BalanceStrategy
+  com.mysql.cj.jdbc.ha.LoadBalancedAutoCommitInterceptor .up.|> QueryInterceptor
+  com.mysql.cj.jdbc.ha.LoadBalancedConnectionProxy .up.|> PingTarget
+  com.mysql.cj.jdbc.ha.LoadBalancedMySQLConnection .up.|> LoadBalancedConnection
+  com.mysql.cj.jdbc.ha.MultiHostConnectionProxy .up.|> InvocationHandler
+  com.mysql.cj.jdbc.ha.MultiHostMySQLConnection .up.|> JdbcConnection
+  com.mysql.cj.jdbc.ha.RandomBalanceStrategy .up.|> BalanceStrategy
+  com.mysql.cj.jdbc.ha.ReplicationConnectionProxy .up.|> PingTarget
+  com.mysql.cj.jdbc.ha.ReplicationMySQLConnection .up.|> ReplicationConnection
+  com.mysql.cj.jdbc.ha.SequentialBalanceStrategy .up.|> BalanceStrategy
+  com.mysql.cj.jdbc.ha.StandardLoadBalanceExceptionChecker .up.|> LoadBalanceExceptionChecker
+  com.mysql.cj.jdbc.integration.c3p0.MysqlConnectionTester .up.|> QueryConnectionTester
+  com.mysql.cj.jdbc.integration.jboss.MysqlValidConnectionChecker .up.|> Serializable
+  com.mysql.cj.jdbc.integration.jboss.MysqlValidConnectionChecker .up.|> ValidConnectionChecker
+  com.mysql.cj.jdbc.interceptors.ResultSetScannerInterceptor .up.|> QueryInterceptor
+  com.mysql.cj.jdbc.interceptors.ServerStatusDiffInterceptor .up.|> QueryInterceptor
+  com.mysql.cj.jdbc.interceptors.SessionAssociationInterceptor .up.|> QueryInterceptor
+  com.mysql.cj.jdbc.jmx.LoadBalanceConnectionGroupManager .up.|> LoadBalanceConnectionGroupManagerMBean
+  com.mysql.cj.jdbc.jmx.ReplicationGroupManager .up.|> ReplicationGroupManagerMBean
+  com.mysql.cj.jdbc.result.CachedResultSetMetaDataImpl .up.|> CachedResultSetMetaData
+  com.mysql.cj.jdbc.result.ResultSetFactory .up.|> ProtocolEntityFactory
+  com.mysql.cj.jdbc.result.ResultSetImpl .up.|> ResultSetInternalMethods
+  com.mysql.cj.jdbc.result.ResultSetImpl .up.|> WarningListener
+  com.mysql.cj.jdbc.result.ResultSetMetaData .up.|> java.sql.ResultSetMetaData
+  com.mysql.cj.log.Jdk14Logger .up.|> Log
+  com.mysql.cj.log.LoggingProfilerEventHandler .up.|> ProfilerEventHandler
+  com.mysql.cj.log.NullLogger .up.|> Log
+  com.mysql.cj.log.ProfilerEventImpl .up.|> ProfilerEvent
+  com.mysql.cj.log.Slf4JLogger .up.|> Log
+  com.mysql.cj.log.StandardLogger .up.|> Log
+  com.mysql.cj.protocol.AbstractProtocol .up.|> Protocol
+  com.mysql.cj.protocol.AbstractSocketConnection .up.|> SocketConnection
+  com.mysql.cj.protocol.AsyncSocketFactory .up.|> SocketFactory
+  com.mysql.cj.protocol.NamedPipeSocketFactory .up.|> SocketFactory
+  com.mysql.cj.protocol.SerializingBufferWriter .up.|> CompletionHandler
+  com.mysql.cj.protocol.StandardSocketFactory .up.|> SocketFactory
+  com.mysql.cj.protocol.TlsAsynchronousSocketChannel .up.|> CompletionHandler
+  com.mysql.cj.protocol.WatchableOutputStream .up.|> WatchableStream
+  com.mysql.cj.protocol.a.AbstractRowFactory .up.|> ProtocolEntityFactory
+  com.mysql.cj.protocol.a.BinaryResultsetReader .up.|> ProtocolEntityReader
+  com.mysql.cj.protocol.a.BinaryRowFactory .up.|> ProtocolEntityFactory
+  com.mysql.cj.protocol.a.ColumnDefinitionFactory .up.|> ProtocolEntityFactory
+  com.mysql.cj.protocol.a.ColumnDefinitionReader .up.|> ProtocolEntityReader
+  com.mysql.cj.protocol.a.CompressedPacketSender .up.|> MessageSender
+  com.mysql.cj.protocol.a.DebugBufferingPacketReader .up.|> MessageReader
+  com.mysql.cj.protocol.a.DebugBufferingPacketSender .up.|> MessageSender
+  com.mysql.cj.protocol.a.MergingColumnDefinitionFactory .up.|> ProtocolEntityFactory
+  com.mysql.cj.protocol.a.MultiPacketReader .up.|> MessageReader
+  com.mysql.cj.protocol.a.MysqlBinaryValueDecoder .up.|> ValueDecoder
+  com.mysql.cj.protocol.a.MysqlTextValueDecoder .up.|> ValueDecoder
+  com.mysql.cj.protocol.a.NativeAuthenticationProvider .up.|> AuthenticationProvider
+  com.mysql.cj.protocol.a.NativeCapabilities .up.|> ServerCapabilities
+  com.mysql.cj.protocol.a.NativeMessageBuilder .up.|> MessageBuilder
+  com.mysql.cj.protocol.a.NativePacketHeader .up.|> MessageHeader
+  com.mysql.cj.protocol.a.NativePacketPayload .up.|> Message
+  com.mysql.cj.protocol.a.NativeProtocol .up.|> Protocol
+  com.mysql.cj.protocol.a.NativeProtocol .up.|> RuntimePropertyListener
+  com.mysql.cj.protocol.a.NativeServerSession .up.|> ServerSession
+  com.mysql.cj.protocol.a.NativeSocketConnection .up.|> SocketConnection
+  com.mysql.cj.protocol.a.ResultsetFactory .up.|> ProtocolEntityFactory
+  com.mysql.cj.protocol.a.ResultsetRowReader .up.|> ProtocolEntityReader
+  com.mysql.cj.protocol.a.SimplePacketReader .up.|> MessageReader
+  com.mysql.cj.protocol.a.SimplePacketSender .up.|> MessageSender
+  com.mysql.cj.protocol.a.TextResultsetReader .up.|> ProtocolEntityReader
+  com.mysql.cj.protocol.a.TextRowFactory .up.|> ProtocolEntityFactory
+  com.mysql.cj.protocol.a.TimeTrackingPacketReader .up.|> MessageReader
+  com.mysql.cj.protocol.a.TimeTrackingPacketReader .up.|> PacketReceivedTimeHolder
+  com.mysql.cj.protocol.a.TimeTrackingPacketSender .up.|> MessageSender
+  com.mysql.cj.protocol.a.TimeTrackingPacketSender .up.|> PacketSentTimeHolder
+  com.mysql.cj.protocol.a.TracingPacketReader .up.|> MessageReader
+  com.mysql.cj.protocol.a.TracingPacketSender .up.|> MessageSender
+  com.mysql.cj.protocol.a.authentication.CachingSha2PasswordPlugin o-- com.mysql.cj.protocol.a.authentication.CachingSha2PasswordPlugin.AuthStage : stage
+  com.mysql.cj.protocol.a.authentication.MysqlClearPasswordPlugin .up.|> AuthenticationPlugin
+  com.mysql.cj.protocol.a.authentication.MysqlNativePasswordPlugin .up.|> AuthenticationPlugin
+  com.mysql.cj.protocol.a.authentication.MysqlOldPasswordPlugin .up.|> AuthenticationPlugin
+  com.mysql.cj.protocol.a.authentication.Sha256PasswordPlugin .up.|> AuthenticationPlugin
+  com.mysql.cj.protocol.a.result.AbstractResultsetRows .up.|> ResultsetRows
+  com.mysql.cj.protocol.a.result.NativeResultset .up.|> Resultset
+  com.mysql.cj.protocol.a.result.OkPacket .up.|> ProtocolEntity
+  com.mysql.cj.protocol.a.result.ResultsetRowsCursor .up.|> ResultsetRows
+  com.mysql.cj.protocol.a.result.ResultsetRowsStatic .up.|> ResultsetRows
+  com.mysql.cj.protocol.a.result.ResultsetRowsStreaming .up.|> ResultsetRows
+  com.mysql.cj.protocol.result.AbstractResultsetRow .up.|> ResultsetRow
+  com.mysql.cj.protocol.x.AsyncMessageReader .up.|> MessageReader
+  com.mysql.cj.protocol.x.AsyncMessageReader o-- com.mysql.cj.protocol.x.AsyncMessageReader.CompletedRead : currentReadResult
+  com.mysql.cj.protocol.x.AsyncMessageSender .up.|> MessageSender
+  com.mysql.cj.protocol.x.ErrorToFutureCompletionHandler .up.|> CompletionHandler
+  com.mysql.cj.protocol.x.FetchDoneEntity .up.|> ProtocolEntity
+  com.mysql.cj.protocol.x.FetchDoneEntityFactory .up.|> ProtocolEntityFactory
+  com.mysql.cj.protocol.x.FetchDoneMoreResults .up.|> ProtocolEntity
+  com.mysql.cj.protocol.x.FetchDoneMoreResultsFactory .up.|> ProtocolEntityFactory
+  com.mysql.cj.protocol.x.FieldFactory .up.|> ProtocolEntityFactory
+  com.mysql.cj.protocol.x.Notice .up.|> ProtocolEntity
+  com.mysql.cj.protocol.x.NoticeFactory .up.|> ProtocolEntityFactory
+  com.mysql.cj.protocol.x.Ok .up.|> ProtocolEntity
+  com.mysql.cj.protocol.x.Ok .up.|> QueryResult
+  com.mysql.cj.protocol.x.OkBuilder .up.|> ResultBuilder
+  com.mysql.cj.protocol.x.OkFactory .up.|> ProtocolEntityFactory
+  com.mysql.cj.protocol.x.ResultMessageListener .up.|> MessageListener
+  com.mysql.cj.protocol.x.StatementExecuteOk .up.|> ProtocolEntity
+  com.mysql.cj.protocol.x.StatementExecuteOk .up.|> Result
+  com.mysql.cj.protocol.x.StatementExecuteOkBuilder .up.|> ResultBuilder
+  com.mysql.cj.protocol.x.StatementExecuteOkFactory .up.|> ProtocolEntityFactory
+  com.mysql.cj.protocol.x.SyncMessageReader .up.|> MessageReader
+  com.mysql.cj.protocol.x.SyncMessageSender .up.|> MessageSender
+  com.mysql.cj.protocol.x.SyncMessageSender .up.|> PacketSentTimeHolder
+  com.mysql.cj.protocol.x.XAsyncSocketConnection .up.|> SocketConnection
+  com.mysql.cj.protocol.x.XAuthenticationProvider .up.|> AuthenticationProvider
+  com.mysql.cj.protocol.x.XMessage .up.|> Message
+  com.mysql.cj.protocol.x.XMessage .up.|> com.google.protobuf.Message
+  com.mysql.cj.protocol.x.XMessageBuilder .up.|> MessageBuilder
+  com.mysql.cj.protocol.x.XMessageHeader .up.|> MessageHeader
+  com.mysql.cj.protocol.x.XProtocol .up.|> Protocol
+  com.mysql.cj.protocol.x.XProtocolDecoder .up.|> ValueDecoder
+  com.mysql.cj.protocol.x.XProtocolRow .up.|> com.mysql.cj.result.Row
+  com.mysql.cj.protocol.x.XProtocolRowFactory .up.|> ProtocolEntityFactory
+  com.mysql.cj.protocol.x.XProtocolRowInputStream .up.|> RowList
+  com.mysql.cj.protocol.x.XServerCapabilities .up.|> ServerCapabilities
+  com.mysql.cj.protocol.x.XServerSession .up.|> ServerSession
+  com.mysql.cj.result.BufferedRowList .up.|> RowList
+  com.mysql.cj.result.DefaultColumnDefinition .up.|> ColumnDefinition
+  com.mysql.cj.result.DefaultValueFactory .up.|> ValueFactory
+  com.mysql.cj.result.Field .up.|> ProtocolEntity
+  com.mysql.cj.result.StringValueFactory .up.|> ValueFactory
+  com.mysql.cj.util.LazyString .up.|> Supplier
+  com.mysql.cj.util.PerVmServerConfigCacheFactory .up.|> CacheAdapterFactory
+  com.mysql.cj.xdevapi.AbstractDataResult .up.|> Iterator
+  com.mysql.cj.xdevapi.AbstractDataResult .up.|> Result
+  com.mysql.cj.xdevapi.AbstractDataResult .up.|> ResultStreamer
+  com.mysql.cj.xdevapi.AbstractFilterParams .up.|> FilterParams
+  com.mysql.cj.xdevapi.AddResultImpl .up.|> AddResult
+  com.mysql.cj.xdevapi.AddStatementImpl .up.|> AddStatement
+  com.mysql.cj.xdevapi.ClientImpl .up.|> Client
+  com.mysql.cj.xdevapi.CollectionImpl .up.|> Collection
+  com.mysql.cj.xdevapi.ColumnImpl .up.|> Column
+  com.mysql.cj.xdevapi.DbDocFactory .up.|> ProtocolEntityFactory
+  com.mysql.cj.xdevapi.DbDocImpl .up.|> DbDoc
+  com.mysql.cj.xdevapi.DeleteStatementImpl .up.|> DeleteStatement
+  com.mysql.cj.xdevapi.DocResultBuilder .up.|> ResultBuilder
+  com.mysql.cj.xdevapi.DocResultImpl .up.|> DocResult
+  com.mysql.cj.xdevapi.FilterableStatement .up.|> Statement
+  com.mysql.cj.xdevapi.FindStatementImpl .up.|> FindStatement
+  com.mysql.cj.xdevapi.InsertResultImpl .up.|> InsertResult
+  com.mysql.cj.xdevapi.InsertStatementImpl .up.|> InsertStatement
+  com.mysql.cj.xdevapi.JsonArray .up.|> JsonValue
+  com.mysql.cj.xdevapi.JsonLiteral .up.|> JsonValue
+  com.mysql.cj.xdevapi.JsonNumber .up.|> JsonValue
+  com.mysql.cj.xdevapi.JsonString .up.|> JsonValue
+  com.mysql.cj.xdevapi.ModifyStatementImpl .up.|> ModifyStatement
+  com.mysql.cj.xdevapi.PreparableStatement o-- com.mysql.cj.xdevapi.PreparableStatement.PreparedState : preparedState
+  com.mysql.cj.xdevapi.RemoveStatementImpl .up.|> RemoveStatement
+  com.mysql.cj.xdevapi.RowFactory .up.|> ProtocolEntityFactory
+  com.mysql.cj.xdevapi.RowImpl .up.|> com.mysql.cj.xdevapi.Row
+  com.mysql.cj.xdevapi.RowResultBuilder .up.|> ResultBuilder
+  com.mysql.cj.xdevapi.RowResultImpl .up.|> RowResult
+  com.mysql.cj.xdevapi.SchemaImpl .up.|> Schema
+  com.mysql.cj.xdevapi.SelectStatementImpl .up.|> SelectStatement
+  com.mysql.cj.xdevapi.SessionImpl .up.|> Session
+  com.mysql.cj.xdevapi.SqlMultiResult .up.|> ResultStreamer
+  com.mysql.cj.xdevapi.SqlMultiResult .up.|> SqlResult
+  com.mysql.cj.xdevapi.SqlResultBuilder .up.|> ResultBuilder
+  com.mysql.cj.xdevapi.SqlSingleResult .up.|> SqlResult
+  com.mysql.cj.xdevapi.SqlStatementImpl .up.|> SqlStatement
+  com.mysql.cj.xdevapi.SqlUpdateResult .up.|> SqlResult
+  com.mysql.cj.xdevapi.StreamingDocResultBuilder .up.|> ResultBuilder
+  com.mysql.cj.xdevapi.StreamingRowResultBuilder .up.|> ResultBuilder
+  com.mysql.cj.xdevapi.StreamingSqlResultBuilder .up.|> ResultBuilder
+  com.mysql.cj.xdevapi.TableImpl .up.|> Table
+  com.mysql.cj.xdevapi.UpdateResult .up.|> Result
+  com.mysql.cj.xdevapi.UpdateResultBuilder .up.|> ResultBuilder
+  com.mysql.cj.xdevapi.UpdateStatementImpl .up.|> UpdateStatement
+  com.mysql.cj.xdevapi.WarningImpl .up.|> com.mysql.cj.xdevapi.Warning
+  com.mysql.jdbc.SocketFactoryWrapper .up.|> SocketFactory
+  testsuite.BaseQueryInterceptor .up.|> QueryInterceptor
+  testsuite.simple.SimpleTransformer .up.|> ConnectionPropertiesTransform
+  testsuite.simple.TestLifecycleInterceptor .up.|> ConnectionLifecycleInterceptor
+
+
+right footer
+
+
+PlantUML diagram generated by SketchIt! (https://bitbucket.org/pmesmeur/sketch.it)
+For more information about this tool, please contact philippe.mesmeur@gmail.com
+endfooter
+
+@enduml

@@ -1,0 +1,983 @@
+@startuml
+
+title __X's Class Diagram__\n
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      namespace x {
+        class com.mysql.cj.protocol.x.AsyncMessageReader {
+            ~ asyncTimeout : RuntimeProperty<Integer>
+            ~ currentMessageListener : MessageListener<XMessage>
+            ~ headerCompletionHandler : CompletionHandler<Integer, Void>
+            ~ messageBuf : ByteBuffer
+            ~ messageCompletionHandler : CompletionHandler<Integer, Void>
+            ~ pendingCompletedReadQueue : BlockingQueue<CompletedRead>
+            ~ pendingMsgHeader : CompletableFuture<XMessageHeader>
+            ~ pendingMsgMonitor : Object
+            ~ sc : SocketConnection
+            ~ stopAfterNextMessage : boolean
+            {static} - READ_AHEAD_DEPTH : int
+            - messageListenerQueue : BlockingQueue<MessageListener<XMessage>>
+            - propertySet : PropertySet
+            + AsyncMessageReader()
+            + pushMessageListener()
+            + readHeader()
+            + readMessage()
+            + readMessage()
+            + start()
+            + stopAfterNextMessage()
+            ~ dispatchMessage()
+            ~ getMessageListener()
+            ~ onError()
+            - checkClosed()
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      namespace x {
+        class com.mysql.cj.protocol.x.AsyncMessageReader.CompletedRead {
+            + header : XMessageHeader
+            + message : GeneratedMessageV3
+            + CompletedRead()
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      namespace x {
+        class com.mysql.cj.protocol.x.AsyncMessageReader.HeaderCompletionHandler {
+            + HeaderCompletionHandler()
+            + completed()
+            + failed()
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      namespace x {
+        class com.mysql.cj.protocol.x.AsyncMessageReader.MessageCompletionHandler {
+            + MessageCompletionHandler()
+            + completed()
+            + failed()
+            - parseMessage()
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      namespace x {
+        class com.mysql.cj.protocol.x.AsyncMessageReader.SyncXMessageListener {
+            ~ notices : List<Notice>
+            - expectedClass : Class<T>
+            - future : CompletableFuture<XMessage>
+            + SyncXMessageListener()
+            + error()
+            + processMessage()
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      namespace x {
+        class com.mysql.cj.protocol.x.AsyncMessageSender {
+            {static} - HEADER_LEN : int
+            - bufferWriter : SerializingBufferWriter
+            - maxAllowedPacket : int
+            + AsyncMessageSender()
+            + send()
+            + send()
+            + setChannel()
+            + setMaxAllowedPacket()
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      namespace x {
+        class com.mysql.cj.protocol.x.ErrorToFutureCompletionHandler {
+            - future : CompletableFuture<?>
+            - successCallback : Runnable
+            + ErrorToFutureCompletionHandler()
+            + completed()
+            + failed()
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      namespace x {
+        class com.mysql.cj.protocol.x.FetchDoneEntity {
+            + FetchDoneEntity()
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      namespace x {
+        class com.mysql.cj.protocol.x.FetchDoneEntityFactory {
+            + createFromMessage()
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      namespace x {
+        class com.mysql.cj.protocol.x.FetchDoneMoreResults {
+            + FetchDoneMoreResults()
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      namespace x {
+        class com.mysql.cj.protocol.x.FetchDoneMoreResultsFactory {
+            + createFromMessage()
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      namespace x {
+        class com.mysql.cj.protocol.x.FieldFactory {
+            ~ metadataCharacterSet : String
+            {static} - XPROTOCOL_COLUMN_BYTES_CONTENT_TYPE_GEOMETRY : int
+            {static} - XPROTOCOL_COLUMN_BYTES_CONTENT_TYPE_JSON : int
+            {static} - XPROTOCOL_COLUMN_FLAGS_AUTO_INCREMENT : int
+            {static} - XPROTOCOL_COLUMN_FLAGS_BYTES_RIGHTPAD : int
+            {static} - XPROTOCOL_COLUMN_FLAGS_DATETIME_TIMESTAMP : int
+            {static} - XPROTOCOL_COLUMN_FLAGS_DECIMAL_UNSIGNED : int
+            {static} - XPROTOCOL_COLUMN_FLAGS_DOUBLE_UNSIGNED : int
+            {static} - XPROTOCOL_COLUMN_FLAGS_FLOAT_UNSIGNED : int
+            {static} - XPROTOCOL_COLUMN_FLAGS_MULTIPLE_KEY : int
+            {static} - XPROTOCOL_COLUMN_FLAGS_NOT_NULL : int
+            {static} - XPROTOCOL_COLUMN_FLAGS_PRIMARY_KEY : int
+            {static} - XPROTOCOL_COLUMN_FLAGS_UINT_ZEROFILL : int
+            {static} - XPROTOCOL_COLUMN_FLAGS_UNIQUE_KEY : int
+            + FieldFactory()
+            + createFromMessage()
+            - columnMetaDataToField()
+            - findMysqlType()
+            - xProtocolTypeToMysqlType()
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      namespace x {
+        class com.mysql.cj.protocol.x.MessageConstants {
+            {static} + MESSAGE_CLASS_TO_CLIENT_MESSAGE_TYPE : Map<Class<? extends MessageLite>, Integer>
+            {static} + MESSAGE_CLASS_TO_PARSER : Map<Class<? extends GeneratedMessageV3>, Parser<? extends GeneratedMessageV3>>
+            {static} + MESSAGE_CLASS_TO_TYPE : Map<Class<? extends GeneratedMessageV3>, Integer>
+            {static} + MESSAGE_TYPE_TO_CLASS : Map<Integer, Class<? extends GeneratedMessageV3>>
+            {static} + getMessageClassForType()
+            {static} + getTypeForMessageClass()
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      namespace x {
+        class com.mysql.cj.protocol.x.Notice {
+            {static} + NoticeScope_Global : int
+            {static} + NoticeScope_Local : int
+            {static} + NoticeType_GROUP_REPLICATION_STATE_CHANGED : int
+            {static} + NoticeType_SESSION_STATE_CHANGED : int
+            {static} + NoticeType_SESSION_VARIABLE_CHANGED : int
+            {static} + NoticeType_WARNING : int
+            {static} + SessionStateChanged_ACCOUNT_EXPIRED : int
+            {static} + SessionStateChanged_CLIENT_ID_ASSIGNED : int
+            {static} + SessionStateChanged_CURRENT_SCHEMA : int
+            {static} + SessionStateChanged_GENERATED_DOCUMENT_IDS : int
+            {static} + SessionStateChanged_GENERATED_INSERT_ID : int
+            {static} + SessionStateChanged_PRODUCED_MESSAGE : int
+            {static} + SessionStateChanged_ROWS_AFFECTED : int
+            {static} + SessionStateChanged_ROWS_FOUND : int
+            {static} + SessionStateChanged_ROWS_MATCHED : int
+            {static} + SessionStateChanged_TRX_COMMITTED : int
+            {static} + SessionStateChanged_TRX_ROLLEDBACK : int
+            # scope : int
+            # type : int
+            + Notice()
+            {static} + getInstance()
+            + getScope()
+            + getType()
+            {static} ~ parseNotice()
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      namespace x {
+        class com.mysql.cj.protocol.x.Notice.XSessionStateChanged {
+            - paramType : Integer
+            - valueList : List<Scalar>
+            + XSessionStateChanged()
+            + getParamType()
+            + getValue()
+            + getValueList()
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      namespace x {
+        class com.mysql.cj.protocol.x.Notice.XSessionVariableChanged {
+            - paramName : String
+            - value : Scalar
+            + XSessionVariableChanged()
+            + getParamName()
+            + getValue()
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      namespace x {
+        class com.mysql.cj.protocol.x.Notice.XWarning {
+            - code : long
+            - level : int
+            - message : String
+            + XWarning()
+            + getCode()
+            + getLevel()
+            + getMessage()
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      namespace x {
+        class com.mysql.cj.protocol.x.NoticeFactory {
+            + createFromMessage()
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      namespace x {
+        class com.mysql.cj.protocol.x.Ok {
+            + Ok()
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      namespace x {
+        class com.mysql.cj.protocol.x.OkBuilder {
+            + addProtocolEntity()
+            + build()
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      namespace x {
+        class com.mysql.cj.protocol.x.OkFactory {
+            + createFromMessage()
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      namespace x {
+        class com.mysql.cj.protocol.x.ResultMessageListener {
+            - future : CompletableFuture<R>
+            - messageToProtocolEntityFactory : Map<Class<? extends GeneratedMessageV3>, ProtocolEntityFactory<? extends ProtocolEntity, XMessage>>
+            - resultBuilder : ResultBuilder<?>
+            + ResultMessageListener()
+            + error()
+            + processMessage()
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      namespace x {
+        class com.mysql.cj.protocol.x.StatementExecuteOk {
+            - generatedIds : List<String>
+            - lastInsertId : Long
+            - rowsAffected : long
+            - warnings : List<Warning>
+            + StatementExecuteOk()
+            + StatementExecuteOk()
+            + getAffectedItemsCount()
+            + getGeneratedIds()
+            + getLastInsertId()
+            + getWarnings()
+            + getWarningsCount()
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      namespace x {
+        class com.mysql.cj.protocol.x.StatementExecuteOkBuilder {
+            - generatedIds : List<String>
+            - lastInsertId : Long
+            - rowsAffected : long
+            - warnings : List<Warning>
+            + addProtocolEntity()
+            + build()
+            - addNotice()
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      namespace x {
+        class com.mysql.cj.protocol.x.StatementExecuteOkFactory {
+            + createFromMessage()
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      namespace x {
+        class com.mysql.cj.protocol.x.SyncMessageReader {
+            ~ dispatchingThread : Thread
+            ~ dispatchingThreadMonitor : Object
+            ~ messageListenerQueue : BlockingQueue<MessageListener<XMessage>>
+            ~ waitingSyncOperationMonitor : Object
+            - header : XMessageHeader
+            - inputStream : FullReadInputStream
+            + SyncMessageReader()
+            + pushMessageListener()
+            + readHeader()
+            + readMessage()
+            + readMessage()
+            - readHeaderLocal()
+            - readMessageLocal()
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      namespace x {
+        class com.mysql.cj.protocol.x.SyncMessageReader.ListenersDispatcher {
+            ~ started : boolean
+            {static} - POLL_TIMEOUT : long
+            + ListenersDispatcher()
+            + run()
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      namespace x {
+        class com.mysql.cj.protocol.x.SyncMessageSender {
+            {static} ~ HEADER_LEN : int
+            ~ waitingAsyncOperationMonitor : Object
+            - lastPacketSentTime : long
+            - maxAllowedPacket : int
+            - outputStream : BufferedOutputStream
+            - previousPacketSentTime : long
+            + SyncMessageSender()
+            + getLastPacketSentTime()
+            + getPreviousPacketSentTime()
+            + send()
+            + send()
+            + setMaxAllowedPacket()
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      namespace x {
+        class com.mysql.cj.protocol.x.XAsyncSocketConnection {
+            ~ channel : AsynchronousSocketChannel
+            + connect()
+            + forceClose()
+            + getAsynchronousSocketChannel()
+            + getExceptionInterceptor()
+            + getMysqlInput()
+            + getMysqlOutput()
+            + getMysqlSocket()
+            + getNetworkResources()
+            + isSSLEstablished()
+            + isSynchronous()
+            + performTlsHandshake()
+            + setMysqlInput()
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      namespace x {
+        class com.mysql.cj.protocol.x.XAuthenticationProvider {
+            ~ protocol : XProtocol
+            - authMech : AuthMech
+            - messageBuilder : XMessageBuilder
+            + changeUser()
+            + connect()
+            + getEncodingForHandshake()
+            + init()
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      namespace x {
+        class com.mysql.cj.protocol.x.XMessage {
+            - message : Message
+            - notices : List<Notice>
+            + XMessage()
+            + addNotices()
+            + findInitializationErrors()
+            + getAllFields()
+            + getByteBuffer()
+            + getDefaultInstanceForType()
+            + getDescriptorForType()
+            + getField()
+            + getInitializationErrorString()
+            + getMessage()
+            + getNotices()
+            + getOneofFieldDescriptor()
+            + getParserForType()
+            + getPosition()
+            + getRepeatedField()
+            + getRepeatedFieldCount()
+            + getSerializedSize()
+            + getUnknownFields()
+            + hasField()
+            + hasOneof()
+            + isInitialized()
+            + newBuilderForType()
+            + toBuilder()
+            + toByteArray()
+            + toByteString()
+            + writeDelimitedTo()
+            + writeTo()
+            + writeTo()
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      namespace x {
+        class com.mysql.cj.protocol.x.XMessageBuilder {
+            {static} - XPLUGIN_NAMESPACE : String
+            + buildCapabilitiesGet()
+            + buildCapabilitiesSet()
+            + buildClose()
+            + buildCreateCollection()
+            + buildCreateCollectionIndex()
+            + buildDelete()
+            + buildDisableNotices()
+            + buildDocInsert()
+            + buildDocUpdate()
+            + buildDropCollection()
+            + buildDropCollectionIndex()
+            + buildEnableNotices()
+            + buildExpectOpen()
+            + buildExternalAuthStart()
+            + buildFind()
+            + buildListNotices()
+            + buildListObjects()
+            + buildMysql41AuthContinue()
+            + buildMysql41AuthStart()
+            + buildPlainAuthStart()
+            + buildPrepareDeallocate()
+            + buildPrepareDelete()
+            + buildPrepareDocUpdate()
+            + buildPrepareExecute()
+            + buildPrepareFind()
+            + buildPrepareRowUpdate()
+            + buildPrepareSqlStatement()
+            + buildRowInsert()
+            + buildRowUpdate()
+            + buildSessionResetAndClose()
+            + buildSessionResetKeepOpen()
+            + buildSha256MemoryAuthContinue()
+            + buildSha256MemoryAuthStart()
+            + buildSqlStatement()
+            + buildSqlStatement()
+            {static} - applyFilterParams()
+            {static} - applyFilterParams()
+            - buildXpluginCommand()
+            - commonDeleteBuilder()
+            - commonDocUpdateBuilder()
+            - commonFindBuilder()
+            - commonRowInsertBuilder()
+            - commonRowUpdateBuilder()
+            - commonSqlStatementBuilder()
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      namespace x {
+        class com.mysql.cj.protocol.x.XMessageHeader {
+            - headerBuf : ByteBuffer
+            - messageSize : int
+            - messageType : int
+            + XMessageHeader()
+            + XMessageHeader()
+            + getBuffer()
+            + getMessageSequence()
+            + getMessageSize()
+            + getMessageType()
+            - parseBuffer()
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      namespace x {
+        class com.mysql.cj.protocol.x.XProtocol {
+            {static} + COLLATION_NAME_TO_COLLATION_INDEX : Map<String, Integer>
+            + defaultSchemaName : String
+            ~ serverSession : XServerSession
+            ~ useSessionResetKeepOpen : Boolean
+            {static} - RETRY_PREPARE_STATEMENT_COUNTDOWN : int
+            - clientCapabilities : Map<String, Object>
+            - currDatabase : String
+            - currPassword : String
+            - currUser : String
+            - currentResultStreamer : ResultStreamer
+            - managedResource : Closeable
+            - messageToProtocolEntityFactory : Map<Class<? extends GeneratedMessageV3>, ProtocolEntityFactory<? extends ProtocolEntity, XMessage>>
+            - preparableStatementFinalizerReferences : Map<Integer, PreparableStatementFinalizer>
+            - preparableStatementRefQueue : ReferenceQueue<PreparableStatement<?>>
+            - preparedStatementIds : SequentialIdLease
+            - reader : MessageReader<XMessageHeader, XMessage>
+            - retryPrepareStatementCountdown : int
+            - sender : MessageSender<XMessage>
+            - supportsPreparedStatements : boolean
+            + XProtocol()
+            + XProtocol()
+            + afterHandshake()
+            + beforeHandshake()
+            + changeDatabase()
+            + changeUser()
+            + checkErrorMessage()
+            + close()
+            + configureTimezone()
+            + connect()
+            + drainRows()
+            + failedPreparingStatement()
+            + freePreparedStatementId()
+            + getExceptionInterceptor()
+            + getLocalInfileInputStream()
+            + getNewPreparedStatementId()
+            + getPasswordCharacterEncoding()
+            + getQueryComment()
+            + getServerSession()
+            + hasMoreResults()
+            + hasResults()
+            + init()
+            + initServerSession()
+            + isOpen()
+            + isSqlResultPending()
+            + negotiateSSLConnection()
+            + query()
+            + queryAsync()
+            + read()
+            + read()
+            + readAuthenticateContinue()
+            + readAuthenticateOk()
+            + readMessage()
+            + readMetadata()
+            + readMetadata()
+            + readQueryResult()
+            + readRowOrNull()
+            + readServerCapabilities()
+            + readyForPreparingStatements()
+            + reset()
+            + send()
+            + sendCapabilities()
+            + sendCommand()
+            + setLocalInfileInputStream()
+            + setMaxAllowedPacket()
+            + setQueryComment()
+            + supportsPreparedStatements()
+            + versionMeetsMinimum()
+            # newCommand()
+            - getConnectionAttributesMap()
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      namespace x {
+        class com.mysql.cj.protocol.x.XProtocolDecoder {
+            {static} + instance : XProtocolDecoder
+            + decodeBit()
+            + decodeByteArray()
+            + decodeDate()
+            + decodeDecimal()
+            + decodeDouble()
+            + decodeFloat()
+            + decodeInt1()
+            + decodeInt2()
+            + decodeInt4()
+            + decodeInt8()
+            + decodeSet()
+            + decodeTime()
+            + decodeTimestamp()
+            + decodeUInt1()
+            + decodeUInt2()
+            + decodeUInt4()
+            + decodeUInt8()
+            + decodeYear()
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      namespace x {
+        class com.mysql.cj.protocol.x.XProtocolError {
+            - msg : Error
+            {static} - serialVersionUID : long
+            + XProtocolError()
+            + XProtocolError()
+            + XProtocolError()
+            + XProtocolError()
+            + getErrorCode()
+            + getSQLState()
+            {static} - getFullErrorDescription()
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      namespace x {
+        class com.mysql.cj.protocol.x.XProtocolRow {
+            - metadata : ColumnDefinition
+            - rowMessage : Row
+            - wasNull : boolean
+            + XProtocolRow()
+            + getNull()
+            + getValue()
+            + setMetadata()
+            + wasNull()
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      namespace x {
+        class com.mysql.cj.protocol.x.XProtocolRowFactory {
+            + createFromMessage()
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      namespace x {
+        class com.mysql.cj.protocol.x.XProtocolRowInputStream {
+            - isDone : boolean
+            - metadata : ColumnDefinition
+            - next : Row
+            - noticeConsumer : Consumer<Notice>
+            - position : int
+            - protocol : XProtocol
+            + XProtocolRowInputStream()
+            + XProtocolRowInputStream()
+            + getPosition()
+            + hasNext()
+            + next()
+            + readRow()
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      namespace x {
+        class com.mysql.cj.protocol.x.XServerCapabilities {
+            {static} ~ KEY_AUTHENTICATION_MECHANISMS : String
+            {static} ~ KEY_CLIENT_PWD_EXPIRE_OK : String
+            {static} ~ KEY_DOC_FORMATS : String
+            {static} ~ KEY_NODE_TYPE : String
+            {static} ~ KEY_SESSION_CONNECT_ATTRS : String
+            {static} ~ KEY_TLS : String
+            - capabilities : Map<String, Any>
+            + XServerCapabilities()
+            + getAuthenticationMechanisms()
+            + getCapabilityFlags()
+            + getClientPwdExpireOk()
+            + getDocFormats()
+            + getNodeType()
+            + getServerVersion()
+            + getTls()
+            + hasCapability()
+            + serverSupportsFracSecs()
+            + setCapability()
+            + setCapabilityFlags()
+            + setServerVersion()
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      namespace x {
+        class com.mysql.cj.protocol.x.XServerSession {
+            ~ serverCapabilities : XServerCapabilities
+            - clientId : long
+            - defaultTimeZone : TimeZone
+            + characterSetNamesMatches()
+            + configureCharacterSets()
+            + cursorExists()
+            + getCapabilities()
+            + getCharacterSetMetadata()
+            + getCharacterSetResultsOnServer()
+            + getClientParam()
+            + getDefaultTimeZone()
+            + getEncodingForIndex()
+            + getErrorMessageEncoding()
+            + getMaxBytesPerChar()
+            + getMaxBytesPerChar()
+            + getMetadataCollationIndex()
+            + getOldStatusFlags()
+            + getServerDefaultCharset()
+            + getServerDefaultCollationIndex()
+            + getServerTimeZone()
+            + getServerVariable()
+            + getServerVariable()
+            + getServerVariables()
+            + getServerVersion()
+            + getStatusFlags()
+            + getThreadId()
+            + getTransactionState()
+            + hasLongColumnInfo()
+            + hasMoreResults()
+            + inTransactionOnServer()
+            + isAutoCommit()
+            + isAutocommit()
+            + isEOFDeprecated()
+            + isLastRowSent()
+            + isLowerCaseTableNames()
+            + isNoBackslashEscapesSet()
+            + isQueryCacheEnabled()
+            + isServerTruncatesFracSecs()
+            + isVersion()
+            + noGoodIndexUsed()
+            + noIndexUsed()
+            + queryWasSlow()
+            + setAutoCommit()
+            + setCapabilities()
+            + setCharacterSetMetadata()
+            + setCharacterSetResultsOnServer()
+            + setClientParam()
+            + setDefaultTimeZone()
+            + setErrorMessageEncoding()
+            + setHasLongColumnInfo()
+            + setMetadataCollationIndex()
+            + setOldStatusFlags()
+            + setServerDefaultCollationIndex()
+            + setServerTimeZone()
+            + setServerVariables()
+            + setStatusFlags()
+            + setStatusFlags()
+            + setThreadId()
+            + storesLowerCaseTableNames()
+            + useAnsiQuotedIdentifiers()
+            + useMultiResults()
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      namespace x {
+        enum XpluginStatementCommand {
+          XPLUGIN_STMT_CREATE_COLLECTION
+          XPLUGIN_STMT_CREATE_COLLECTION_INDEX
+          XPLUGIN_STMT_DISABLE_NOTICES
+          XPLUGIN_STMT_DROP_COLLECTION
+          XPLUGIN_STMT_DROP_COLLECTION_INDEX
+          XPLUGIN_STMT_ENABLE_NOTICES
+          XPLUGIN_STMT_LIST_NOTICES
+          XPLUGIN_STMT_LIST_OBJECTS
+          XPLUGIN_STMT_PING
+          commandName
+        }
+      }
+    }
+  }
+  
+
+  com.mysql.cj.protocol.x.AsyncMessageReader .up.|> MessageReader
+  com.mysql.cj.protocol.x.AsyncMessageReader o-- com.mysql.cj.protocol.x.AsyncMessageReader.CompletedRead : currentReadResult
+  com.mysql.cj.protocol.x.AsyncMessageReader +-down- com.mysql.cj.protocol.x.AsyncMessageReader.CompletedRead
+  com.mysql.cj.protocol.x.AsyncMessageReader +-down- com.mysql.cj.protocol.x.AsyncMessageReader.HeaderCompletionHandler
+  com.mysql.cj.protocol.x.AsyncMessageReader +-down- com.mysql.cj.protocol.x.AsyncMessageReader.MessageCompletionHandler
+  com.mysql.cj.protocol.x.AsyncMessageReader +-down- com.mysql.cj.protocol.x.AsyncMessageReader.SyncXMessageListener
+  com.mysql.cj.protocol.x.AsyncMessageReader.HeaderCompletionHandler .up.|> CompletionHandler
+  com.mysql.cj.protocol.x.AsyncMessageReader.MessageCompletionHandler .up.|> CompletionHandler
+  com.mysql.cj.protocol.x.AsyncMessageReader.SyncXMessageListener .up.|> MessageListener
+  com.mysql.cj.protocol.x.AsyncMessageSender .up.|> MessageSender
+  com.mysql.cj.protocol.x.ErrorToFutureCompletionHandler .up.|> CompletionHandler
+  com.mysql.cj.protocol.x.FetchDoneEntity .up.|> ProtocolEntity
+  com.mysql.cj.protocol.x.FetchDoneEntityFactory .up.|> ProtocolEntityFactory
+  com.mysql.cj.protocol.x.FetchDoneMoreResults .up.|> ProtocolEntity
+  com.mysql.cj.protocol.x.FetchDoneMoreResultsFactory .up.|> ProtocolEntityFactory
+  com.mysql.cj.protocol.x.FieldFactory .up.|> ProtocolEntityFactory
+  com.mysql.cj.protocol.x.Notice .up.|> ProtocolEntity
+  com.mysql.cj.protocol.x.Notice +-down- com.mysql.cj.protocol.x.Notice.XSessionStateChanged
+  com.mysql.cj.protocol.x.Notice +-down- com.mysql.cj.protocol.x.Notice.XSessionVariableChanged
+  com.mysql.cj.protocol.x.Notice +-down- com.mysql.cj.protocol.x.Notice.XWarning
+  com.mysql.cj.protocol.x.Notice.XSessionStateChanged -up-|> com.mysql.cj.protocol.x.Notice
+  com.mysql.cj.protocol.x.Notice.XSessionVariableChanged -up-|> com.mysql.cj.protocol.x.Notice
+  com.mysql.cj.protocol.x.Notice.XWarning .up.|> Warning
+  com.mysql.cj.protocol.x.Notice.XWarning -up-|> com.mysql.cj.protocol.x.Notice
+  com.mysql.cj.protocol.x.NoticeFactory .up.|> ProtocolEntityFactory
+  com.mysql.cj.protocol.x.Ok .up.|> ProtocolEntity
+  com.mysql.cj.protocol.x.Ok .up.|> QueryResult
+  com.mysql.cj.protocol.x.OkBuilder .up.|> ResultBuilder
+  com.mysql.cj.protocol.x.OkFactory .up.|> ProtocolEntityFactory
+  com.mysql.cj.protocol.x.ResultMessageListener .up.|> MessageListener
+  com.mysql.cj.protocol.x.StatementExecuteOk .up.|> ProtocolEntity
+  com.mysql.cj.protocol.x.StatementExecuteOk .up.|> Result
+  com.mysql.cj.protocol.x.StatementExecuteOkBuilder .up.|> ResultBuilder
+  com.mysql.cj.protocol.x.StatementExecuteOkFactory .up.|> ProtocolEntityFactory
+  com.mysql.cj.protocol.x.SyncMessageReader .up.|> MessageReader
+  com.mysql.cj.protocol.x.SyncMessageReader +-down- com.mysql.cj.protocol.x.SyncMessageReader.ListenersDispatcher
+  com.mysql.cj.protocol.x.SyncMessageReader.ListenersDispatcher .up.|> Runnable
+  com.mysql.cj.protocol.x.SyncMessageSender .up.|> MessageSender
+  com.mysql.cj.protocol.x.SyncMessageSender .up.|> PacketSentTimeHolder
+  com.mysql.cj.protocol.x.XAsyncSocketConnection .up.|> SocketConnection
+  com.mysql.cj.protocol.x.XAuthenticationProvider .up.|> AuthenticationProvider
+  com.mysql.cj.protocol.x.XMessage .up.|> Message
+  com.mysql.cj.protocol.x.XMessage .up.|> com.google.protobuf.Message
+  com.mysql.cj.protocol.x.XMessageBuilder .up.|> MessageBuilder
+  com.mysql.cj.protocol.x.XMessageHeader .up.|> MessageHeader
+  com.mysql.cj.protocol.x.XProtocol .up.|> Protocol
+  com.mysql.cj.protocol.x.XProtocolDecoder .up.|> ValueDecoder
+  com.mysql.cj.protocol.x.XProtocolRow .up.|> com.mysql.cj.result.Row
+  com.mysql.cj.protocol.x.XProtocolRowFactory .up.|> ProtocolEntityFactory
+  com.mysql.cj.protocol.x.XProtocolRowInputStream .up.|> RowList
+  com.mysql.cj.protocol.x.XServerCapabilities .up.|> ServerCapabilities
+  com.mysql.cj.protocol.x.XServerSession .up.|> ServerSession
+
+
+right footer
+
+
+PlantUML diagram generated by SketchIt! (https://bitbucket.org/pmesmeur/sketch.it)
+For more information about this tool, please contact philippe.mesmeur@gmail.com
+endfooter
+
+@enduml

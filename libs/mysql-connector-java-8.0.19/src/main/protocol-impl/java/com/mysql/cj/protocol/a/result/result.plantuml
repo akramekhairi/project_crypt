@@ -1,0 +1,289 @@
+@startuml
+
+title __RESULT's Class Diagram__\n
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      namespace a {
+        namespace result {
+          abstract class com.mysql.cj.protocol.a.result.AbstractBufferRow {
+              # homePosition : int
+              # lastRequestedIndex : int
+              # lastRequestedPos : int
+              # rowFromServer : NativePacketPayload
+              # AbstractBufferRow()
+              {abstract} ~ findAndSeekToOffset()
+          }
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      namespace a {
+        namespace result {
+          abstract class com.mysql.cj.protocol.a.result.AbstractResultsetRows {
+              {static} # BEFORE_START_OF_ROWS : int
+              # currentPositionInFetchedRows : int
+              # metadata : ColumnDefinition
+              # owner : ResultsetRowsOwner
+              # rowFactory : ProtocolEntityFactory<ResultsetRow, NativePacketPayload>
+              # wasEmpty : boolean
+              + getMetadata()
+              + getOwner()
+              + setMetadata()
+              + setOwner()
+              + wasEmpty()
+          }
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      namespace a {
+        namespace result {
+          class com.mysql.cj.protocol.a.result.BinaryBufferRow {
+              - isNull : boolean[]
+              - preNullBitmaskHomePosition : int
+              + BinaryBufferRow()
+              + getBytes()
+              + getNull()
+              + getValue()
+              + isBinaryEncoded()
+              + setBytes()
+              + setMetadata()
+              # findAndSeekToOffset()
+              - setupIsNullBitmask()
+          }
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      namespace a {
+        namespace result {
+          class com.mysql.cj.protocol.a.result.ByteArrayRow {
+              ~ internalRowData : byte[][]
+              + ByteArrayRow()
+              + ByteArrayRow()
+              + getBytes()
+              + getNull()
+              + getValue()
+              + isBinaryEncoded()
+              + setBytes()
+          }
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      namespace a {
+        namespace result {
+          class com.mysql.cj.protocol.a.result.NativeResultset {
+              # columnDefinition : ColumnDefinition
+              # nextResultset : Resultset
+              # resultId : int
+              # rowData : ResultsetRows
+              # serverInfo : String
+              # thisRow : Row
+              # updateCount : long
+              # updateId : long
+              + NativeResultset()
+              + NativeResultset()
+              + NativeResultset()
+              + clearNextResultset()
+              + getColumnDefinition()
+              + getNextResultset()
+              + getResultId()
+              + getRows()
+              + getServerInfo()
+              + getUpdateCount()
+              + getUpdateID()
+              + hasRows()
+              + initRowsWithMetadata()
+              + setColumnDefinition()
+              + setNextResultset()
+          }
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      namespace a {
+        namespace result {
+          class com.mysql.cj.protocol.a.result.OkPacket {
+              - info : String
+              - statusFlags : int
+              - updateCount : long
+              - updateID : long
+              - warningCount : int
+              + OkPacket()
+              + getInfo()
+              + getStatusFlags()
+              + getUpdateCount()
+              + getUpdateID()
+              + getWarningCount()
+              {static} + parse()
+              + setInfo()
+              + setStatusFlags()
+              + setUpdateCount()
+              + setUpdateID()
+              + setWarningCount()
+          }
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      namespace a {
+        namespace result {
+          class com.mysql.cj.protocol.a.result.ResultsetRowsCursor {
+              # commandBuilder : NativeMessageBuilder
+              - currentPositionInEntireResult : int
+              - fetchedRows : List<Row>
+              - firstFetchCompleted : boolean
+              - lastRowFetched : boolean
+              - protocol : NativeProtocol
+              + ResultsetRowsCursor()
+              + addRow()
+              + afterLast()
+              + beforeFirst()
+              + beforeLast()
+              + close()
+              + getPosition()
+              + hasNext()
+              + isAfterLast()
+              + isBeforeFirst()
+              + isEmpty()
+              + isFirst()
+              + isLast()
+              + moveRowRelative()
+              + next()
+              + setCurrentRow()
+              - fetchMoreRows()
+          }
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      namespace a {
+        namespace result {
+          class com.mysql.cj.protocol.a.result.ResultsetRowsStatic {
+              - rows : List<Row>
+              + ResultsetRowsStatic()
+              + addRow()
+              + afterLast()
+              + beforeFirst()
+              + beforeLast()
+              + get()
+              + getPosition()
+              + hasNext()
+              + isAfterLast()
+              + isBeforeFirst()
+              + isDynamic()
+              + isEmpty()
+              + isFirst()
+              + isLast()
+              + moveRowRelative()
+              + next()
+              + remove()
+              + setCurrentRow()
+              + size()
+              + wasEmpty()
+          }
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      namespace a {
+        namespace result {
+          class com.mysql.cj.protocol.a.result.ResultsetRowsStreaming {
+              - commandBuilder : NativeMessageBuilder
+              - exceptionInterceptor : ExceptionInterceptor
+              - isAfterEnd : boolean
+              - isBinaryEncoded : boolean
+              - nextRow : Row
+              - noMoreRows : boolean
+              - protocol : NativeProtocol
+              - resultSetFactory : ProtocolEntityFactory<T, NativePacketPayload>
+              - streamerClosed : boolean
+              + ResultsetRowsStreaming()
+              + afterLast()
+              + beforeFirst()
+              + beforeLast()
+              + close()
+              + hasNext()
+              + isAfterLast()
+              + isBeforeFirst()
+              + isEmpty()
+              + isFirst()
+              + isLast()
+              + moveRowRelative()
+              + next()
+              + setCurrentRow()
+          }
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      namespace a {
+        namespace result {
+          class com.mysql.cj.protocol.a.result.TextBufferRow {
+              + TextBufferRow()
+              + getBytes()
+              + getNull()
+              + getValue()
+              + setMetadata()
+              # findAndSeekToOffset()
+          }
+        }
+      }
+    }
+  }
+  
+
+  com.mysql.cj.protocol.a.result.AbstractResultsetRows .up.|> ResultsetRows
+  com.mysql.cj.protocol.a.result.NativeResultset .up.|> Resultset
+  com.mysql.cj.protocol.a.result.OkPacket .up.|> ProtocolEntity
+  com.mysql.cj.protocol.a.result.ResultsetRowsCursor .up.|> ResultsetRows
+  com.mysql.cj.protocol.a.result.ResultsetRowsStatic .up.|> ResultsetRows
+  com.mysql.cj.protocol.a.result.ResultsetRowsStreaming .up.|> ResultsetRows
+
+
+right footer
+
+
+PlantUML diagram generated by SketchIt! (https://bitbucket.org/pmesmeur/sketch.it)
+For more information about this tool, please contact philippe.mesmeur@gmail.com
+endfooter
+
+@enduml

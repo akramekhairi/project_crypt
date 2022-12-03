@@ -1,0 +1,181 @@
+@startuml
+
+title __A's Class Diagram__\n
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      namespace a {
+        class com.mysql.cj.protocol.a.CompressedPacketSenderTest {
+            - outputStream : ByteArrayOutputStream
+            - sender : MessageSender<NativePacketPayload>
+            + basicCompressedPacketTest()
+            + basicTwoPartSplitPacketTest()
+            + cleanupByteArrayOutputStream()
+            + incompressiblePacketsArentCompressed()
+            + smallPacketsArentCompressed()
+            + twoPacketToThreeCompressedPacketNoBoundary()
+            + twoPacketToThreeWithEmptyUncompressedPacket()
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      namespace a {
+        class com.mysql.cj.protocol.a.CompressedPacketSenderTest.CompressedPackets {
+            ~ compressedPayloadLen : int
+            ~ compressedSequenceId : int
+            ~ offset : int
+            ~ packetData : byte[]
+            ~ payload : byte[]
+            ~ uncompressedPayloadLen : int
+            - decompressedStream : ByteArrayOutputStream
+            + CompressedPackets()
+            + nextPayload()
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      namespace a {
+        class com.mysql.cj.protocol.a.DebugBufferingPacketSenderTest {
+            + packetPushedToDebugBufferTest()
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      namespace a {
+        class com.mysql.cj.protocol.a.MysqlBinaryValueDecoderTest {
+            - valueDecoder : MysqlBinaryValueDecoder
+            + testInt4Limits()
+            + testInt8Limits()
+            + testSampleValues()
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      namespace a {
+        class com.mysql.cj.protocol.a.MysqlTextValueDecoderTest {
+            - valueDecoder : MysqlTextValueDecoder
+            + testIntValues()
+            + testNanosecondParsing()
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      namespace a {
+        class com.mysql.cj.protocol.a.PacketSenderTestBase {
+            # checkSequentiallyFilledPacket()
+            # fillPacketSequentially()
+            # getNoopPacketSender()
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      namespace a {
+        class com.mysql.cj.protocol.a.SimplePacketReaderTest {
+            + basicHeaderRead()
+            + exceedMaxAllowedPacketHeaderRead()
+            + heuristicTestWithRandomPackets()
+            + readBasicPayload()
+            + readPayloadErrors()
+            + truncatedPacketHeaderRead()
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      namespace a {
+        class com.mysql.cj.protocol.a.SimplePacketReaderTest.FixedBufferSocketConnection {
+            ~ is : FullReadInputStream
+            + FixedBufferSocketConnection()
+            + getMysqlInput()
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      namespace a {
+        class com.mysql.cj.protocol.a.SimplePacketReaderTest.MockSocketConnection {
+            + forceClosed : boolean
+            + connect()
+            + forceClose()
+            + getAsynchronousSocketChannel()
+            + getExceptionInterceptor()
+            + getHost()
+            + getMysqlInput()
+            + getMysqlOutput()
+            + getMysqlSocket()
+            + getNetworkResources()
+            + getPort()
+            + getPropertySet()
+            + getSocketFactory()
+            + isSSLEstablished()
+            + performTlsHandshake()
+            + readFully()
+            + setMysqlInput()
+            + setSocketFactory()
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace protocol {
+      namespace a {
+        class com.mysql.cj.protocol.a.SimplePacketSenderTest {
+            - outputStream : ByteArrayOutputStream
+            - sender : SimplePacketSender
+            + basicPacketSanityTest()
+            + cleanupByteArrayOutputStream()
+            + packetSizeMultipleOfMaxTest()
+            + splitPacketTest()
+        }
+      }
+    }
+  }
+  
+
+  com.mysql.cj.protocol.a.CompressedPacketSenderTest +-down- com.mysql.cj.protocol.a.CompressedPacketSenderTest.CompressedPackets
+  com.mysql.cj.protocol.a.SimplePacketReaderTest +-down- com.mysql.cj.protocol.a.SimplePacketReaderTest.FixedBufferSocketConnection
+  com.mysql.cj.protocol.a.SimplePacketReaderTest +-down- com.mysql.cj.protocol.a.SimplePacketReaderTest.MockSocketConnection
+  com.mysql.cj.protocol.a.SimplePacketReaderTest.FixedBufferSocketConnection -up-|> com.mysql.cj.protocol.a.SimplePacketReaderTest.MockSocketConnection
+  com.mysql.cj.protocol.a.SimplePacketReaderTest.MockSocketConnection .up.|> SocketConnection
+
+
+right footer
+
+
+PlantUML diagram generated by SketchIt! (https://bitbucket.org/pmesmeur/sketch.it)
+For more information about this tool, please contact philippe.mesmeur@gmail.com
+endfooter
+
+@enduml

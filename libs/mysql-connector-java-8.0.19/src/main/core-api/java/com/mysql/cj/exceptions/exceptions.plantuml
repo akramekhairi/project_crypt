@@ -1,0 +1,1468 @@
+@startuml
+
+title __EXCEPTIONS's Class Diagram__\n
+
+  namespace com.mysql.cj {
+    namespace exceptions {
+      class com.mysql.cj.exceptions.AssertionFailedException {
+          {static} - serialVersionUID : long
+          + AssertionFailedException()
+          + AssertionFailedException()
+          {static} + shouldNotHappen()
+          {static} + shouldNotHappen()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace exceptions {
+      class com.mysql.cj.exceptions.CJCommunicationsException {
+          {static} - serialVersionUID : long
+          + CJCommunicationsException()
+          + CJCommunicationsException()
+          + CJCommunicationsException()
+          + CJCommunicationsException()
+          + init()
+          # CJCommunicationsException()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace exceptions {
+      class com.mysql.cj.exceptions.CJConnectionFeatureNotAvailableException {
+          {static} - serialVersionUID : long
+          + CJConnectionFeatureNotAvailableException()
+          + CJConnectionFeatureNotAvailableException()
+          + getMessage()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace exceptions {
+      class com.mysql.cj.exceptions.CJException {
+          # exceptionMessage : String
+          - SQLState : String
+          - isTransient : boolean
+          {static} - serialVersionUID : long
+          - vendorCode : int
+          + CJException()
+          + CJException()
+          + CJException()
+          + CJException()
+          + appendMessage()
+          + getMessage()
+          + getSQLState()
+          + getVendorCode()
+          + isTransient()
+          + setSQLState()
+          + setTransient()
+          + setVendorCode()
+          # CJException()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace exceptions {
+      class com.mysql.cj.exceptions.CJOperationNotSupportedException {
+          {static} - serialVersionUID : long
+          + CJOperationNotSupportedException()
+          + CJOperationNotSupportedException()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace exceptions {
+      class com.mysql.cj.exceptions.CJPacketTooBigException {
+          {static} - serialVersionUID : long
+          + CJPacketTooBigException()
+          + CJPacketTooBigException()
+          + CJPacketTooBigException()
+          + CJPacketTooBigException()
+          + CJPacketTooBigException()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace exceptions {
+      class com.mysql.cj.exceptions.CJTimeoutException {
+          {static} - serialVersionUID : long
+          + CJTimeoutException()
+          + CJTimeoutException()
+          + CJTimeoutException()
+          + CJTimeoutException()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace exceptions {
+      class com.mysql.cj.exceptions.ClosedOnExpiredPasswordException {
+          {static} - serialVersionUID : long
+          + ClosedOnExpiredPasswordException()
+          + ClosedOnExpiredPasswordException()
+          + ClosedOnExpiredPasswordException()
+          + ClosedOnExpiredPasswordException()
+          # ClosedOnExpiredPasswordException()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace exceptions {
+      class com.mysql.cj.exceptions.ConnectionIsClosedException {
+          {static} - serialVersionUID : long
+          + ConnectionIsClosedException()
+          + ConnectionIsClosedException()
+          + ConnectionIsClosedException()
+          + ConnectionIsClosedException()
+          # ConnectionIsClosedException()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace exceptions {
+      class com.mysql.cj.exceptions.DataConversionException {
+          {static} - serialVersionUID : long
+          + DataConversionException()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace exceptions {
+      class com.mysql.cj.exceptions.DataReadException {
+          {static} - serialVersionUID : long
+          + DataReadException()
+          + DataReadException()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace exceptions {
+      class com.mysql.cj.exceptions.DataTruncationException {
+          - dataSize : int
+          - index : int
+          - parameter : boolean
+          - read : boolean
+          {static} - serialVersionUID : long
+          - transferSize : int
+          + DataTruncationException()
+          + DataTruncationException()
+          + DataTruncationException()
+          + DataTruncationException()
+          + DataTruncationException()
+          + getDataSize()
+          + getIndex()
+          + getTransferSize()
+          + isParameter()
+          + isRead()
+          + setDataSize()
+          + setIndex()
+          + setParameter()
+          + setRead()
+          + setTransferSize()
+          # DataTruncationException()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace exceptions {
+      interface com.mysql.cj.exceptions.DeadlockTimeoutRollbackMarker {
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace exceptions {
+      class com.mysql.cj.exceptions.ExceptionFactory {
+          {static} - DEFAULT_WAIT_TIMEOUT_SECONDS : long
+          {static} - DUE_TO_TIMEOUT_FALSE : int
+          {static} - DUE_TO_TIMEOUT_MAYBE : int
+          {static} - DUE_TO_TIMEOUT_TRUE : int
+          {static} + createCommunicationsException()
+          {static} + createException()
+          {static} + createException()
+          {static} + createException()
+          {static} + createException()
+          {static} + createException()
+          {static} + createException()
+          {static} + createException()
+          {static} + createException()
+          {static} + createException()
+          {static} + createLinkFailureMessageBasedOnHeuristics()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace exceptions {
+      interface com.mysql.cj.exceptions.ExceptionInterceptor {
+          {abstract} + destroy()
+          {abstract} + init()
+          {abstract} + interceptException()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace exceptions {
+      class com.mysql.cj.exceptions.ExceptionInterceptorChain {
+          ~ interceptors : List<ExceptionInterceptor>
+          + ExceptionInterceptorChain()
+          + addRingZero()
+          + destroy()
+          + getInterceptors()
+          + init()
+          + interceptException()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace exceptions {
+      class com.mysql.cj.exceptions.FeatureNotAvailableException {
+          {static} - serialVersionUID : long
+          + FeatureNotAvailableException()
+          + FeatureNotAvailableException()
+          + FeatureNotAvailableException()
+          + FeatureNotAvailableException()
+          + FeatureNotAvailableException()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace exceptions {
+      class com.mysql.cj.exceptions.InvalidConnectionAttributeException {
+          {static} - serialVersionUID : long
+          + InvalidConnectionAttributeException()
+          + InvalidConnectionAttributeException()
+          + InvalidConnectionAttributeException()
+          + InvalidConnectionAttributeException()
+          + InvalidConnectionAttributeException()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace exceptions {
+      class com.mysql.cj.exceptions.MysqlErrorNumbers {
+          {static} + ERROR_CODE_NULL_LOAD_BALANCED_CONNECTION : int
+          {static} + ERROR_CODE_REPLICATION_CONNECTION_WITH_NO_HOSTS : int
+          {static} + ER_ABORTING_CONNECTION : int
+          {static} + ER_ACCESS_DENIED_CHANGE_USER_ERROR : int
+          {static} + ER_ACCESS_DENIED_ERROR : int
+          {static} + ER_ACCESS_DENIED_NO_PASSWORD_ERROR : int
+          {static} + ER_ADD_PARTITION_NO_NEW_PARTITION : int
+          {static} + ER_ADD_PARTITION_SUBPART_ERROR : int
+          {static} + ER_ADMIN_WRONG_MRG_TABLE : int
+          {static} + ER_AES_INVALID_IV : int
+          {static} + ER_ALTER_FILEGROUP_FAILED : int
+          {static} + ER_ALTER_INFO : int
+          {static} + ER_ALTER_OPERATION_NOT_SUPPORTED : int
+          {static} + ER_ALTER_OPERATION_NOT_SUPPORTED_REASON : int
+          {static} + ER_ALTER_OPERATION_NOT_SUPPORTED_REASON_AUTOINC : int
+          {static} + ER_ALTER_OPERATION_NOT_SUPPORTED_REASON_CHANGE_FTS : int
+          {static} + ER_ALTER_OPERATION_NOT_SUPPORTED_REASON_COLUMN_TYPE : int
+          {static} + ER_ALTER_OPERATION_NOT_SUPPORTED_REASON_COPY : int
+          {static} + ER_ALTER_OPERATION_NOT_SUPPORTED_REASON_FK_CHECK : int
+          {static} + ER_ALTER_OPERATION_NOT_SUPPORTED_REASON_FK_RENAME : int
+          {static} + ER_ALTER_OPERATION_NOT_SUPPORTED_REASON_FTS : int
+          {static} + ER_ALTER_OPERATION_NOT_SUPPORTED_REASON_HIDDEN_FTS : int
+          {static} + ER_ALTER_OPERATION_NOT_SUPPORTED_REASON_IGNORE : int
+          {static} + ER_ALTER_OPERATION_NOT_SUPPORTED_REASON_NOPK : int
+          {static} + ER_ALTER_OPERATION_NOT_SUPPORTED_REASON_NOT_NULL : int
+          {static} + ER_ALTER_OPERATION_NOT_SUPPORTED_REASON_PARTITION : int
+          {static} + ER_AMBIGUOUS_FIELD_TERM : int
+          {static} + ER_AUTOINC_READ_FAILED : int
+          {static} + ER_AUTO_CONVERT : int
+          {static} + ER_AUTO_INCREMENT_CONFLICT : int
+          {static} + ER_AUTO_POSITION_REQUIRES_GTID_MODE_ON : int
+          {static} + ER_BAD_DB_ERROR : int
+          {static} + ER_BAD_FIELD_ERROR : int
+          {static} + ER_BAD_FT_COLUMN : int
+          {static} + ER_BAD_HOST_ERROR : int
+          {static} + ER_BAD_LOG_STATEMENT : int
+          {static} + ER_BAD_NULL_ERROR : int
+          {static} + ER_BAD_SLAVE : int
+          {static} + ER_BAD_SLAVE_AUTO_POSITION : int
+          {static} + ER_BAD_SLAVE_UNTIL_COND : int
+          {static} + ER_BAD_TABLE_ERROR : int
+          {static} + ER_BASE64_DECODE_ERROR : int
+          {static} + ER_BINLOG_CACHE_SIZE_GREATER_THAN_MAX : int
+          {static} + ER_BINLOG_CREATE_ROUTINE_NEED_SUPER : int
+          {static} + ER_BINLOG_LOGGING_IMPOSSIBLE : int
+          {static} + ER_BINLOG_LOGICAL_CORRUPTION : int
+          {static} + ER_BINLOG_MULTIPLE_ENGINES_AND_SELF_LOGGING_ENGINE : int
+          {static} + ER_BINLOG_PURGE_EMFILE : int
+          {static} + ER_BINLOG_PURGE_FATAL_ERR : int
+          {static} + ER_BINLOG_PURGE_PROHIBITED : int
+          {static} + ER_BINLOG_READ_EVENT_CHECKSUM_FAILURE : int
+          {static} + ER_BINLOG_ROW_ENGINE_AND_STMT_ENGINE : int
+          {static} + ER_BINLOG_ROW_INJECTION_AND_STMT_ENGINE : int
+          {static} + ER_BINLOG_ROW_INJECTION_AND_STMT_MODE : int
+          {static} + ER_BINLOG_ROW_LOGGING_FAILED : int
+          {static} + ER_BINLOG_ROW_MODE_AND_STMT_ENGINE : int
+          {static} + ER_BINLOG_ROW_RBR_TO_SBR : int
+          {static} + ER_BINLOG_ROW_WRONG_TABLE_DEF : int
+          {static} + ER_BINLOG_STMT_CACHE_SIZE_GREATER_THAN_MAX : int
+          {static} + ER_BINLOG_STMT_MODE_AND_NO_REPL_TABLES : int
+          {static} + ER_BINLOG_STMT_MODE_AND_ROW_ENGINE : int
+          {static} + ER_BINLOG_UNSAFE_AND_STMT_ENGINE : int
+          {static} + ER_BINLOG_UNSAFE_AUTOINC_COLUMNS : int
+          {static} + ER_BINLOG_UNSAFE_AUTOINC_NOT_FIRST : int
+          {static} + ER_BINLOG_UNSAFE_CREATE_IGNORE_SELECT : int
+          {static} + ER_BINLOG_UNSAFE_CREATE_REPLACE_SELECT : int
+          {static} + ER_BINLOG_UNSAFE_CREATE_SELECT_AUTOINC : int
+          {static} + ER_BINLOG_UNSAFE_FULLTEXT_PLUGIN : int
+          {static} + ER_BINLOG_UNSAFE_INSERT_DELAYED : int
+          {static} + ER_BINLOG_UNSAFE_INSERT_IGNORE_SELECT : int
+          {static} + ER_BINLOG_UNSAFE_INSERT_SELECT_UPDATE : int
+          {static} + ER_BINLOG_UNSAFE_INSERT_TWO_KEYS : int
+          {static} + ER_BINLOG_UNSAFE_LIMIT : int
+          {static} + ER_BINLOG_UNSAFE_MIXED_STATEMENT : int
+          {static} + ER_BINLOG_UNSAFE_MULTIPLE_ENGINES_AND_SELF_LOGGING_ENGINE : int
+          {static} + ER_BINLOG_UNSAFE_NONTRANS_AFTER_TRANS : int
+          {static} + ER_BINLOG_UNSAFE_REPLACE_SELECT : int
+          {static} + ER_BINLOG_UNSAFE_ROUTINE : int
+          {static} + ER_BINLOG_UNSAFE_STATEMENT : int
+          {static} + ER_BINLOG_UNSAFE_SYSTEM_FUNCTION : int
+          {static} + ER_BINLOG_UNSAFE_SYSTEM_TABLE : int
+          {static} + ER_BINLOG_UNSAFE_SYSTEM_VARIABLE : int
+          {static} + ER_BINLOG_UNSAFE_UDF : int
+          {static} + ER_BINLOG_UNSAFE_UPDATE_IGNORE : int
+          {static} + ER_BINLOG_UNSAFE_WRITE_AUTOINC_SELECT : int
+          {static} + ER_BLOBS_AND_NO_TERMINATED : int
+          {static} + ER_BLOB_CANT_HAVE_DEFAULT : int
+          {static} + ER_BLOB_FIELD_IN_PART_FUNC_ERROR : int
+          {static} + ER_BLOB_KEY_WITHOUT_LENGTH : int
+          {static} + ER_BLOB_USED_AS_KEY : int
+          {static} + ER_CANNOT_ADD_FOREIGN : int
+          {static} + ER_CANNOT_DISCARD_TEMPORARY_TABLE : int
+          {static} + ER_CANNOT_LOAD_FROM_TABLE : int
+          {static} + ER_CANNOT_LOAD_FROM_TABLE_V2 : int
+          {static} + ER_CANNOT_USER : int
+          {static} + ER_CANT_ACTIVATE_LOG : int
+          {static} + ER_CANT_AGGREGATE_2COLLATIONS : int
+          {static} + ER_CANT_AGGREGATE_3COLLATIONS : int
+          {static} + ER_CANT_AGGREGATE_NCOLLATIONS : int
+          {static} + ER_CANT_CHANGE_GTID_NEXT_IN_TRANSACTION_WHEN_GTID_NEXT_LIST_IS_NULL : int
+          {static} + ER_CANT_CHANGE_TX_ISOLATION : int
+          {static} + ER_CANT_CREATE_DB : int
+          {static} + ER_CANT_CREATE_FEDERATED_TABLE : int
+          {static} + ER_CANT_CREATE_FILE : int
+          {static} + ER_CANT_CREATE_GEOMETRY_OBJECT : int
+          {static} + ER_CANT_CREATE_HANDLER_FILE : int
+          {static} + ER_CANT_CREATE_SROUTINE : int
+          {static} + ER_CANT_CREATE_TABLE : int
+          {static} + ER_CANT_CREATE_THREAD : int
+          {static} + ER_CANT_CREATE_USER_WITH_GRANT : int
+          {static} + ER_CANT_DELETE_FILE : int
+          {static} + ER_CANT_DO_IMPLICIT_COMMIT_IN_TRX_WHEN_GTID_NEXT_IS_SET : int
+          {static} + ER_CANT_DO_THIS_DURING_AN_TRANSACTION : int
+          {static} + ER_CANT_DROP_FIELD_OR_KEY : int
+          {static} + ER_CANT_EXECUTE_IN_READ_ONLY_TRANSACTION : int
+          {static} + ER_CANT_FIND_DL_ENTRY : int
+          {static} + ER_CANT_FIND_SYSTEM_REC : int
+          {static} + ER_CANT_FIND_UDF : int
+          {static} + ER_CANT_GET_STAT : int
+          {static} + ER_CANT_GET_WD : int
+          {static} + ER_CANT_INITIALIZE_UDF : int
+          {static} + ER_CANT_LOCK : int
+          {static} + ER_CANT_LOCK_LOG_TABLE : int
+          {static} + ER_CANT_OPEN_FILE : int
+          {static} + ER_CANT_OPEN_LIBRARY : int
+          {static} + ER_CANT_READ_DIR : int
+          {static} + ER_CANT_REMOVE_ALL_FIELDS : int
+          {static} + ER_CANT_RENAME_LOG_TABLE : int
+          {static} + ER_CANT_REOPEN_TABLE : int
+          {static} + ER_CANT_SET_GTID_NEXT_LIST_TO_NON_NULL_WHEN_GTID_MODE_IS_OFF : int
+          {static} + ER_CANT_SET_GTID_NEXT_TO_ANONYMOUS_WHEN_GTID_MODE_IS_ON : int
+          {static} + ER_CANT_SET_GTID_NEXT_TO_GTID_WHEN_GTID_MODE_IS_OFF : int
+          {static} + ER_CANT_SET_GTID_NEXT_WHEN_OWNING_GTID : int
+          {static} + ER_CANT_SET_GTID_PURGED_WHEN_GTID_EXECUTED_IS_NOT_EMPTY : int
+          {static} + ER_CANT_SET_GTID_PURGED_WHEN_GTID_MODE_IS_OFF : int
+          {static} + ER_CANT_SET_GTID_PURGED_WHEN_OWNED_GTIDS_IS_NOT_EMPTY : int
+          {static} + ER_CANT_SET_WD : int
+          {static} + ER_CANT_UPDATE_TABLE_IN_CREATE_TABLE_SELECT : int
+          {static} + ER_CANT_UPDATE_USED_TABLE_IN_SF_OR_TRG : int
+          {static} + ER_CANT_UPDATE_WITH_READLOCK : int
+          {static} + ER_CANT_USE_OPTION_HERE : int
+          {static} + ER_CANT_WRITE_LOCK_LOG_TABLE : int
+          {static} + ER_CHANGE_RPL_INFO_REPOSITORY_FAILURE : int
+          {static} + ER_CHECKREAD : int
+          {static} + ER_CHECK_NOT_IMPLEMENTED : int
+          {static} + ER_CHECK_NO_SUCH_TABLE : int
+          {static} + ER_COALESCE_ONLY_ON_HASH_PARTITION : int
+          {static} + ER_COALESCE_PARTITION_NO_PARTITION : int
+          {static} + ER_COLLATION_CHARSET_MISMATCH : int
+          {static} + ER_COLUMNACCESS_DENIED_ERROR : int
+          {static} + ER_COL_COUNT_DOESNT_MATCH_CORRUPTED : int
+          {static} + ER_COL_COUNT_DOESNT_MATCH_CORRUPTED_V2 : int
+          {static} + ER_COL_COUNT_DOESNT_MATCH_PLEASE_UPDATE : int
+          {static} + ER_COL_COUNT_DOESNT_MATCH_PLEASE_UPDATE_V2 : int
+          {static} + ER_COMMIT_NOT_ALLOWED_IN_SF_OR_TRG : int
+          {static} + ER_COND_ITEM_TOO_LONG : int
+          {static} + ER_CONFLICTING_DECLARATIONS : int
+          {static} + ER_CONFLICT_FN_PARSE_ERROR : int
+          {static} + ER_CONNECT_TO_FOREIGN_DATA_SOURCE : int
+          {static} + ER_CONNECT_TO_MASTER : int
+          {static} + ER_CONSECUTIVE_REORG_PARTITIONS : int
+          {static} + ER_CON_COUNT_ERROR : int
+          {static} + ER_CORRUPT_HELP_DB : int
+          {static} + ER_CRASHED_ON_REPAIR : int
+          {static} + ER_CRASHED_ON_USAGE : int
+          {static} + ER_CREATE_DB_WITH_READ_LOCK : int
+          {static} + ER_CREATE_FILEGROUP_FAILED : int
+          {static} + ER_CUT_VALUE_GROUP_CONCAT : int
+          {static} + ER_CYCLIC_REFERENCE : int
+          {static} + ER_DATABASE_NAME : int
+          {static} + ER_DATA_OUT_OF_RANGE : int
+          {static} + ER_DATA_TOO_LONG : int
+          {static} + ER_DATETIME_FUNCTION_OVERFLOW : int
+          {static} + ER_DA_INVALID_CONDITION_NUMBER : int
+          {static} + ER_DBACCESS_DENIED_ERROR : int
+          {static} + ER_DB_CREATE_EXISTS : int
+          {static} + ER_DB_DROP_DELETE : int
+          {static} + ER_DB_DROP_EXISTS : int
+          {static} + ER_DB_DROP_RMDIR : int
+          {static} + ER_DDL_LOG_ERROR : int
+          {static} + ER_DEBUG_SYNC_HIT_LIMIT : int
+          {static} + ER_DEBUG_SYNC_TIMEOUT : int
+          {static} + ER_DELAYED_CANT_CHANGE_LOCK : int
+          {static} + ER_DELAYED_INSERT_TABLE_LOCKED : int
+          {static} + ER_DELAYED_NOT_SUPPORTED : int
+          {static} + ER_DERIVED_MUST_HAVE_ALIAS : int
+          {static} + ER_DIFF_GROUPS_PROC : int
+          {static} + ER_DISCARD_FK_CHECKS_RUNNING : int
+          {static} + ER_DISK_FULL : int
+          {static} + ER_DIVISION_BY_ZERO : int
+          {static} + ER_DROP_DB_WITH_READ_LOCK : int
+          {static} + ER_DROP_FILEGROUP_FAILED : int
+          {static} + ER_DROP_INDEX_FK : int
+          {static} + ER_DROP_LAST_PARTITION : int
+          {static} + ER_DROP_PARTITION_NON_EXISTENT : int
+          {static} + ER_DROP_USER : int
+          {static} + ER_DUMP_NOT_IMPLEMENTED : int
+          {static} + ER_DUPLICATED_VALUE_IN_TYPE : int
+          {static} + ER_DUP_ARGUMENT : int
+          {static} + ER_DUP_ENTRY : int
+          {static} + ER_DUP_ENTRY_AUTOINCREMENT_CASE : int
+          {static} + ER_DUP_ENTRY_WITH_KEY_NAME : int
+          {static} + ER_DUP_FIELDNAME : int
+          {static} + ER_DUP_INDEX : int
+          {static} + ER_DUP_KEY : int
+          {static} + ER_DUP_KEYNAME : int
+          {static} + ER_DUP_LIST_ENTRY : int
+          {static} + ER_DUP_SIGNAL_SET : int
+          {static} + ER_DUP_UNIQUE : int
+          {static} + ER_DUP_UNKNOWN_IN_INDEX : int
+          {static} + ER_EMPTY_QUERY : int
+          {static} + ER_ENGINE_OUT_OF_MEMORY : int
+          {static} + ER_ERROR_DURING_CHECKPOINT : int
+          {static} + ER_ERROR_DURING_COMMIT : int
+          {static} + ER_ERROR_DURING_FLUSH_LOGS : int
+          {static} + ER_ERROR_DURING_ROLLBACK : int
+          {static} + ER_ERROR_IN_TRIGGER_BODY : int
+          {static} + ER_ERROR_IN_UNKNOWN_TRIGGER_BODY : int
+          {static} + ER_ERROR_MESSAGES : int
+          {static} + ER_ERROR_ON_CLOSE : int
+          {static} + ER_ERROR_ON_MASTER : int
+          {static} + ER_ERROR_ON_READ : int
+          {static} + ER_ERROR_ON_RENAME : int
+          {static} + ER_ERROR_ON_WRITE : int
+          {static} + ER_ERROR_WHEN_EXECUTING_COMMAND : int
+          {static} + ER_EVENTS_DB_ERROR : int
+          {static} + ER_EVENT_ALREADY_EXISTS : int
+          {static} + ER_EVENT_CANNOT_ALTER_IN_THE_PAST : int
+          {static} + ER_EVENT_CANNOT_CREATE_IN_THE_PAST : int
+          {static} + ER_EVENT_CANNOT_DELETE : int
+          {static} + ER_EVENT_CANT_ALTER : int
+          {static} + ER_EVENT_COMPILE_ERROR : int
+          {static} + ER_EVENT_DATA_TOO_LONG : int
+          {static} + ER_EVENT_DOES_NOT_EXIST : int
+          {static} + ER_EVENT_DROP_FAILED : int
+          {static} + ER_EVENT_ENDS_BEFORE_STARTS : int
+          {static} + ER_EVENT_EXEC_TIME_IN_THE_PAST : int
+          {static} + ER_EVENT_INTERVAL_NOT_POSITIVE_OR_TOO_BIG : int
+          {static} + ER_EVENT_INVALID_CREATION_CTX : int
+          {static} + ER_EVENT_MODIFY_QUEUE_ERROR : int
+          {static} + ER_EVENT_NEITHER_M_EXPR_NOR_M_AT : int
+          {static} + ER_EVENT_OPEN_TABLE_FAILED : int
+          {static} + ER_EVENT_RECURSION_FORBIDDEN : int
+          {static} + ER_EVENT_SAME_NAME : int
+          {static} + ER_EVENT_SET_VAR_ERROR : int
+          {static} + ER_EVENT_STORE_FAILED : int
+          {static} + ER_EXCEPTIONS_WRITE_ERROR : int
+          {static} + ER_EXEC_STMT_WITH_OPEN_CURSOR : int
+          {static} + ER_EXPLAIN_NOT_SUPPORTED : int
+          {static} + ER_FAILED_READ_FROM_PAR_FILE : int
+          {static} + ER_FAILED_ROUTINE_BREAK_BINLOG : int
+          {static} + ER_FEATURE_DISABLED : int
+          {static} + ER_FIELD_NOT_FOUND_PART_ERROR : int
+          {static} + ER_FIELD_SPECIFIED_TWICE : int
+          {static} + ER_FIELD_TYPE_NOT_ALLOWED_AS_PARTITION_FIELD : int
+          {static} + ER_FILEGROUP_OPTION_ONLY_ONCE : int
+          {static} + ER_FILE_CORRUPT : int
+          {static} + ER_FILE_EXISTS_ERROR : int
+          {static} + ER_FILE_NOT_FOUND : int
+          {static} + ER_FILE_USED : int
+          {static} + ER_FILSORT_ABORT : int
+          {static} + ER_FK_CANNOT_DELETE_PARENT : int
+          {static} + ER_FK_CANNOT_OPEN_PARENT : int
+          {static} + ER_FK_COLUMN_CANNOT_CHANGE : int
+          {static} + ER_FK_COLUMN_CANNOT_CHANGE_CHILD : int
+          {static} + ER_FK_COLUMN_CANNOT_DROP : int
+          {static} + ER_FK_COLUMN_CANNOT_DROP_CHILD : int
+          {static} + ER_FK_COLUMN_NOT_NULL : int
+          {static} + ER_FK_DEPTH_EXCEEDED : int
+          {static} + ER_FK_DUP_NAME : int
+          {static} + ER_FK_FAIL_ADD_SYSTEM : int
+          {static} + ER_FK_INCORRECT_OPTION : int
+          {static} + ER_FK_NO_INDEX_CHILD : int
+          {static} + ER_FK_NO_INDEX_PARENT : int
+          {static} + ER_FLUSH_MASTER_BINLOG_CLOSED : int
+          {static} + ER_FORBID_SCHEMA_CHANGE : int
+          {static} + ER_FORCING_CLOSE : int
+          {static} + ER_FOREIGN_DATA_SOURCE_DOESNT_EXIST : int
+          {static} + ER_FOREIGN_DATA_STRING_INVALID : int
+          {static} + ER_FOREIGN_DATA_STRING_INVALID_CANT_CREATE : int
+          {static} + ER_FOREIGN_DUPLICATE_KEY : int
+          {static} + ER_FOREIGN_DUPLICATE_KEY_WITHOUT_CHILD_INFO : int
+          {static} + ER_FOREIGN_DUPLICATE_KEY_WITH_CHILD_INFO : int
+          {static} + ER_FOREIGN_KEY_ON_PARTITIONED : int
+          {static} + ER_FOREIGN_SERVER_DOESNT_EXIST : int
+          {static} + ER_FOREIGN_SERVER_EXISTS : int
+          {static} + ER_FORM_NOT_FOUND : int
+          {static} + ER_FOUND_GTID_EVENT_WHEN_GTID_MODE_IS_OFF : int
+          {static} + ER_FPARSER_BAD_HEADER : int
+          {static} + ER_FPARSER_EOF_IN_COMMENT : int
+          {static} + ER_FPARSER_EOF_IN_UNKNOWN_PARAMETER : int
+          {static} + ER_FPARSER_ERROR_IN_PARAMETER : int
+          {static} + ER_FPARSER_TOO_BIG_FILE : int
+          {static} + ER_FRM_UNKNOWN_TYPE : int
+          {static} + ER_FSEEK_FAIL : int
+          {static} + ER_FT_MATCHING_KEY_NOT_FOUND : int
+          {static} + ER_FULLTEXT_NOT_SUPPORTED_WITH_PARTITIONING : int
+          {static} + ER_FUNCTION_NOT_DEFINED : int
+          {static} + ER_FUNC_INEXISTENT_NAME_COLLISION : int
+          {static} + ER_GET_ERRMSG : int
+          {static} + ER_GET_ERRNO : int
+          {static} + ER_GET_STACKED_DA_WITHOUT_ACTIVE_HANDLER : int
+          {static} + ER_GET_TEMPORARY_ERRMSG : int
+          {static} + ER_GLOBAL_VARIABLE : int
+          {static} + ER_GNO_EXHAUSTED : int
+          {static} + ER_GOT_SIGNAL : int
+          {static} + ER_GRANT_PLUGIN_USER_EXISTS : int
+          {static} + ER_GRANT_WRONG_HOST_OR_USER : int
+          {static} + ER_GTID_EXECUTED_WAS_CHANGED : int
+          {static} + ER_GTID_MODE_2_OR_3_REQUIRES_ENFORCE_GTID_CONSISTENCY_ON : int
+          {static} + ER_GTID_MODE_CAN_ONLY_CHANGE_ONE_STEP_AT_A_TIME : int
+          {static} + ER_GTID_MODE_REQUIRES_BINLOG : int
+          {static} + ER_GTID_NEXT_CANT_BE_AUTOMATIC_IF_GTID_NEXT_LIST_IS_NON_NULL : int
+          {static} + ER_GTID_NEXT_IS_NOT_IN_GTID_NEXT_LIST : int
+          {static} + ER_GTID_NEXT_TYPE_UNDEFINED_GROUP : int
+          {static} + ER_GTID_PURGED_WAS_CHANGED : int
+          {static} + ER_GTID_UNSAFE_CREATE_DROP_TEMPORARY_TABLE_IN_TRANSACTION : int
+          {static} + ER_GTID_UNSAFE_CREATE_SELECT : int
+          {static} + ER_GTID_UNSAFE_NON_TRANSACTIONAL_TABLE : int
+          {static} + ER_HANDSHAKE_ERROR : int
+          {static} + ER_HASHCHK : int
+          {static} + ER_HOSTNAME : int
+          {static} + ER_HOST_IS_BLOCKED : int
+          {static} + ER_HOST_NOT_PRIVILEGED : int
+          {static} + ER_IDENT_CAUSES_TOO_LONG_PATH : int
+          {static} + ER_ILLEGAL_GRANT_FOR_TABLE : int
+          {static} + ER_ILLEGAL_HA : int
+          {static} + ER_ILLEGAL_HA_CREATE_OPTION : int
+          {static} + ER_ILLEGAL_REFERENCE : int
+          {static} + ER_ILLEGAL_VALUE_FOR_TYPE : int
+          {static} + ER_INCONSISTENT_ERROR : int
+          {static} + ER_INCONSISTENT_PARTITION_INFO_ERROR : int
+          {static} + ER_INCONSISTENT_TYPE_OF_FUNCTIONS_ERROR : int
+          {static} + ER_INCORRECT_GLOBAL_LOCAL_VAR : int
+          {static} + ER_INDEX_COLUMN_TOO_LONG : int
+          {static} + ER_INDEX_CORRUPT : int
+          {static} + ER_INDEX_REBUILD : int
+          {static} + ER_INNODB_FORCED_RECOVERY : int
+          {static} + ER_INNODB_FT_AUX_NOT_HEX_ID : int
+          {static} + ER_INNODB_FT_LIMIT : int
+          {static} + ER_INNODB_FT_WRONG_DOCID_COLUMN : int
+          {static} + ER_INNODB_FT_WRONG_DOCID_INDEX : int
+          {static} + ER_INNODB_IMPORT_ERROR : int
+          {static} + ER_INNODB_INDEX_CORRUPT : int
+          {static} + ER_INNODB_NO_FT_TEMP_TABLE : int
+          {static} + ER_INNODB_NO_FT_USES_PARSER : int
+          {static} + ER_INNODB_ONLINE_LOG_TOO_BIG : int
+          {static} + ER_INNODB_READ_ONLY : int
+          {static} + ER_INNODB_UNDO_LOG_FULL : int
+          {static} + ER_INSECURE_CHANGE_MASTER : int
+          {static} + ER_INSECURE_PLAIN_TEXT : int
+          {static} + ER_INSERT_INFO : int
+          {static} + ER_INSIDE_TRANSACTION_PREVENTS_SWITCH_BINLOG_DIRECT : int
+          {static} + ER_INSIDE_TRANSACTION_PREVENTS_SWITCH_BINLOG_FORMAT : int
+          {static} + ER_INSIDE_TRANSACTION_PREVENTS_SWITCH_SQL_LOG_BIN : int
+          {static} + ER_INTERNAL_ERROR : int
+          {static} + ER_INVALID_ARGUMENT_FOR_LOGARITHM : int
+          {static} + ER_INVALID_CHARACTER_STRING : int
+          {static} + ER_INVALID_DEFAULT : int
+          {static} + ER_INVALID_FIELD_SIZE : int
+          {static} + ER_INVALID_GROUP_FUNC_USE : int
+          {static} + ER_INVALID_ON_UPDATE : int
+          {static} + ER_INVALID_USE_OF_NULL : int
+          {static} + ER_INVALID_YEAR_COLUMN_LENGTH : int
+          {static} + ER_IO_ERR_LOG_INDEX_READ : int
+          {static} + ER_IO_READ_ERROR : int
+          {static} + ER_IO_WRITE_ERROR : int
+          {static} + ER_IPSOCK_ERROR : int
+          {static} + ER_KEY_COLUMN_DOES_NOT_EXITS : int
+          {static} + ER_KEY_DOES_NOT_EXITS : int
+          {static} + ER_KEY_NOT_FOUND : int
+          {static} + ER_KEY_PART_0 : int
+          {static} + ER_KEY_REF_DO_NOT_MATCH_TABLE_REF : int
+          {static} + ER_KILL_DENIED_ERROR : int
+          {static} + ER_LIMITED_PART_RANGE : int
+          {static} + ER_LIST_OF_FIELDS_ONLY_IN_HASH_ERROR : int
+          {static} + ER_LOAD_DATA_INVALID_COLUMN : int
+          {static} + ER_LOAD_FROM_FIXED_SIZE_ROWS_TO_VAR : int
+          {static} + ER_LOAD_INFO : int
+          {static} + ER_LOCAL_VARIABLE : int
+          {static} + ER_LOCK_ABORTED : int
+          {static} + ER_LOCK_DEADLOCK : int
+          {static} + ER_LOCK_OR_ACTIVE_TRANSACTION : int
+          {static} + ER_LOCK_TABLE_FULL : int
+          {static} + ER_LOCK_WAIT_TIMEOUT : int
+          {static} + ER_LOGGING_PROHIBIT_CHANGING_OF : int
+          {static} + ER_LOG_IN_USE : int
+          {static} + ER_LOG_PURGE_NO_FILE : int
+          {static} + ER_LOG_PURGE_UNKNOWN_ERR : int
+          {static} + ER_MALFORMED_DEFINER : int
+          {static} + ER_MALFORMED_GTID_SET_ENCODING : int
+          {static} + ER_MALFORMED_GTID_SET_SPECIFICATION : int
+          {static} + ER_MALFORMED_GTID_SPECIFICATION : int
+          {static} + ER_MALFORMED_PACKET : int
+          {static} + ER_MASTER : int
+          {static} + ER_MASTER_DELAY_VALUE_OUT_OF_RANGE : int
+          {static} + ER_MASTER_FATAL_ERROR_READING_BINLOG : int
+          {static} + ER_MASTER_HAS_PURGED_REQUIRED_GTIDS : int
+          {static} + ER_MASTER_INFO : int
+          {static} + ER_MASTER_NET_READ : int
+          {static} + ER_MASTER_NET_WRITE : int
+          {static} + ER_MAXVALUE_IN_VALUES_IN : int
+          {static} + ER_MAX_PREPARED_STMT_COUNT_REACHED : int
+          {static} + ER_MESSAGE_AND_STATEMENT : int
+          {static} + ER_MISSING_HA_CREATE_OPTION : int
+          {static} + ER_MISSING_SKIP_SLAVE : int
+          {static} + ER_MIXING_NOT_ALLOWED : int
+          {static} + ER_MIX_HANDLER_ERROR : int
+          {static} + ER_MIX_OF_GROUP_FUNC_AND_FIELDS : int
+          {static} + ER_MTS_CANT_PARALLEL : int
+          {static} + ER_MTS_CHANGE_MASTER_CANT_RUN_WITH_GAPS : int
+          {static} + ER_MTS_EVENT_BIGGER_PENDING_JOBS_SIZE_MAX : int
+          {static} + ER_MTS_FEATURE_IS_NOT_SUPPORTED : int
+          {static} + ER_MTS_INCONSISTENT_DATA : int
+          {static} + ER_MTS_RECOVERY_FAILURE : int
+          {static} + ER_MTS_RESET_WORKERS : int
+          {static} + ER_MTS_UPDATED_DBS_GREATER_MAX : int
+          {static} + ER_MULTIPLE_DEF_CONST_IN_LIST_PART_ERROR : int
+          {static} + ER_MULTIPLE_PRI_KEY : int
+          {static} + ER_MULTI_UPDATE_KEY_CONFLICT : int
+          {static} + ER_MUST_CHANGE_PASSWORD : int
+          {static} + ER_MUST_CHANGE_PASSWORD_LOGIN : int
+          {static} + ER_M_BIGGER_THAN_D : int
+          {static} + ER_NAME_BECOMES_EMPTY : int
+          {static} + ER_NATIVE_FCT_NAME_COLLISION : int
+          {static} + ER_NDB_CANT_SWITCH_BINLOG_FORMAT : int
+          {static} + ER_NDB_REPLICATION_SCHEMA_ERROR : int
+          {static} + ER_NEED_REPREPARE : int
+          {static} + ER_NETWORK_READ_EVENT_CHECKSUM_FAILURE : int
+          {static} + ER_NET_ERROR_ON_WRITE : int
+          {static} + ER_NET_FCNTL_ERROR : int
+          {static} + ER_NET_PACKETS_OUT_OF_ORDER : int
+          {static} + ER_NET_PACKET_TOO_LARGE : int
+          {static} + ER_NET_READ_ERROR : int
+          {static} + ER_NET_READ_ERROR_FROM_PIPE : int
+          {static} + ER_NET_READ_INTERRUPTED : int
+          {static} + ER_NET_UNCOMPRESS_ERROR : int
+          {static} + ER_NET_WRITE_INTERRUPTED : int
+          {static} + ER_NEVER_USED : int
+          {static} + ER_NEW_ABORTING_CONNECTION : int
+          {static} + ER_NISAMCHK : int
+          {static} + ER_NO : int
+          {static} + ER_NONEXISTING_GRANT : int
+          {static} + ER_NONEXISTING_PROC_GRANT : int
+          {static} + ER_NONEXISTING_TABLE_GRANT : int
+          {static} + ER_NONUNIQ_TABLE : int
+          {static} + ER_NONUPDATEABLE_COLUMN : int
+          {static} + ER_NON_GROUPING_FIELD_USED : int
+          {static} + ER_NON_INSERTABLE_TABLE : int
+          {static} + ER_NON_RO_SELECT_DISABLE_TIMER : int
+          {static} + ER_NON_UNIQ_ERROR : int
+          {static} + ER_NON_UPDATABLE_TABLE : int
+          {static} + ER_NORMAL_SHUTDOWN : int
+          {static} + ER_NOT_ALLOWED_COMMAND : int
+          {static} + ER_NOT_FORM_FILE : int
+          {static} + ER_NOT_KEYFILE : int
+          {static} + ER_NOT_SUPPORTED_AUTH_MODE : int
+          {static} + ER_NOT_SUPPORTED_YET : int
+          {static} + ER_NOT_VALID_PASSWORD : int
+          {static} + ER_NO_BINARY_LOGGING : int
+          {static} + ER_NO_BINLOG_ERROR : int
+          {static} + ER_NO_CONST_EXPR_IN_RANGE_OR_LIST_ERROR : int
+          {static} + ER_NO_DB_ERROR : int
+          {static} + ER_NO_DEFAULT : int
+          {static} + ER_NO_DEFAULT_FOR_FIELD : int
+          {static} + ER_NO_DEFAULT_FOR_VIEW_FIELD : int
+          {static} + ER_NO_FILE_MAPPING : int
+          {static} + ER_NO_FORMAT_DESCRIPTION_EVENT_BEFORE_BINLOG_STATEMENT : int
+          {static} + ER_NO_FT_MATERIALIZED_SUBQUERY : int
+          {static} + ER_NO_GROUP_FOR_PROC : int
+          {static} + ER_NO_PARTITION_FOR_GIVEN_VALUE : int
+          {static} + ER_NO_PARTITION_FOR_GIVEN_VALUE_SILENT : int
+          {static} + ER_NO_PARTS_ERROR : int
+          {static} + ER_NO_PERMISSION_TO_CREATE_USER : int
+          {static} + ER_NO_RAID_COMPILED : int
+          {static} + ER_NO_REFERENCED_ROW : int
+          {static} + ER_NO_REFERENCED_ROW_2 : int
+          {static} + ER_NO_SUCH_INDEX : int
+          {static} + ER_NO_SUCH_KEY_VALUE : int
+          {static} + ER_NO_SUCH_PARTITION__UNUSED : int
+          {static} + ER_NO_SUCH_TABLE : int
+          {static} + ER_NO_SUCH_THREAD : int
+          {static} + ER_NO_SUCH_USER : int
+          {static} + ER_NO_TABLES_USED : int
+          {static} + ER_NO_TRIGGERS_ON_SYSTEM_SCHEMA : int
+          {static} + ER_NO_UNIQUE_LOGFILE : int
+          {static} + ER_NULL_COLUMN_IN_INDEX : int
+          {static} + ER_NULL_IN_VALUES_LESS_THAN : int
+          {static} + ER_OLD_FILE_FORMAT : int
+          {static} + ER_OLD_KEYFILE : int
+          {static} + ER_OLD_TEMPORALS_UPGRADED : int
+          {static} + ER_ONLY_FD_AND_RBR_EVENTS_ALLOWED_IN_BINLOG_STATEMENT : int
+          {static} + ER_ONLY_INTEGERS_ALLOWED : int
+          {static} + ER_ONLY_ON_RANGE_LIST_PARTITION : int
+          {static} + ER_OPEN_AS_READONLY : int
+          {static} + ER_OPERAND_COLUMNS : int
+          {static} + ER_OPTION_PREVENTS_STATEMENT : int
+          {static} + ER_ORDER_WITH_PROC : int
+          {static} + ER_OUTOFMEMORY : int
+          {static} + ER_OUT_OF_RESOURCES : int
+          {static} + ER_OUT_OF_SORTMEMORY : int
+          {static} + ER_PARSE_ERROR : int
+          {static} + ER_PARTITIONS_MUST_BE_DEFINED_ERROR : int
+          {static} + ER_PARTITION_CLAUSE_ON_NONPARTITIONED : int
+          {static} + ER_PARTITION_COLUMN_LIST_ERROR : int
+          {static} + ER_PARTITION_CONST_DOMAIN_ERROR : int
+          {static} + ER_PARTITION_ENTRY_ERROR : int
+          {static} + ER_PARTITION_EXCHANGE_DIFFERENT_OPTION : int
+          {static} + ER_PARTITION_EXCHANGE_FOREIGN_KEY : int
+          {static} + ER_PARTITION_EXCHANGE_PART_TABLE : int
+          {static} + ER_PARTITION_EXCHANGE_TEMP_TABLE : int
+          {static} + ER_PARTITION_FIELDS_TOO_LONG : int
+          {static} + ER_PARTITION_FUNCTION_FAILURE : int
+          {static} + ER_PARTITION_FUNCTION_IS_NOT_ALLOWED : int
+          {static} + ER_PARTITION_FUNC_NOT_ALLOWED_ERROR : int
+          {static} + ER_PARTITION_INSTEAD_OF_SUBPARTITION : int
+          {static} + ER_PARTITION_MAXVALUE_ERROR : int
+          {static} + ER_PARTITION_MERGE_ERROR : int
+          {static} + ER_PARTITION_MGMT_ON_NONPARTITIONED : int
+          {static} + ER_PARTITION_NAME : int
+          {static} + ER_PARTITION_NOT_DEFINED_ERROR : int
+          {static} + ER_PARTITION_NO_TEMPORARY : int
+          {static} + ER_PARTITION_REQUIRES_VALUES_ERROR : int
+          {static} + ER_PARTITION_SUBPARTITION_ERROR : int
+          {static} + ER_PARTITION_SUBPART_MIX_ERROR : int
+          {static} + ER_PARTITION_WRONG_NO_PART_ERROR : int
+          {static} + ER_PARTITION_WRONG_NO_SUBPART_ERROR : int
+          {static} + ER_PARTITION_WRONG_VALUES_ERROR : int
+          {static} + ER_PART_STATE_ERROR : int
+          {static} + ER_PASSWD_LENGTH : int
+          {static} + ER_PASSWORD_ANONYMOUS_USER : int
+          {static} + ER_PASSWORD_EXPIRE_ANONYMOUS_USER : int
+          {static} + ER_PASSWORD_FORMAT : int
+          {static} + ER_PASSWORD_NOT_ALLOWED : int
+          {static} + ER_PASSWORD_NO_MATCH : int
+          {static} + ER_PATH_LENGTH : int
+          {static} + ER_PLUGIN_IS_NOT_LOADED : int
+          {static} + ER_PLUGIN_IS_PERMANENT : int
+          {static} + ER_PLUGIN_NO_INSTALL : int
+          {static} + ER_PLUGIN_NO_UNINSTALL : int
+          {static} + ER_PRIMARY_CANT_HAVE_NULL : int
+          {static} + ER_PROCACCESS_DENIED_ERROR : int
+          {static} + ER_PROC_AUTO_GRANT_FAIL : int
+          {static} + ER_PROC_AUTO_REVOKE_FAIL : int
+          {static} + ER_PS_MANY_PARAM : int
+          {static} + ER_PS_NO_RECURSION : int
+          {static} + ER_QUERY_CACHE_DISABLED : int
+          {static} + ER_QUERY_INTERRUPTED : int
+          {static} + ER_QUERY_ON_FOREIGN_DATA_SOURCE : int
+          {static} + ER_QUERY_ON_MASTER : int
+          {static} + ER_QUERY_TIMEOUT : int
+          {static} + ER_RANGE_NOT_INCREASING_ERROR : int
+          {static} + ER_RBR_NOT_AVAILABLE : int
+          {static} + ER_READY : int
+          {static} + ER_READ_ONLY_MODE : int
+          {static} + ER_READ_ONLY_TRANSACTION : int
+          {static} + ER_RECORD_FILE_FULL : int
+          {static} + ER_REFERENCED_TRG_DOES_NOT_EXIST : int
+          {static} + ER_REGEXP_ERROR : int
+          {static} + ER_RELAY_LOG_FAIL : int
+          {static} + ER_RELAY_LOG_INIT : int
+          {static} + ER_REMOVED_SPACES : int
+          {static} + ER_RENAMED_NAME : int
+          {static} + ER_REORG_HASH_ONLY_ON_SAME_NO : int
+          {static} + ER_REORG_NO_PARAM_ERROR : int
+          {static} + ER_REORG_OUTSIDE_RANGE : int
+          {static} + ER_REORG_PARTITION_NOT_EXIST : int
+          {static} + ER_REQUIRES_PRIMARY_KEY : int
+          {static} + ER_RESERVED_SYNTAX : int
+          {static} + ER_RESIGNAL_WITHOUT_ACTIVE_HANDLER : int
+          {static} + ER_REVOKE_GRANTS : int
+          {static} + ER_ROW_DOES_NOT_MATCH_GIVEN_PARTITION_SET : int
+          {static} + ER_ROW_DOES_NOT_MATCH_PARTITION : int
+          {static} + ER_ROW_IN_WRONG_PARTITION : int
+          {static} + ER_ROW_IS_REFERENCED : int
+          {static} + ER_ROW_IS_REFERENCED_2 : int
+          {static} + ER_ROW_SINGLE_PARTITION_FIELD_ERROR : int
+          {static} + ER_RPL_INFO_DATA_TOO_LONG : int
+          {static} + ER_SAME_NAME_PARTITION : int
+          {static} + ER_SAME_NAME_PARTITION_FIELD : int
+          {static} + ER_SELECT_REDUCED : int
+          {static} + ER_SERVER_IS_IN_SECURE_AUTH_MODE : int
+          {static} + ER_SERVER_SHUTDOWN : int
+          {static} + ER_SET_CONSTANTS_ONLY : int
+          {static} + ER_SET_PASSWORD_AUTH_PLUGIN : int
+          {static} + ER_SET_STATEMENT_CANNOT_INVOKE_FUNCTION : int
+          {static} + ER_SHUTDOWN_COMPLETE : int
+          {static} + ER_SIGNAL_BAD_CONDITION_TYPE : int
+          {static} + ER_SIGNAL_EXCEPTION : int
+          {static} + ER_SIGNAL_NOT_FOUND : int
+          {static} + ER_SIGNAL_WARN : int
+          {static} + ER_SIZE_OVERFLOW_ERROR : int
+          {static} + ER_SKIPPING_LOGGED_TRANSACTION : int
+          {static} + ER_SLAVE_CANT_CREATE_CONVERSION : int
+          {static} + ER_SLAVE_CONFIGURATION : int
+          {static} + ER_SLAVE_CONVERSION_FAILED : int
+          {static} + ER_SLAVE_CORRUPT_EVENT : int
+          {static} + ER_SLAVE_CREATE_EVENT_FAILURE : int
+          {static} + ER_SLAVE_FATAL_ERROR : int
+          {static} + ER_SLAVE_HEARTBEAT_FAILURE : int
+          {static} + ER_SLAVE_HEARTBEAT_VALUE_OUT_OF_RANGE : int
+          {static} + ER_SLAVE_HEARTBEAT_VALUE_OUT_OF_RANGE_MAX : int
+          {static} + ER_SLAVE_HEARTBEAT_VALUE_OUT_OF_RANGE_MIN : int
+          {static} + ER_SLAVE_IGNORED_SSL_PARAMS : int
+          {static} + ER_SLAVE_IGNORED_TABLE : int
+          {static} + ER_SLAVE_IGNORE_SERVER_IDS : int
+          {static} + ER_SLAVE_INCIDENT : int
+          {static} + ER_SLAVE_IO_THREAD_MUST_STOP : int
+          {static} + ER_SLAVE_MASTER_COM_FAILURE : int
+          {static} + ER_SLAVE_MI_INIT_REPOSITORY : int
+          {static} + ER_SLAVE_MUST_STOP : int
+          {static} + ER_SLAVE_NOT_RUNNING : int
+          {static} + ER_SLAVE_RELAY_LOG_READ_FAILURE : int
+          {static} + ER_SLAVE_RELAY_LOG_WRITE_FAILURE : int
+          {static} + ER_SLAVE_RLI_INIT_REPOSITORY : int
+          {static} + ER_SLAVE_SILENT_RETRY_TRANSACTION : int
+          {static} + ER_SLAVE_SQL_THREAD_MUST_STOP : int
+          {static} + ER_SLAVE_THREAD : int
+          {static} + ER_SLAVE_WAS_NOT_RUNNING : int
+          {static} + ER_SLAVE_WAS_RUNNING : int
+          {static} + ER_SPATIAL_CANT_HAVE_NULL : int
+          {static} + ER_SPATIAL_MUST_HAVE_GEOM_COL : int
+          {static} + ER_SPECIFIC_ACCESS_DENIED_ERROR : int
+          {static} + ER_SP_ALREADY_EXISTS : int
+          {static} + ER_SP_BADRETURN : int
+          {static} + ER_SP_BADSELECT : int
+          {static} + ER_SP_BADSTATEMENT : int
+          {static} + ER_SP_BAD_CURSOR_QUERY : int
+          {static} + ER_SP_BAD_CURSOR_SELECT : int
+          {static} + ER_SP_BAD_SQLSTATE : int
+          {static} + ER_SP_BAD_VAR_SHADOW : int
+          {static} + ER_SP_CANT_ALTER : int
+          {static} + ER_SP_CANT_SET_AUTOCOMMIT : int
+          {static} + ER_SP_CASE_NOT_FOUND : int
+          {static} + ER_SP_COND_MISMATCH : int
+          {static} + ER_SP_CURSOR_AFTER_HANDLER : int
+          {static} + ER_SP_CURSOR_ALREADY_OPEN : int
+          {static} + ER_SP_CURSOR_MISMATCH : int
+          {static} + ER_SP_CURSOR_NOT_OPEN : int
+          {static} + ER_SP_DOES_NOT_EXIST : int
+          {static} + ER_SP_DROP_FAILED : int
+          {static} + ER_SP_DUP_COND : int
+          {static} + ER_SP_DUP_CURS : int
+          {static} + ER_SP_DUP_HANDLER : int
+          {static} + ER_SP_DUP_PARAM : int
+          {static} + ER_SP_DUP_VAR : int
+          {static} + ER_SP_FETCH_NO_DATA : int
+          {static} + ER_SP_GOTO_IN_HNDLR : int
+          {static} + ER_SP_LABEL_MISMATCH : int
+          {static} + ER_SP_LABEL_REDEFINE : int
+          {static} + ER_SP_LILABEL_MISMATCH : int
+          {static} + ER_SP_NORETURN : int
+          {static} + ER_SP_NORETURNEND : int
+          {static} + ER_SP_NOT_VAR_ARG : int
+          {static} + ER_SP_NO_AGGREGATE : int
+          {static} + ER_SP_NO_DROP_SP : int
+          {static} + ER_SP_NO_RECURSION : int
+          {static} + ER_SP_NO_RECURSIVE_CREATE : int
+          {static} + ER_SP_NO_RETSET : int
+          {static} + ER_SP_PROC_TABLE_CORRUPT : int
+          {static} + ER_SP_RECURSION_LIMIT : int
+          {static} + ER_SP_STORE_FAILED : int
+          {static} + ER_SP_SUBSELECT_NYI : int
+          {static} + ER_SP_UNDECLARED_VAR : int
+          {static} + ER_SP_UNINIT_VAR : int
+          {static} + ER_SP_VARCOND_AFTER_CURSHNDLR : int
+          {static} + ER_SP_WRONG_NAME : int
+          {static} + ER_SP_WRONG_NO_OF_ARGS : int
+          {static} + ER_SP_WRONG_NO_OF_FETCH_ARGS : int
+          {static} + ER_SQLTHREAD_WITH_SECURE_SLAVE : int
+          {static} + ER_SQL_MODE_NO_EFFECT : int
+          {static} + ER_SQL_SLAVE_SKIP_COUNTER_NOT_SETTABLE_IN_GTID_MODE : int
+          {static} + ER_SR_INVALID_CREATION_CTX : int
+          {static} + ER_STACK_OVERRUN : int
+          {static} + ER_STACK_OVERRUN_NEED_MORE : int
+          {static} + ER_STARTUP : int
+          {static} + ER_STMT_CACHE_FULL : int
+          {static} + ER_STMT_HAS_NO_OPEN_CURSOR : int
+          {static} + ER_STMT_NOT_ALLOWED_IN_SF_OR_TRG : int
+          {static} + ER_STOP_SLAVE_IO_THREAD_TIMEOUT : int
+          {static} + ER_STOP_SLAVE_SQL_THREAD_TIMEOUT : int
+          {static} + ER_STORAGE_ENGINE_NOT_LOADED : int
+          {static} + ER_STORED_FUNCTION_PREVENTS_SWITCH_BINLOG_DIRECT : int
+          {static} + ER_STORED_FUNCTION_PREVENTS_SWITCH_BINLOG_FORMAT : int
+          {static} + ER_STORED_FUNCTION_PREVENTS_SWITCH_SQL_LOG_BIN : int
+          {static} + ER_SUBPARTITION_ERROR : int
+          {static} + ER_SUBPARTITION_NAME : int
+          {static} + ER_SUBQUERY_NO_1_ROW : int
+          {static} + ER_SYNTAX_ERROR : int
+          {static} + ER_TABLEACCESS_DENIED_ERROR : int
+          {static} + ER_TABLENAME_NOT_ALLOWED_HERE : int
+          {static} + ER_TABLESPACE_AUTO_EXTEND_ERROR : int
+          {static} + ER_TABLESPACE_DISCARDED : int
+          {static} + ER_TABLESPACE_EXISTS : int
+          {static} + ER_TABLESPACE_MISSING : int
+          {static} + ER_TABLES_DIFFERENT_METADATA : int
+          {static} + ER_TABLE_CANT_HANDLE_AUTO_INCREMENT : int
+          {static} + ER_TABLE_CANT_HANDLE_BLOB : int
+          {static} + ER_TABLE_CANT_HANDLE_FT : int
+          {static} + ER_TABLE_CANT_HANDLE_SPKEYS : int
+          {static} + ER_TABLE_CORRUPT : int
+          {static} + ER_TABLE_DEF_CHANGED : int
+          {static} + ER_TABLE_EXISTS_ERROR : int
+          {static} + ER_TABLE_HAS_NO_FT : int
+          {static} + ER_TABLE_IN_FK_CHECK : int
+          {static} + ER_TABLE_IN_SYSTEM_TABLESPACE : int
+          {static} + ER_TABLE_MUST_HAVE_COLUMNS : int
+          {static} + ER_TABLE_NAME : int
+          {static} + ER_TABLE_NEEDS_REBUILD : int
+          {static} + ER_TABLE_NEEDS_UPGRADE : int
+          {static} + ER_TABLE_NOT_LOCKED : int
+          {static} + ER_TABLE_NOT_LOCKED_FOR_WRITE : int
+          {static} + ER_TABLE_SCHEMA_MISMATCH : int
+          {static} + ER_TEMPORARY_NAME : int
+          {static} + ER_TEMP_FILE_WRITE_FAILURE : int
+          {static} + ER_TEMP_TABLE_PREVENTS_SWITCH_OUT_OF_RBR : int
+          {static} + ER_TEXTFILE_NOT_READABLE : int
+          {static} + ER_TOO_BIG_DISPLAYWIDTH : int
+          {static} + ER_TOO_BIG_FIELDLENGTH : int
+          {static} + ER_TOO_BIG_FOR_UNCOMPRESS : int
+          {static} + ER_TOO_BIG_PRECISION : int
+          {static} + ER_TOO_BIG_ROWSIZE : int
+          {static} + ER_TOO_BIG_SCALE : int
+          {static} + ER_TOO_BIG_SELECT : int
+          {static} + ER_TOO_BIG_SET : int
+          {static} + ER_TOO_HIGH_LEVEL_OF_NESTING_FOR_SELECT : int
+          {static} + ER_TOO_LONG_BODY : int
+          {static} + ER_TOO_LONG_FIELD_COMMENT : int
+          {static} + ER_TOO_LONG_IDENT : int
+          {static} + ER_TOO_LONG_INDEX_COMMENT : int
+          {static} + ER_TOO_LONG_KEY : int
+          {static} + ER_TOO_LONG_STRING : int
+          {static} + ER_TOO_LONG_TABLE_COMMENT : int
+          {static} + ER_TOO_LONG_TABLE_PARTITION_COMMENT : int
+          {static} + ER_TOO_MANY_CONCURRENT_TRXS : int
+          {static} + ER_TOO_MANY_DELAYED_THREADS : int
+          {static} + ER_TOO_MANY_FIELDS : int
+          {static} + ER_TOO_MANY_KEYS : int
+          {static} + ER_TOO_MANY_KEY_PARTS : int
+          {static} + ER_TOO_MANY_PARTITIONS_ERROR : int
+          {static} + ER_TOO_MANY_PARTITION_FUNC_FIELDS_ERROR : int
+          {static} + ER_TOO_MANY_ROWS : int
+          {static} + ER_TOO_MANY_TABLES : int
+          {static} + ER_TOO_MANY_USER_CONNECTIONS : int
+          {static} + ER_TOO_MANY_VALUES_ERROR : int
+          {static} + ER_TOO_MUCH_AUTO_TIMESTAMP_COLS : int
+          {static} + ER_TRANS_CACHE_FULL : int
+          {static} + ER_TRG_ALREADY_EXISTS : int
+          {static} + ER_TRG_CANT_CHANGE_ROW : int
+          {static} + ER_TRG_CANT_OPEN_TABLE : int
+          {static} + ER_TRG_CORRUPTED_FILE : int
+          {static} + ER_TRG_DOES_NOT_EXIST : int
+          {static} + ER_TRG_INVALID_CREATION_CTX : int
+          {static} + ER_TRG_IN_WRONG_SCHEMA : int
+          {static} + ER_TRG_NO_CREATION_CTX : int
+          {static} + ER_TRG_NO_DEFINER : int
+          {static} + ER_TRG_NO_SUCH_ROW_IN_TRG : int
+          {static} + ER_TRG_ON_VIEW_OR_TEMP_TABLE : int
+          {static} + ER_TRUNCATED_WRONG_VALUE : int
+          {static} + ER_TRUNCATED_WRONG_VALUE_FOR_FIELD : int
+          {static} + ER_TRUNCATE_ILLEGAL_FK : int
+          {static} + ER_UDF_EXISTS : int
+          {static} + ER_UDF_NO_PATHS : int
+          {static} + ER_UNDO_RECORD_TOO_BIG : int
+          {static} + ER_UNEXPECTED_EOF : int
+          {static} + ER_UNION_TABLES_IN_DIFFERENT_DIR : int
+          {static} + ER_UNIQUE_KEY_NEED_ALL_FIELDS_IN_PF : int
+          {static} + ER_UNKNOWN_ALTER_ALGORITHM : int
+          {static} + ER_UNKNOWN_ALTER_LOCK : int
+          {static} + ER_UNKNOWN_CHARACTER_SET : int
+          {static} + ER_UNKNOWN_COLLATION : int
+          {static} + ER_UNKNOWN_COM_ERROR : int
+          {static} + ER_UNKNOWN_ERROR : int
+          {static} + ER_UNKNOWN_EXPLAIN_FORMAT : int
+          {static} + ER_UNKNOWN_KEY_CACHE : int
+          {static} + ER_UNKNOWN_LOCALE : int
+          {static} + ER_UNKNOWN_PARTITION : int
+          {static} + ER_UNKNOWN_PROCEDURE : int
+          {static} + ER_UNKNOWN_STMT_HANDLER : int
+          {static} + ER_UNKNOWN_STORAGE_ENGINE : int
+          {static} + ER_UNKNOWN_SYSTEM_VARIABLE : int
+          {static} + ER_UNKNOWN_TABLE : int
+          {static} + ER_UNKNOWN_TARGET_BINLOG : int
+          {static} + ER_UNKNOWN_TIME_ZONE : int
+          {static} + ER_UNSUPORTED_LOG_ENGINE : int
+          {static} + ER_UNSUPPORTED_ENGINE : int
+          {static} + ER_UNSUPPORTED_EXTENSION : int
+          {static} + ER_UNSUPPORTED_PS : int
+          {static} + ER_UNTIL_COND_IGNORED : int
+          {static} + ER_UPDATE_INFO : int
+          {static} + ER_UPDATE_LOG_DEPRECATED_IGNORED : int
+          {static} + ER_UPDATE_LOG_DEPRECATED_TRANSLATED : int
+          {static} + ER_UPDATE_TABLE_USED : int
+          {static} + ER_UPDATE_WITHOUT_KEY_IN_SAFE_MODE : int
+          {static} + ER_USERNAME : int
+          {static} + ER_USER_LIMIT_REACHED : int
+          {static} + ER_VALUES_IS_NOT_INT_TYPE_ERROR : int
+          {static} + ER_VARIABLE_IS_NOT_STRUCT : int
+          {static} + ER_VARIABLE_IS_READONLY : int
+          {static} + ER_VARIABLE_NOT_SETTABLE_IN_SF_OR_TRIGGER : int
+          {static} + ER_VARIABLE_NOT_SETTABLE_IN_SP : int
+          {static} + ER_VARIABLE_NOT_SETTABLE_IN_TRANSACTION : int
+          {static} + ER_VAR_CANT_BE_READ : int
+          {static} + ER_VIEW_CHECKSUM : int
+          {static} + ER_VIEW_CHECK_FAILED : int
+          {static} + ER_VIEW_DELETE_MERGE_VIEW : int
+          {static} + ER_VIEW_FRM_NO_USER : int
+          {static} + ER_VIEW_INVALID : int
+          {static} + ER_VIEW_INVALID_CREATION_CTX : int
+          {static} + ER_VIEW_MULTIUPDATE : int
+          {static} + ER_VIEW_NONUPD_CHECK : int
+          {static} + ER_VIEW_NO_CREATION_CTX : int
+          {static} + ER_VIEW_NO_EXPLAIN : int
+          {static} + ER_VIEW_NO_INSERT_FIELD_LIST : int
+          {static} + ER_VIEW_OTHER_USER : int
+          {static} + ER_VIEW_PREVENT_UPDATE : int
+          {static} + ER_VIEW_RECURSIVE : int
+          {static} + ER_VIEW_SELECT_CLAUSE : int
+          {static} + ER_VIEW_SELECT_DERIVED : int
+          {static} + ER_VIEW_SELECT_TMPTABLE : int
+          {static} + ER_VIEW_SELECT_VARIABLE : int
+          {static} + ER_VIEW_WRONG_LIST : int
+          {static} + ER_WARNING_NOT_COMPLETE_ROLLBACK : int
+          {static} + ER_WARNING_NOT_COMPLETE_ROLLBACK_WITH_CREATED_TEMP_TABLE : int
+          {static} + ER_WARNING_NOT_COMPLETE_ROLLBACK_WITH_DROPPED_TEMP_TABLE : int
+          {static} + ER_WARN_ALLOWED_PACKET_OVERFLOWED : int
+          {static} + ER_WARN_CANT_DROP_DEFAULT_KEYCACHE : int
+          {static} + ER_WARN_DATA_OUT_OF_RANGE : int
+          {static} + ER_WARN_DATA_TRUNCATED : int
+          {static} + ER_WARN_DEPRECATED_SYNTAX : int
+          {static} + ER_WARN_DEPRECATED_SYNTAX_NO_REPLACEMENT : int
+          {static} + ER_WARN_DEPRECATED_SYNTAX_WITH_VER : int
+          {static} + ER_WARN_ENGINE_TRANSACTION_ROLLBACK : int
+          {static} + ER_WARN_FIELD_RESOLVED : int
+          {static} + ER_WARN_HOSTNAME_WONT_WORK : int
+          {static} + ER_WARN_INDEX_NOT_APPLICABLE : int
+          {static} + ER_WARN_INVALID_TIMESTAMP : int
+          {static} + ER_WARN_I_S_SKIPPED_TABLE : int
+          {static} + ER_WARN_LEGACY_SYNTAX_CONVERTED : int
+          {static} + ER_WARN_NULL_TO_NOTNULL : int
+          {static} + ER_WARN_ONLY_MASTER_LOG_FILE_NO_POS : int
+          {static} + ER_WARN_OPEN_TEMP_TABLES_MUST_BE_ZERO : int
+          {static} + ER_WARN_PURGE_LOG_IN_USE : int
+          {static} + ER_WARN_PURGE_LOG_IS_ACTIVE : int
+          {static} + ER_WARN_QC_RESIZE : int
+          {static} + ER_WARN_TOO_FEW_RECORDS : int
+          {static} + ER_WARN_TOO_MANY_RECORDS : int
+          {static} + ER_WARN_TRIGGER_DOESNT_HAVE_CREATED : int
+          {static} + ER_WARN_USING_OTHER_HANDLER : int
+          {static} + ER_WARN_VIEW_MERGE : int
+          {static} + ER_WARN_VIEW_WITHOUT_KEY : int
+          {static} + ER_WRONG_ARGUMENTS : int
+          {static} + ER_WRONG_AUTO_KEY : int
+          {static} + ER_WRONG_COLUMN_NAME : int
+          {static} + ER_WRONG_DB_NAME : int
+          {static} + ER_WRONG_EXPR_IN_PARTITION_FUNC_ERROR : int
+          {static} + ER_WRONG_FIELD_SPEC : int
+          {static} + ER_WRONG_FIELD_TERMINATORS : int
+          {static} + ER_WRONG_FIELD_WITH_GROUP : int
+          {static} + ER_WRONG_FK_DEF : int
+          {static} + ER_WRONG_GROUP_FIELD : int
+          {static} + ER_WRONG_KEY_COLUMN : int
+          {static} + ER_WRONG_LOCK_OF_SYSTEM_TABLE : int
+          {static} + ER_WRONG_MAGIC : int
+          {static} + ER_WRONG_MRG_TABLE : int
+          {static} + ER_WRONG_NAME_FOR_CATALOG : int
+          {static} + ER_WRONG_NAME_FOR_INDEX : int
+          {static} + ER_WRONG_NATIVE_TABLE_STRUCTURE : int
+          {static} + ER_WRONG_NUMBER_OF_COLUMNS_IN_SELECT : int
+          {static} + ER_WRONG_OBJECT : int
+          {static} + ER_WRONG_OUTER_JOIN : int
+          {static} + ER_WRONG_PARAMCOUNT_TO_NATIVE_FCT : int
+          {static} + ER_WRONG_PARAMCOUNT_TO_PROCEDURE : int
+          {static} + ER_WRONG_PARAMETERS_TO_NATIVE_FCT : int
+          {static} + ER_WRONG_PARAMETERS_TO_PROCEDURE : int
+          {static} + ER_WRONG_PARAMETERS_TO_STORED_FCT : int
+          {static} + ER_WRONG_PARTITION_NAME : int
+          {static} + ER_WRONG_PERFSCHEMA_USAGE : int
+          {static} + ER_WRONG_SIZE_NUMBER : int
+          {static} + ER_WRONG_SPVAR_TYPE_IN_LIMIT : int
+          {static} + ER_WRONG_STRING_LENGTH : int
+          {static} + ER_WRONG_SUB_KEY : int
+          {static} + ER_WRONG_SUM_SELECT : int
+          {static} + ER_WRONG_TABLE_NAME : int
+          {static} + ER_WRONG_TYPE_COLUMN_VALUE_ERROR : int
+          {static} + ER_WRONG_TYPE_FOR_VAR : int
+          {static} + ER_WRONG_USAGE : int
+          {static} + ER_WRONG_VALUE : int
+          {static} + ER_WRONG_VALUE_COUNT : int
+          {static} + ER_WRONG_VALUE_COUNT_ON_ROW : int
+          {static} + ER_WRONG_VALUE_FOR_TYPE : int
+          {static} + ER_WRONG_VALUE_FOR_VAR : int
+          {static} + ER_WSAS_FAILED : int
+          {static} + ER_XAER_DUPID : int
+          {static} + ER_XAER_INVAL : int
+          {static} + ER_XAER_NOTA : int
+          {static} + ER_XAER_OUTSIDE : int
+          {static} + ER_XAER_RMFAIL : int
+          {static} + ER_XA_RBDEADLOCK : int
+          {static} + ER_XA_RBROLLBACK : int
+          {static} + ER_XA_RBTIMEOUT : int
+          {static} + ER_XA_RMERR : int
+          {static} + ER_X_BAD_COLUMN_TO_UPDATE : int
+          {static} + ER_X_BAD_CURSOR_ID : int
+          {static} + ER_X_BAD_DOC_PATH : int
+          {static} + ER_X_BAD_INSERT_DATA : int
+          {static} + ER_X_BAD_MEMBER_TO_UPDATE : int
+          {static} + ER_X_BAD_NOTICE : int
+          {static} + ER_X_BAD_PROJECTION : int
+          {static} + ER_X_BAD_SCHEMA : int
+          {static} + ER_X_BAD_STATEMENT_ID : int
+          {static} + ER_X_BAD_TABLE : int
+          {static} + ER_X_BAD_TYPE_OF_UPDATE : int
+          {static} + ER_X_BAD_UPDATE_DATA : int
+          {static} + ER_X_CANNOT_DISABLE_NOTICE : int
+          {static} + ER_X_CMD_ARGUMENT_TYPE : int
+          {static} + ER_X_CMD_ARGUMENT_VALUE : int
+          {static} + ER_X_CMD_NUM_ARGUMENTS : int
+          {static} + ER_X_CURSOR_EXISTS : int
+          {static} + ER_X_DOC_ID_DUPLICATE : int
+          {static} + ER_X_DOC_ID_MISSING : int
+          {static} + ER_X_DOC_REQUIRED_FIELD_MISSING : int
+          {static} + ER_X_EXPECT_BAD_CONDITION : int
+          {static} + ER_X_EXPECT_BAD_CONDITION_VALUE : int
+          {static} + ER_X_EXPECT_FAILED : int
+          {static} + ER_X_EXPECT_NOT_OPEN : int
+          {static} + ER_X_EXPR_BAD_NUM_ARGS : int
+          {static} + ER_X_EXPR_BAD_OPERATOR : int
+          {static} + ER_X_EXPR_BAD_REGEX : int
+          {static} + ER_X_EXPR_BAD_TYPE_VALUE : int
+          {static} + ER_X_EXPR_BAD_VALUE : int
+          {static} + ER_X_EXPR_MISSING_ARG : int
+          {static} + ER_X_INVALID_ADMIN_COMMAND : int
+          {static} + ER_X_INVALID_ARGUMENT : int
+          {static} + ER_X_INVALID_COLLECTION : int
+          {static} + ER_X_INVALID_NAMESPACE : int
+          {static} + ER_X_MISSING_ARGUMENT : int
+          {static} + ER_X_PROJ_BAD_KEY_NAME : int
+          {static} + ER_X_SERVICE_ERROR : int
+          {static} + ER_X_SESSION : int
+          {static} + ER_YES : int
+          {static} + ER_ZLIB_Z_BUF_ERROR : int
+          {static} + ER_ZLIB_Z_DATA_ERROR : int
+          {static} + ER_ZLIB_Z_MEM_ERROR : int
+          {static} + SQL_STATE_ACTIVE_SQL_TRANSACTION : String
+          {static} + SQL_STATE_BAD_SSL_PARAMS : String
+          {static} + SQL_STATE_BASE_TABLE_NOT_FOUND : String
+          {static} + SQL_STATE_BASE_TABLE_OR_VIEW_ALREADY_EXISTS : String
+          {static} + SQL_STATE_BASE_TABLE_OR_VIEW_NOT_FOUND : String
+          {static} + SQL_STATE_CARDINALITY_VIOLATION : String
+          {static} + SQL_STATE_CASE_NOT_FOUND_FOR_CASE_STATEMENT : String
+          {static} + SQL_STATE_CLI_SPECIFIC_CONDITION : String
+          {static} + SQL_STATE_COLUMN_ALREADY_EXISTS : String
+          {static} + SQL_STATE_COLUMN_NOT_FOUND : String
+          {static} + SQL_STATE_COMMUNICATION_LINK_FAILURE : String
+          {static} + SQL_STATE_CONNECTION_FAILURE : String
+          {static} + SQL_STATE_CONNECTION_IN_USE : String
+          {static} + SQL_STATE_CONNECTION_NOT_OPEN : String
+          {static} + SQL_STATE_CONNECTION_REJECTED : String
+          {static} + SQL_STATE_DATETIME_FIELD_OVERFLOW : String
+          {static} + SQL_STATE_DATE_TRUNCATED : String
+          {static} + SQL_STATE_DISCONNECT_ERROR : String
+          {static} + SQL_STATE_DIVISION_BY_ZERO : String
+          {static} + SQL_STATE_DRIVER_NOT_CAPABLE : String
+          {static} + SQL_STATE_ERROR_IN_ROW : String
+          {static} + SQL_STATE_ER_BAD_FIELD_ERROR : String
+          {static} + SQL_STATE_ER_DUP_FIELDNAME : String
+          {static} + SQL_STATE_ER_NO_SUCH_INDEX : String
+          {static} + SQL_STATE_ER_QUERY_INTERRUPTED : String
+          {static} + SQL_STATE_ER_TABLE_EXISTS_ERROR : String
+          {static} + SQL_STATE_FEATURE_NOT_SUPPORTED : String
+          {static} + SQL_STATE_GENERAL_ERROR : String
+          {static} + SQL_STATE_ILLEGAL_ARGUMENT : String
+          {static} + SQL_STATE_INDEX_ALREADY_EXISTS : String
+          {static} + SQL_STATE_INDEX_NOT_FOUND : String
+          {static} + SQL_STATE_INSERT_VALUE_LIST_NO_MATCH_COL_LIST : String
+          {static} + SQL_STATE_INTEGRITY_CONSTRAINT_VIOLATION : String
+          {static} + SQL_STATE_INVALID_AUTH_SPEC : String
+          {static} + SQL_STATE_INVALID_CATALOG_NAME : String
+          {static} + SQL_STATE_INVALID_CHARACTER_VALUE_FOR_CAST : String
+          {static} + SQL_STATE_INVALID_COLUMN_NUMBER : String
+          {static} + SQL_STATE_INVALID_CONDITION_NUMBER : String
+          {static} + SQL_STATE_INVALID_CONNECTION_ATTRIBUTE : String
+          {static} + SQL_STATE_INVALID_CURSOR_STATE : String
+          {static} + SQL_STATE_INVALID_DATETIME_FORMAT : String
+          {static} + SQL_STATE_INVALID_LOGARITHM_ARGUMENT : String
+          {static} + SQL_STATE_INVALID_TRANSACTION_STATE : String
+          {static} + SQL_STATE_INVALID_TRANSACTION_TERMINATION : String
+          {static} + SQL_STATE_MEMORY_ALLOCATION_ERROR : String
+          {static} + SQL_STATE_MEMORY_ALLOCATION_FAILURE : String
+          {static} + SQL_STATE_MORE_THAN_ONE_ROW_UPDATED_OR_DELETED : String
+          {static} + SQL_STATE_NO_DATA : String
+          {static} + SQL_STATE_NO_DEFAULT_FOR_COLUMN : String
+          {static} + SQL_STATE_NO_ROWS_UPDATED_OR_DELETED : String
+          {static} + SQL_STATE_NULL_VALUE_NOT_ALLOWED : String
+          {static} + SQL_STATE_NUMERIC_VALUE_OUT_OF_RANGE : String
+          {static} + SQL_STATE_PRIVILEGE_NOT_REVOKED : String
+          {static} + SQL_STATE_READ_ONLY_SQL_TRANSACTION : String
+          {static} + SQL_STATE_RESIGNAL_WHEN_HANDLER_NOT_ACTIVE : String
+          {static} + SQL_STATE_ROLLBACK_SERIALIZATION_FAILURE : String
+          {static} + SQL_STATE_SRE_FUNCTION_EXECUTED_NO_RETURN_STATEMENT : String
+          {static} + SQL_STATE_SRE_PROHIBITED_SQL_STATEMENT_ATTEMPTED : String
+          {static} + SQL_STATE_STACKED_DIAGNOSTICS_ACCESSED_WITHOUT_ACTIVE_HANDLER : String
+          {static} + SQL_STATE_STRING_DATA_RIGHT_TRUNCATION : String
+          {static} + SQL_STATE_SYNTAX_ERROR : String
+          {static} + SQL_STATE_TIMEOUT_EXPIRED : String
+          {static} + SQL_STATE_TRANSACTION_RESOLUTION_UNKNOWN : String
+          {static} + SQL_STATE_UNABLE_TO_CONNECT_TO_DATASOURCE : String
+          {static} + SQL_STATE_WARNING : String
+          {static} + SQL_STATE_WRONG_NO_OF_PARAMETERS : String
+          {static} + SQL_STATE_XAER_DUPID : String
+          {static} + SQL_STATE_XAER_INVAL : String
+          {static} + SQL_STATE_XAER_NOTA : String
+          {static} + SQL_STATE_XAER_OUTSIDE : String
+          {static} + SQL_STATE_XAER_RMFAIL : String
+          {static} + SQL_STATE_XA_RBDEADLOCK : String
+          {static} + SQL_STATE_XA_RBROLLBACK : String
+          {static} + SQL_STATE_XA_RBTIMEOUT : String
+          {static} + SQL_STATE_XA_RMERR : String
+          {static} + WARN_COND_ITEM_TRUNCATED : int
+          {static} + WARN_NON_ASCII_SEPARATOR_NOT_IMPLEMENTED : int
+          {static} + WARN_NO_MASTER_INFO : int
+          {static} + WARN_ON_BLOCKHOLE_IN_RBR : int
+          {static} + WARN_OPTION_BELOW_LIMIT : int
+          {static} + WARN_OPTION_IGNORED : int
+          {static} + WARN_PLUGIN_BUSY : int
+          {static} + WARN_PLUGIN_DELETE_BUILTIN : int
+          {static} + mysqlToSql99State : Map<Integer, String>
+          {static} - sqlStateMessages : Map<String, String>
+          {static} + get()
+          {static} + mysqlToSql99()
+          {static} + mysqlToSqlState()
+          - MysqlErrorNumbers()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace exceptions {
+      class com.mysql.cj.exceptions.NumberOutOfRange {
+          {static} - serialVersionUID : long
+          + NumberOutOfRange()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace exceptions {
+      class com.mysql.cj.exceptions.OperationCancelledException {
+          {static} - serialVersionUID : long
+          + OperationCancelledException()
+          + OperationCancelledException()
+          + OperationCancelledException()
+          + OperationCancelledException()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace exceptions {
+      class com.mysql.cj.exceptions.PasswordExpiredException {
+          {static} - serialVersionUID : long
+          + PasswordExpiredException()
+          + PasswordExpiredException()
+          + PasswordExpiredException()
+          + PasswordExpiredException()
+          # PasswordExpiredException()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace exceptions {
+      class com.mysql.cj.exceptions.PropertyNotModifiableException {
+          {static} - serialVersionUID : long
+          + PropertyNotModifiableException()
+          + PropertyNotModifiableException()
+          + PropertyNotModifiableException()
+          + PropertyNotModifiableException()
+          # PropertyNotModifiableException()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace exceptions {
+      class com.mysql.cj.exceptions.RSAException {
+          {static} - serialVersionUID : long
+          + RSAException()
+          + RSAException()
+          + RSAException()
+          + RSAException()
+          # RSAException()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace exceptions {
+      class com.mysql.cj.exceptions.SSLParamsException {
+          {static} - serialVersionUID : long
+          + SSLParamsException()
+          + SSLParamsException()
+          + SSLParamsException()
+          + SSLParamsException()
+          + SSLParamsException()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace exceptions {
+      class com.mysql.cj.exceptions.StatementIsClosedException {
+          {static} - serialVersionUID : long
+          + StatementIsClosedException()
+          + StatementIsClosedException()
+          + StatementIsClosedException()
+          + StatementIsClosedException()
+          # StatementIsClosedException()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace exceptions {
+      interface com.mysql.cj.exceptions.StreamingNotifiable {
+          {abstract} + setWasStreamingResults()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace exceptions {
+      class com.mysql.cj.exceptions.UnableToConnectException {
+          {static} - serialVersionUID : long
+          + UnableToConnectException()
+          + UnableToConnectException()
+          + UnableToConnectException()
+          + UnableToConnectException()
+          + UnableToConnectException()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace exceptions {
+      class com.mysql.cj.exceptions.UnsupportedConnectionStringException {
+          {static} - serialVersionUID : long
+          + UnsupportedConnectionStringException()
+          + UnsupportedConnectionStringException()
+          + UnsupportedConnectionStringException()
+          + UnsupportedConnectionStringException()
+          + UnsupportedConnectionStringException()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace exceptions {
+      class com.mysql.cj.exceptions.WrongArgumentException {
+          {static} - serialVersionUID : long
+          + WrongArgumentException()
+          + WrongArgumentException()
+          + WrongArgumentException()
+          + WrongArgumentException()
+          + WrongArgumentException()
+      }
+    }
+  }
+  
+
+  com.mysql.cj.exceptions.ExceptionInterceptorChain .up.|> ExceptionInterceptor
+
+
+right footer
+
+
+PlantUML diagram generated by SketchIt! (https://bitbucket.org/pmesmeur/sketch.it)
+For more information about this tool, please contact philippe.mesmeur@gmail.com
+endfooter
+
+@enduml

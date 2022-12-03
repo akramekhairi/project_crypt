@@ -1,0 +1,372 @@
+@startuml
+
+title __RESULT's Class Diagram__\n
+
+  namespace com.mysql.cj {
+    namespace result {
+      abstract class com.mysql.cj.result.AbstractDateTimeValueFactory {
+          + AbstractDateTimeValueFactory()
+          + createFromBytes()
+          + createFromDate()
+          + createFromTime()
+          + createFromTimestamp()
+          + createFromYear()
+          {abstract} ~ localCreateFromDate()
+          {abstract} ~ localCreateFromTime()
+          {abstract} ~ localCreateFromTimestamp()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace result {
+      abstract class com.mysql.cj.result.AbstractNumericValueFactory {
+          + AbstractNumericValueFactory()
+          + createFromBytes()
+          + createFromYear()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace result {
+      class com.mysql.cj.result.BigDecimalValueFactory {
+          ~ hasScale : boolean
+          ~ scale : int
+          + BigDecimalValueFactory()
+          + BigDecimalValueFactory()
+          + createFromBigDecimal()
+          + createFromBigInteger()
+          + createFromBit()
+          + createFromDouble()
+          + createFromLong()
+          + getTargetTypeName()
+          - adjustResult()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace result {
+      class com.mysql.cj.result.BinaryStreamValueFactory {
+          + BinaryStreamValueFactory()
+          + createFromBytes()
+          + getTargetTypeName()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace result {
+      class com.mysql.cj.result.BooleanValueFactory {
+          + BooleanValueFactory()
+          + createFromBigDecimal()
+          + createFromBigInteger()
+          + createFromBit()
+          + createFromBytes()
+          + createFromDouble()
+          + createFromLong()
+          + createFromYear()
+          + getTargetTypeName()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace result {
+      class com.mysql.cj.result.BufferedRowList {
+          - position : int
+          - rowList : List<Row>
+          + BufferedRowList()
+          + BufferedRowList()
+          + get()
+          + getPosition()
+          + hasNext()
+          + next()
+          + previous()
+          + size()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace result {
+      class com.mysql.cj.result.ByteValueFactory {
+          + ByteValueFactory()
+          + createFromBigDecimal()
+          + createFromBigInteger()
+          + createFromBit()
+          + createFromBytes()
+          + createFromDouble()
+          + createFromLong()
+          + createFromYear()
+          + getTargetTypeName()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace result {
+      class com.mysql.cj.result.DefaultColumnDefinition {
+          # fields : Field[]
+          - builtIndexMapping : boolean
+          - columnLabelToIndex : Map<String, Integer>
+          - columnNameToIndex : Map<String, Integer>
+          - columnToIndexCache : Map<String, Integer>
+          - fullColumnNameToIndex : Map<String, Integer>
+          + DefaultColumnDefinition()
+          + DefaultColumnDefinition()
+          + buildIndexMapping()
+          + exportTo()
+          + findColumn()
+          + getColumnLabelToIndex()
+          + getColumnNameToIndex()
+          + getColumnToIndexCache()
+          + getFields()
+          + getFullColumnNameToIndex()
+          + hasBuiltIndexMapping()
+          + hasLargeFields()
+          + initializeFrom()
+          + setColumnLabelToIndex()
+          + setColumnNameToIndex()
+          + setColumnToIndexCache()
+          + setFields()
+          + setFullColumnNameToIndex()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace result {
+      abstract class com.mysql.cj.result.DefaultValueFactory {
+          # jdbcCompliantTruncationForReads : boolean
+          # pset : PropertySet
+          + DefaultValueFactory()
+          + createFromBigDecimal()
+          + createFromBigInteger()
+          + createFromBit()
+          + createFromDate()
+          + createFromDouble()
+          + createFromLong()
+          + createFromNull()
+          + createFromTime()
+          + createFromTimestamp()
+          + createFromYear()
+          + setPropertySet()
+          # unsupported()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace result {
+      class com.mysql.cj.result.DoubleValueFactory {
+          + DoubleValueFactory()
+          + createFromBigDecimal()
+          + createFromBigInteger()
+          + createFromBit()
+          + createFromDouble()
+          + createFromLong()
+          + getTargetTypeName()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace result {
+      class com.mysql.cj.result.FloatValueFactory {
+          + FloatValueFactory()
+          + createFromBigDecimal()
+          + createFromBigInteger()
+          + createFromBit()
+          + createFromDouble()
+          + createFromLong()
+          + getTargetTypeName()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace result {
+      class com.mysql.cj.result.IntegerValueFactory {
+          + IntegerValueFactory()
+          + createFromBigDecimal()
+          + createFromBigInteger()
+          + createFromBit()
+          + createFromDouble()
+          + createFromLong()
+          + getTargetTypeName()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace result {
+      class com.mysql.cj.result.LocalDateTimeValueFactory {
+          + LocalDateTimeValueFactory()
+          + getTargetTypeName()
+          + localCreateFromDate()
+          + localCreateFromTime()
+          + localCreateFromTimestamp()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace result {
+      class com.mysql.cj.result.LocalDateValueFactory {
+          - warningListener : WarningListener
+          + LocalDateValueFactory()
+          + LocalDateValueFactory()
+          + getTargetTypeName()
+          + localCreateFromDate()
+          + localCreateFromTimestamp()
+          ~ localCreateFromTime()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace result {
+      class com.mysql.cj.result.LocalTimeValueFactory {
+          - warningListener : WarningListener
+          + LocalTimeValueFactory()
+          + LocalTimeValueFactory()
+          + createFromYear()
+          + getTargetTypeName()
+          + localCreateFromTime()
+          + localCreateFromTimestamp()
+          ~ localCreateFromDate()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace result {
+      class com.mysql.cj.result.LongValueFactory {
+          + LongValueFactory()
+          + createFromBigDecimal()
+          + createFromBigInteger()
+          + createFromBit()
+          + createFromDouble()
+          + createFromLong()
+          + getTargetTypeName()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace result {
+      class com.mysql.cj.result.ShortValueFactory {
+          + ShortValueFactory()
+          + createFromBigDecimal()
+          + createFromBigInteger()
+          + createFromBit()
+          + createFromDouble()
+          + createFromLong()
+          + getTargetTypeName()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace result {
+      class com.mysql.cj.result.SqlDateValueFactory {
+          - cal : Calendar
+          - warningListener : WarningListener
+          + SqlDateValueFactory()
+          + SqlDateValueFactory()
+          + getTargetTypeName()
+          + localCreateFromDate()
+          + localCreateFromTime()
+          + localCreateFromTimestamp()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace result {
+      class com.mysql.cj.result.SqlTimeValueFactory {
+          - cal : Calendar
+          - warningListener : WarningListener
+          + SqlTimeValueFactory()
+          + SqlTimeValueFactory()
+          + createFromYear()
+          + getTargetTypeName()
+          + localCreateFromTime()
+          + localCreateFromTimestamp()
+          ~ localCreateFromDate()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace result {
+      class com.mysql.cj.result.SqlTimestampValueFactory {
+          - cal : Calendar
+          + SqlTimestampValueFactory()
+          + getTargetTypeName()
+          + localCreateFromDate()
+          + localCreateFromTime()
+          + localCreateFromTimestamp()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace result {
+      class com.mysql.cj.result.StringValueFactory {
+          # pset : PropertySet
+          + StringValueFactory()
+          + createFromBigDecimal()
+          + createFromBigInteger()
+          + createFromBit()
+          + createFromBytes()
+          + createFromDate()
+          + createFromDouble()
+          + createFromLong()
+          + createFromNull()
+          + createFromTime()
+          + createFromTimestamp()
+          + createFromYear()
+          + getTargetTypeName()
+          + setPropertySet()
+      }
+    }
+  }
+  
+
+  com.mysql.cj.result.BufferedRowList .up.|> RowList
+  com.mysql.cj.result.DefaultColumnDefinition .up.|> ColumnDefinition
+  com.mysql.cj.result.DefaultValueFactory .up.|> ValueFactory
+  com.mysql.cj.result.StringValueFactory .up.|> ValueFactory
+
+
+right footer
+
+
+PlantUML diagram generated by SketchIt! (https://bitbucket.org/pmesmeur/sketch.it)
+For more information about this tool, please contact philippe.mesmeur@gmail.com
+endfooter
+
+@enduml

@@ -1,0 +1,197 @@
+@startuml
+
+title __EXCEPTIONS's Class Diagram__\n
+
+  namespace com.mysql.cj {
+    namespace jdbc {
+      namespace exceptions {
+        class com.mysql.cj.jdbc.exceptions.CommunicationsException {
+            - exceptionMessage : String
+            {static} - serialVersionUID : long
+            + CommunicationsException()
+            + CommunicationsException()
+            + getMessage()
+            + getSQLState()
+            + setWasStreamingResults()
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace jdbc {
+      namespace exceptions {
+        class com.mysql.cj.jdbc.exceptions.ConnectionFeatureNotAvailableException {
+            {static} - serialVersionUID : long
+            + ConnectionFeatureNotAvailableException()
+            + ConnectionFeatureNotAvailableException()
+            + getMessage()
+            + getSQLState()
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace jdbc {
+      namespace exceptions {
+        class com.mysql.cj.jdbc.exceptions.MySQLQueryInterruptedException {
+            {static} - serialVersionUID : long
+            + MySQLQueryInterruptedException()
+            + MySQLQueryInterruptedException()
+            + MySQLQueryInterruptedException()
+            + MySQLQueryInterruptedException()
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace jdbc {
+      namespace exceptions {
+        class com.mysql.cj.jdbc.exceptions.MySQLStatementCancelledException {
+            {static} ~ serialVersionUID : long
+            + MySQLStatementCancelledException()
+            + MySQLStatementCancelledException()
+            + MySQLStatementCancelledException()
+            + MySQLStatementCancelledException()
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace jdbc {
+      namespace exceptions {
+        class com.mysql.cj.jdbc.exceptions.MySQLTimeoutException {
+            {static} ~ serialVersionUID : long
+            + MySQLTimeoutException()
+            + MySQLTimeoutException()
+            + MySQLTimeoutException()
+            + MySQLTimeoutException()
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace jdbc {
+      namespace exceptions {
+        class com.mysql.cj.jdbc.exceptions.MySQLTransactionRollbackException {
+            {static} ~ serialVersionUID : long
+            + MySQLTransactionRollbackException()
+            + MySQLTransactionRollbackException()
+            + MySQLTransactionRollbackException()
+            + MySQLTransactionRollbackException()
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace jdbc {
+      namespace exceptions {
+        class com.mysql.cj.jdbc.exceptions.MysqlDataTruncation {
+            {static} ~ serialVersionUID : long
+            - message : String
+            - vendorErrorCode : int
+            + MysqlDataTruncation()
+            + getErrorCode()
+            + getMessage()
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace jdbc {
+      namespace exceptions {
+        class com.mysql.cj.jdbc.exceptions.NotUpdatable {
+            {static} - serialVersionUID : long
+            + NotUpdatable()
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace jdbc {
+      namespace exceptions {
+        class com.mysql.cj.jdbc.exceptions.OperationNotSupportedException {
+            {static} ~ serialVersionUID : long
+            + OperationNotSupportedException()
+            + OperationNotSupportedException()
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace jdbc {
+      namespace exceptions {
+        class com.mysql.cj.jdbc.exceptions.PacketTooBigException {
+            {static} ~ serialVersionUID : long
+            + PacketTooBigException()
+            + PacketTooBigException()
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace jdbc {
+      namespace exceptions {
+        class com.mysql.cj.jdbc.exceptions.SQLError {
+            {static} + createBatchUpdateException()
+            {static} + createCommunicationsException()
+            {static} + createCommunicationsException()
+            {static} + createSQLException()
+            {static} + createSQLException()
+            {static} + createSQLException()
+            {static} + createSQLException()
+            {static} + createSQLException()
+            {static} + createSQLException()
+            {static} + createSQLException()
+            {static} + createSQLFeatureNotSupportedException()
+            {static} + createSQLFeatureNotSupportedException()
+            {static} - runThroughExceptionInterceptor()
+        }
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace jdbc {
+      namespace exceptions {
+        class com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping {
+            {static} + translateException()
+            {static} + translateException()
+        }
+      }
+    }
+  }
+  
+
+  com.mysql.cj.jdbc.exceptions.CommunicationsException .up.|> StreamingNotifiable
+  com.mysql.cj.jdbc.exceptions.MySQLTransactionRollbackException .up.|> DeadlockTimeoutRollbackMarker
+
+
+right footer
+
+
+PlantUML diagram generated by SketchIt! (https://bitbucket.org/pmesmeur/sketch.it)
+For more information about this tool, please contact philippe.mesmeur@gmail.com
+endfooter
+
+@enduml

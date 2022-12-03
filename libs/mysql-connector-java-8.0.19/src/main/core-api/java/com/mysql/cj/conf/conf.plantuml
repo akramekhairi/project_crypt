@@ -1,0 +1,667 @@
+@startuml
+
+title __CONF's Class Diagram__\n
+
+  namespace com.mysql.cj {
+    namespace conf {
+      interface com.mysql.cj.conf.ConnectionPropertiesTransform {
+          {abstract} + transformProperties()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace conf {
+      abstract class com.mysql.cj.conf.ConnectionUrl {
+          {static} + DEFAULT_HOST : String
+          {static} + DEFAULT_PORT : int
+          # hosts : List<HostInfo>
+          # originalConnStr : String
+          # originalDatabase : String
+          # properties : Map<String, String>
+          ~ propertiesTransformer : ConnectionPropertiesTransform
+          {static} - connectionUrlCache : LRUCache<String, ConnectionUrl>
+          {static} - rwLock : ReadWriteLock
+          + ConnectionUrl()
+          {static} + acceptsUrl()
+          + getConnectionArgumentsAsProperties()
+          {static} + getConnectionUrlInstance()
+          + getDatabase()
+          + getDatabaseUrl()
+          + getDefaultHost()
+          + getDefaultPassword()
+          + getDefaultPort()
+          + getDefaultUser()
+          + getHostOrSpawnIsolated()
+          + getHostOrSpawnIsolated()
+          + getHostsList()
+          + getHostsList()
+          + getHostsListFromDnsSrv()
+          + getMainHost()
+          + getOriginalProperties()
+          {static} + getPropertiesFromConfigFiles()
+          + getType()
+          + hostsCount()
+          + toString()
+          # ConnectionUrl()
+          # ConnectionUrl()
+          # buildHostInfo()
+          # collectHostsInfo()
+          # collectProperties()
+          # expandPropertiesFromConfigFiles()
+          # fixHostInfo()
+          # fixProtocolDependencies()
+          # injectPerTypeProperties()
+          # preprocessPerTypeHostProperties()
+          # replaceLegacyPropertyValues()
+          # setupPropertiesTransformer()
+          {static} - buildConnectionStringCacheKey()
+          - srvRecordsToHostsList()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace conf {
+      enum HostsCardinality {
+        MULTIPLE
+        ONE_OR_MORE
+        SINGLE
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace conf {
+      enum Type {
+        FAILOVER_CONNECTION
+        FAILOVER_DNS_SRV_CONNECTION
+        LOADBALANCE_CONNECTION
+        LOADBALANCE_DNS_SRV_CONNECTION
+        REPLICATION_CONNECTION
+        REPLICATION_DNS_SRV_CONNECTION
+        SINGLE_CONNECTION
+        XDEVAPI_DNS_SRV_SESSION
+        XDEVAPI_SESSION
+        alternateDnsSrvType
+        cardinality
+        dnsSrvPropertyKey
+        implementingClass
+        scheme
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace conf {
+      class com.mysql.cj.conf.ConnectionUrlParser {
+          {static} - ADDRESS_EQUALS_HOST_INFO_PREFIX : String
+          {static} - ADDRESS_EQUALS_HOST_PTRN : Pattern
+          {static} - CONNECTION_STRING_PTRN : Pattern
+          {static} - DUMMY_SCHEMA : String
+          {static} - GENERIC_HOST_PTRN : Pattern
+          {static} - HOSTS_LIST_CLOSING_MARKERS : String
+          {static} - HOSTS_LIST_OPENING_MARKERS : String
+          {static} - HOSTS_SEPARATOR : String
+          {static} - HOST_LIST_PTRN : Pattern
+          {static} - KEY_VALUE_HOST_INFO_CLOSING_MARKER : String
+          {static} - KEY_VALUE_HOST_INFO_OPENING_MARKER : String
+          {static} - KEY_VALUE_HOST_PTRN : Pattern
+          {static} - PROPERTIES_PTRN : Pattern
+          {static} - SCHEME_PTRN : Pattern
+          {static} - USER_HOST_SEPARATOR : String
+          {static} - USER_PASS_SEPARATOR : String
+          - authority : String
+          - baseConnectionString : String
+          - parsedHosts : List<HostInfo>
+          - parsedProperties : Map<String, String>
+          - path : String
+          - query : String
+          - scheme : String
+          + getAuthority()
+          + getDatabaseUrl()
+          + getHosts()
+          + getPath()
+          + getProperties()
+          + getQuery()
+          + getScheme()
+          {static} + isConnectionStringSupported()
+          {static} + parseConnectionString()
+          {static} + parseHostPortPair()
+          {static} + parseUserInfo()
+          + toString()
+          - ConnectionUrlParser()
+          - buildHostInfoForEmptyHost()
+          - buildHostInfoResortingToAddressEqualsSyntaxParser()
+          - buildHostInfoResortingToGenericSyntaxParser()
+          - buildHostInfoResortingToKeyValueSyntaxParser()
+          - buildHostInfoResortingToSubHostsListParser()
+          - buildHostInfoResortingToUriParser()
+          {static} - decode()
+          {static} - decodeSkippingPlusSign()
+          - parseAuthoritySection()
+          - parseAuthoritySegment()
+          - parseConnectionString()
+          - parseQuerySection()
+          - processKeyValuePattern()
+          - splitByUserInfoAndHostInfo()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace conf {
+      class com.mysql.cj.conf.ConnectionUrlParser.Pair {
+          + Pair()
+          + toString()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace conf {
+      interface com.mysql.cj.conf.DatabaseUrlContainer {
+          {abstract} + getDatabaseUrl()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace conf {
+      class com.mysql.cj.conf.HostInfo {
+          {static} + NO_PORT : int
+          {static} - HOST_PORT_SEPARATOR : String
+          - host : String
+          - hostProperties : Map<String, String>
+          - isPasswordless : boolean
+          - originalUrl : DatabaseUrlContainer
+          - password : String
+          - port : int
+          - user : String
+          + HostInfo()
+          + HostInfo()
+          + HostInfo()
+          + HostInfo()
+          + equalHostPortPair()
+          + exposeAsProperties()
+          + getDatabase()
+          + getDatabaseUrl()
+          + getHost()
+          + getHostPortPair()
+          + getHostProperties()
+          + getPassword()
+          + getPort()
+          + getProperty()
+          + getUser()
+          + isPasswordless()
+          + toString()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace conf {
+      enum HostsListView {
+        ALL
+        MASTERS
+        SLAVES
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace conf {
+      interface com.mysql.cj.conf.PropertyDefinition {
+          {abstract} + createRuntimeProperty()
+          {abstract} + getAllowableValues()
+          {abstract} + getCategory()
+          {abstract} + getCcAlias()
+          {abstract} + getDefaultValue()
+          {abstract} + getDescription()
+          {abstract} + getLowerBound()
+          {abstract} + getName()
+          {abstract} + getOrder()
+          {abstract} + getPropertyKey()
+          {abstract} + getSinceVersion()
+          {abstract} + getUpperBound()
+          {abstract} + hasCcAlias()
+          {abstract} + hasValueConstraints()
+          {abstract} + isRangeBased()
+          {abstract} + isRuntimeModifiable()
+          {abstract} + parseObject()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace conf {
+      class com.mysql.cj.conf.PropertyDefinitions {
+          {static} + CATEGORY_AUTH : String
+          {static} + CATEGORY_BLOBS : String
+          {static} + CATEGORY_CONNECTION : String
+          {static} + CATEGORY_DATETIMES : String
+          {static} + CATEGORY_DEBUGING_PROFILING : String
+          {static} + CATEGORY_EXCEPTIONS : String
+          {static} + CATEGORY_HA : String
+          {static} + CATEGORY_INTEGRATION : String
+          {static} + CATEGORY_JDBC : String
+          {static} + CATEGORY_METADATA : String
+          {static} + CATEGORY_NETWORK : String
+          {static} + CATEGORY_PERFORMANCE : String
+          {static} + CATEGORY_PREPARED_STATEMENTS : String
+          {static} + CATEGORY_RESULT_SETS : String
+          {static} + CATEGORY_SECURITY : String
+          {static} + CATEGORY_SESSION : String
+          {static} + CATEGORY_STATEMENTS : String
+          {static} + CATEGORY_USER_DEFINED : String
+          {static} + CATEGORY_XDEVAPI : String
+          {static} + DEFAULT_VALUE_FALSE : boolean
+          {static} + DEFAULT_VALUE_NULL_STRING : String
+          {static} + DEFAULT_VALUE_TRUE : boolean
+          {static} + NO_ALIAS : String
+          {static} + PROPERTY_CATEGORIES : String[]
+          {static} + PROPERTY_KEY_TO_PROPERTY_DEFINITION : Map<PropertyKey, PropertyDefinition<?>>
+          {static} + RUNTIME_MODIFIABLE : boolean
+          {static} + RUNTIME_NOT_MODIFIABLE : boolean
+          {static} + SYSP_com_mysql_cj_build_verbose : String
+          {static} + SYSP_file_encoding : String
+          {static} + SYSP_java_vendor : String
+          {static} + SYSP_java_version : String
+          {static} + SYSP_java_vm_vendor : String
+          {static} + SYSP_line_separator : String
+          {static} + SYSP_os_arch : String
+          {static} + SYSP_os_name : String
+          {static} + SYSP_os_version : String
+          {static} + SYSP_testsuite_cantGrant : String
+          {static} + SYSP_testsuite_disable_multihost_tests : String
+          {static} + SYSP_testsuite_ds_db : String
+          {static} + SYSP_testsuite_ds_host : String
+          {static} + SYSP_testsuite_ds_password : String
+          {static} + SYSP_testsuite_ds_port : String
+          {static} + SYSP_testsuite_ds_user : String
+          {static} + SYSP_testsuite_loadstoreperf_tabletype : String
+          {static} + SYSP_testsuite_loadstoreperf_useBigResults : String
+          {static} + SYSP_testsuite_miniAdminTest_runShutdown : String
+          {static} + SYSP_testsuite_noDebugOutput : String
+          {static} + SYSP_testsuite_retainArtifacts : String
+          {static} + SYSP_testsuite_runLongTests : String
+          {static} + SYSP_testsuite_serverController_basedir : String
+          {static} + SYSP_testsuite_unavailable_host : String
+          {static} + SYSP_testsuite_url : String
+          {static} + SYSP_testsuite_url_admin : String
+          {static} + SYSP_testsuite_url_cluster : String
+          {static} + SYSP_testsuite_url_mysqlx : String
+          {static} + SYSP_testsuite_url_mysqlx_openssl : String
+          {static} + SYSP_testsuite_url_openssl : String
+          {static} + getPropertyDefinition()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace conf {
+      enum AuthMech {
+        EXTERNAL
+        MYSQL41
+        PLAIN
+        SHA256_MEMORY
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace conf {
+      enum DatabaseTerm {
+        CATALOG
+        SCHEMA
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace conf {
+      enum SslMode {
+        DISABLED
+        PREFERRED
+        REQUIRED
+        VERIFY_CA
+        VERIFY_IDENTITY
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace conf {
+      enum XdevapiSslMode {
+        DISABLED
+        REQUIRED
+        VERIFY_CA
+        VERIFY_IDENTITY
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace conf {
+      enum ZeroDatetimeBehavior {
+        CONVERT_TO_NULL
+        EXCEPTION
+        ROUND
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace conf {
+      enum PropertyKey {
+        ADDRESS
+        DBNAME
+        HOST
+        PASSWORD
+        PATH
+        PORT
+        PRIORITY
+        PROTOCOL
+        TYPE
+        USER
+        allowLoadLocalInfile
+        allowMasterDownConnections
+        allowMultiQueries
+        allowNanAndInf
+        allowPublicKeyRetrieval
+        allowSlaveDownConnections
+        allowUrlInLocalInfile
+        alwaysSendSetIsolation
+        authenticationPlugins
+        autoClosePStmtStreams
+        autoDeserialize
+        autoGenerateTestcaseScript
+        autoReconnect
+        autoReconnectForPools
+        autoSlowLog
+        blobSendChunkSize
+        blobsAreStrings
+        cacheCallableStmts
+        cachePrepStmts
+        cacheResultSetMetadata
+        cacheServerConfiguration
+        callableStmtCacheSize
+        characterEncoding
+        characterSetResults
+        clientCertificateKeyStorePassword
+        clientCertificateKeyStoreType
+        clientCertificateKeyStoreUrl
+        clientInfoProvider
+        clobCharacterEncoding
+        clobberStreamingResults
+        compensateOnDuplicateKeyUpdateCounts
+        connectTimeout
+        connectionAttributes
+        connectionCollation
+        connectionLifecycleInterceptors
+        continueBatchOnError
+        createDatabaseIfNotExist
+        databaseTerm
+        defaultAuthenticationPlugin
+        defaultFetchSize
+        detectCustomCollations
+        disabledAuthenticationPlugins
+        disconnectOnExpiredPasswords
+        dnsSrv
+        dontCheckOnDuplicateKeyUpdateInSQL
+        dontTrackOpenResources
+        dumpQueriesOnException
+        elideSetAutoCommits
+        emptyStringsConvertToZero
+        emulateLocators
+        emulateUnsupportedPstmts
+        enableEscapeProcessing
+        enablePacketDebug
+        enableQueryTimeouts
+        enabledSSLCipherSuites
+        enabledTLSProtocols
+        exceptionInterceptors
+        explainSlowQueries
+        failOverReadOnly
+        functionsNeverReturnBlobs
+        gatherPerfMetrics
+        generateSimpleParameterMetadata
+        getProceduresReturnsFunctions
+        ha_enableJMX
+        ha_loadBalanceStrategy
+        holdResultsOpenOverStatementClose
+        ignoreNonTxTables
+        includeInnodbStatusInDeadlockExceptions
+        includeThreadDumpInDeadlockExceptions
+        includeThreadNamesAsStatementComment
+        initialTimeout
+        interactiveClient
+        jdbcCompliantTruncation
+        largeRowSizeThreshold
+        loadBalanceAutoCommitStatementRegex
+        loadBalanceAutoCommitStatementThreshold
+        loadBalanceBlacklistTimeout
+        loadBalanceConnectionGroup
+        loadBalanceExceptionChecker
+        loadBalanceHostRemovalGracePeriod
+        loadBalancePingTimeout
+        loadBalanceSQLExceptionSubclassFailover
+        loadBalanceSQLStateFailover
+        loadBalanceValidateConnectionOnSwapServer
+        localSocketAddress
+        locatorFetchBufferSize
+        logSlowQueries
+        logXaCommands
+        logger
+        maintainTimeStats
+        maxAllowedPacket
+        maxQuerySizeToLog
+        maxReconnects
+        maxRows
+        metadataCacheSize
+        netTimeoutForStreamingResults
+        noAccessToProcedureBodies
+        noDatetimeStringSync
+        nullDatabaseMeansCurrent
+        overrideSupportsIntegrityEnhancementFacility
+        packetDebugBufferSize
+        padCharsWithSpace
+        paranoid
+        parseInfoCacheFactory
+        passwordCharacterEncoding
+        pedantic
+        pinGlobalTxToPhysicalConnection
+        populateInsertRowWithDefaultValues
+        prepStmtCacheSize
+        prepStmtCacheSqlLimit
+        processEscapeCodesForPrepStmts
+        profileSQL
+        profilerEventHandler
+        propertiesTransform
+        queriesBeforeRetryMaster
+        queryInterceptors
+        queryTimeoutKillsConnection
+        readFromMasterWhenNoSlaves
+        readOnlyPropagatesToServer
+        reconnectAtTxEnd
+        replicationConnectionGroup
+        reportMetricsIntervalMillis
+        requireSSL
+        resourceId
+        resultSetSizeThreshold
+        retriesAllDown
+        rewriteBatchedStatements
+        rollbackOnPooledClose
+        secondsBeforeRetryMaster
+        selfDestructOnPingMaxOperations
+        selfDestructOnPingSecondsLifetime
+        sendFractionalSeconds
+        serverAffinityOrder
+        serverConfigCacheFactory
+        serverRSAPublicKeyFile
+        serverTimezone
+        sessionVariables
+        slowQueryThresholdMillis
+        slowQueryThresholdNanos
+        socketFactory
+        socketTimeout
+        socksProxyHost
+        socksProxyPort
+        sslMode
+        strictUpdates
+        tcpKeepAlive
+        tcpNoDelay
+        tcpRcvBuf
+        tcpSndBuf
+        tcpTrafficClass
+        tinyInt1isBit
+        traceProtocol
+        transformedBitIsBoolean
+        treatUtilDateAsTimestamp
+        trustCertificateKeyStorePassword
+        trustCertificateKeyStoreType
+        trustCertificateKeyStoreUrl
+        ultraDevHack
+        useAffectedRows
+        useColumnNamesInFindColumn
+        useCompression
+        useConfigs
+        useCursorFetch
+        useHostsInPrivileges
+        useInformationSchema
+        useLocalSessionState
+        useLocalTransactionState
+        useNanosForElapsedTime
+        useOldAliasMetadataBehavior
+        useOnlyServerErrorMessages
+        useReadAheadInput
+        useSSL
+        useServerPrepStmts
+        useStreamLengthsInPrepStmts
+        useUnbufferedInput
+        useUsageAdvisor
+        verifyServerCertificate
+        xdevapiAsyncResponseTimeout
+        xdevapiAuth
+        xdevapiConnectTimeout
+        xdevapiConnectionAttributes
+        xdevapiDnsSrv
+        xdevapiSSLMode
+        xdevapiSSLTrustStorePassword
+        xdevapiSSLTrustStoreType
+        xdevapiSSLTrustStoreUrl
+        xdevapiTlsCiphersuites
+        xdevapiTlsVersions
+        xdevapiUseAsyncProtocol
+        yearIsDateType
+        zeroDateTimeBehavior
+        caseInsensitiveValues
+        ccAlias
+        isCaseSensitive
+        keyName
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace conf {
+      interface com.mysql.cj.conf.PropertySet {
+          {abstract} + addProperty()
+          {abstract} + exposeAsProperties()
+          {abstract} + getBooleanProperty()
+          {abstract} + getBooleanProperty()
+          {abstract} + getEnumProperty()
+          {abstract} + getEnumProperty()
+          {abstract} + getIntegerProperty()
+          {abstract} + getIntegerProperty()
+          {abstract} + getLongProperty()
+          {abstract} + getLongProperty()
+          {abstract} + getMemorySizeProperty()
+          {abstract} + getMemorySizeProperty()
+          {abstract} + getProperty()
+          {abstract} + getProperty()
+          {abstract} + getStringProperty()
+          {abstract} + getStringProperty()
+          {abstract} + initializeProperties()
+          {abstract} + postInitialization()
+          {abstract} + removeProperty()
+          {abstract} + removeProperty()
+          {abstract} + reset()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace conf {
+      interface com.mysql.cj.conf.RuntimeProperty {
+          {abstract} + addListener()
+          {abstract} + getInitialValue()
+          {abstract} + getPropertyDefinition()
+          {abstract} + getStringValue()
+          {abstract} + getValue()
+          {abstract} + initializeFrom()
+          {abstract} + initializeFrom()
+          {abstract} + isExplicitlySet()
+          {abstract} + removeListener()
+          {abstract} + resetValue()
+          {abstract} + setValue()
+          {abstract} + setValue()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace conf {
+      interface com.mysql.cj.conf.RuntimeProperty.RuntimePropertyListener {
+          {abstract} + handlePropertyChange()
+      }
+    }
+  }
+  
+
+  com.mysql.cj.conf.ConnectionUrl .up.|> DatabaseUrlContainer
+  com.mysql.cj.conf.ConnectionUrl o-- com.mysql.cj.conf.ConnectionUrl.Type : type
+  com.mysql.cj.conf.ConnectionUrl +-down- com.mysql.cj.conf.ConnectionUrl.HostsCardinality
+  com.mysql.cj.conf.ConnectionUrl +-down- com.mysql.cj.conf.ConnectionUrl.Type
+  com.mysql.cj.conf.ConnectionUrl.Type o-- com.mysql.cj.conf.ConnectionUrl.Type : alternateDnsSrvType
+  com.mysql.cj.conf.ConnectionUrl.Type o-- com.mysql.cj.conf.ConnectionUrl.HostsCardinality : cardinality
+  com.mysql.cj.conf.ConnectionUrlParser .up.|> DatabaseUrlContainer
+  com.mysql.cj.conf.ConnectionUrlParser +-down- com.mysql.cj.conf.ConnectionUrlParser.Pair
+  com.mysql.cj.conf.ConnectionUrlParser.Pair o-- T : left
+  com.mysql.cj.conf.ConnectionUrlParser.Pair o-- U : right
+  com.mysql.cj.conf.HostInfo .up.|> DatabaseUrlContainer
+  com.mysql.cj.conf.PropertyDefinitions +-down- com.mysql.cj.conf.PropertyDefinitions.AuthMech
+  com.mysql.cj.conf.PropertyDefinitions +-down- com.mysql.cj.conf.PropertyDefinitions.DatabaseTerm
+  com.mysql.cj.conf.PropertyDefinitions +-down- com.mysql.cj.conf.PropertyDefinitions.SslMode
+  com.mysql.cj.conf.PropertyDefinitions +-down- com.mysql.cj.conf.PropertyDefinitions.XdevapiSslMode
+  com.mysql.cj.conf.PropertyDefinitions +-down- com.mysql.cj.conf.PropertyDefinitions.ZeroDatetimeBehavior
+  com.mysql.cj.conf.RuntimeProperty +-down- com.mysql.cj.conf.RuntimeProperty.RuntimePropertyListener
+
+
+right footer
+
+
+PlantUML diagram generated by SketchIt! (https://bitbucket.org/pmesmeur/sketch.it)
+For more information about this tool, please contact philippe.mesmeur@gmail.com
+endfooter
+
+@enduml

@@ -1,0 +1,7 @@
+com\gmail\a\authentication\LoginScreenIT.class
+com\gmail\a\authentication\LoginFormElement.class
+com\gmail\a\MainLayoutElement.class
+com\gmail\a\crud\ProductFormElement.class
+com\gmail\a\crud\SampleCrudViewIT.class
+com\gmail\a\AbstractViewTest.class
+com\gmail\a\about\AboutViewIT.class

@@ -1,0 +1,664 @@
+@startuml
+
+title __SIMPLE's Class Diagram__\n
+
+  namespace testsuite {
+    namespace simple {
+      class testsuite.simple.BlobTest {
+          {static} # testBlobFile : File
+          {static} - TEST_BLOB_FILE_PREFIX : String
+          + BlobTest()
+          {static} + main()
+          + setUp()
+          + testByteStreamInsert()
+          - checkBlob()
+          - createBlobFile()
+          - createTestTable()
+          - doRetrieval()
+          - testByteStreamInsert()
+      }
+    }
+  }
+  
+
+  namespace testsuite {
+    namespace simple {
+      class testsuite.simple.CallableStatementTest {
+          + CallableStatementTest()
+          {static} + main()
+          + testBatch()
+          + testClosedWrapper()
+          + testInOutParams()
+          + testOutParams()
+          + testOutParamsNoBodies()
+          + testParameterParser()
+          + testResultSet()
+          + testSPCache()
+          + testSPNoParams()
+          + testSPParse()
+          - executeBatchedStoredProc()
+      }
+    }
+  }
+  
+
+  namespace testsuite {
+    namespace simple {
+      class testsuite.simple.CharsetTest {
+          {static} + EUCJPMS_CHARS : char[]
+          {static} + SJIS_CHARS : char[]
+          {static} + UJIS_CHARS : char[]
+          {static} - CP932_CHARS : char[]
+          + CharsetTest()
+          {static} + main()
+          + testCP932Backport()
+          + testCharsetMapping()
+          + testGB18030()
+          + testInsertCharStatement()
+          + testNECExtendedCharsByEUCJPSolaris()
+          + testStaticCharsetMappingConsistency()
+      }
+    }
+  }
+  
+
+  namespace testsuite {
+    namespace simple {
+      class testsuite.simple.ConnectionTest {
+          + ConnectionTest()
+          {static} + main()
+          + testCannedConfigs()
+          + testCatalog()
+          + testCharsets()
+          + testClusterConnection()
+          + testCompression()
+          + testConnectionPropertiesTransform()
+          + testCouplingOfCursorFetch()
+          + testCreateDatabaseIfNotExist()
+          + testDeadlockDetection()
+          + testDecoratorsChain()
+          + testDontTrackOpenResources()
+          + testDriverAcceptsURLNullArgument()
+          + testDriverConnectNullArgument()
+          + testDriverConnectPropertiesPrecedence()
+          + testDumpQueriesOnException()
+          + testEnableEscapeProcessing()
+          + testFailoverConnection()
+          + testGatherPerfMetrics()
+          + testIPv6()
+          + testInterfaceImplementation()
+          + testIsLocal()
+          + testIsolationLevel()
+          + testLifecyleInterceptor()
+          + testLocalInfileDisabled()
+          + testLocalInfileWithUrl()
+          + testLocalSocketAddress()
+          + testNewHostParsing()
+          + testNonStandardConnectionCollation()
+          + testNonVerifyServerCert()
+          + testPing()
+          + testReadOnly56()
+          + testSavepoint()
+          + testSelfDestruct()
+          + testServerConfigurationCache()
+          + testSessionVariables()
+          + testSetProfileSql()
+          + testSupportsRefCursors()
+          + testUsageAdvisorTooLargeResultSet()
+          + testUseCompress()
+          + testUseLocalSessionState()
+          + testUseLocalSessionStateRollback()
+          + testUserRequireSSL()
+          + testUserRequireX509()
+          - checkInterfaceImplemented()
+          - testCompressionWith()
+          - testInterfaceImplementation()
+      }
+    }
+  }
+  
+
+  namespace testsuite {
+    namespace simple {
+      class testsuite.simple.ConnectionTest.LocalSocketAddressCheckThread {
+          ~ allAddresses : Enumeration<InetAddress>
+          ~ atLeastOneWorked : boolean
+          + run()
+          ~ LocalSocketAddressCheckThread()
+      }
+    }
+  }
+  
+
+  namespace testsuite {
+    namespace simple {
+      class testsuite.simple.ConnectionTest.SpawnedWorkerCounter {
+          # workerCount : int
+          ~ decrementWorkerCount()
+          ~ setWorkerCount()
+      }
+    }
+  }
+  
+
+  namespace testsuite {
+    namespace simple {
+      class testsuite.simple.ConnectionTest.TestEnableEscapeProcessingQueryInterceptor {
+          + preProcess()
+      }
+    }
+  }
+  
+
+  namespace testsuite {
+    namespace simple {
+      class testsuite.simple.DataSourceTest {
+          - ctx : Context
+          - tempDir : File
+          + DataSourceTest()
+          {static} + main()
+          + setUp()
+          + tearDown()
+          + testChangeUserAndCharsets()
+          + testDataSource()
+          + testPropertyGettersSetters()
+          + testXADataSource()
+          - registerDataSource()
+      }
+    }
+  }
+  
+
+  namespace testsuite {
+    namespace simple {
+      class testsuite.simple.DateTest {
+          + DateTest()
+          {static} + main()
+          + setUp()
+          + testNanosParsing()
+          + testNativeConversions()
+          + testReggieBug()
+          + testTimestamp()
+          + testZeroDateBehavior()
+      }
+    }
+  }
+  
+
+  namespace testsuite {
+    namespace simple {
+      class testsuite.simple.EscapeProcessingTest {
+          + EscapeProcessingTest()
+          {static} + main()
+          + testBug51313()
+          + testConvertEscape()
+          + testEscapeProcessing()
+          + testTimestampConversion()
+      }
+    }
+  }
+  
+
+  namespace testsuite {
+    namespace simple {
+      class testsuite.simple.ExceptionsTest {
+          {static} ~ TEST_MESSAGE : String
+          {static} ~ TEST_SQL_STATE : String
+          + ExceptionsTest()
+          + testConstructors()
+          + testExceptionsTranslation()
+      }
+    }
+  }
+  
+
+  namespace testsuite {
+    namespace simple {
+      class testsuite.simple.MetadataTest {
+          + MetadataTest()
+          {static} + main()
+          + setUp()
+          + testBitType()
+          + testForeignKeys()
+          + testGeneratedColumns()
+          + testGetBestRowIdentifier()
+          + testGetCatalogVsGetSchemas()
+          + testGetColumnPrivileges()
+          + testGetColumns()
+          + testGetCrossReferenceUsingInfoSchema()
+          + testGetExportedKeys()
+          + testGetFunctionColumns()
+          + testGetFunctions()
+          + testGetImportedKeys()
+          + testGetIndexInfo()
+          + testGetPrimaryKeys()
+          + testGetPrimaryKeysUsingInfoShcema()
+          + testGetProcedureColumns()
+          + testGetProcedures()
+          + testGetSqlKeywordsDynamic()
+          + testGetSqlKeywordsStatic()
+          + testGetTablePrivileges()
+          + testGetTables()
+          + testGetTablesUsingInfoSchema()
+          + testRSMDIsReadOnly()
+          + testResultSetMetaDataMethods()
+          + testSupports()
+          + testSupportsSelectForUpdate()
+          + testTinyint1IsBit()
+          + testViewMetaData()
+          - checkBitOrBooleanType()
+          - testGetBestRowIdentifier_checkResult()
+          - testGetExportedKeys_checkResult()
+          - testGetFunctionColumns_checkResult()
+          - testGetFunctions_checkResult()
+          - testGetImportedKeys_checkResult()
+          - testGetProcedureColumns_checkResult()
+          - testGetProcedures_checkResult()
+          - testGetTablePrivileges_checkResult()
+          - testGetTables_checkResult()
+      }
+    }
+  }
+  
+
+  namespace testsuite {
+    namespace simple {
+      class testsuite.simple.MetadataTest.TestGetSqlKeywordsDynamicQueryInterceptor {
+          {static} + interceptedQueries : List<String>
+          + preProcess()
+      }
+    }
+  }
+  
+
+  namespace testsuite {
+    namespace simple {
+      class testsuite.simple.MiniAdminTest {
+          + MiniAdminTest()
+          {static} + main()
+          + testShutdown()
+          + testUrlConstructor()
+      }
+    }
+  }
+  
+
+  namespace testsuite {
+    namespace simple {
+      class testsuite.simple.MultiHostConnectionTest {
+          {static} - COMM_LINK_ERR_PATTERN : String
+          {static} - HOST_1 : String
+          {static} - HOST_1_FAIL : String
+          {static} - HOST_1_OK : String
+          {static} - HOST_2 : String
+          {static} - HOST_2_FAIL : String
+          {static} - HOST_2_OK : String
+          {static} - HOST_3 : String
+          {static} - HOST_3_FAIL : String
+          {static} - HOST_3_OK : String
+          {static} - HOST_4 : String
+          {static} - HOST_4_FAIL : String
+          {static} - HOST_4_OK : String
+          {static} - HOST_5 : String
+          {static} - HOST_5_OK : String
+          {static} - STMT_CLOSED_ERR_PATTERN : String
+          + MultiHostConnectionTest()
+          {static} + main()
+          + testFailoverAutoFallBack()
+          + testFailoverAutoReconnect()
+          + testFailoverCombinations()
+          + testFailoverConnection()
+          + testFailoverConnectionSynchronization()
+          + testFailoverDefaultSettings()
+          + testFailoverQueriesBeforeRetryMaster()
+          + testFailoverReadOnly()
+          + testFailoverSecondsBeforeRetryMaster()
+          + testFailoverTransitions()
+          + testLoadBalanceServerAffinityStrategy()
+          {static} - assertSQLException()
+          {static} - assertSQLException()
+          {static} - assertSingleValueQuery()
+          - testFailoverTransition()
+      }
+    }
+  }
+  
+
+  namespace testsuite {
+    namespace simple {
+      class testsuite.simple.NumbersTest {
+          {static} - TEST_BIGINT_VALUE : long
+          + NumbersTest()
+          {static} + main()
+          + setUp()
+          + testNumbers()
+          - createTestTable()
+      }
+    }
+  }
+  
+
+  namespace testsuite {
+    namespace simple {
+      class testsuite.simple.ReadOnlyCallableStatementTest {
+          + ReadOnlyCallableStatementTest()
+          + testNotReadOnlyWithProcBodyAccess()
+          + testReadOnlyWithProcBodyAccess()
+      }
+    }
+  }
+  
+
+  namespace testsuite {
+    namespace simple {
+      class testsuite.simple.ResultSetTest {
+          + ResultSetTest()
+          {static} + main()
+          + testDateTimeRetrieval()
+          + testNonUpdResultSetUpdateObject()
+          + testPadding()
+          + testUpdResultSetUpdateObjectAndNewSupportedTypes()
+          + testUpdResultSetUpdateObjectAndNewUnsupportedTypes()
+          + testUpdateForReadOnlyResultSet()
+          + testWarningOnTimestampTruncation()
+          - testDateTimeRetrieval_internal()
+          - testPaddingForConnection()
+      }
+    }
+  }
+  
+
+  namespace testsuite {
+    namespace simple {
+      class testsuite.simple.SSLTest {
+          + SSLTest()
+          {static} + main()
+          + testConnect()
+      }
+    }
+  }
+  
+
+  namespace testsuite {
+    namespace simple {
+      class testsuite.simple.SequentialIdLeaseTest {
+          + SequentialIdLeaseTest()
+          {static} + main()
+          + testSequentialIdLease()
+      }
+    }
+  }
+  
+
+  namespace testsuite {
+    namespace simple {
+      class testsuite.simple.ServerControllerTest {
+          - baseDir : String
+          + ServerControllerTest()
+          {static} + main()
+          + testServerController()
+      }
+    }
+  }
+  
+
+  namespace testsuite {
+    namespace simple {
+      class testsuite.simple.SimpleTransformer {
+          + transformProperties()
+      }
+    }
+  }
+  
+
+  namespace testsuite {
+    namespace simple {
+      class testsuite.simple.SplitDBdotNameTest {
+          + SplitDBdotNameTest()
+          {static} + main()
+          + testSplit()
+      }
+    }
+  }
+  
+
+  namespace testsuite {
+    namespace simple {
+      class testsuite.simple.StatementsTest {
+          {static} - MAX_COLUMNS_TO_TEST : int
+          {static} - MAX_COLUMN_LENGTH : int
+          {static} - STEP : int
+          - testDateString : String
+          - testDateTimeString : String
+          - testISODateTimeString : String
+          - testLocalDate : LocalDate
+          - testLocalDateTime : LocalDateTime
+          - testLocalTime : LocalTime
+          - testOffsetDateTime : OffsetDateTime
+          - testOffsetTime : OffsetTime
+          - testSqlDate : Date
+          - testSqlTime : Time
+          - testSqlTimeStamp : Timestamp
+          - testTimeString : String
+          + StatementsTest()
+          {static} + main()
+          + setUp()
+          + tearDown()
+          + testAccessorsAndMutators()
+          + testAutoIncrement()
+          + testBatchRewriteErrors()
+          + testBinaryResultSetNumericTypes()
+          + testCallStmtExecuteLargeBatch()
+          + testCallStmtExecuteLargeUpdate()
+          + testCallStmtRegisterOutParameter()
+          + testCallStmtRegisterOutParameterNewUnsupportedTypes()
+          + testCallStmtRegisterOutParameterWithMysqlType()
+          + testCallStmtSetObjectAndNewSupportedTypes()
+          + testCallStmtSetObjectAndNewUnsupportedTypes()
+          + testCallableStatement()
+          + testCancelStatement()
+          + testClose()
+          + testEnableStreamingResults()
+          + testGetNCharacterStream()
+          + testGetNClob()
+          + testGetNString()
+          + testHoldingResultSetsOverClose()
+          + testInsert()
+          + testJdbc4LoadBalancing()
+          + testLocalInfileHooked()
+          + testMultiStatements()
+          + testNulls()
+          + testParameterBindings()
+          + testParsedConversionWarning()
+          + testPrepStmtExecuteLargeBatch()
+          + testPrepStmtExecuteLargeUpdateExplicitGeneratedKeys()
+          + testPrepStmtExecuteLargeUpdateNoGeneratedKeys()
+          + testPrepStmtSetObjectAndNewSupportedTypes()
+          + testPrepStmtSetObjectAndNewUnsupportedTypes()
+          + testPreparedStatement()
+          + testPreparedStatementBatch()
+          + testQueryInterceptors()
+          + testRowFetch()
+          + testSelectColumns()
+          + testServPrepStmtSetObjectAndNewSupportedTypes()
+          + testServPrepStmtSetObjectAndNewUnsupportedTypes()
+          + testServerPrepStmtExecuteLargeBatch()
+          + testServerPreparedStatementsCaching()
+          + testSetNCharacterStream()
+          + testSetNCharacterStreamServer()
+          + testSetNClob()
+          + testSetNClobServer()
+          + testSetNString()
+          + testSetNStringServer()
+          + testSetObject()
+          + testSetObjectWithMysqlType()
+          + testSharedTestData()
+          + testStatementRewriteBatch()
+          + testStmtExecuteLargeBatch()
+          + testStmtExecuteLargeUpdate()
+          + testStmtExecuteLargeUpdateNoGeneratedKeys()
+          + testStmtGetSetLargeMaxRows()
+          + testStreamChange()
+          + testStubbed()
+          + testTruncationOnRead()
+          + testUpdateNCharacterStream()
+          + testUpdateNClob()
+          + testUpdateNString()
+          - checkUnsupportedTypesBehavior()
+          - insertTestDataLocalDTTypes()
+          - insertTestDataOffsetDTTypes()
+          - testBinaryResultSetNumericTypesInternal()
+          - validateTestDataLocalDTTypes()
+          - validateTestDataOffsetDTTypes()
+      }
+    }
+  }
+  
+
+  namespace testsuite {
+    namespace simple {
+      class testsuite.simple.StringUtilsTest {
+          + StringUtilsTest()
+          {static} + main()
+          + testAppendAsHex()
+          + testGetBytes()
+          + testIndexOfIgnoreCase()
+          + testIndexOfQuoteDoubleAware()
+          + testJoinWithSerialComma()
+          + testQuoteUnQuoteIdentifierWithBackQuote()
+          + testQuoteUnQuoteIdentifierWithDoubleQuote()
+          + testQuoteUnquoteBytes()
+          + testSplit()
+          + testSplitCornerCases()
+          + testWildCompare()
+          {static} - printRuler()
+          - testIndexOfIgnoreCaseMySQLIndexMarker()
+      }
+    }
+  }
+  
+
+  namespace testsuite {
+    namespace simple {
+      class testsuite.simple.TestBug57662Logger {
+          + hasNegativeDurations : boolean
+          + TestBug57662Logger()
+          # logInternal()
+      }
+    }
+  }
+  
+
+  namespace testsuite {
+    namespace simple {
+      class testsuite.simple.TestLifecycleInterceptor {
+          {static} ~ transactionsBegun : int
+          {static} ~ transactionsCompleted : int
+          + close()
+          + commit()
+          + destroy()
+          + init()
+          + rollback()
+          + rollback()
+          + setAutoCommit()
+          + setDatabase()
+          + transactionBegun()
+          + transactionCompleted()
+      }
+    }
+  }
+  
+
+  namespace testsuite {
+    namespace simple {
+      class testsuite.simple.TransactionTest {
+          {static} - DOUBLE_CONST : double
+          {static} - EPSILON : double
+          + TransactionTest()
+          {static} + main()
+          + setUp()
+          + testTransaction()
+      }
+    }
+  }
+  
+
+  namespace testsuite {
+    namespace simple {
+      class testsuite.simple.TraversalTest {
+          + TraversalTest()
+          {static} + main()
+          + setUp()
+          + tearDown()
+          + testTraversal()
+          - createTestTable()
+      }
+    }
+  }
+  
+
+  namespace testsuite {
+    namespace simple {
+      class testsuite.simple.UpdatabilityTest {
+          + UpdatabilityTest()
+          {static} + main()
+          + setUp()
+          + tearDown()
+          + testAliasedTables()
+          + testBogusTable()
+          + testMultiKeyTable()
+          + testUpdatability()
+          - createTestTable()
+      }
+    }
+  }
+  
+
+  namespace testsuite {
+    namespace simple {
+      class testsuite.simple.UtilsTest {
+          + UtilsTest()
+          {static} + main()
+          + testGetImplementedInterfaces()
+          + testGetPackageName()
+          + testIsJdbcInterface()
+          + testIsJdbcPackage()
+      }
+    }
+  }
+  
+
+  namespace testsuite {
+    namespace simple {
+      class testsuite.simple.XATest {
+          ~ xaDs : MysqlXADataSource
+          + XATest()
+          + testCoordination()
+          + testLocalTransaction()
+          + testRecover()
+          + testSuspendableTx()
+          # getXAConnection()
+          - createXid()
+          - createXid()
+      }
+    }
+  }
+  
+
+  testsuite.simple.ConnectionTest +-down- testsuite.simple.ConnectionTest.LocalSocketAddressCheckThread
+  testsuite.simple.ConnectionTest +-down- testsuite.simple.ConnectionTest.SpawnedWorkerCounter
+  testsuite.simple.ConnectionTest +-down- testsuite.simple.ConnectionTest.TestEnableEscapeProcessingQueryInterceptor
+  testsuite.simple.ConnectionTest.LocalSocketAddressCheckThread o-- testsuite.simple.ConnectionTest.SpawnedWorkerCounter : counter
+  testsuite.simple.MetadataTest +-down- testsuite.simple.MetadataTest.TestGetSqlKeywordsDynamicQueryInterceptor
+  testsuite.simple.SimpleTransformer .up.|> ConnectionPropertiesTransform
+  testsuite.simple.TestLifecycleInterceptor .up.|> ConnectionLifecycleInterceptor
+
+
+right footer
+
+
+PlantUML diagram generated by SketchIt! (https://bitbucket.org/pmesmeur/sketch.it)
+For more information about this tool, please contact philippe.mesmeur@gmail.com
+endfooter
+
+@enduml

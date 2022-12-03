@@ -1,0 +1,347 @@
+@startuml
+
+title __RESULT's Class Diagram__\n
+
+  namespace com.mysql.cj {
+    namespace result {
+      class com.mysql.cj.result.BigDecimalValueFactoryTest {
+          ~ pset : PropertySet
+          ~ vf : ValueFactory<BigDecimal>
+          + testCreateFromBigDecimal()
+          + testCreateFromBigInteger()
+          + testCreateFromBit()
+          + testCreateFromBytes()
+          + testCreateFromDate()
+          + testCreateFromDouble()
+          + testCreateFromLong()
+          + testCreateFromNull()
+          + testCreateFromTime()
+          + testCreateFromTimestamp()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace result {
+      class com.mysql.cj.result.BinaryStreamValueFactoryTest {
+          + testBasics()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace result {
+      class com.mysql.cj.result.BooleanValueFactoryTest {
+          ~ pset : PropertySet
+          ~ vf : ValueFactory<Boolean>
+          + testCreateFromBigDecimal()
+          + testCreateFromBigInteger()
+          + testCreateFromBit()
+          + testCreateFromBytes()
+          + testCreateFromDate()
+          + testCreateFromDouble()
+          + testCreateFromLong()
+          + testCreateFromNull()
+          + testCreateFromTime()
+          + testCreateFromTimestamp()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace result {
+      class com.mysql.cj.result.ByteValueFactoryTest {
+          ~ pset : PropertySet
+          ~ vf : ValueFactory<Byte>
+          + testCreateFromBigDecimal()
+          + testCreateFromBigInteger()
+          + testCreateFromBit()
+          + testCreateFromBytes()
+          + testCreateFromDate()
+          + testCreateFromDouble()
+          + testCreateFromLong()
+          + testCreateFromNull()
+          + testCreateFromTime()
+          + testCreateFromTimestamp()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace result {
+      class com.mysql.cj.result.CommonAsserts {
+          {static} # assertThrows()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace result {
+      class com.mysql.cj.result.DoubleValueFactoryTest {
+          ~ pset : PropertySet
+          ~ vf : ValueFactory<Double>
+          + testCreateFromBigDecimal()
+          + testCreateFromBigInteger()
+          + testCreateFromBit()
+          + testCreateFromBytes()
+          + testCreateFromDate()
+          + testCreateFromDouble()
+          + testCreateFromLong()
+          + testCreateFromNull()
+          + testCreateFromTime()
+          + testCreateFromTimestamp()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace result {
+      class com.mysql.cj.result.FloatValueFactoryTest {
+          ~ pset : PropertySet
+          ~ vf : ValueFactory<Float>
+          + testCreateFromBigDecimal()
+          + testCreateFromBigInteger()
+          + testCreateFromBit()
+          + testCreateFromBytes()
+          + testCreateFromDate()
+          + testCreateFromDouble()
+          + testCreateFromLong()
+          + testCreateFromNull()
+          + testCreateFromTime()
+          + testCreateFromTimestamp()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace result {
+      class com.mysql.cj.result.IntegerValueFactoryTest {
+          ~ pset : PropertySet
+          ~ vf : ValueFactory<Integer>
+          + testCreateFromBigDecimal()
+          + testCreateFromBigInteger()
+          + testCreateFromBit()
+          + testCreateFromBytes()
+          + testCreateFromDate()
+          + testCreateFromDouble()
+          + testCreateFromLong()
+          + testCreateFromNull()
+          + testCreateFromTime()
+          + testCreateFromTimestamp()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace result {
+      class com.mysql.cj.result.LocalDateTimeValueFactoryTest {
+          ~ pset : PropertySet
+          ~ vf : ValueFactory<LocalDateTime>
+          + testBasics()
+          + testCreateFromBigDecimal()
+          + testCreateFromBigInteger()
+          + testCreateFromBit()
+          + testCreateFromBytes()
+          + testCreateFromDate()
+          + testCreateFromDouble()
+          + testCreateFromLong()
+          + testCreateFromNull()
+          + testCreateFromTime()
+          + testCreateFromTimestamp()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace result {
+      class com.mysql.cj.result.LocalDateValueFactoryTest {
+          ~ pset : PropertySet
+          ~ vf : ValueFactory<LocalDate>
+          + testBasics()
+          + testCreateFromBigDecimal()
+          + testCreateFromBigInteger()
+          + testCreateFromBit()
+          + testCreateFromBytes()
+          + testCreateFromDate()
+          + testCreateFromDouble()
+          + testCreateFromLong()
+          + testCreateFromNull()
+          + testCreateFromTime()
+          + testCreateFromTimestamp()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace result {
+      class com.mysql.cj.result.LocalTimeValueFactoryTest {
+          ~ pset : PropertySet
+          ~ vf : LocalTimeValueFactory
+          + testBasics()
+          + testCreateFromBigDecimal()
+          + testCreateFromBigInteger()
+          + testCreateFromBit()
+          + testCreateFromBytes()
+          + testCreateFromDate()
+          + testCreateFromDouble()
+          + testCreateFromLong()
+          + testCreateFromNull()
+          + testCreateFromTime()
+          + testCreateFromTimestamp()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace result {
+      class com.mysql.cj.result.LongValueFactoryTest {
+          ~ pset : PropertySet
+          ~ vf : ValueFactory<Long>
+          + testCreateFromBigDecimal()
+          + testCreateFromBigInteger()
+          + testCreateFromBit()
+          + testCreateFromBytes()
+          + testCreateFromDate()
+          + testCreateFromDouble()
+          + testCreateFromLong()
+          + testCreateFromNull()
+          + testCreateFromTime()
+          + testCreateFromTimestamp()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace result {
+      class com.mysql.cj.result.ShortValueFactoryTest {
+          ~ pset : PropertySet
+          ~ vf : ValueFactory<Short>
+          + testCreateFromBigDecimal()
+          + testCreateFromBigInteger()
+          + testCreateFromBit()
+          + testCreateFromBytes()
+          + testCreateFromDate()
+          + testCreateFromDouble()
+          + testCreateFromLong()
+          + testCreateFromNull()
+          + testCreateFromTime()
+          + testCreateFromTimestamp()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace result {
+      class com.mysql.cj.result.SqlDateValueFactoryTest {
+          ~ pset : PropertySet
+          ~ vf : SqlDateValueFactory
+          + testBasics()
+          + testCreateFromBigDecimal()
+          + testCreateFromBigInteger()
+          + testCreateFromBit()
+          + testCreateFromBytes()
+          + testCreateFromDate()
+          + testCreateFromDouble()
+          + testCreateFromLong()
+          + testCreateFromNull()
+          + testCreateFromTime()
+          + testCreateFromTimestamp()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace result {
+      class com.mysql.cj.result.SqlTimeValueFactoryTest {
+          ~ pset : PropertySet
+          ~ vf : SqlTimeValueFactory
+          + testBasics()
+          + testCreateFromBigDecimal()
+          + testCreateFromBigInteger()
+          + testCreateFromBit()
+          + testCreateFromBytes()
+          + testCreateFromDate()
+          + testCreateFromDouble()
+          + testCreateFromLong()
+          + testCreateFromNull()
+          + testCreateFromTime()
+          + testCreateFromTimestamp()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace result {
+      class com.mysql.cj.result.SqlTimestampValueFactoryTest {
+          ~ pset : PropertySet
+          ~ vf : SqlTimestampValueFactory
+          + testBasics()
+          + testCreateFromBigDecimal()
+          + testCreateFromBigInteger()
+          + testCreateFromBit()
+          + testCreateFromBytes()
+          + testCreateFromDate()
+          + testCreateFromDouble()
+          + testCreateFromLong()
+          + testCreateFromNull()
+          + testCreateFromTime()
+          + testCreateFromTimestamp()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace result {
+      class com.mysql.cj.result.StringValueFactoryTest {
+          ~ pset : PropertySet
+          ~ vf : ValueFactory<String>
+          + testCreateFromBigDecimal()
+          + testCreateFromBigInteger()
+          + testCreateFromBit()
+          + testCreateFromBytes()
+          + testCreateFromDate()
+          + testCreateFromDouble()
+          + testCreateFromLong()
+          + testCreateFromNull()
+          + testCreateFromTime()
+          + testCreateFromTimestamp()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace result {
+      class com.mysql.cj.result.ZeroDateTimeToNullValueFactoryTest {
+          + testBasics()
+      }
+    }
+  }
+  
+
+
+
+right footer
+
+
+PlantUML diagram generated by SketchIt! (https://bitbucket.org/pmesmeur/sketch.it)
+For more information about this tool, please contact philippe.mesmeur@gmail.com
+endfooter
+
+@enduml

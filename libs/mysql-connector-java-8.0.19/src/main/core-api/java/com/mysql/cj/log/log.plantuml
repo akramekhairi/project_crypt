@@ -1,0 +1,212 @@
+@startuml
+
+title __LOG's Class Diagram__\n
+
+  namespace com.mysql.cj {
+    namespace log {
+      class com.mysql.cj.log.Jdk14Logger {
+          # jdkLogger : Logger
+          {static} - DEBUG : Level
+          {static} - ERROR : Level
+          {static} - FATAL : Level
+          {static} - INFO : Level
+          {static} - TRACE : Level
+          {static} - WARN : Level
+          + Jdk14Logger()
+          + isDebugEnabled()
+          + isErrorEnabled()
+          + isFatalEnabled()
+          + isInfoEnabled()
+          + isTraceEnabled()
+          + isWarnEnabled()
+          + logDebug()
+          + logDebug()
+          + logError()
+          + logError()
+          + logFatal()
+          + logFatal()
+          + logInfo()
+          + logInfo()
+          + logTrace()
+          + logTrace()
+          + logWarn()
+          + logWarn()
+          {static} - findCallerStackDepth()
+          - logInternal()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace log {
+      interface com.mysql.cj.log.Log {
+          {static} + LOGGER_INSTANCE_NAME : String
+          {abstract} + isDebugEnabled()
+          {abstract} + isErrorEnabled()
+          {abstract} + isFatalEnabled()
+          {abstract} + isInfoEnabled()
+          {abstract} + isTraceEnabled()
+          {abstract} + isWarnEnabled()
+          {abstract} + logDebug()
+          {abstract} + logDebug()
+          {abstract} + logError()
+          {abstract} + logError()
+          {abstract} + logFatal()
+          {abstract} + logFatal()
+          {abstract} + logInfo()
+          {abstract} + logInfo()
+          {abstract} + logTrace()
+          {abstract} + logTrace()
+          {abstract} + logWarn()
+          {abstract} + logWarn()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace log {
+      class com.mysql.cj.log.NullLogger {
+          + NullLogger()
+          + isDebugEnabled()
+          + isErrorEnabled()
+          + isFatalEnabled()
+          + isInfoEnabled()
+          + isTraceEnabled()
+          + isWarnEnabled()
+          + logDebug()
+          + logDebug()
+          + logError()
+          + logError()
+          + logFatal()
+          + logFatal()
+          + logInfo()
+          + logInfo()
+          + logTrace()
+          + logTrace()
+          + logWarn()
+          + logWarn()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace log {
+      interface com.mysql.cj.log.ProfilerEvent {
+          {static} + NA : byte
+          {static} + TYPE_EXECUTE : byte
+          {static} + TYPE_FETCH : byte
+          {static} + TYPE_OBJECT_CREATION : byte
+          {static} + TYPE_PREPARE : byte
+          {static} + TYPE_QUERY : byte
+          {static} + TYPE_SLOW_QUERY : byte
+          {static} + TYPE_USAGE : byte
+          {abstract} + getConnectionId()
+          {abstract} + getDatabase()
+          {abstract} + getDurationUnits()
+          {abstract} + getEventCreationPointAsString()
+          {abstract} + getEventCreationTime()
+          {abstract} + getEventDuration()
+          {abstract} + getEventType()
+          {abstract} + getHostName()
+          {abstract} + getMessage()
+          {abstract} + getResultSetId()
+          {abstract} + getStatementId()
+          {abstract} + pack()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace log {
+      interface com.mysql.cj.log.ProfilerEventHandler {
+          {abstract} + consumeEvent()
+          {abstract} + destroy()
+          {abstract} + init()
+          {abstract} + processEvent()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace log {
+      class com.mysql.cj.log.Slf4JLogger {
+          - log : Logger
+          + Slf4JLogger()
+          + isDebugEnabled()
+          + isErrorEnabled()
+          + isFatalEnabled()
+          + isInfoEnabled()
+          + isTraceEnabled()
+          + isWarnEnabled()
+          + logDebug()
+          + logDebug()
+          + logError()
+          + logError()
+          + logFatal()
+          + logFatal()
+          + logInfo()
+          + logInfo()
+          + logTrace()
+          + logTrace()
+          + logWarn()
+          + logWarn()
+      }
+    }
+  }
+  
+
+  namespace com.mysql.cj {
+    namespace log {
+      class com.mysql.cj.log.StandardLogger {
+          {static} - DEBUG : int
+          {static} - ERROR : int
+          {static} - FATAL : int
+          {static} - INFO : int
+          {static} - TRACE : int
+          {static} - WARN : int
+          - logLocationInfo : boolean
+          + StandardLogger()
+          + StandardLogger()
+          + isDebugEnabled()
+          + isErrorEnabled()
+          + isFatalEnabled()
+          + isInfoEnabled()
+          + isTraceEnabled()
+          + isWarnEnabled()
+          + logDebug()
+          + logDebug()
+          + logError()
+          + logError()
+          + logFatal()
+          + logFatal()
+          + logInfo()
+          + logInfo()
+          + logTrace()
+          + logTrace()
+          + logWarn()
+          + logWarn()
+          # logInternal()
+      }
+    }
+  }
+  
+
+  com.mysql.cj.log.Jdk14Logger .up.|> Log
+  com.mysql.cj.log.NullLogger .up.|> Log
+  com.mysql.cj.log.Slf4JLogger .up.|> Log
+  com.mysql.cj.log.StandardLogger .up.|> Log
+
+
+right footer
+
+
+PlantUML diagram generated by SketchIt! (https://bitbucket.org/pmesmeur/sketch.it)
+For more information about this tool, please contact philippe.mesmeur@gmail.com
+endfooter
+
+@enduml

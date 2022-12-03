@@ -1,0 +1,182 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins&display=swap');
+
+.login-information {
+    min-width: 300px;
+    flex: 0;
+    background: var(--lumo-primary-color-50pct);
+}
+
+/* Stack login-screen vertically on narrow screen */
+@media (max-width: 800px) {
+
+    .login-screen {
+        flex-direction: column;
+    }
+
+    .login-information {
+        display: block;
+    }
+}
+
+body {
+    /* Used by the menu and form overlays */
+    --overlay-box-shadow: 0 0 3px 2px var(--lumo-contrast-10pct);
+}
+
+.menu-header {
+    padding: 11px 16px;
+    padding-left: 32px;
+    font-size: var(--lumo-font-size-l);
+}
+
+.menu-toggle {
+    display: none;
+}
+
+.menu-link {
+    display: block;
+    margin: 0 auto;
+    padding: 10px 37px;
+    transition: transform 300ms;
+    
+    font-family: var(--lumo-font-family);
+    font-size: var(--lumo-font-size-m);
+    font-weight: 500;
+    color: var(--lumo-secondary-text-color);
+}
+
+.menu-link:hover {
+    text-decoration: none;
+}
+
+.menu-link span {
+    padding-left: 5px;
+}
+
+.menu-button {
+    padding: 10px 42px;
+    color: var(--lumo-secondary-text-color);
+}
+
+.product-form {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    height: 100%;
+    overflow: auto;
+    background: var(--lumo-base-color);
+    box-shadow: var(--overlay-box-shadow);
+}
+
+.product-form-content {
+    margin-top: var(--_vaadin-app-layout-navbar-offset-size);
+}
+
+/* 
+ * Special rules for narrow screens (responsive design rules)
+ */
+@media (max-width: 800px), (max-height: 600px) {
+
+	/*
+	 * Make menu toggle visible, and smaller
+	 */
+    .menu-toggle {
+        display: block;
+        height: var(--lumo-button-size);
+        width: var(--lumo-button-size);
+    }
+    
+    .menu-header {
+        padding-left: 0;
+    }
+}
+
+@media (max-width: 550px) {
+
+    .product-form {
+        width: 100%;
+
+        /* Prevent text-fields from overflowing on narrow screens */
+        --vaadin-text-field-default-width: 6em;
+    }
+}
+
+/* Color codes for the availability statuses of the products */
+.Available {
+    color: #2dd085;
+}
+
+.Coming {
+    color: #ffc66e;
+}
+
+.Discontinued {
+    color: #f54993;
+}
+
+@import url('https://fonts.googleapis.com/css?family=Poppins&display=swap');
+
+html {
+    --lumo-font-family: 'Poppins', sans-serif;
+    font-family: var(--lumo-font-family,'Arial, Helvetica, sans-serif');
+    --lumo-primary-text-color: rgb(18, 202, 214);
+    --lumo-primary-color-50pct: rgba(18, 202, 214, 0.5);
+    --lumo-primary-color-10pct: rgba(18, 202, 214, 0.1);
+    --lumo-error-text-color: rgb(255, 56, 103);
+    --lumo-error-color-50pct: rgba(255, 56, 103, 0.5);
+    --lumo-error-color-10pct: rgba(255, 56, 103, 0.1);
+    --lumo-success-text-color: rgb(20, 184, 143);
+    --lumo-success-color-50pct: rgba(20, 184, 143, 0.5);
+    --lumo-success-color-10pct: rgba(20, 184, 143, 0.1);
+    --lumo-primary-color: #12cad6;
+    --lumo-error-color: hsl(346, 100%, 61%);
+    --lumo-success-color: hsl(165, 80%, 40%);
+    --lumo-header-text-color: #fa163f;
+    --lumo-body-text-color: hsla(285, 0%, 0%, 0.94);
+    --lumo-secondary-text-color: #3A3535;
+    --lumo-tertiary-text-color: #3a3535ab;
+    --lumo-disabled-text-color: #3a35354f;
+    --lumo-tint-5pct: rgba(228, 249, 255, 0.05);
+    --lumo-tint-10pct: rgba(228, 249, 255, 0.1);
+    --lumo-tint-20pct: rgba(228, 249, 255, 0.2);
+    --lumo-tint-30pct: rgba(228, 249, 255, 0.3);
+    --lumo-tint-40pct: rgba(228, 249, 255, 0.4);
+    --lumo-tint-50pct: rgba(228, 249, 255, 0.5);
+    --lumo-tint-60pct: rgba(228, 249, 255, 0.6);
+    --lumo-tint-70pct: rgba(228, 249, 255, 0.7);
+    --lumo-tint-80pct: rgba(228, 249, 255, 0.8);
+    --lumo-tint-90pct: rgba(228, 249, 255, 0.9);
+    --lumo-tint: #e4f9ff;
+}
+
+
+
+[theme~="dark"] {
+  --lumo-font-family: 'Poppins', sans-serif;
+  --lumo-shade-5pct: rgba(26, 26, 26, 0.05);
+  --lumo-shade-10pct: rgba(26, 26, 26, 0.1);
+  --lumo-shade-20pct: rgba(26, 26, 26, 0.2);
+  --lumo-shade-30pct: rgba(26, 26, 26, 0.3);
+  --lumo-shade-40pct: rgba(26, 26, 26, 0.4);
+  --lumo-shade-50pct: rgba(26, 26, 26, 0.5);
+  --lumo-shade-60pct: rgba(26, 26, 26, 0.6);
+  --lumo-shade-70pct: rgba(26, 26, 26, 0.7);
+  --lumo-shade-80pct: rgba(26, 26, 26, 0.8);
+  --lumo-shade-90pct: rgba(26, 26, 26, 0.9);
+  --lumo-primary-text-color: rgb(18, 202, 214);
+  --lumo-primary-color-50pct: rgba(18, 202, 214, 0.5);
+  --lumo-primary-color-10pct: rgba(18, 202, 214, 0.1);
+  --lumo-error-text-color: rgb(231, 24, 24);
+  --lumo-error-color-50pct: rgba(231, 24, 24, 0.5);
+  --lumo-error-color-10pct: rgba(231, 24, 24, 0.1);
+  --lumo-success-text-color: rgb(62, 229, 170);
+  --lumo-success-color-50pct: rgba(62, 229, 170, 0.5);
+  --lumo-success-color-10pct: rgba(62, 229, 170, 0.1);
+  --lumo-shade: hsl(0, 0%, 10%);
+  --lumo-primary-color: #12cad6;
+  --lumo-error-color: hsl(0, 81%, 50%);
+  --lumo-success-color: hsl(159, 76%, 57%);
+  --lumo-success-contrast-color: hsl(159, 29%, 10%);
+  --lumo-header-text-color: #fa163f;
+
+}
